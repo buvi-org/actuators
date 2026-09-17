@@ -1,0 +1,17 @@
+{
+  "ratio": 9.0,
+  "ring_fixed": true,
+  "sun_input_carrier_output": true,
+  "sun_planet_center_mm": 13.5,
+  "planet_ring_center_mm": 13.5,
+  "equal_spacing_integer": 60.0,
+  "no_undercut_min_teeth": 17.09726434082606,
+  "external_contact_ratio": 1.6822434583029926,
+  "internal_contact_ratio": 1.9467119284070862,
+  "pair_circular_backlash_mm": 0.02,
+  "sampled_carrier_revolutions": 1,
+  "sample_positions": 720,
+  "maximum_overlap_mm2": 0,
+  "planet_outside_ring_space_mm2": 0,
+  "scope": "Sampled planar CAD-boundary check, not loaded tooth contact analysis or proof at all intermediate positions."
+}

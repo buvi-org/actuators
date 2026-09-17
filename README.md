@@ -19,9 +19,9 @@ The Three.js workbench includes:
 
 - A full BOM tree with selection, hierarchical visibility, isolation, focus, and a details inspector showing specifications, sources, and unresolved information.
 - The manufacturer reference contains 43 CAD instances. The combined study replaces its sun blank with one gear-and-shaft solid and adds provisional stator laminations, coating faces, winding bundles, rotor yoke, magnets, gears, pins and electronics. Manufacturer bearings and fasteners remain selectable.
-- An **Internals** preset and a **Gear train** preset that exposes a toothed sun, three planets and the internal ring. The illustrative 12/42/96 tooth counts produce a 9:1 ratio; their non-involute profiles are not manufacturing geometry.
+- An **Internals** preset and a **Gear train** preset that exposes a toothed sun, three planets and the internal ring. The 20/70/160 tooth counts produce exactly 9:1 with the ring fixed; all three gear types use involute flanks from the STEP solids. The candidate module is 0.3 and pressure angle 20°. Manufacturing release still requires process, tolerances and strength validation.
 - A Primeform housing variant with screw bosses extended to the floor, a downloadable solid STEP, and a visible warning for the measured clash with the provisional rotor yoke. Toggle the gold support material to compare the source housing. See [housing study](docs/HOUSING-STUDY.md).
-- Single-solid sun, planet and ring gear STEP files; a gear-train STEP with five gear components (one sun, three planets, one ring). Teeth are integral geometry, never assembly components. The sun preserves source end journals and replaces its middle section; its viewer mesh is tessellated from that same solid. Rebuild with `python cad/build_gears.py`; the viewer uses the same generated profiles.
+- Single-solid sun, planet and ring gear STEP files; a gear-train STEP with five gear components (one sun, three planets, one ring). Teeth are integral geometry, never assembly components. The sun preserves source end journals and replaces its middle section; its viewer mesh is tessellated from that same solid. Rebuild with `python cad/build_gears.py`; the viewer uses meshes tessellated from the same solids.
 - Full assembly GLB export, including reference geometry and annotated provisional bodies. The separate Lamination lab remains independently configurable; its settings do not currently change the assembly study.
 - A 35-line engineering BOM distinguishing source CAD, published data, illustration inferences and unresolved items. External mating cables are documented under the power/CAN and UART connectors, without separate internal BOM quantities or cable geometry.
 - An inventory of 205 driver-board reference designators and package-model labels. Component values and exact IC part numbers remain unknown. These inventory entries are selectable data records; individual PCB positions are not mapped to the actuator assembly, so their visibility controls are disabled.
@@ -84,6 +84,8 @@ python cad/build_lamination.py path/to/lamination-study.json
 ```
 
 This updates the generated STEP files in `public/design/`. Browser **Stack GLB** always exports the current full assembly at true thickness, independent of display spread or the selected-sheet view. It uses metres; STEP and DXF use millimetres.
+
+See [involute gear design and manufacturing release requirements](docs/GEAR-DESIGN.md) for the matched candidate, equations, checks and unresolved inputs.
 
 ## Licensing
 

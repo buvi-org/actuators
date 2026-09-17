@@ -1,23 +1,53 @@
 {
   "sun": {
+    "teeth": 20,
+    "module_mm": 0.3,
+    "pressure_angle_deg": 20,
+    "pitch_diameter_mm": 6.0,
+    "base_diameter_mm": 5.638155724715451,
+    "root_diameter_mm": 5.25,
+    "tip_diameter_mm": 6.6,
+    "root_fillet_mm": 0.06,
+    "tooth_thinning_mm": 0.01,
+    "sampled_spline_error_mm": 8.242890538757208e-09,
     "solid_count": 1,
     "step_roundtrip_valid": true,
-    "volume_mm3": 419.0199
+    "volume_mm3": 418.9502
   },
   "planet": {
+    "teeth": 70,
+    "module_mm": 0.3,
+    "pressure_angle_deg": 20,
+    "pitch_diameter_mm": 21.0,
+    "base_diameter_mm": 19.733545036504076,
+    "root_diameter_mm": 20.25,
+    "tip_diameter_mm": 21.6,
+    "root_fillet_mm": 0.06,
+    "tooth_thinning_mm": 0.01,
+    "sampled_spline_error_mm": 3.026527507609928e-10,
     "solid_count": 1,
     "step_roundtrip_valid": true,
-    "volume_mm3": 1577.6825
+    "volume_mm3": 1581.0881
   },
   "ring": {
+    "teeth": 160,
+    "module_mm": 0.3,
+    "pressure_angle_deg": 20,
+    "pitch_diameter_mm": 48.0,
+    "base_diameter_mm": 45.105245797723605,
+    "root_diameter_mm": 48.75,
+    "tip_diameter_mm": 47.4,
+    "root_fillet_mm": 0.06,
+    "tooth_thinning_mm": 0.01,
+    "sampled_spline_error_mm": 2.2186305401482727e-11,
     "solid_count": 1,
     "step_roundtrip_valid": true,
-    "volume_mm3": 1571.2
+    "volume_mm3": 1553.5648
   },
   "assembly": {
     "components": 5,
     "solids": 5,
     "tooth_components": 0,
-    "status": "Illustrative non-involute geometry; not production-ready"
+    "status": "Analytic involute candidate; manufacturing release pending process, tolerances and strength checks"
   }
 }

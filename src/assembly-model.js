@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import gearProfiles from "./gear-profiles.json";
 import { defaults, calculateStack, profilePoints } from "./lamination-math.js";
 
 // Added geometry is an engineering illustration, never an OEM measurement.
@@ -10,6 +9,8 @@ export function buildAssembly(
   sourceModel,
   housingSupports,
   sunSolid,
+  planetSolid,
+  ringSolid,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -365,21 +366,12 @@ export function buildAssembly(
     "Illustrative end-winding impregnation extent; not a material fill volume or quantity.",
     0.25,
   );
-  const gear = (teeth, pitchRadius, width, bore) => {
-    const profile = teeth === 12 ? gearProfiles.sun : gearProfiles.planet;
-    const s = new THREE.Shape(
-      profile.map(([x, y]) => new THREE.Vector2(x / 1000, y / 1000)),
-    );
-    s.closePath();
-    const h = new THREE.Path();
-    h.absarc(0, 0, bore / 1000, 0, 2 * Math.PI, true);
-    s.holes.push(h);
-    const g = new THREE.ExtrudeGeometry(s, {
-      depth: width / 1000,
-      bevelEnabled: false,
+  const solidGeometry = (scene) => {
+    let geometry;
+    scene.traverse((mesh) => {
+      if (mesh.isMesh) geometry = mesh.geometry;
     });
-    g.translate(0, 0, -width / 2000);
-    return g;
+    return geometry;
   };
   root.add(sunSolid);
   sunSolid.traverse((mesh) => {
@@ -390,7 +382,7 @@ export function buildAssembly(
   });
   nodes.get("G02").status = "Provisional gear-and-shaft solid";
   nodes.get("G02").description =
-    "One connected gear-and-shaft solid: source end journals retained; central section z 3.75�11.25 mm replaced with the 12-tooth, module 0.5 study profile. Face width 7.5 mm. Non-involute provisional teeth, not a verified OEM gear or manufacture-ready design. Viewer mesh is tessellated directly from the STEP solid.";
+    "One connected gear-and-shaft solid: source end journals retained; central section z 3.75�11.25 mm replaced with the 20-tooth, module 0.3, 20� involute candidate. Face width 7.5 mm. Circular root fillets 0.06 mm; nominal circular backlash 0.020 mm per mesh. Manufacturing release pending process, tolerances and strength verification. Viewer mesh is tessellated directly from the STEP solid.";
   for (let i = 0; i < 3; i++) {
     const a = (i * 2 * Math.PI) / 3,
       x = 13.5 * Math.cos(a),
@@ -399,13 +391,13 @@ export function buildAssembly(
       `G04/planet-${i + 1}`,
       `Planet gear ${i + 1}`,
       "G04",
-      gear(42, 10.5, 5, 3),
+      solidGeometry(planetSolid),
       "#b6bac4",
       [x, y, 8.25],
       0.055,
-      "Schematic non-involute teeth. Study uses 42 teeth/module 0.5, not verified OEM dimensions or a machinable gear profile.",
+      "70-tooth involute candidate, module 0.3, 20� pressure angle, 5 mm face width. STEP-derived mesh. Circular root fillets and backlash are candidate values; process and strength release pending.",
     );
-    planet.rotation.z = a + Math.PI - (0.375 * 2 * Math.PI) / 42;
+    planet.rotation.z = a + Math.PI + Math.PI / 70 + (20 / 70) * a;
     add(
       `G06/pin-${i + 1}`,
       `Planet pin ${i + 1}`,
@@ -427,26 +419,16 @@ export function buildAssembly(
       "Annular planet-bearing/bushing placeholder; actual bearing architecture and size unresolved.",
     );
   }
-  // Teeth and rim share one continuous boundary, matching the single-solid STEP.
-  const ringShape = new THREE.Shape();
-  ringShape.absarc(0, 0, 0.026, 0, Math.PI * 2, false);
-  const toothBoundary = new THREE.Path(
-    gearProfiles.ring.map(([x, y]) => new THREE.Vector2(x / 1000, y / 1000)),
+  const ringMesh = new THREE.Mesh(
+    solidGeometry(ringSolid),
+    material("#aeb8c7"),
   );
-  toothBoundary.closePath();
-  ringShape.holes.push(toothBoundary);
-  const ringGeometry = new THREE.ExtrudeGeometry(ringShape, {
-    depth: 0.005,
-    bevelEnabled: false,
-    curveSegments: 96,
-  });
-  ringGeometry.translate(0, 0, -0.0025);
-  const ringMesh = new THREE.Mesh(ringGeometry, material("#aeb8c7"));
   ringMesh.position.z = 0.00825;
+  ringMesh.rotation.z = Math.PI / 160;
   root.add(ringMesh);
   link(ringMesh, "G05", 0.045);
   nodes.get("G05").description =
-    "One complete ring gear with 96 illustrative internal teeth, 5 mm face width. Non-involute study geometry; tooth count and dimensions are not verified OEM specifications.";
+    "160-tooth internal involute candidate, module 0.3, 20� pressure angle, 5 mm face width. One STEP-derived solid. With ring fixed, sun input and carrier output, ratio is exactly 1 + 160/20 = 9. Manufacturing release pending.";
   add(
     "E03/sensor",
     "Magnetic encoder package",

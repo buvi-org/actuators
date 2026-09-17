@@ -139,8 +139,13 @@
     "specifications": {
       "CAD bounding box": "6.717 x 6.717 x 21.5 mm",
       "Assembly ratio": "9:1 (not a tooth-count specification)",
-      "Current study solid": "One gear-and-shaft solid. Source journals retained; z 3.75 to 11.25 mm replaced by a 12-tooth non-involute profile, module 0.5, face width 7.5 mm. Current tip diameter 7 mm; original source envelope listed separately.",
-      "Representation": "Viewer GLB tessellated from the same solid as provisional-sun-gear.step; source blank excluded from combined study."
+      "Current study solid": "One gear-and-shaft solid. Source journals retained; z 3.75 to 11.25 mm replaced by a 20-tooth involute candidate, module 0.3, pressure angle 20 degrees, face width 7.5 mm. Current tip diameter 6.6 mm; original source envelope listed separately.",
+      "Representation": "Viewer GLB tessellated from the same solid as provisional-sun-gear.step; source blank excluded from combined study.",
+      "Primeform matched gear candidate": "20 teeth; module 0.3; pressure angle 20 degrees; zero profile shift",
+      "Candidate backlash": "0.020 mm circular per mesh at nominal centres, from 0.010 mm tooth thinning per gear; not a manufacturing tolerance",
+      "Root transition": "0.060 mm circular fillets; not a hob/shaper-generated trochoid",
+      "Ratio and assembly": "20 / 70 / 160 teeth; ring fixed, sun input, carrier output: exactly 9:1; three planets at 120 degrees; centres 13.5 mm",
+      "Release blockers": "Cutting process, steel grade, heat treatment, gear quality, tooth-thickness tolerances, strength, fatigue, lubrication and loaded contact checks"
     },
     "material": "OEM steel and hardness unspecified",
     "process": "Proposed: gear cutting, heat treatment, finish grinding",
@@ -555,7 +560,12 @@
     "specifications": {
       "Reduction target": "9:1",
       "Tooth counts / module / number of planets": "Not disclosed",
-      "Planet count": "Three visible in manufacturer exploded illustration; verify physical assembly"
+      "Planet count": "Three visible in manufacturer exploded illustration; verify physical assembly",
+      "Primeform matched gear candidate": "70 teeth; module 0.3; pressure angle 20 degrees; zero profile shift",
+      "Candidate backlash": "0.020 mm circular per mesh at nominal centres, from 0.010 mm tooth thinning per gear; not a manufacturing tolerance",
+      "Root transition": "0.060 mm circular fillets; not a hob/shaper-generated trochoid",
+      "Ratio and assembly": "20 / 70 / 160 teeth; ring fixed, sun input, carrier output: exactly 9:1; three planets at 120 degrees; centres 13.5 mm",
+      "Release blockers": "Cutting process, steel grade, heat treatment, gear quality, tooth-thickness tolerances, strength, fatigue, lubrication and loaded contact checks"
     },
     "material": "Gear steel and heat treatment to be selected",
     "process": "Gear cutting / heat treatment / inspection",
@@ -580,7 +590,12 @@
     "status": "Illustration inference",
     "specifications": {
       "Reduction target": "9:1",
-      "Separate or integral construction": "Separate annular ring is shown in exploded illustration; exact mounting unverified"
+      "Separate or integral construction": "Separate annular ring is shown in exploded illustration; exact mounting unverified",
+      "Primeform matched gear candidate": "160 teeth; module 0.3; pressure angle 20 degrees; zero profile shift",
+      "Candidate backlash": "0.020 mm circular per mesh at nominal centres, from 0.010 mm tooth thinning per gear; not a manufacturing tolerance",
+      "Root transition": "0.060 mm circular fillets; not a hob/shaper-generated trochoid",
+      "Ratio and assembly": "20 / 70 / 160 teeth; ring fixed, sun input, carrier output: exactly 9:1; three planets at 120 degrees; centres 13.5 mm",
+      "Release blockers": "Cutting process, steel grade, heat treatment, gear quality, tooth-thickness tolerances, strength, fatigue, lubrication and loaded contact checks"
     },
     "material": "Material and hardness to be selected",
     "process": "Internal gear machining or validated alternative",

@@ -86,8 +86,7 @@ try {
       .locator("#component-detail")
       .innerText()
       .then(
-        (t) =>
-          t.includes("12-tooth") && t.toLowerCase().includes("non-involute"),
+        (t) => t.includes("20-tooth") && t.toLowerCase().includes("involute"),
       ),
   );
   await page.screenshot({ path: "tmp/qa/gear-train.png", fullPage: true });

@@ -431,6 +431,10 @@ async function init3D() {
   const sunSolid = await new GLTFLoader().loadAsync(
     base + "design/provisional-sun-gear.glb",
   );
+  const [planetSolid, ringSolid] = await Promise.all([
+    new GLTFLoader().loadAsync(base + "design/provisional-planet-gear.glb"),
+    new GLTFLoader().loadAsync(base + "design/provisional-ring-gear.glb"),
+  ]);
   assembly = buildAssembly(
     bom,
     manifest,
@@ -438,6 +442,8 @@ async function init3D() {
     gltf.scene,
     housingSupports.scene,
     sunSolid.scene,
+    planetSolid.scene,
+    ringSolid.scene,
   );
   model = assembly.root;
   scene.add(model);

@@ -179,8 +179,11 @@ by_id['G05']['specifications']['Separate or integral construction']='Separate an
 by_id['EM01']['specifications']['Individual-sheet model']='See Lamination lab: provisional profile, coating and thickness tolerance; live study BOM L01–L03'
 
 by_id['G02']['status']='Source journals + provisional toothed section'
-by_id['G02']['specifications'].update({'Current study solid':'One gear-and-shaft solid. Source journals retained; z 3.75 to 11.25 mm replaced by a 12-tooth non-involute profile, module 0.5, face width 7.5 mm. Current tip diameter 7 mm; original source envelope listed separately.', 'Representation':'Viewer GLB tessellated from the same solid as provisional-sun-gear.step; source blank excluded from combined study.'})
+by_id['G02']['specifications'].update({'Current study solid':'One gear-and-shaft solid. Source journals retained; z 3.75 to 11.25 mm replaced by a 20-tooth involute candidate, module 0.3, pressure angle 20 degrees, face width 7.5 mm. Current tip diameter 6.6 mm; original source envelope listed separately.', 'Representation':'Viewer GLB tessellated from the same solid as provisional-sun-gear.step; source blank excluded from combined study.'})
 by_id['G02']['unresolved'] += ' Study tooth profile is not a manufacturing design. Verify involute geometry, profile shift, root strength, mating gears and axial fits.'
+
+for gear_id, teeth in [('G02',20),('G04',70),('G05',160)]:
+    by_id[gear_id]['specifications'].update({'Primeform matched gear candidate':f'{teeth} teeth; module 0.3; pressure angle 20 degrees; zero profile shift', 'Candidate backlash':'0.020 mm circular per mesh at nominal centres, from 0.010 mm tooth thinning per gear; not a manufacturing tolerance', 'Root transition':'0.060 mm circular fillets; not a hob/shaper-generated trochoid', 'Ratio and assembly':'20 / 70 / 160 teeth; ring fixed, sun input, carrier output: exactly 9:1; three planets at 120 degrees; centres 13.5 mm', 'Release blockers':'Cutting process, steel grade, heat treatment, gear quality, tooth-thickness tolerances, strength, fatigue, lubrication and loaded contact checks'})
 
 by_id['M01']['status']='Reference CAD + Primeform modification'
 by_id['M01']['specifications'].update({
