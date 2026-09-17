@@ -502,8 +502,7 @@ async function init3D() {
     updateScene,
     setDirty,
   });
-  renderer.setAnimationLoop((now) => {
-    assemblyGuide.tick(now);
+  renderer.setAnimationLoop(() => {
     controls.update();
     if (needsRender && !$("model-panel").hidden) {
       const distance = camera.position.distanceTo(controls.target);

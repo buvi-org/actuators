@@ -111,7 +111,7 @@
           <div class="viewport-wrap">
             <div class="viewport-top">
               <div class="view-modes">
-                <button id="assembly-guide">Assembly guide</button
+                <button id="assembly-guide">Joint review</button
                 ><button id="assembled" class="active">Assembled</button
                 ><button id="exploded">Exploded</button
                 ><button id="section">Section</button
@@ -165,47 +165,19 @@
             <div id="component-detail"></div>
           </aside>
         </div>
-        <section
-          id="assembly-panel"
-          hidden
-          aria-label="Assembly animation controls"
-        >
+        <section id="assembly-panel" hidden aria-label="Joint review controls">
           <div class="assembly-controls">
             <strong>Assembly study</strong
             ><button id="assembly-prev">Previous</button
-            ><button id="assembly-play">Play</button
             ><button id="assembly-next">Next</button
             ><select id="assembly-step" aria-label="Assembly operation"></select
             ><button id="assembly-close">Exit guide</button>
           </div>
-          <div class="assembly-controls">
-            <label
-              >Operation progress
-              <input
-                id="assembly-progress"
-                aria-label="Assembly operation progress"
-                type="range"
-                min="0"
-                max="100"
-                value="0" /></label
-            ><output id="assembly-position">0%</output
-            ><label
-              >Speed
-              <select id="assembly-speed">
-                <option value="0.5">0.5×</option>
-                <option value="1" selected>1×</option>
-                <option value="2">2×</option>
-              </select></label
-            ><label
-              ><input id="assembly-auto" type="checkbox" checked /> Continue
-              through sequence</label
-            >
-          </div>
-          <p>
-            Amber: installing · Cyan: mating parts · Ghosted: earlier
-            operations. Playback pauses before known blocked joints. Every
-            operation is a proposed study, not a released manufacturing
-            instruction.
+          <p class="assembly-warning">
+            Animation withdrawn: no installation path has been validated. Review
+            numbers are not an assembly order. Amber: part under review; cyan:
+            mating counterpart; ghosted: full assembly context at current model
+            positions, including known clashes.
           </p>
           <details id="assembly-register"></details>
           <a href="data/assembly-sequence.json" download

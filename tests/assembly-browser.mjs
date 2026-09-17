@@ -29,7 +29,6 @@ try {
   });
   assert.deepEqual(coverage, { missing: [], invalid: [] });
   await page.selectOption("#assembly-step", "4");
-  await page.locator("#assembly-progress").fill("100");
   assert.match(
     await page.locator("#assembly-detail").innerText(),
     /68 individual/,
@@ -43,22 +42,30 @@ try {
     )) >= 68,
   );
   await page.screenshot({ path: "tmp/qa/assembly-guide.png", fullPage: true });
-  await page.selectOption("#assembly-step", "8");
-  await page.selectOption("#assembly-speed", "2");
-  await page.click("#assembly-play");
-  await page.waitForFunction(
-    () => window.__actuator.assemblyGuide.getState().index === 9,
+  assert.equal(await page.locator("#assembly-play").count(), 0);
+  assert.equal(await page.locator("#assembly-progress").count(), 0);
+  for (let i = 0; i < 30; i++) {
+    await page.selectOption("#assembly-step", String(i));
+    assert.match(
+      await page.locator("#assembly-detail").innerText(),
+      /Installation path withheld/,
+    );
+    assert.equal(
+      await page.evaluate(() =>
+        window.__actuator.meshes.every(
+          (m) => m.position.distanceTo(m.userData.basePosition) < 1e-9,
+        ),
+      ),
+      true,
+    );
+  }
+  await page.selectOption("#assembly-step", "19");
+  assert.match(
+    await page.locator("#assembly-detail").innerText(),
+    /retained pins, planet supports and planets/,
   );
-  assert.equal(
-    await page.evaluate(
-      () => window.__actuator.assemblyGuide.getState().playing,
-    ),
-    false,
-  );
-  assert.match(await page.locator("#assembly-detail").innerText(), /Blocked/);
-  await page.click("#assembly-next");
   await page.click("#assembly-prev");
-  await page.locator("#assembly-progress").fill("45");
+  await page.click("#assembly-next");
   await page.click("#assembly-close");
   assert.equal(await page.locator("#assembly-panel").isVisible(), false);
   assert.equal(
@@ -87,7 +94,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.log(
-    "Assembly guide: BOM coverage, node references, lamination playback, blocked-step pause, controls, exit restoration pass.",
+    "Assembly guide: BOM coverage, node references, static poses for all 30 joints, per-joint path blockers, controls and exit restoration pass.",
   );
 } finally {
   await browser.close();

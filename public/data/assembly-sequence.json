@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "Primeform proposed assembly study; not an OEM assembly instruction or manufacturing release. Movement paths are illustrative and not collision-validated.",
+  "scope": "Joint review covering the BOM, not a validated assembly sequence. All installation trajectories are withheld until subassembly order, final fit and swept clearances are established.",
   "steps": [
     {
       "id": "J01",
@@ -17,7 +17,11 @@
       "process": "Locate the housing coaxially; establish an axial datum before installing internal subassemblies. Fixture is not modeled.",
       "check": "Confirm datum, clamping distortion and access to both ends.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Fixture setup has no installation trajectory. Define housing datums and fixture access first."
+      }
     },
     {
       "id": "J02",
@@ -40,7 +44,11 @@
         24.9,
         30,
         13.25
-      ]
+      ],
+      "pathReview": {
+        "status": "not validated",
+        "reason": "The ring flange and integral stator sleeve must pass the housing entry and internal shoulders. No swept-volume check or insertion-side decision exists."
+      }
     },
     {
       "id": "J03",
@@ -67,7 +75,11 @@
       "process": "Seat heads and tighten in a cross pattern. Thread proposal is M2.5 \u00d7 0.45; nominal penetration 3.3 mm. Torque is unspecified.",
       "check": "Check thread engagement, bottoming, preload and tool clearance. Recheck screw tips if motor stack moves forward.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Each of the eight screws needs its own axis, head approach and driver access. Translating all screws from one global direction was incorrect."
+      }
     },
     {
       "id": "J04",
@@ -90,7 +102,11 @@
         25.98,
         26,
         -6
-      ]
+      ],
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Adhesive is dispensed onto a prepared sleeve; it is not a rigid ring that can be translated through the housing."
+      }
     },
     {
       "id": "J05",
@@ -114,7 +130,11 @@
         26,
         30,
         6.936
-      ]
+      ],
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Build the coated stack in a separate fixture, then evaluate installation of the completed stator subassembly. Individual sheets cannot be sent through an installed housing and shoulder."
+      }
     },
     {
       "id": "J06",
@@ -133,7 +153,11 @@
       "process": "Insert liners without damage; end insulation and folds require detailed design.",
       "check": "Specify dielectric rating, thickness, creepage and slot fill.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Install and form insulation on the accessible stator subassembly before housing installation. Liner insertion and end folds are not modeled."
+      }
     },
     {
       "id": "J07",
@@ -149,10 +173,14 @@
         "Copper conductor insulation \u2194 slot insulation",
         "End turns \u2194 reserved end-winding space (clearance, not a locating joint)"
       ],
-      "process": "Wind or insert coils using a validated winding schedule, then route phase ends. Animation staggers coil groups; it does not simulate wire forming.",
+      "process": "Wind or insert coils using a validated winding schedule, then route phase ends. Coil forming and insertion require a separate process model.",
       "check": "Turns, wire gauge, connection pattern, tooling and end-turn envelope are not released.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Wind the insulated stator outside the closed housing. Rigid translation of finished coils through teeth does not represent a winding process."
+      }
     },
     {
       "id": "J08",
@@ -171,7 +199,11 @@
       "process": "Locate the sensor against a representative winding hot spot; attachment and lead route are unspecified.",
       "check": "Confirm sensor type, isolation, retention and calibration.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Attach the sensor while the winding and lead route are accessible, before impregnation or final closure as the selected process requires."
+      }
     },
     {
       "id": "J09",
@@ -191,7 +223,11 @@
       "process": "Impregnate after electrical checks and cure to the selected resin process. The displayed resin ring is only a placeholder.",
       "check": "Specify resin, masking, cure cycle and post-cure insulation tests.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Impregnation and curing are material processes on the wound stator, not translation of a solid resin ring."
+      }
     },
     {
       "id": "J10",
@@ -207,10 +243,14 @@
         "Yoke/end-bell junction (joining design unresolved)",
         "Rotor outer swept envelope \u2194 housing and boss clearance"
       ],
-      "process": "Inspect rotor subassembly outside the housing. Translation shown is a layout illustration, not a proven insertion route.",
+      "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated.",
       "check": "Extended housing bosses intersect the current yoke. Resolve before assembly.",
       "status": "Blocked by known geometry",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Build the rotor as a separate subassembly. The current yoke intersects housing bosses at the final position, so no valid installation path can end there."
+      }
     },
     {
       "id": "J11",
@@ -229,7 +269,11 @@
       "process": "Prepare surfaces and dispense a controlled bondline; adhesive and mechanical retention are unspecified.",
       "check": "Qualify bond thickness, temperature capability, cure and centrifugal retention.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Dispense adhesive on the accessible rotor yoke before magnet placement; do not animate adhesive as a preformed inserted ring."
+      }
     },
     {
       "id": "J12",
@@ -249,7 +293,11 @@
       "process": "Place alternating poles using tooling and cure. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
       "check": "Verify polarity, spacing, concentricity, retention and air gap; do not infer piece count from pole count.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Place magnets individually in the open rotor using polarity and spacing fixtures. Their placement directions and capture clearances have not been designed."
+      }
     },
     {
       "id": "J13",
@@ -268,7 +316,11 @@
       "process": "Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
       "check": "Define torque path, axial retention, fit, runout and balance before choosing an assembly operation.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "The hub-to-end-bell joint has no defined fastening or fit. Define the torque connection before deciding sequence, direction or required tools."
+      }
     },
     {
       "id": "J14",
@@ -288,7 +340,11 @@
       "process": "Position the two reference bearings; identify actual seats and shoulders before specifying a pressing operation.",
       "check": "If an interference fit is chosen, apply force to the fitted race. Fits, preload, retention and seat geometry remain open.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "The two bearings require individually identified seats, shoulders, fit and press-tool access. A shared axial translation cannot establish installation order."
+      }
     },
     {
       "id": "J15",
@@ -308,7 +364,11 @@
       "process": "Locate the 20-tooth sun at the 8.25 mm gear plane. Coupling geometry is not a verified torque connection.",
       "check": "Resolve shaft/hub connection and retention. Tooth profile study does not validate the entire transmission.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "The sun shaft coupling and axial retention are undefined. Its enlarged gear and journal sections require a seat-by-seat insertion check."
+      }
     },
     {
       "id": "J16",
@@ -327,7 +387,11 @@
       "process": "Prepare the carrier subassembly with three pins; the modeled carrier lacks a validated pin retention design.",
       "check": "Specify carrier bores, pin fits, shoulders and retention; verify load capacity.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Prepare pins in a separate carrier subassembly. The previous sequence showed pins mating to a carrier that was not yet installed. Pin bores and retention remain undefined."
+      }
     },
     {
       "id": "J17",
@@ -346,7 +410,11 @@
       "process": "Locate the three provisional supports on pins. Bearing versus bushing selection is still open.",
       "check": "Define diametral clearance or interference, lubrication and axial restraint.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Determine whether each support is assembled into the planet bore first or onto its pin first from the selected fits and access; no common path is established."
+      }
     },
     {
       "id": "J18",
@@ -364,10 +432,14 @@
         "Planet bore \u2194 bearing or bushing OD",
         "70-tooth planet flanks \u2194 20-tooth sun and 160-tooth ring flanks"
       ],
-      "process": "Align the three planets to the modeled phase before engagement. Animate translation only; tooth-by-tooth insertion access is unverified.",
+      "process": "Align the three planets to the modeled phase before engagement. Tooth-by-tooth insertion access is unverified.",
       "check": "Fixed ring, sun input, carrier output gives 9:1. Backlash, root manufacture, strength and tolerance validation remain open.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Prepare planet/support/pin/carrier relationships and phase all three planets before engagement with sun and ring. Gear phase alone does not validate insertion."
+      }
     },
     {
       "id": "J19",
@@ -388,7 +460,11 @@
       "process": "Locate 625-ZZ and 6707-ZZ reference bearings. Identify race shoulders and retention from detailed sections.",
       "check": "Specify fits, load path, axial play or preload, retention and installation force path.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Identify each bearing seat owner and shoulder before choosing installation direction and whether the bearing belongs on a shaft or in a housing first."
+      }
     },
     {
       "id": "J20",
@@ -409,7 +485,11 @@
       "process": "Bring the carrier subassembly into final reference position. Pin preparation is shown separately for clarity.",
       "check": "Carrier/pin and bearing retention require detailed design; sequence and access are not proven.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Carrier insertion must move its retained pins, planet supports and planets as the chosen subassembly, not the carrier alone through them. Retention is unresolved."
+      }
     },
     {
       "id": "J21",
@@ -431,7 +511,11 @@
       "process": "Apply the selected lubricant before closing the housing. Displayed volume is an illustrative extent.",
       "check": "Specify lubricant grade, dose, compatibility, life and contamination control.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Apply lubricant to accessible working surfaces at the appropriate assembly stage; it is not a rigid inserted disk."
+      }
     },
     {
       "id": "J22",
@@ -451,7 +535,11 @@
       "process": "Resolve these provisions before closure; the torus shown is a placeholder, not a specified seal.",
       "check": "Define grooves, squeeze, shim stack and thread-lock locations; do not purchase from this geometry.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Select and model actual seals, grooves, shims and locking locations before defining their operations. A generic torus does not define assembly."
+      }
     },
     {
       "id": "J23",
@@ -472,7 +560,11 @@
       "process": "Show closure up to the reference position; the current rotor end bell intersects the rear housing.",
       "check": "Measured intersection 2666.28 mm\u00b3. Redesign axial packaging and verify winding clearance before closure.",
       "status": "Blocked by known geometry",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "The end bell intersects the rear housing in the final position. Closure cannot be validated until this overlap and the bearing/lead access are resolved."
+      }
     },
     {
       "id": "J24",
@@ -507,7 +599,11 @@
       "process": "Align the rear housing and tighten in a cross pattern only after clearance redesign. Torque remains unspecified.",
       "check": "Validate boss threads, engagement, bottoming, preload, cutter access and rotor clearance.",
       "status": "Blocked by known geometry",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Each rear screw needs an individual axis and tool clearance after rear-housing closure is physically feasible. Current rotor/housing conflicts block this operation."
+      }
     },
     {
       "id": "J25",
@@ -526,7 +622,11 @@
       "process": "Center and retain the target magnet; adhesive or other retention must be specified.",
       "check": "Validate retention, magnetic orientation, runout and encoder air gap.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Define magnet seat, retention and access on the hub before fitting the encoder board; verify sensing gap after closure."
+      }
     },
     {
       "id": "J26",
@@ -551,7 +651,11 @@
       "process": "Populate and reflow per a qualified PCB assembly process; connect the bulk capacitor as specified. 205 inventory designators are data-only; displayed package locations are illustrative.",
       "check": "Confirm footprints, solder process, pinout, capacitor mounting, power isolation and encoder alignment. No duplicate external harness is added.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Populate the PCB as a separate subassembly. Components are soldered to pads, not moved through an installed board. Positions of most inventory items are unmapped."
+      }
     },
     {
       "id": "J27",
@@ -574,7 +678,11 @@
       "process": "Mount the tested board and terminate winding/sensor leads. Board fastening details, routing and strain relief must be designed.",
       "check": "Check standoffs, fastener lengths, insulation, rotor clearance, connector access and encoder gap.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Move a populated board together with its attached components. Define standoffs, phase/sensor lead termination, strain relief and connector access first."
+      }
     },
     {
       "id": "J28",
@@ -594,7 +702,11 @@
       "process": "Locate the cover without loading PCB components or capacitor. Exact support and sealing interfaces need confirmation.",
       "check": "Check electronics keep-out, connector openings and thermal provisions.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Check cover swept clearance against the populated driver, capacitor and connectors. Its locating and sealing interfaces remain unconfirmed."
+      }
     },
     {
       "id": "J29",
@@ -614,7 +726,11 @@
       "process": "Insert the six reference screws; verify the receiving threaded part before release.",
       "check": "Torque, engagement, bottoming and PCB clearance are unspecified.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Identify the receiving threaded support, individual screw axes, insertion side and driver access for all six screws."
+      }
     },
     {
       "id": "J30",
@@ -633,7 +749,11 @@
       "process": "Locate the source cover. Define its retention and sealing before final inspection.",
       "check": "Check free rotation, axial play, insulation, phase continuity, encoder function and loaded operation only after the geometry blockers are resolved.",
       "status": "Proposed / requires validation",
-      "marker": null
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Define cover retention and mating opening before choosing a path. Final checks require resolved mechanical and electrical assembly."
+      }
     }
   ]
 }

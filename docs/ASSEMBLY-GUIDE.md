@@ -1,21 +1,22 @@
-# Assembly and mating study
+# Joint review: invalid animation withdrawn
 
-Open **3D assembly → Assembly guide**. Thirty operations cover all 35 BOM records and distinguish the eight front M2.5 screws from the sixteen rear screws. Play/pause, previous/next, operation selection, progress scrubbing and speed control support inspection. Autoplay stops before a known blocked operation; explicitly playing that operation previews its illustrative motion.
+Open **3D assembly → Joint review**. The previous animation was wrong: it applied one global axial offset to unrelated parts without validating insertion access, subassembly ownership or collisions. Its UI tests verified controls, not physical assembly. It has been removed.
 
-The right panel identifies installed parts, mating counterparts, contact or clearance surfaces, joining method, process assumptions and outstanding release checks. Click a part link for the existing full component record below. Amber identifies the current parts, cyan the counterparts, and earlier operations are ghosted. Two nominal axial seats have analytic annular overlays. These are annotations, not CAD face selections. Other mating surfaces are described in text: the tessellated model does not currently have a persistent CAD face/mate topology map.
+All 30 records now provide a specific installation-path review. All geometry stays at its current model position. Amber marks the part under review, cyan marks its counterparts, and the entire remaining assembly is ghosted for context. Existing final-position interferences remain visible. Numbering is a review index, not an assembly order. No trajectory is currently validated or animated.
 
-The JSON register is `public/data/assembly-sequence.json` and can be downloaded from the guide. It records a proposed Primeform assembly study, not an OEM procedure. All steps remain unvalidated. Source CAD supplies component positions and identities, not proof of thread ownership, interference fit, adhesive specification or installation order. Electrical subcomponents include data-only designators whose positions are not mapped.
+## What must change before assembly can be animated
 
-Motion is a separated layout illustration ending at existing model positions. It is not collision-checked, does not simulate screw rotation or press loads, and does not prove installation access. Operations include subassembly preparation; future mating counterparts may be shown ghosted to explain their relationships. Individual lamination and coating meshes move in a staggered sequence. The finished frame retains known geometry errors; this change does not resolve them.
+- Build, insulate, wind, instrument and impregnate the stator in accessible tooling before evaluating installation of the resulting subassembly. Do not translate finished coils through steel teeth or send individual sheets through a closed housing.
+- Prepare the rotor yoke, adhesive, magnets, hub and retention as a defined rotor subassembly. Resolve yoke/boss and end-bell/rear-housing interference before checking insertion.
+- Define carrier pin bores and retention, choose planet supports, establish fits and phase the gears. Check installation of the retained carrier/planet group together rather than sliding the carrier through stationary pins and planets.
+- Populate and test the PCB separately; move attached components with the board. Define mounting, lead termination, routing, strain relief and connector/cover access.
+- Treat bonding, impregnation, lubrication and soldering as material processes, not rigid-body insertions.
+- For each screw and bearing, define its own axis, receiving surface, shoulder, retention, insertion side and tool access. Do not infer a press fit or torque from visual overlap.
 
-## Release blockers
+The ring/stator carrier installation order remains open. Its flange and sleeve must clear housing entrances and shoulders, while the selected stator bonding/winding process must retain access. The candidate forward motor shift also requires carrier and screw-tip redesign.
 
-- Extended main-housing bosses interfere with the provisional rotor yoke.
-- Rotor end bell intersects the reference rear housing by approximately 2666.28 mm³.
-- The proposed forward motor shift has not been implemented; it needs carrier and screw-tip redesign.
-- Rotor/hub/sun torque connections, planet pin retention, bearing fits and race seat ownership need detailed definition.
-- Fastener torque, engagement verification, insulation, bond qualification, PCB mounting, lead routing and sealing are open.
+A future trajectory requires defined moving-subassembly membership, actual mating faces and assembly state, a collision-free final fit, swept-clearance verification and process/tool access checks. An analytic seat overlay or successful UI test is not that evidence.
 
-The guide intentionally records unresolved connections so the design can be reviewed joint by joint. A complete, validated assembly instruction requires closing these issues, selecting real fits/processes, attaching persistent surface references and validating both final interference and insertion paths.
+The downloadable `public/data/assembly-sequence.json` retains all BOM coverage and identifies these gaps per joint. Two axial-seat annuli remain nominal annotations, not persistent CAD face selections. No OEM assembly procedure or manufacturing release is claimed.
 
-Validation: `npm run test:assembly` checks BOM coverage, referenced nodes, individual laminations, playback pause at blocked joints, scrubbing, navigation and restoration of normal viewing. `npm test`, `npm run test:browser` and `npm run build` check the existing application.
+Validation: `npm run test:assembly` checks all 30 reviews retain base poses, misleading playback controls are absent, joint references cover the BOM and selection/exit restore the ordinary viewer. Existing application checks are `npm test`, `npm run test:browser`, and `npm run build`.
