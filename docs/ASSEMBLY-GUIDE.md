@@ -4,9 +4,11 @@ Open **3D assembly → Assembly process**. The process has 20 proposed stages st
 
 Previous/Next navigate assembly stages. Before fitting hides the incoming group; Proposed seated state shows it at its modeled destination. Play stages alternates these states and proceeds through the proposal, pausing before known interference steps. This is state-based playback, not a validated insertion animation: no geometry is translated through another part. A user may inspect the proposed seated state of a blocked step without implying it is physically achievable.
 
-Parts are opaque, with normal depth writes. Incoming parts are amber, receiving parts cyan, and earlier installed parts retain their normal colors. The main assembly accumulates by stage with Include earlier installed parts enabled by default. Bench preparation shows only its local participants. Future parts stay hidden except explicit receiving-part references needed to explain unresolved connections; for example rear housing bearing-seat ownership in step 8.
+Parts are opaque, with normal depth writes. Each physical part instance has a stable distinct color across all stages; multiple meshes belonging to the main housing share its color. Inspector swatches identify the corresponding part colors. Incoming and receiving roles are listed explicitly instead of recoloring all parts by role.
 
-Section cut opens the opaque housing for inspection; cuts are uncapped and labeled as such. It defaults on when housing context would conceal a joint. Nominal seat annotation is optional and available for two axial seats; it is not a persistent CAD face selection. Fit step frames the incoming and receiving parts. The inspector retains component links and complete mating/process details.
+Earlier installed parts always remain visible during actuator installation. Bench preparation shows its local rotor or carrier participants until that subassembly is installed. Future parts stay hidden except explicit receiving-part references needed to explain unresolved connections, such as rear housing bearing-seat ownership in step 8.
+
+Section cuts and the earlier-parts toggle are removed from Assembly process. All process geometry is unclipped; the ordinary viewer's Section control is hidden while the process is active and restored on exit. Nominal seat annotation remains optional and is not a persistent CAD face selection. Fit step frames the visible assembly and the incoming parts. The inspector retains component links and complete mating/process details.
 
 ## Open mechanical work
 
@@ -16,4 +18,4 @@ The earlier generic axial translation was removed because it did not represent a
 
 The downloadable register is `public/data/assembly-sequence.json`. It covers all 35 BOM records, with eight front and sixteen rear F01 screws treated separately. No OEM assembly procedure or manufacturing release is claimed.
 
-Validation: `npm run test:assembly` checks the 20 stages, housing-first order, front screw count, before/after visibility, context control, opaque rendering, static transforms, blocking behavior, BOM references, exit restoration and mobile layout. `npm test`, `npm run test:browser`, and `npm run build` check the existing application. These checks do not certify mechanical feasibility.
+Validation: `npm run test:assembly` checks the 20 stages, housing-first order, front screw count, before/after visibility, persistent earlier-part context, stable distinct colors, opaque rendering, no clipping, static transforms, blocking behavior, BOM references, exit restoration and mobile layout. `npm test`, `npm run test:browser`, and `npm run build` check the existing application. These checks do not certify mechanical feasibility.

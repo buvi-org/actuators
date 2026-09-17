@@ -187,21 +187,14 @@
             <button id="assembly-play">Play stages</button>
             <button id="assembly-fit">Fit step</button>
             <label
-              ><input id="assembly-context" type="checkbox" checked /> Include
-              earlier installed parts</label
-            >
-            <label
-              ><input id="assembly-cut" type="checkbox" /> Section cut
-              (uncapped)</label
-            >
-            <label
               ><input id="assembly-surfaces" type="checkbox" /> Nominal seat
               annotation</label
             >
           </div>
           <p id="assembly-state" aria-live="polite"></p>
           <p class="assembly-warning">
-            Opaque parts: amber is being fitted; cyan receives it. Playback
+            Each physical part keeps a distinct color. Earlier installed parts
+            remain visible; bench stages show their own subassembly. Playback
             shows before/after states, not insertion motion. Known interference
             steps pause playback. Later steps preview the proposal; they do not
             establish that earlier unresolved joints can be assembled.

@@ -158,24 +158,7 @@
       "target": [
         "EM03"
       ],
-      "context": [
-        "M01",
-        "G05",
-        "F01/NAUO7",
-        "F01/NAUO22",
-        "F01/NAUO23",
-        "F01/NAUO24",
-        "F01/NAUO25",
-        "F01/NAUO26",
-        "F01/NAUO27",
-        "F01/NAUO28",
-        "EM01",
-        "EM05",
-        "EM02",
-        "E04",
-        "EM06",
-        "C03"
-      ],
+      "context": [],
       "method": "Rotor subassembly / clearance review; Adhesive bond; Bond / pole placement",
       "surfaces": [
         "Yoke/end-bell junction (joining design unresolved)",
@@ -205,22 +188,9 @@
         "EM03"
       ],
       "context": [
-        "M01",
-        "G05",
-        "F01/NAUO7",
-        "F01/NAUO22",
-        "F01/NAUO23",
-        "F01/NAUO24",
-        "F01/NAUO25",
-        "F01/NAUO26",
-        "F01/NAUO27",
-        "F01/NAUO28",
-        "EM01",
-        "EM05",
-        "EM02",
-        "E04",
-        "EM06",
-        "C03"
+        "EM03",
+        "EM04",
+        "C02"
       ],
       "method": "Torque-transmitting joint unresolved",
       "surfaces": [
@@ -344,30 +314,7 @@
       "target": [
         "G01"
       ],
-      "context": [
-        "M01",
-        "G05",
-        "F01/NAUO7",
-        "F01/NAUO22",
-        "F01/NAUO23",
-        "F01/NAUO24",
-        "F01/NAUO25",
-        "F01/NAUO26",
-        "F01/NAUO27",
-        "F01/NAUO28",
-        "EM01",
-        "EM05",
-        "EM02",
-        "E04",
-        "EM06",
-        "C03",
-        "EM03",
-        "EM04",
-        "C02",
-        "G03",
-        "B03",
-        "G02"
-      ],
+      "context": [],
       "method": "Pin retention unresolved",
       "surfaces": [
         "Planet pin locating ends \u2194 output carrier pin seats",
@@ -395,28 +342,8 @@
         "G01"
       ],
       "context": [
-        "M01",
-        "G05",
-        "F01/NAUO7",
-        "F01/NAUO22",
-        "F01/NAUO23",
-        "F01/NAUO24",
-        "F01/NAUO25",
-        "F01/NAUO26",
-        "F01/NAUO27",
-        "F01/NAUO28",
-        "EM01",
-        "EM05",
-        "EM02",
-        "E04",
-        "EM06",
-        "C03",
-        "EM03",
-        "EM04",
-        "C02",
-        "G03",
-        "B03",
-        "G02"
+        "G01",
+        "G06"
       ],
       "method": "Sliding / interference fit to specify; Bearing seating + gear meshing",
       "surfaces": [

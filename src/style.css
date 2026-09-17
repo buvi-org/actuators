@@ -1641,3 +1641,20 @@ tbody tr:hover {
   color: #a6edcf;
   font-weight: 600;
 }
+
+.part-swatches {
+  display: inline-flex;
+  gap: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.part-swatches span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ffffff70;
+  border-radius: 2px;
+}
+#section[hidden] {
+  display: none;
+}

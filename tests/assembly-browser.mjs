@@ -68,12 +68,26 @@ try {
     (await visible()).filter((id) => id.startsWith("EM01/")).length >= 68,
   );
   assert.ok(!(await visible()).some((id) => id.startsWith("M02/")));
-  await page.check("#assembly-context");
   assert.ok((await visible()).some((id) => id.startsWith("M01/")));
-  await page.uncheck("#assembly-context");
-  assert.ok(!(await visible()).some((id) => id.startsWith("M01/")));
-  await page.check("#assembly-context");
-  await page.check("#assembly-cut");
+  assert.equal(await page.locator("#assembly-context").count(), 0);
+  assert.equal(await page.locator("#assembly-cut").count(), 0);
+  assert.equal(await page.locator("#section").isVisible(), false);
+  const processColors = await page.evaluate(() =>
+    window.__actuator.meshes.map((m) => m.material.color.getHex()),
+  );
+  const colorIdentity = await page.evaluate(() => {
+    const byPart = new Map();
+    for (const m of window.__actuator.meshes) {
+      const id = m.userData.nodeId.startsWith("M01/")
+        ? "M01"
+        : m.userData.nodeId;
+      const color = m.material.color.getHex();
+      if (byPart.has(id) && byPart.get(id) !== color) return false;
+      byPart.set(id, color);
+    }
+    return new Set(byPart.values()).size === byPart.size;
+  });
+  assert.equal(colorIdentity, true);
   await fs.mkdir("tmp/qa", { recursive: true });
   await page.screenshot({
     path: "tmp/qa/assembly-process.png",
@@ -81,6 +95,37 @@ try {
   });
   for (let i = 0; i < 20; i++) {
     await page.selectOption("#assembly-step", String(i));
+    assert.deepEqual(
+      await page.evaluate(() =>
+        window.__actuator.meshes.map((m) => m.material.color.getHex()),
+      ),
+      processColors,
+    );
+    assert.equal(
+      await page.evaluate(() =>
+        window.__actuator.meshes.every(
+          (m) => m.material.clippingPlanes.length === 0,
+        ),
+      ),
+      true,
+    );
+    assert.equal(
+      await page.evaluate(async (index) => {
+        const a = window.__actuator,
+          data = await (await fetch("data/assembly-sequence.json")).json();
+        const step = data.steps[index];
+        if (step.phase !== "Actuator installation") return true;
+        return a.meshes.every((m) => {
+          let n = a.assembly.nodes.get(m.userData.nodeId);
+          while (n) {
+            if (step.context.includes(n.id)) return m.visible;
+            n = a.assembly.nodes.get(n.parent);
+          }
+          return true;
+        });
+      }, i),
+      true,
+    );
     assert.equal(
       await page.evaluate(() =>
         window.__actuator.meshes
@@ -139,6 +184,7 @@ try {
     true,
   );
   await page.click("#assembly-close");
+  assert.equal(await page.locator("#section").isVisible(), true);
   assert.deepEqual(
     await page.evaluate(() =>
       window.__actuator.meshes.map((m) => ({
@@ -174,7 +220,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.log(
-    "Assembly process passed: 20 stages, all BOM references, housing-first order, eight front screws, opaque parts, before/after states, scoped context, blocked playback, restore and mobile layout.",
+    "Assembly process passed: 20 stages, all BOM references, housing-first order, eight front screws, opaque parts, before/after states, persistent earlier parts, unique stable colors, no section cuts, blocked playback, restore and mobile layout.",
   );
 } finally {
   await browser.close();
