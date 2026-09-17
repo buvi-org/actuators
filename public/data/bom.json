@@ -1,0 +1,932 @@
+[
+  {
+    "id": "M01",
+    "name": "Main housing",
+    "group": "Structure",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD envelope": "Ø98 x 24.2 mm",
+      "Assembly envelope": "Ø98 x 38.5 mm",
+      "Mounting": "8 x M3 on Ø85 PCD (drawing)"
+    },
+    "material": "OEM grade unspecified; aluminium alloy is a proposed material family only",
+    "process": "Proposed: CNC turning + milling; finish and datums to be specified",
+    "unresolved": "Alloy, heat treatment, wall tolerances, bearing fits, surface finish and ring-gear attachment are unverified.",
+    "sources": [
+      "S2",
+      "S3"
+    ],
+    "instances": [
+      "NAUO3"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "M02",
+    "name": "Rear housing",
+    "group": "Structure",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD envelope": "Ø98 x 9 mm"
+    },
+    "material": "OEM grade unspecified",
+    "process": "Proposed: CNC turning + milling",
+    "unresolved": "Verify locating pilot, concentricity, thermal contact, fastener engagement and finish.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO4"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "M03",
+    "name": "Driver cover",
+    "group": "Structure",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD envelope": "Ø71 x 11 mm",
+      "OEM drawing code": "BJJ02040285"
+    },
+    "material": "OEM grade unspecified",
+    "process": "Proposed: CNC machining",
+    "unresolved": "Material, insulation clearances, sealing and thermal path need definition.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO36"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "M04",
+    "name": "Closure cover",
+    "group": "Transmission",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD envelope": "Ø14 x 2 mm"
+    },
+    "material": "OEM grade unspecified",
+    "process": "Proposed: turned disc",
+    "unresolved": "Retention method, tolerance and functional purpose require teardown confirmation.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO40"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G01",
+    "name": "Output carrier",
+    "group": "Transmission",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD envelope": "Ø37 x 7.5 mm",
+      "Output interface": "6 x M4 on Ø28 PCD (drawing)"
+    },
+    "material": "OEM grade unspecified",
+    "process": "Proposed: machined carrier",
+    "unresolved": "Pin attachment, torque path, material, fits and fatigue margin need validation.",
+    "sources": [
+      "S2",
+      "S3"
+    ],
+    "instances": [
+      "NAUO37"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G02",
+    "name": "Sun gear / input shaft",
+    "group": "Transmission",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD bounding box": "6.717 x 6.717 x 21.5 mm",
+      "Assembly ratio": "9:1 (not a tooth-count specification)"
+    },
+    "material": "OEM steel and hardness unspecified",
+    "process": "Proposed: gear cutting, heat treatment, finish grinding",
+    "unresolved": "Tooth count, module, pressure angle, profile shift, hardness, case depth and spline/shaft fits remain unresolved.",
+    "sources": [
+      "S1",
+      "S3"
+    ],
+    "instances": [
+      "NAUO41"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G03",
+    "name": "Input shaft hub",
+    "group": "Transmission",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD envelope": "Ø44.5 x 14.5 mm"
+    },
+    "material": "OEM material unspecified",
+    "process": "Proposed: precision machining",
+    "unresolved": "This is a hub within the rotor assembly, not a complete electromagnetic rotor. Magnet/yoke integration is absent.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO45"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "B01",
+    "name": "625-ZZ bearing",
+    "group": "Bearings",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "Bore x OD x width": "5 x 16 x 5 mm",
+      "Shielding": "ZZ, two metal shields",
+      "CAD OEM code": "C0105000059 / EZO"
+    },
+    "material": "Verify supplier steel, cage and lubricant",
+    "process": "Buy: EZO 625ZZ or qualified equivalent",
+    "unresolved": "Select clearance, fit, grease and life from actual radial/axial/moment loads. Do not assign actuator load ratings to this bearing.",
+    "sources": [
+      "S3",
+      "S4"
+    ],
+    "instances": [
+      "NAUO38"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "B02",
+    "name": "6707-ZZ bearing",
+    "group": "Bearings",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "Bore x OD x width": "35 x 44 x 5 mm",
+      "Shielding": "ZZ",
+      "CAD OEM code": "C0105000031"
+    },
+    "material": "Verify supplier steel, cage and lubricant",
+    "process": "Buy: qualified 6707ZZ",
+    "unresolved": "OEM supplier, clearance, load ratings, preload and fit are unspecified.",
+    "sources": [
+      "S3",
+      "S5"
+    ],
+    "instances": [
+      "NAUO39"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "B03",
+    "name": "6701-ZZ bearing",
+    "group": "Bearings",
+    "quantity": 2,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "Bore x OD x width": "12 x 18 x 4 mm",
+      "Shielding": "ZZ",
+      "CAD OEM code": "C0105000046"
+    },
+    "material": "Verify supplier steel, cage and lubricant",
+    "process": "Buy: qualified 6701ZZ",
+    "unresolved": "OEM supplier, clearance, speed rating, bearing fits and grease need selection.",
+    "sources": [
+      "S3",
+      "S5"
+    ],
+    "instances": [
+      "NAUO42",
+      "NAUO43"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "F01",
+    "name": "M2.5 x 6 countersunk screw",
+    "group": "Fasteners",
+    "quantity": 24,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "Thread / nominal length": "M2.5 x 6 mm",
+      "Head": "Countersunk internal hex",
+      "CAD OEM code": "C0203000297"
+    },
+    "material": "Strength class / coating unspecified",
+    "process": "Buy after fastener specification release",
+    "unresolved": "Verify head standard, torque, locking method, material and thread engagement. CAD count is 24, not a count of interface holes.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO5",
+      "NAUO6",
+      "NAUO7",
+      "NAUO8",
+      "NAUO9",
+      "NAUO10",
+      "NAUO11",
+      "NAUO12",
+      "NAUO13",
+      "NAUO14",
+      "NAUO15",
+      "NAUO16",
+      "NAUO17",
+      "NAUO18",
+      "NAUO19",
+      "NAUO20",
+      "NAUO21",
+      "NAUO22",
+      "NAUO23",
+      "NAUO24",
+      "NAUO25",
+      "NAUO26",
+      "NAUO27",
+      "NAUO28"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "F02",
+    "name": "M2 x 12 screw",
+    "group": "Fasteners",
+    "quantity": 6,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "Thread / under-head length": "M2 x 12 mm",
+      "CAD overall length": "14 mm",
+      "CAD OEM code": "C0203000308"
+    },
+    "material": "Strength class / coating unspecified",
+    "process": "Buy after fastener specification release",
+    "unresolved": "Verify head style/standard, tightening torque, locking and engagement.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO29",
+      "NAUO30",
+      "NAUO31",
+      "NAUO32",
+      "NAUO33",
+      "NAUO34"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E01",
+    "name": "Driver board assembly",
+    "group": "Electronics",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD board identifier": "BZD02010008 / C-AK-DRV-12S_V3.00_L",
+      "CAD envelope": "62.282 x 62.479 x 6.850 mm",
+      "Control": "FOC; servo and MIT modes",
+      "Supply reference": "48 V nominal",
+      "Current compatible driver": "AK60-4820-1C-A2 (manual p.7)",
+      "Driver input range": "18–52 V; 48 V nominal",
+      "Driver rated output current": "20 A RMS (driver rating, not motor continuous rating)",
+      "Driver maximum output current": "60 A peak (driver rating, duration not given)",
+      "Driver outline": "63 x 57 mm (manual; different from legacy CAD envelope)",
+      "CAN bitrate": "1 Mbit/s",
+      "Standby consumption": "≤1 W",
+      "Driver ambient": "−20 to +65 °C",
+      "Driver maximum board temperature": "100 °C",
+      "Separate driver inventory": "205 reference designators extracted; see driver-inventory.json, values and MPNs unknown"
+    },
+    "material": "PCBA; substrate and copper weight unspecified",
+    "process": "Buy a compatible complete driver, or design a new PCBA",
+    "unresolved": "Assembly STEP identifies C-AK-DRV-12S_V3.00_L, while the current manual/download names AK60-4820-1C-A2. Resolve hardware/firmware revision before procurement. Twelve CAD solids describe packaging, not the IC/passive BOM. Peak duration and thermal derating remain unspecified.",
+    "sources": [
+      "S1",
+      "S3",
+      "S6",
+      "S8"
+    ],
+    "instances": [
+      "NAUO35"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E02",
+    "name": "Encoder target magnet",
+    "group": "Electronics",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Reference CAD",
+    "specifications": {
+      "CAD size": "Ø6 x 2.5 mm",
+      "OEM code": "C0103000453"
+    },
+    "material": "Magnet grade and magnetization unspecified",
+    "process": "Buy after sensor pairing",
+    "unresolved": "Magnetization direction, sensor air gap, concentricity and field range must match selected encoder.",
+    "sources": [
+      "S3"
+    ],
+    "instances": [
+      "NAUO44"
+    ],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "EM01",
+    "name": "Stator lamination stack",
+    "group": "Motor",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Not in reference CAD",
+    "specifications": {
+      "Slot count": "36 (published)",
+      "OD / ID / active length": "Unpublished",
+      "Lamination thickness": "0.20 mm proposed starting point",
+      "Individual-sheet model": "See Lamination lab: provisional profile, coating and thickness tolerance; live study BOM L01–L03"
+    },
+    "material": "Proposed: low-loss non-oriented electrical steel; grade unselected",
+    "process": "Prototype profile cutting + insulated stack; production stamping after validation",
+    "unresolved": "Requires magnetic geometry, B-H/loss curves, stack factor, burr limit, stack retention and FEA. Quantity is one proposed stack; individual lamination count unknown.",
+    "sources": [
+      "S1"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "EM02",
+    "name": "Three-phase winding",
+    "group": "Motor",
+    "quantity": 1,
+    "unit": "set",
+    "status": "Not in reference CAD",
+    "specifications": {
+      "Connection": "Delta (published)",
+      "KV target": "100 rpm/V",
+      "Terminal-to-terminal resistance": "160 mΩ published",
+      "Terminal-to-terminal inductance": "116 µH published"
+    },
+    "material": "Enamelled copper; wire grade unselected",
+    "process": "Wind, terminate, impregnate and test",
+    "unresolved": "Turns, wire diameter, parallel strands, coil pitch, winding diagram, fill factor and test temperature/frequency unknown. Do not treat terminal resistance as phase-branch resistance in delta.",
+    "sources": [
+      "S1"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "EM03",
+    "name": "Rotor magnetic yoke",
+    "group": "Motor",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Not in reference CAD",
+    "specifications": {
+      "Architecture": "Outer rotor study",
+      "Envelope / wall thickness": "To be designed"
+    },
+    "material": "Proposed: magnetic steel yoke with separate structural carrier as required",
+    "process": "Machine and dynamically balance",
+    "unresolved": "OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "EM04",
+    "name": "Rotor permanent magnet set",
+    "group": "Motor",
+    "quantity": 1,
+    "unit": "set",
+    "status": "Not in reference CAD",
+    "specifications": {
+      "Pole pairs": "21 (published)",
+      "Magnetic poles": "42 (derived)",
+      "Physical segment count": "Unknown; 42 poles does not establish 42 pieces"
+    },
+    "material": "Proposed: high-coercivity NdFeB; grade to follow thermal/demagnetization analysis",
+    "process": "Buy custom segments; bond and retain",
+    "unresolved": "Arc, thickness, pole coverage, segment count, coating, grade and magnetization are unknown.",
+    "sources": [
+      "S1"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "EM05",
+    "name": "Slot insulation and end insulation",
+    "group": "Motor",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Insulation system": "Published class C is an assembly claim; component system not specified"
+    },
+    "material": "Film / paper / sleeves to match validated winding system",
+    "process": "Cut/form and install",
+    "unresolved": "Material, thickness, dielectric rating, creepage and quantity require winding design.",
+    "sources": [
+      "S1"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "EM06",
+    "name": "Winding impregnation compound",
+    "group": "Motor",
+    "quantity": null,
+    "unit": "g",
+    "status": "Unresolved",
+    "specifications": {
+      "Function": "Electrical insulation and winding retention"
+    },
+    "material": "Varnish or resin compatible with winding insulation",
+    "process": "Controlled impregnation / cure",
+    "unresolved": "Chemistry, cured thermal rating, application mass and cure schedule unknown.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G04",
+    "name": "Planet gear set",
+    "group": "Transmission",
+    "quantity": 3,
+    "unit": "ea",
+    "status": "Illustration inference",
+    "specifications": {
+      "Reduction target": "9:1",
+      "Tooth counts / module / number of planets": "Not disclosed",
+      "Planet count": "Three visible in manufacturer exploded illustration; verify physical assembly"
+    },
+    "material": "Gear steel and heat treatment to be selected",
+    "process": "Gear cutting / heat treatment / inspection",
+    "unresolved": "Three planets are inferred from the exploded illustration; their teeth and dimensions are omitted from STEP. Need tooth count, module, profile shift, face width, material, hardness and fatigue analysis.",
+    "sources": [
+      "S1",
+      "S3",
+      "S7"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G05",
+    "name": "Internal ring gear",
+    "group": "Transmission",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Illustration inference",
+    "specifications": {
+      "Reduction target": "9:1",
+      "Separate or integral construction": "Separate annular ring is shown in exploded illustration; exact mounting unverified"
+    },
+    "material": "Material and hardness to be selected",
+    "process": "Internal gear machining or validated alternative",
+    "unresolved": "Ring tooth profile absent; carrier architecture and ring retention unresolved.",
+    "sources": [
+      "S1",
+      "S3",
+      "S7"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G06",
+    "name": "Planet pins and retention",
+    "group": "Transmission",
+    "quantity": null,
+    "unit": "set",
+    "status": "Not in reference CAD",
+    "specifications": {
+      "Diameter / length / number": "Unresolved"
+    },
+    "material": "Hardened pin steel to be selected",
+    "process": "Ground pins + retention",
+    "unresolved": "Pin bending, shear, fit, surface hardness and carrier thickness need load-based sizing.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "G07",
+    "name": "Planet bearings or bushings",
+    "group": "Bearings",
+    "quantity": null,
+    "unit": "set",
+    "status": "Not in reference CAD",
+    "specifications": {
+      "Type / size / number": "Unresolved"
+    },
+    "material": "To be selected",
+    "process": "Buy after pin and gear geometry release",
+    "unresolved": "Determine bearing versus bushing architecture, life, lubrication and clearance.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E03",
+    "name": "Rotor position encoder",
+    "group": "Electronics",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Published function",
+    "specifications": {
+      "Technology": "Magnetic",
+      "Resolution": "16 bit",
+      "Encoder count": "1; no output encoder published",
+      "Firmware-dependent resolution": "Product page: 16 bit; manual p.4: up to 21 bit with custom firmware; p.8 table lists 21 bit"
+    },
+    "material": "IC / sensor module not identified",
+    "process": "Part of E01 purchased PCBA or custom board",
+    "unresolved": "Exact IC, accuracy, latency, interface, position convention and magnet pairing unresolved. Resolution is not accuracy.",
+    "sources": [
+      "S1",
+      "S6"
+    ],
+    "instances": [],
+    "parent": "E01",
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E04",
+    "name": "Winding temperature sensor",
+    "group": "Electronics",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Published function",
+    "specifications": {
+      "Published identifier": "NTC MF51B 103F3950",
+      "Nominal notation": "10 kΩ / B3950; tolerance to be verified"
+    },
+    "material": "NTC assembly",
+    "process": "Buy matched part and embed in winding",
+    "unresolved": "Sensor count is a design allowance; verify package, tolerance, placement and calibration.",
+    "sources": [
+      "S1"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E05",
+    "name": "Power and CAN connector",
+    "group": "Electronics",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Published manual",
+    "specifications": {
+      "Description on product page": "XT30 2+2",
+      "Specification table": "XT30PW-M; CAN connector field is blank",
+      "Onboard connector": "AMASS XT30PW(2+2)-M",
+      "Cable mate": "AMASS XT30(2+2)-F",
+      "Pin functions, manual p.10": "1: supply + (red); 2: supply − (black); 3: CAN_H (white); 4: CAN_L (blue)"
+    },
+    "material": "Connector assembly",
+    "process": "Buy only after footprint/pinout verification",
+    "unresolved": "Manual resolves the combined connector naming for AK60-4820-1C-A2. Confirm board revision and physical pin orientation before wiring.",
+    "sources": [
+      "S1",
+      "S6"
+    ],
+    "instances": [],
+    "parent": "E01",
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E06",
+    "name": "UART connector",
+    "group": "Electronics",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Published function",
+    "specifications": {
+      "Published part": "A1257WR-S-3P",
+      "Product description": "CJT 3-pin",
+      "Cable mate": "CJT A1257H-3P",
+      "Pin functions, manual p.10": "1: GND (black); 2: RX (yellow); 3: TX (green)"
+    },
+    "material": "Connector assembly",
+    "process": "Part of E01; verify mating harness",
+    "unresolved": "Confirm pitch, mating part, orientation and voltage levels with driver documentation.",
+    "sources": [
+      "S1",
+      "S6"
+    ],
+    "instances": [],
+    "parent": "E01",
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E07",
+    "name": "Power stage, gate drive and sensing",
+    "group": "Electronics",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Architecture requirement": "Three-phase inverter, current sensing, protection",
+      "Exact electronic BOM": "Not public in inspected sources"
+    },
+    "material": "MOSFETs, gate driver, shunts and passives unselected",
+    "process": "Included in purchased E01; custom schematic required to make locally",
+    "unresolved": "Need actual phase-current convention, transient bus rating, MOSFET SOA, shunt design, switching losses and thermal analysis.",
+    "sources": [],
+    "instances": [],
+    "parent": "E01",
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E08",
+    "name": "Control, communications and power supplies",
+    "group": "Electronics",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Architecture requirement": "MCU, CAN transceiver, regulation, decoupling and protection"
+    },
+    "material": "ICs and passives unselected",
+    "process": "Included in purchased E01; custom schematic required to make locally",
+    "unresolved": "MCU, encoder IC, CAN IC, regulator, capacitor and passive part numbers/quantities missing. This parent-level BOM is not a PCB placement BOM.",
+    "sources": [],
+    "instances": [],
+    "parent": "E01",
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "E09",
+    "name": "Bulk DC-link capacitor assembly",
+    "group": "Electronics",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Reference download": "Driver STEP is labelled without capacitor",
+      "Capacitance / voltage / ESR / ripple rating": "Unknown"
+    },
+    "material": "Capacitor technology and specification unselected",
+    "process": "Confirm driver configuration before selecting",
+    "unresolved": "The driver file still includes small C-designators; the bulk capacitor configuration cannot be established from the filename. Need circuit, mounting, transient and ripple-current requirements. Verify whether included in purchased E01.",
+    "sources": [
+      "S8"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "A01",
+    "name": "Power/CAN harness",
+    "group": "Harness",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Published accessory",
+    "specifications": {
+      "Included pack": "One power/CAN cable (published)",
+      "Power conductors": "16 AWG silicone, red/black",
+      "CAN conductors": "30 AWG PTFE, white/blue, OD 0.64 mm",
+      "Nominal length": "100 ±10 mm (manual p.12; remarks also say ±2 mm)",
+      "Termination": "XT30(2+2)-F; opposite end stripped/tinned 3 ±1 mm"
+    },
+    "material": "Copper wire and matching connectors",
+    "process": "Buy or crimp after current/pinout validation",
+    "unresolved": "Confirm drawing revision and length tolerance; the manual remarks conflict with its detailed length specification. Verify connector orientation and actual current duty.",
+    "sources": [
+      "S1",
+      "S6"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "A02",
+    "name": "Serial harness",
+    "group": "Harness",
+    "quantity": 1,
+    "unit": "ea",
+    "status": "Published accessory",
+    "specifications": {
+      "Included pack": "One serial cable (published)",
+      "Conductors": "30 AWG PTFE; OD 0.64 mm",
+      "Nominal length": "200 ±10 mm (manual p.13; remarks also say ±2 mm)",
+      "Termination": "GH1.25 3-pin to FC 2 x 4 crimp connector, as described in manual"
+    },
+    "material": "Signal wire and matching connector",
+    "process": "Buy or crimp after pinout validation",
+    "unresolved": "Verify actual mating housing, terminal part numbers and conflicting cable length tolerance against supplied harness.",
+    "sources": [
+      "S1",
+      "S6"
+    ],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "C01",
+    "name": "Gear lubricant",
+    "group": "Consumables",
+    "quantity": null,
+    "unit": "g",
+    "status": "Unresolved",
+    "specifications": {
+      "Selection basis": "Speed, contact loads, materials and operating temperature"
+    },
+    "material": "Grease grade unselected",
+    "process": "Metered fill after compatibility validation",
+    "unresolved": "OEM type, fill mass, service interval and compatibility unknown.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "C02",
+    "name": "Magnet adhesive and retention",
+    "group": "Consumables",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Selection basis": "Peak rotor speed and temperature"
+    },
+    "material": "Structural adhesive / retention method unselected",
+    "process": "Controlled surface preparation, bond and cure",
+    "unresolved": "Bondline thickness, cure, adhesive mass and overspeed proof required.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "C03",
+    "name": "Thermal interface material",
+    "group": "Consumables",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Selection basis": "Stator-to-housing and PCBA thermal paths"
+    },
+    "material": "Compound or pad unselected",
+    "process": "Controlled application",
+    "unresolved": "Thickness, conductivity, electrical insulation and quantity unresolved.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  },
+  {
+    "id": "C04",
+    "name": "Shims, seals, spacers and thread locking",
+    "group": "Consumables",
+    "quantity": null,
+    "unit": "set",
+    "status": "Unresolved",
+    "specifications": {
+      "Contents": "Determine from tolerance stack and teardown"
+    },
+    "material": "Unselected",
+    "process": "Select after assembly tolerancing",
+    "unresolved": "No seal rating is established. Identify every retained item during physical teardown; do not assume this list is exhaustive.",
+    "sources": [],
+    "instances": [],
+    "parent": null,
+    "unitCost": null,
+    "currency": "USD",
+    "procurementReady": false
+  }
+]

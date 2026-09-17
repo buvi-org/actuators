@@ -1,0 +1,1056 @@
+{
+  "model": "AK80-9 V3.0 KV100",
+  "kind": "manufacturer-reference",
+  "units": "m",
+  "source": "https://www.cubemars.com/data/cms/202602/ak80-9-v3-0-robotic-actuator-3d-drawing.zip",
+  "source_sha256": "f569faf5c38c6cc2af5a510b36160a316161feb9cad37f5d136abe22b7f1beaa",
+  "source_step_date": "2025-03-05",
+  "source_download_listing_date": "2026-02-05",
+  "retrieved": "2026-09-17",
+  "envelope_mm": [
+    98.0,
+    98.0,
+    38.5
+  ],
+  "center_original_mm": [
+    0.3598935352781467,
+    0.29303178215824843,
+    -12.907495669268673
+  ],
+  "mesh_count": 43,
+  "solid_count": 54,
+  "parts": [
+    {
+      "id": "NAUO41",
+      "bomId": "G02",
+      "name": "Sun gear / input shaft",
+      "sourceName": "AK80-9太阳轮-2",
+      "group": "Transmission",
+      "color": "#d6a75e",
+      "explode": 0.013,
+      "dimensions_mm": [
+        6.717,
+        6.717,
+        21.5
+      ],
+      "bounds_mm": [
+        -3.3585,
+        -3.3585,
+        -4.75,
+        3.3585,
+        3.3585,
+        16.75
+      ],
+      "volume_mm3": 462.1586,
+      "solids": 1
+    },
+    {
+      "id": "NAUO42",
+      "bomId": "B03",
+      "name": "6701-ZZ bearing",
+      "sourceName": "C0105000046-国产-6701-ZZ轴承",
+      "group": "Bearings",
+      "color": "#94a3b8",
+      "explode": -0.025,
+      "dimensions_mm": [
+        18.0,
+        18.0,
+        4.0
+      ],
+      "bounds_mm": [
+        -9.0,
+        -9.0,
+        -7.25,
+        9.0,
+        9.0,
+        -3.25
+      ],
+      "volume_mm3": 555.3738,
+      "solids": 1
+    },
+    {
+      "id": "NAUO43",
+      "bomId": "B03",
+      "name": "6701-ZZ bearing",
+      "sourceName": "C0105000046-国产-6701-ZZ轴承",
+      "group": "Bearings",
+      "color": "#94a3b8",
+      "explode": 0.022,
+      "dimensions_mm": [
+        18.0,
+        18.0,
+        4.0
+      ],
+      "bounds_mm": [
+        -9.0,
+        -9.0,
+        1.25,
+        9.0,
+        9.0,
+        5.25
+      ],
+      "volume_mm3": 555.3738,
+      "solids": 1
+    },
+    {
+      "id": "NAUO44",
+      "bomId": "E02",
+      "name": "Encoder target magnet",
+      "sourceName": "C0103000453-感应磁铁",
+      "group": "Electronics",
+      "color": "#bc7860",
+      "explode": -0.045,
+      "dimensions_mm": [
+        6.0,
+        6.0,
+        2.5
+      ],
+      "bounds_mm": [
+        -3.0,
+        -3.0,
+        -9.25,
+        3.0,
+        3.0,
+        -6.75
+      ],
+      "volume_mm3": 70.6858,
+      "solids": 1
+    },
+    {
+      "id": "NAUO45",
+      "bomId": "G03",
+      "name": "Input shaft hub",
+      "sourceName": "AK80-9输入轴-2",
+      "group": "Transmission",
+      "color": "#b7c2ce",
+      "explode": 0.03,
+      "dimensions_mm": [
+        44.5,
+        44.5,
+        14.5
+      ],
+      "bounds_mm": [
+        -22.25,
+        -22.25,
+        -9.25,
+        22.25,
+        22.25,
+        5.25
+      ],
+      "volume_mm3": 3114.2149,
+      "solids": 1
+    },
+    {
+      "id": "NAUO37",
+      "bomId": "G01",
+      "name": "Output carrier",
+      "sourceName": "AK80-9下行星架",
+      "group": "Transmission",
+      "color": "#c0c9d4",
+      "explode": 0.055,
+      "dimensions_mm": [
+        37.0,
+        37.0,
+        7.5
+      ],
+      "bounds_mm": [
+        -18.5,
+        -18.5,
+        11.75,
+        18.5,
+        18.5,
+        19.25
+      ],
+      "volume_mm3": 5333.4417,
+      "solids": 1
+    },
+    {
+      "id": "NAUO38",
+      "bomId": "B01",
+      "name": "625-ZZ bearing",
+      "sourceName": "C0105000059-EZO-625-ZZ轴承",
+      "group": "Bearings",
+      "color": "#94a3b8",
+      "explode": 0.034,
+      "dimensions_mm": [
+        16.0,
+        16.0,
+        5.0
+      ],
+      "bounds_mm": [
+        -8.0,
+        -8.0,
+        11.75,
+        8.0,
+        8.0,
+        16.75
+      ],
+      "volume_mm3": 900.0559,
+      "solids": 1
+    },
+    {
+      "id": "NAUO39",
+      "bomId": "B02",
+      "name": "6707-ZZ bearing",
+      "sourceName": "C0105000031-国产-6707-ZZ轴承",
+      "group": "Bearings",
+      "color": "#94a3b8",
+      "explode": 0.035,
+      "dimensions_mm": [
+        44.0,
+        44.0,
+        5.0
+      ],
+      "bounds_mm": [
+        -22.0,
+        -22.0,
+        11.75,
+        22.0,
+        22.0,
+        16.75
+      ],
+      "volume_mm3": 2765.4599,
+      "solids": 1
+    },
+    {
+      "id": "NAUO40",
+      "bomId": "M04",
+      "name": "Closure cover",
+      "sourceName": "AK80-9封闭盖",
+      "group": "Transmission",
+      "color": "#68798b",
+      "explode": 0.075,
+      "dimensions_mm": [
+        14.0,
+        14.0,
+        2.0
+      ],
+      "bounds_mm": [
+        -7.0,
+        -7.0,
+        16.75,
+        7.0,
+        7.0,
+        18.75
+      ],
+      "volume_mm3": 249.5849,
+      "solids": 1
+    },
+    {
+      "id": "NAUO3",
+      "bomId": "M01",
+      "name": "Main housing",
+      "sourceName": "AK80-9机壳",
+      "group": "Structure",
+      "color": "#303b49",
+      "explode": 0,
+      "dimensions_mm": [
+        98.0,
+        98.0,
+        24.2
+      ],
+      "bounds_mm": [
+        -49.0,
+        -49.0,
+        -6.25,
+        49.0,
+        49.0,
+        17.95
+      ],
+      "volume_mm3": 22481.2374,
+      "solids": 1
+    },
+    {
+      "id": "NAUO4",
+      "bomId": "M02",
+      "name": "Rear housing",
+      "sourceName": "AK80-9后机壳",
+      "group": "Structure",
+      "color": "#465363",
+      "explode": -0.035,
+      "dimensions_mm": [
+        98.0,
+        98.0,
+        9.0
+      ],
+      "bounds_mm": [
+        -49.0,
+        -49.0,
+        -12.25,
+        49.0,
+        49.0,
+        -3.25
+      ],
+      "volume_mm3": 10987.2363,
+      "solids": 1
+    },
+    {
+      "id": "NAUO5",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        38.767,
+        -22.9251,
+        -8.05,
+        43.567,
+        -18.1251,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO6",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        41.2229,
+        -16.996,
+        -8.05,
+        46.0229,
+        -12.196,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO7",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        22.5447,
+        -12.7325,
+        9.95,
+        27.3447,
+        -7.9325,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO8",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        41.2229,
+        12.196,
+        -8.05,
+        46.0229,
+        16.996,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO9",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        18.1251,
+        38.767,
+        -8.05,
+        22.9251,
+        43.567,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO10",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -16.996,
+        41.2229,
+        -8.05,
+        -12.196,
+        46.0229,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO11",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -43.567,
+        18.1251,
+        -8.05,
+        -38.767,
+        22.9251,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO12",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -46.0229,
+        -16.996,
+        -8.05,
+        -41.2229,
+        -12.196,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO13",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -22.9251,
+        -43.567,
+        -8.05,
+        -18.1251,
+        -38.767,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO14",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        12.196,
+        -46.0229,
+        -8.05,
+        16.996,
+        -41.2229,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO15",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        38.767,
+        18.1251,
+        -8.05,
+        43.567,
+        22.9251,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO16",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        12.196,
+        41.2229,
+        -8.05,
+        16.996,
+        46.0229,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO17",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -22.9251,
+        38.767,
+        -8.05,
+        -18.1251,
+        43.567,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO18",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -46.0229,
+        12.196,
+        -8.05,
+        -41.2229,
+        16.996,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO19",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -43.567,
+        -22.9251,
+        -8.05,
+        -38.767,
+        -18.1251,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO20",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -16.996,
+        -46.0229,
+        -8.05,
+        -12.196,
+        -41.2229,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO21",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.065,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        18.1251,
+        -43.567,
+        -8.05,
+        22.9251,
+        -38.767,
+        -2.05
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO22",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        22.5447,
+        7.9325,
+        9.95,
+        27.3447,
+        12.7325,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO23",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        7.9325,
+        22.5447,
+        9.95,
+        12.7325,
+        27.3447,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO24",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -12.7325,
+        22.5447,
+        9.95,
+        -7.9325,
+        27.3447,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO25",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -27.3447,
+        7.9325,
+        9.95,
+        -22.5447,
+        12.7325,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO26",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -27.3447,
+        -12.7325,
+        9.95,
+        -22.5447,
+        -7.9325,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO27",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        -12.7325,
+        -27.3447,
+        9.95,
+        -7.9325,
+        -22.5447,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO28",
+      "bomId": "F01",
+      "name": "M2.5 x 6 countersunk screw",
+      "sourceName": "C0203000297-M2.5×6沉头内六角螺钉",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": 0.05,
+      "dimensions_mm": [
+        4.8,
+        4.8,
+        6.0
+      ],
+      "bounds_mm": [
+        7.9325,
+        -27.3447,
+        9.95,
+        12.7325,
+        -22.5447,
+        15.95
+      ],
+      "volume_mm3": 35.8044,
+      "solids": 1
+    },
+    {
+      "id": "NAUO29",
+      "bomId": "F02",
+      "name": "M2 x 12 screw",
+      "sourceName": "C0203000308-M2X12",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.095,
+      "dimensions_mm": [
+        3.6,
+        3.6,
+        14.0
+      ],
+      "bounds_mm": [
+        0.9454,
+        29.5801,
+        -18.75,
+        4.5454,
+        33.1801,
+        -4.75
+      ],
+      "volume_mm3": 55.0165,
+      "solids": 1
+    },
+    {
+      "id": "NAUO30",
+      "bomId": "F02",
+      "name": "M2 x 12 screw",
+      "sourceName": "C0203000308-M2X12",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.095,
+      "dimensions_mm": [
+        3.6,
+        3.6,
+        14.0
+      ],
+      "bounds_mm": [
+        -24.0739,
+        20.4739,
+        -18.75,
+        -20.4739,
+        24.0739,
+        -4.75
+      ],
+      "volume_mm3": 55.0165,
+      "solids": 1
+    },
+    {
+      "id": "NAUO31",
+      "bomId": "F02",
+      "name": "M2 x 12 screw",
+      "sourceName": "C0203000308-M2X12",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.095,
+      "dimensions_mm": [
+        3.6,
+        3.6,
+        14.0
+      ],
+      "bounds_mm": [
+        -32.2267,
+        -9.9528,
+        -18.75,
+        -28.6267,
+        -6.3528,
+        -4.75
+      ],
+      "volume_mm3": 55.0165,
+      "solids": 1
+    },
+    {
+      "id": "NAUO32",
+      "bomId": "F02",
+      "name": "M2 x 12 screw",
+      "sourceName": "C0203000308-M2X12",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.095,
+      "dimensions_mm": [
+        3.6,
+        3.6,
+        14.0
+      ],
+      "bounds_mm": [
+        -9.9528,
+        -32.2267,
+        -18.75,
+        -6.3528,
+        -28.6267,
+        -4.75
+      ],
+      "volume_mm3": 55.0165,
+      "solids": 1
+    },
+    {
+      "id": "NAUO33",
+      "bomId": "F02",
+      "name": "M2 x 12 screw",
+      "sourceName": "C0203000308-M2X12",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.095,
+      "dimensions_mm": [
+        3.6,
+        3.6,
+        14.0
+      ],
+      "bounds_mm": [
+        20.4739,
+        -24.0739,
+        -18.75,
+        24.0739,
+        -20.4739,
+        -4.75
+      ],
+      "volume_mm3": 55.0165,
+      "solids": 1
+    },
+    {
+      "id": "NAUO34",
+      "bomId": "F02",
+      "name": "M2 x 12 screw",
+      "sourceName": "C0203000308-M2X12",
+      "group": "Fasteners",
+      "color": "#a9b4c2",
+      "explode": -0.095,
+      "dimensions_mm": [
+        3.6,
+        3.6,
+        14.0
+      ],
+      "bounds_mm": [
+        29.5801,
+        0.9454,
+        -18.75,
+        33.1801,
+        4.5454,
+        -4.75
+      ],
+      "volume_mm3": 55.0165,
+      "solids": 1
+    },
+    {
+      "id": "NAUO35",
+      "bomId": "E01",
+      "name": "Driver board assembly",
+      "sourceName": "BZD02010008-驱动板(C-AK-DRV-12S_V3.00_L)-2",
+      "group": "Electronics",
+      "color": "#276f63",
+      "explode": -0.075,
+      "dimensions_mm": [
+        62.2821,
+        62.4788,
+        6.8501
+      ],
+      "bounds_mm": [
+        -29.9919,
+        -29.5066,
+        -18.1001,
+        32.2902,
+        32.9722,
+        -11.25
+      ],
+      "volume_mm3": 4978.9597,
+      "solids": 12
+    },
+    {
+      "id": "NAUO36",
+      "bomId": "M03",
+      "name": "Driver cover",
+      "sourceName": "BJJ02040285-AK80-9驱动盖板-V3.0",
+      "group": "Structure",
+      "color": "#303b49",
+      "explode": -0.11,
+      "dimensions_mm": [
+        71.0,
+        71.0,
+        11.0
+      ],
+      "bounds_mm": [
+        -35.5,
+        -35.5,
+        -19.25,
+        35.5,
+        35.5,
+        -8.25
+      ],
+      "volume_mm3": 11107.6889,
+      "solids": 1
+    }
+  ]
+}

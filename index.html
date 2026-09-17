@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10181f" />
+    <title>AK80-9 · Primeform Robotics</title>
+  </head>
+  <body>
+    <header class="header">
+      <a class="brand" href="./"
+        ><span class="brand-mark">P<span>↗</span></span
+        ><span>PRIMEFORM<small>ROBOTICS / OPEN ENGINEERING</small></span></a
+      >
+      <div class="project-path">
+        Actuators <span>/</span> <strong>AK80-9</strong>
+      </div>
+      <a
+        class="repo-link"
+        href="https://github.com/buvi-org/actuators"
+        target="_blank"
+        rel="noreferrer"
+        >View repository ↗</a
+      >
+    </header>
+    <main>
+      <section class="project-heading">
+        <div>
+          <div class="eyebrow">
+            ACTUATOR 001 <span>•</span> REFERENCE STUDY R0
+          </div>
+          <h1>AK80-9 <span>V3.0 KV100</span></h1>
+          <p>A compact actuator, opened up for engineering.</p>
+        </div>
+        <div class="release">
+          <span class="status-dot"></span> Design in progress<small
+            >Reference geometry · not released for manufacture</small
+          >
+        </div>
+      </section>
+      <section
+        class="metrics"
+        aria-label="Manufacturer reference specifications"
+      >
+        <div>
+          <small>RATED TORQUE</small><strong>9 <span>Nm</span></strong>
+        </div>
+        <div>
+          <small>PEAK TORQUE</small><strong>22 <span>Nm</span></strong>
+        </div>
+        <div>
+          <small>REDUCTION</small><strong>9<span>:1</span></strong>
+        </div>
+        <div>
+          <small>NOMINAL BUS</small><strong>48 <span>V</span></strong>
+        </div>
+        <div>
+          <small>ENVELOPE</small><strong>98 × 38.5 <span>mm</span></strong>
+        </div>
+        <div class="metric-note">
+          CubeMars published values<br />Primeform performance not yet validated
+        </div>
+      </section>
+      <nav class="tabs" aria-label="Project views">
+        <button class="active" data-tab="model" aria-selected="true">
+          01 <span>3D assembly</span>
+        </button>
+        <button data-tab="bom" aria-selected="false">
+          02 <span>Bill of materials</span><em id="bom-count"></em>
+        </button>
+        <button data-tab="specs" aria-selected="false">
+          03 <span>Specifications</span>
+        </button>
+        <button data-tab="engineering" aria-selected="false">
+          04 <span>Engineering notes</span>
+        </button>
+        <button data-tab="lamination" aria-selected="false">
+          05 <span>Lamination lab</span><em>NEW</em>
+        </button>
+      </nav>
+      <section id="model-panel" class="tab-panel">
+        <div class="workspace">
+          <aside class="parts-panel">
+            <div class="panel-heading">
+              <h2>Assembly tree</h2>
+              <span id="part-count">—</span>
+            </div>
+            <label class="search"
+              ><span>⌕</span
+              ><input
+                id="part-search"
+                placeholder="Find a component…"
+                aria-label="Find a component"
+            /></label>
+            <button id="all-parts" class="all-parts">
+              ◈
+              <span
+                >AK80-9 V3.0<small>Manufacturer reference assembly</small></span
+              >
+            </button>
+            <div id="parts-list"></div>
+            <div class="tree-foot">
+              <span class="status-dot"></span> Named parts from source STEP<br /><button
+                id="open-lamination"
+                style="color: #a6edcf; padding: 12px 0 0; font-size: 10px"
+              >
+                EM01 / Individual lamination study ↗
+              </button>
+            </div>
+          </aside>
+          <div class="viewport-wrap">
+            <div class="viewport-top">
+              <div class="view-modes">
+                <button id="assembled" class="active">Assembled</button
+                ><button id="exploded">Exploded</button
+                ><button id="section">Section</button>
+              </div>
+              <button
+                id="reset-view"
+                class="icon-button"
+                title="Fit assembly"
+                aria-label="Fit assembly"
+              >
+                ⌖
+              </button>
+            </div>
+            <div
+              id="viewport"
+              aria-label="Interactive 3D actuator. Drag to orbit, scroll to zoom."
+            ></div>
+            <div id="loading">Loading engineering model…</div>
+            <div class="viewport-label">
+              <span class="crosshair">+</span
+              ><span
+                >AK80-9 / V3.0<small id="view-caption"
+                  >CUBEMARS REFERENCE GEOMETRY</small
+                ></span
+              >
+            </div>
+            <div class="viewport-bottom">
+              <label
+                >SEPARATION
+                <input
+                  id="explode-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  aria-label="Exploded separation"
+                /><output id="explode-value">0%</output></label
+              ><span>Drag to orbit · Scroll to zoom</span>
+            </div>
+          </div>
+          <aside class="inspector">
+            <div class="panel-heading">
+              <h2>Component details</h2>
+              <span>↗</span>
+            </div>
+            <div id="component-detail"></div>
+          </aside>
+        </div>
+        <div class="model-footer">
+          <p>
+            <span class="amber-dot"></span> The reference CAD omits windings,
+            laminations, rotor magnets and planetary internals. See the BOM for
+            missing items.
+          </p>
+          <div>
+            <a href="models/ak80-9-reference.glb" download>Download GLB ↓</a
+            ><a
+              href="https://www.cubemars.com/data/cms/202602/ak80-9-v3-0-robotic-actuator-3d-drawing.zip"
+              >Source STEP ↗</a
+            >
+          </div>
+        </div>
+      </section>
+      <section id="bom-panel" class="tab-panel" hidden>
+        <div class="section-heading">
+          <div>
+            <h2>Bill of materials</h2>
+            <p>
+              Every CAD part, plus the requirements needed to close the
+              manufacturing design.
+            </p>
+          </div>
+          <a class="button" href="data/bom.json" download
+            >Download BOM JSON ↓</a
+          >
+        </div>
+        <div class="notice">
+          CAD quantities are verified against the reference file.
+          <strong>TBD means unknown.</strong> Driver-board children are included
+          in E01. No manufacturing costs or part numbers have been invented.
+        </div>
+        <div class="table-controls">
+          <label class="search"
+            ><span>⌕</span
+            ><input
+              id="bom-search"
+              placeholder="Search components, specifications or materials…"
+              aria-label="Search bill of materials" /></label
+          ><select id="bom-filter" aria-label="Filter BOM evidence">
+            <option value="all">All evidence types</option>
+            <option value="cad">Present in reference CAD</option>
+            <option value="missing">Missing / unresolved</option></select
+          ><span id="bom-results"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID / component</th>
+                <th>Qty</th>
+                <th>Specification</th>
+                <th>Material / make or buy</th>
+                <th>Evidence / open items</th>
+              </tr>
+            </thead>
+            <tbody id="bom-body"></tbody>
+          </table>
+        </div>
+        <div class="section-heading">
+          <div>
+            <h2>Driver board · component inventory</h2>
+            <p>
+              205 reference designators recovered from the separate driver STEP.
+              Values and exact device identities remain unknown.
+            </p>
+          </div>
+          <a class="button" href="data/driver-inventory.json" download
+            >Driver inventory JSON ↓</a
+          >
+        </div>
+        <div class="notice">
+          Package labels are library geometry, not confirmed part numbers. Some
+          capacitors even use resistor package models. All entries belong inside
+          PCBA E01. The file is labelled “without capacitor”; confirm the
+          bulk/DC-link capacitor arrangement separately.
+        </div>
+        <div class="table-controls">
+          <label class="search"
+            ><span>⌕</span
+            ><input
+              id="driver-search"
+              placeholder="Find reference designator or package…"
+              aria-label="Search driver inventory" /></label
+          ><span id="driver-results"></span>
+        </div>
+        <div class="table-wrap driver-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Category</th>
+                <th>CAD qty</th>
+                <th>Package model labels</th>
+                <th>Value / exact MPN</th>
+              </tr>
+            </thead>
+            <tbody id="driver-body"></tbody>
+          </table>
+        </div>
+      </section>
+      <section id="specs-panel" class="tab-panel" hidden>
+        <div class="section-heading">
+          <div>
+            <h2>Reference specifications</h2>
+            <p>
+              Published values, interface dimensions, and separately identified
+              calculations.
+            </p>
+          </div>
+          <a class="button" href="data/specifications.json" download
+            >Download specifications ↓</a
+          >
+        </div>
+        <div id="spec-content"></div>
+      </section>
+      <section id="engineering-panel" class="tab-panel" hidden>
+        <div class="section-heading">
+          <div>
+            <h2>From reference to our own actuator</h2>
+            <p>
+              The geometry is the starting point. Each release needs a traceable
+              engineering decision.
+            </p>
+          </div>
+          <span class="pill">R0 / Reference study</span>
+        </div>
+        <div class="engineering-grid">
+          <article>
+            <span class="eyebrow">01 / WHAT WE HAVE</span>
+            <h3>A dimensionally faithful reference</h3>
+            <p>
+              The CubeMars STEP assembly is converted to GLB in metres.
+              Component identities, placement and quantities are preserved. The
+              measured envelope is Ø98 × 38.5 mm.
+            </p>
+            <p>
+              43 leaf instances contain 54 solids. Twelve solids belong to the
+              simplified driver assembly; these are not twelve identified
+              electronic parts.
+            </p>
+          </article>
+          <article>
+            <span class="eyebrow">02 / WHAT IS MISSING</span>
+            <h3>The working motor and gear details</h3>
+            <p>
+              Stator laminations, coils, rotor magnetic steel and magnets are
+              not modelled. Planet gears, pins, planet bearings and ring teeth
+              are also absent. Their dimensions cannot be recovered from this
+              STEP file.
+            </p>
+            <p>
+              Material specifications, tolerances, heat treatment, winding data
+              and a PCB placement BOM still require engineering or physical
+              measurements.
+            </p>
+          </article>
+          <article>
+            <span class="eyebrow">03 / FIRST DESIGN RELEASE</span>
+            <h3>Define the electromagnetic stack</h3>
+            <p>
+              Use the published 36 slots, 21 pole pairs and 100 KV as reference
+              targets. Select stack geometry, steel, air gap, magnet grade and a
+              winding layout using electromagnetic and thermal analysis.
+            </p>
+            <p>
+              Measure terminal resistance, inductance and back EMF under
+              documented conditions. Confirm turns and wire size with a physical
+              reference if reverse engineering.
+            </p>
+          </article>
+          <article>
+            <span class="eyebrow">04 / MECHANICAL RELEASE</span>
+            <h3>Close the torque path</h3>
+            <p>
+              Choose a 9:1 gear architecture, then calculate tooth contact/root
+              stress, pin bending, carrier stiffness and bearing life. Specify
+              fits, lubrication, backlash and output load cases.
+            </p>
+            <p>
+              Check all interferences and tolerance stacks in solid CAD before
+              generating machining drawings.
+            </p>
+          </article>
+          <article>
+            <span class="eyebrow">05 / ELECTRONICS & TEST</span>
+            <h3>Validate the complete assembly</h3>
+            <p>
+              Resolve the driver revision and current conventions. Define
+              regeneration handling, current limits, temperature sensing and
+              firmware. A custom driver requires a schematic and electronic BOM.
+            </p>
+            <p>
+              Measure torque-speed performance, efficiency, temperature rise,
+              backlash, noise and endurance. Published CubeMars performance does
+              not certify a Primeform build.
+            </p>
+          </article>
+          <article>
+            <span class="eyebrow">06 / PUBLIC DEVELOPMENT</span>
+            <h3>Keep the provenance visible</h3>
+            <p>
+              CubeMars owns the manufacturer reference geometry. Primeform's
+              conversion code and engineering notes are tracked separately. This
+              project has not yet selected licenses for its own work.
+            </p>
+            <p>
+              Publishing a reference conversion does not make the manufacturer's
+              design an original Primeform design or establish an open-hardware
+              license.
+            </p>
+            <a
+              href="https://github.com/buvi-org/actuators/tree/main/docs"
+              target="_blank"
+              rel="noreferrer"
+              >Read engineering documents ↗</a
+            >
+          </article>
+        </div>
+      </section>
+      <section id="lamination-panel" class="tab-panel" hidden>
+        <div class="section-heading">
+          <div>
+            <h2>One sheet. A complete stack.</h2>
+            <p>
+              Model each steel lamination and both coating faces. Compare
+              thicknesses before choosing a stack.
+            </p>
+          </div>
+          <span class="pill amber">Provisional 36-slot profile</span>
+        </div>
+        <div class="notice">
+          CubeMars publishes 36 slots, but no lamination drawing or stack
+          dimensions. This independent study starts at Ø80 / Ø52 mm, 0.20 mm
+          steel, 2 µm coating per face and a 14 mm budget. These are editable
+          assumptions, not measured AK80-9 dimensions.
+        </div>
+        <div class="lam-workspace">
+          <form class="lam-controls" onsubmit="return false">
+            <h3>Stack definition</h3>
+            <label
+              >Sizing mode<select id="lam-mode">
+                <option value="budget">Fit sheets within stack budget</option>
+                <option value="count">Use a fixed sheet count</option>
+              </select></label
+            >
+            <label
+              >Steel thickness <span>mm, excluding coating</span
+              ><input
+                id="lam-steel"
+                type="number"
+                min="0.05"
+                max="1"
+                step="0.01"
+            /></label>
+            <label
+              >Coating per face <span>µm, on each side</span
+              ><input
+                id="lam-coating"
+                type="number"
+                min="0"
+                max="100"
+                step="0.5"
+            /></label>
+            <label
+              >Extra inter-sheet gap <span>µm, adhesive / void</span
+              ><input id="lam-gap" type="number" min="0" max="100" step="0.5"
+            /></label>
+            <label
+              >Axial stack budget <span>mm</span
+              ><input
+                id="lam-budget"
+                type="number"
+                min="0.1"
+                max="100"
+                step="0.1"
+            /></label>
+            <label
+              >End allowance, total <span>mm outside coated stack</span
+              ><input id="lam-endAllowance" type="number" min="0" step="0.1"
+            /></label>
+            <label id="lam-count-wrap" hidden
+              >Number of sheets<input
+                id="lam-count"
+                type="number"
+                min="1"
+                max="500"
+                step="1"
+            /></label>
+            <details>
+              <summary>Thickness tolerances</summary>
+              <label
+                >Steel tolerance ± <span>mm</span
+                ><input
+                  id="lam-steelTolerance"
+                  type="number"
+                  min="0"
+                  step="0.001"
+              /></label>
+              <label
+                >Coating tolerance ± <span>µm per face</span
+                ><input
+                  id="lam-coatingTolerance"
+                  type="number"
+                  min="0"
+                  step="0.1"
+              /></label>
+              <label
+                >Gap tolerance ± <span>µm per interface</span
+                ><input id="lam-gapTolerance" type="number" min="0" step="0.1"
+              /></label>
+            </details>
+            <details>
+              <summary>Provisional lamination profile</summary>
+              <label
+                >Outside diameter <span>mm</span
+                ><input id="lam-od" type="number" step="0.5"
+              /></label>
+              <label
+                >Bore diameter <span>mm</span
+                ><input id="lam-bore" type="number" step="0.5"
+              /></label>
+              <label
+                >Slot-root diameter <span>mm</span
+                ><input id="lam-rootDiameter" type="number" step="0.5"
+              /></label>
+              <label
+                >Slots / teeth<input
+                  id="lam-slots"
+                  type="number"
+                  min="6"
+                  max="96"
+                  step="1"
+              /></label>
+              <label
+                >Tooth body width <span>mm</span
+                ><input id="lam-toothWidth" type="number" step="0.1"
+              /></label>
+              <label
+                >Tooth-tip width <span>mm</span
+                ><input id="lam-tipWidth" type="number" step="0.1"
+              /></label>
+              <label
+                >Tooth-tip depth <span>mm</span
+                ><input id="lam-tipDepth" type="number" step="0.1"
+              /></label>
+            </details>
+            <button id="lam-reset" type="button" class="button">
+              Reset study defaults
+            </button>
+          </form>
+          <div class="lam-stage">
+            <div class="lam-stage-toolbar">
+              <select id="lam-view-mode" aria-label="Lamination view">
+                <option value="stack">Complete lamination stack</option>
+                <option value="single">Selected sheet only</option></select
+              ><button
+                id="lam-fit"
+                title="Fit lamination stack"
+                aria-label="Fit lamination stack"
+              >
+                ⌖
+              </button>
+            </div>
+            <div
+              id="lam-viewport"
+              aria-label="Interactive 3D stack of individually selectable laminations"
+            ></div>
+            <div class="lam-stage-caption">
+              INDIVIDUAL SHEETS + TWO COATING FACES<small
+                >True thickness geometry · no coating exaggeration</small
+              >
+            </div>
+            <div class="lam-stage-bottom">
+              <label
+                >Spread layers
+                <input
+                  id="lam-spread"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0" /></label
+              ><span id="lam-spread-label">True assembled spacing</span
+              ><label class="check"
+                ><input id="lam-coating-visible" type="checkbox" checked /> Show
+                coating</label
+              >
+            </div>
+          </div>
+        </div>
+        <div id="lam-error" class="notice" role="alert" hidden></div>
+        <div class="lam-layer-bar">
+          <label
+            >Inspect sheet
+            <input
+              id="lam-layer"
+              type="range"
+              min="1"
+              max="68"
+              value="1" /></label
+          ><span id="lam-layer-readout"></span>
+          <div>
+            <button class="lam-export" id="lam-export-json">Study JSON ↓</button
+            ><button class="lam-export" id="lam-export-dxf">
+              Profile DXF ↓</button
+            ><button class="lam-export" id="lam-export-glb">Stack GLB ↓</button>
+          </div>
+        </div>
+        <p class="lam-assumptions">
+          Editable solid CAD for the <strong>default</strong> configuration:
+          <a href="design/provisional-single-lamination.step" download
+            >single sheet STEP ↓</a
+          >
+          ·
+          <a href="design/provisional-lamination-stack.step" download
+            >68-sheet stack STEP ↓</a
+          >. For modified values, export Study JSON and regenerate STEP with the
+          CAD script.
+        </p>
+        <div id="lam-results" class="lam-results"></div>
+        <p id="lam-equation" class="lam-equation"></p>
+        <p id="lam-tolerance" class="notice"></p>
+        <div class="section-heading">
+          <div>
+            <h2>Coating comparison</h2>
+            <p>
+              Maximum whole sheets within the current budget. Comparison always
+              uses budget mode.
+            </p>
+          </div>
+        </div>
+        <div class="table-wrap lam-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Coating / face</th>
+                <th>Coated sheet mm</th>
+                <th>Sheets</th>
+                <th>Stack mm</th>
+                <th>Steel mm</th>
+                <th>Axial steel fraction</th>
+              </tr>
+            </thead>
+            <tbody id="lam-comparison"></tbody>
+          </table>
+        </div>
+        <div class="section-heading">
+          <div>
+            <h2>Study BOM · EM01 detail</h2>
+            <p>
+              Live counts for this provisional stack. These do not replace
+              verified OEM quantities.
+            </p>
+          </div>
+        </div>
+        <div class="table-wrap lam-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Component</th>
+                <th>Quantity</th>
+                <th>Specification</th>
+              </tr>
+            </thead>
+            <tbody id="lam-study-bom"></tbody>
+          </table>
+        </div>
+        <p class="lam-assumptions">
+          Calculation includes coating on all 2N faces, including the two
+          outside faces. The extra gap applies to N−1 interfaces. Thickness
+          tolerances use simultaneous worst-case bounds. Axial steel fraction is
+          geometric; it is not a certified magnetic stacking factor. Burrs,
+          waviness, pressure/compression, edge coating and material properties
+          need measurement. If the supplier quotes coated thickness, first
+          separate the steel and coating contributions to avoid double counting.
+        </p>
+      </section>
+      <footer class="site-footer">
+        <span>PRIMEFORM ROBOTICS <span>/</span> Designed in public.</span
+        ><span>AK80-9 reference study · 17 SEP 2026</span>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

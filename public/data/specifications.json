@@ -1,0 +1,117 @@
+{
+  "identity": "AK80-9 V3.0 KV100",
+  "referenceManufacturer": "CubeMars",
+  "projectOwner": "Primeform Robotics",
+  "revision": "Reference study R0",
+  "release": "Not released for manufacture",
+  "sourceDate": "2026-09-17",
+  "published": {
+    "Voltage": "48 V nominal",
+    "Rated output torque": "9 Nm",
+    "Peak output torque": "22 Nm",
+    "Rated output speed": "390 rpm",
+    "No-load output speed": "570 rpm",
+    "Rated output power": "368 W",
+    "Rated current": "12 A DC (manufacturer label)",
+    "Peak current": "28 A DC (manufacturer label)",
+    "Reduction": "9:1",
+    "Mass": "490 g",
+    "Envelope": "Ø98 x 38.5 mm",
+    "Length tolerance": "±0.5 mm (V3 drawing)",
+    "KV": "100 rpm/V",
+    "Kt": "0.095 Nm/A",
+    "Ke": "10 V/krpm",
+    "Winding": "Delta",
+    "Stator slots": "36",
+    "Pole pairs": "21",
+    "Resistance": "160 mΩ, terminal-to-terminal",
+    "Inductance": "116 µH, terminal-to-terminal",
+    "Backlash": "15 arcmin (0.25°)",
+    "Backdrive torque": "0.51 Nm",
+    "Rotor inertia": "1118.3238 g·cm²",
+    "Ambient temperature": "−20 to +50 °C",
+    "Encoder": "One magnetic, 16 bit",
+    "Winding sensor": "NTC MF51B 103F3950",
+    "Insulation class": "C (manufacturer designation)",
+    "Dynamic load rating": "2760 N (manufacturer assembly table)",
+    "Static load rating": "2810 N (manufacturer assembly table)"
+  },
+  "interfaces": {
+    "Housing mounting": "8 x M3 on Ø85 PCD, each indicated face; depth unspecified",
+    "Output mounting": "6 x M4 on Ø28 PCD; depth unspecified",
+    "Pilot dimensions": "Ø48 and Ø37; see drawing for axial shoulders",
+    "Locator": "Ø3, depth 3 indicated; count/angles to verify from CAD and physical part",
+    "Connector warning": "Manual p.11 specifies XT30PW(2+2)-M + XT30(2+2)-F; the product table abbreviates it. Confirm hardware revision."
+  },
+  "derived": {
+    "Rated mechanical power": "9 × 390 × 2π / 60 = 367.6 W",
+    "Rated motor speed": "390 × 9 = 3510 rpm",
+    "No-load motor speed": "570 × 9 = 5130 rpm",
+    "Electrical frequency at rated speed": "3510 / 60 × 21 = 1228.5 Hz",
+    "Magnetic poles": "2 × 21 = 42; physical magnet segment count is unknown"
+  },
+  "cautions": [
+    "Published ratings describe CubeMars hardware, not a validated Primeform build.",
+    "Peak torque duration and simultaneous torque-speed capability are not established here.",
+    "Do not use listed DC current as phase RMS current in copper-loss or inverter sizing calculations.",
+    "100 KV × 48 V / 9 gives 533 rpm, not the listed 570 rpm; retain both source values until test conditions are known.",
+    "CAD lacks several working internals and contains simplified bearings and board packaging. Mesh volume is not a mass prediction.",
+    "Encoder resolution varies by source/firmware: retain 16-bit product specification until hardware and firmware are identified; manual says up to 21-bit with custom firmware."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "name": "CubeMars V3.0 product specification",
+      "url": "https://www.cubemars.com/product/ak80-9-v3-0-robotic-actuator.html"
+    },
+    {
+      "id": "S2",
+      "name": "CubeMars V3.0 interface drawing",
+      "url": "https://www.cubemars.com/data/cms/202602/ak80-9-v3-0-robotic-actuator-2d-drawing.pdf"
+    },
+    {
+      "id": "S3",
+      "name": "CubeMars V3.0 STEP assembly",
+      "url": "https://www.cubemars.com/data/cms/202602/ak80-9-v3-0-robotic-actuator-3d-drawing.zip"
+    },
+    {
+      "id": "S4",
+      "name": "EZO 625ZZ bearing specification",
+      "url": "https://www.ezo-brg.co.jp/english/product/spec.php?eid=00545"
+    },
+    {
+      "id": "S5",
+      "name": "SMB thin section bearing dimensions",
+      "url": "https://www.smbbearings.com/products/thin-section-bearings.html"
+    },
+    {
+      "id": "S6",
+      "name": "CubeMars AK V3.2.0 manual, pp. 7–13",
+      "url": "https://www.cubemars.com/data/cms/202602/ak-series-prodcut-manual-v3-2-0-for-ak-3-0-robotic-actuator.pdf"
+    },
+    {
+      "id": "S7",
+      "name": "CubeMars AK80-9 exploded illustration",
+      "url": "https://img.cubemars.com/products/AK70_80/images/AK80-9_02.jpg"
+    },
+    {
+      "id": "S8",
+      "name": "CubeMars separate driver STEP",
+      "url": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    }
+  ],
+  "driver": {
+    "Control": "FOC; servo and MIT modes",
+    "Supply reference": "48 V nominal",
+    "Current compatible driver": "AK60-4820-1C-A2 (manual p.7)",
+    "Driver input range": "18–52 V; 48 V nominal",
+    "Driver rated output current": "20 A RMS (driver rating, not motor continuous rating)",
+    "Driver maximum output current": "60 A peak (driver rating, duration not given)",
+    "Driver outline": "63 x 57 mm (manual; different from legacy CAD envelope)",
+    "CAN bitrate": "1 Mbit/s",
+    "Standby consumption": "≤1 W",
+    "Driver ambient": "−20 to +65 °C",
+    "Driver maximum board temperature": "100 °C",
+    "Separate driver inventory": "205 reference designators extracted; see driver-inventory.json, values and MPNs unknown"
+  }
+}

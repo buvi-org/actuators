@@ -1,0 +1,3302 @@
+{
+  "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip",
+  "source_sha256": "3c6492221216ea4b7d1baa2194fdfcbbe4fb43ec9d795633e4d6ae964f858e0f",
+  "retrieved": "2026-09-17",
+  "sourceAssemblyNames": [
+    "AK-DRV-12S_V3.00(不带电容)",
+    "AK-DRV-12S_V3.00(带电容).step"
+  ],
+  "referenceDesignators": 205,
+  "categoryCounts": {
+    "Capacitor": 78,
+    "Diode / LED": 18,
+    "Electromechanical / unresolved": 1,
+    "Inductor": 6,
+    "Connector": 3,
+    "Transistor": 12,
+    "Resistor": 73,
+    "Transformer / coupled device": 1,
+    "Transient suppressor": 1,
+    "Integrated circuit": 11,
+    "Crystal / oscillator": 1
+  },
+  "notes": [
+    "Package models may be generic library placeholders. No netlist, values or IC identities are established.",
+    "Source filename says without capacitor; absent bulk/DC-link capacitors must be investigated separately.",
+    "All items are children of purchased PCBA E01, not additional items to order with a complete board."
+  ],
+  "components": [
+    {
+      "reference": "C1",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C2",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C3",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C4",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C5",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C6",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C7",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C8",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C9",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C10",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C11",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C14",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C15",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C16",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C17",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C18",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C19",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C20",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C21",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C22",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C23",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C24",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C25",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C26",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C27",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C28",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C29",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C30",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C31",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C32",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C33",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C34",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C35",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C36",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C37",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C38",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C39",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C40",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C41",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C42",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C43",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C44",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C45",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C46",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C47",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C48",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C49",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C50",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C51",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C52",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C53",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C54",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C55",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C56",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C57",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C58",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C59",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C60",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C61",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C62",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C63",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C64",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C65",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C66",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C67",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C68",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C69",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C70",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C71",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C72",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C73",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C74",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0805-11.step",
+        "C_0805.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C75",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C76",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C77",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0603-13.step",
+        "C_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C78",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C79",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_0402-8.step",
+        "C_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "C80",
+      "category": "Capacitor",
+      "quantity": 1,
+      "packageModels": [
+        "C_1206-6.step",
+        "C_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D1",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D2",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D3",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D4",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D5",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D6",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D7",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "DFN1006-2L.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D8",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "DFN1006-2L.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D9",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "DFN1006-2L.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D10",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "DFN1006-2L.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D11",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-123-35.step",
+        "SOD-123.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D12",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-123-35.step",
+        "SOD-123.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D13",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-123-35.step",
+        "SOD-123.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D14",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D15",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SMC-34.step",
+        "SMC.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D16",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D17",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "D18",
+      "category": "Diode / LED",
+      "quantity": 1,
+      "packageModels": [
+        "SOD-323-33.step",
+        "SOD-323.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "E1",
+      "category": "Electromechanical / unresolved",
+      "quantity": 1,
+      "packageModels": [
+        "SOT23-3-21.step",
+        "SOT23-3.step",
+        "SOT23-3_____.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "L1",
+      "category": "Inductor",
+      "quantity": 1,
+      "packageModels": [
+        "NR3015-31.step",
+        "NR3015.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "L2",
+      "category": "Inductor",
+      "quantity": 1,
+      "packageModels": [
+        "________0503.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "L3",
+      "category": "Inductor",
+      "quantity": 1,
+      "packageModels": [
+        "LED_0603-G-30.step",
+        "LED_0603-G.step",
+        "LED_0603______.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "L4",
+      "category": "Inductor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "L5",
+      "category": "Inductor",
+      "quantity": 1,
+      "packageModels": [
+        "LED_0603-R-28.step",
+        "LED_0603-R.step",
+        "LED_0603______.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "L6",
+      "category": "Inductor",
+      "quantity": 1,
+      "packageModels": [
+        "LED_0603-B-25.step",
+        "LED_0603-B.step",
+        "LED_0603______.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "P1",
+      "category": "Connector",
+      "quantity": 1,
+      "packageModels": [
+        "I-PEX_20374-010-31_RGB8421504.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "P2",
+      "category": "Connector",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-XT30PW(2_+_2)_v6.1.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "P3",
+      "category": "Connector",
+      "quantity": 1,
+      "packageModels": [
+        "SM03B-GHS-TB.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q1",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q2",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q3",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q4",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q5",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q6",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q7",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q8",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q9",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q10",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q11",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "Q12",
+      "category": "Transistor",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-DFN8-5X6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R1",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R2",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R3",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R4",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R5",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R6",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R7",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R8",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R9",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R10",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R11",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R12",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R13",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R14",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R15",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_2512-23.step",
+        "R_2512.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R16",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_2512-23.step",
+        "R_2512.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R17",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_2512-23.step",
+        "R_2512.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R18",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R19",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R20",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R21",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R22",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R23",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R24",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R25",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R26",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R27",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R28",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R29",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R30",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R31",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R32",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R33",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R34",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R35",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R36",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R37",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R38",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R39",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R40",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R41",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R42",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R43",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R44",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R45",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R46",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R47",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R48",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R49",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R50",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R51",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R52",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R53",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R54",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R55",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R56",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R57",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R58",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R59",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R60",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R61",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R62",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R63",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R64",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R65",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R66",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R67",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R68",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R69",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R70",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R71",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0603-1.step",
+        "R_0603.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R72",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_1206-3.step",
+        "R_1206.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "R110",
+      "category": "Resistor",
+      "quantity": 1,
+      "packageModels": [
+        "R_0402-0.step",
+        "R_0402.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "T1",
+      "category": "Transformer / coupled device",
+      "quantity": 1,
+      "packageModels": [
+        "9026530720.step",
+        "Extruded.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "TVS1",
+      "category": "Transient suppressor",
+      "quantity": 1,
+      "packageModels": [
+        "SOT23-3-21.step",
+        "SOT23-3.step",
+        "SOT23-3_____.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U1",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "LQFP64-10x10.step",
+        "LQFP64_10x10______.step",
+        "_____0.25_7.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U2",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "2222.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U3",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "SOT23-5-9.step",
+        "SOT23-5.step",
+        "SOT23-5and6_____.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U4",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "TSSOP14.step",
+        "TSSOP14_____.step",
+        "_____0.9.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U5",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "SOT23-5and6_____-17.step",
+        "SOT23-6-19.step",
+        "SOT23-6.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U6",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "ESOP8.step",
+        "ESOP8_____.step",
+        "____1.5_______.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U7",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "SSOP16.step",
+        "SSOP16_____.step",
+        "____1.6_____.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U8",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "SOT23-5-9.step",
+        "SOT23-5.step",
+        "SOT23-5and6_____.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U9",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "SOP-42.step",
+        "User_Library-HCPL-181-1_K_X_F6rper_1.step",
+        "User_Library-HCPL-181-1_Pins_1.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U10",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "User_Library-QFN_24_4x4-1.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "U11",
+      "category": "Integrated circuit",
+      "quantity": 1,
+      "packageModels": [
+        "SOP8.step",
+        "SOP8_____.step",
+        "____1.8_______.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    },
+    {
+      "reference": "X1",
+      "category": "Crystal / oscillator",
+      "quantity": 1,
+      "packageModels": [
+        "OSC_3225-4-15.step",
+        "OSC_3225-4.step"
+      ],
+      "value": null,
+      "manufacturerPartNumber": null,
+      "tolerance": null,
+      "rating": null,
+      "evidence": "Driver STEP reference designator and model label; package labels are not verified device identities",
+      "parent": "E01",
+      "source": "https://www.cubemars.com/data/cms/202604/driver-ak60-4820-1c-a2-without-capacitor.zip"
+    }
+  ]
+}

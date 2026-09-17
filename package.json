@@ -1,0 +1,23 @@
+{
+  "name": "primeform-actuators",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "node --test tests/*.test.mjs",
+    "cad": "python cad/build_reference.py",
+    "bom": "python scripts/build_bom.py",
+    "lamination": "node scripts/export-lamination.mjs && python cad/build_lamination.py",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "three": "0.186.0"
+  },
+  "devDependencies": {
+    "vite": "8.3.0",
+    "@playwright/test": "1.58.2"
+  }
+}

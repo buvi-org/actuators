@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.glb binary
+*.step -text -diff linguist-generated=true
+*.dxf -text linguist-generated=true
+public/data/*.json linguist-generated=true
+public/models/manifest.json linguist-generated=true
+public/design/*.json linguist-generated=true
