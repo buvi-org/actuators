@@ -176,7 +176,6 @@ export function initAssemblyGuide({
     elapsed = 0;
     showDetails();
     draw();
-    fitStep();
   }
   function fitStep() {
     const s = data.steps[index];
@@ -212,9 +211,6 @@ export function initAssemblyGuide({
     for (const id of ["assembled", "exploded", "section"])
       $(id).classList.remove("active");
     $("view-caption").textContent = "ASSEMBLY PROCESS / PROPOSED STATES";
-    controls.target.set(0, 0, 0);
-    camera.position.set(0.15, 0.11, 0.18);
-    controls.update();
     go(0);
   }
   function close() {
