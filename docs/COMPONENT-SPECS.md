@@ -2,14 +2,18 @@
 
 ## M01 — Main housing
 
-Quantity: 1 ea. Evidence: Reference CAD.
+Quantity: 1 ea. Evidence: Reference CAD + Primeform modification.
 
 - **CAD envelope:** Ø98 x 24.2 mm
 - **Assembly envelope:** Ø98 x 38.5 mm
 - **Mounting:** 8 x M3 on Ø85 PCD (drawing)
+- **Primeform housing R1:** Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.
+- **Known clearance conflict:** Extended supports intersect the provisional rotor yoke. Rotor diameter and housing clearance must be reconciled.
+- **Side holes measured from STEP:** One pair has diameter 2.1 mm on +Y side; opposite pair has diameter 3.2 mm. Pair centres x = ±6 mm, z = 3.25 mm in viewer coordinates. Functions and thread specifications unconfirmed.
+- **Radial spaces:** Clearance and unfilled material between screw bosses; no OEM functional designation established. Do not treat as validated spare volume.
 - **Material:** OEM grade unspecified; aluminium alloy is a proposed material family only
 - **Make/buy:** Proposed: CNC turning + milling; finish and datums to be specified
-- **Unresolved:** Alloy, heat treatment, wall tolerances, bearing fits, surface finish and ring-gear attachment are unverified.
+- **Unresolved:** Alloy, heat treatment, wall tolerances, bearing fits, surface finish and ring-gear attachment are unverified. R1 needs rotor-clearance redesign and cutter-access/fillet validation. Side-hole purpose needs OEM confirmation; retain existing holes.
 - **Source references:** S2, S3
 
 ## M02 — Rear housing

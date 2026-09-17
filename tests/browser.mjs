@@ -34,6 +34,34 @@ try {
       ),
     ),
   );
+  await page.evaluate(() => window.__actuator.selectPart("M01"));
+  assert.match(
+    await page.locator("#component-detail").innerText(),
+    /Clearance redesign required/,
+  );
+  assert.equal(
+    await page
+      .locator('a[download][href$="main-housing-supported.step"]')
+      .count(),
+    1,
+  );
+  await page.locator("#isolate-part").click();
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.meshes.filter((m) => m.visible).length,
+    ),
+    2,
+  );
+  await page.evaluate(() =>
+    window.__actuator.toggleVisibility("M01/boss-extensions"),
+  );
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.meshes.filter((m) => m.visible).length,
+    ),
+    1,
+  );
+  await page.locator("#all-parts").click();
   await page.locator("#gear-view").click();
   assert.equal(
     await page.evaluate(() => window.__actuator.getState().selected),

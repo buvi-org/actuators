@@ -182,7 +182,7 @@ function selectPart(id, refreshTree = true) {
     })
     .join("");
   $("component-detail").innerHTML =
-    `<h2 class="detail-title">${escape(node.name)}</h2><span class="pill ${study || !items.length ? "amber" : ""}">${escape(node.status || "Assembly group")}</span><div class="inspector-actions"><button id="isolate-part" ${items.length ? "" : "disabled"}>${isolated === id ? "Exit isolate" : "Isolate"}</button><button id="hide-part" ${items.length ? "" : "disabled"}>${items.some((m) => m.visible) ? "Hide" : "Show"}</button><button id="focus-part" ${items.length ? "" : "disabled"}>Focus</button></div><dl class="detail-grid">${detail}</dl>${row?.unresolved ? `<h3 class="detail-heading">UNRESOLVED DETAILS</h3><p class="open-note">${escape(row.unresolved)}</p>` : ""}<div class="detail-sources">${sources}${node.electronic ? `<a href="${node.electronic.source}" target="_blank" rel="noreferrer">Driver STEP source ↗</a>` : ""}</div>`;
+    `<h2 class="detail-title">${escape(node.name)}</h2><span class="pill ${study || !items.length ? "amber" : ""}">${escape(node.status || "Assembly group")}</span>${row?.id === "M01" ? `<p class="open-note">Primeform R1: extended bosses intersect the provisional rotor yoke. Clearance redesign required. Gold bodies are added support material; hide them to compare the original housing.</p><a href="${base}design/main-housing-supported.step" download>Modified housing STEP ↓</a>` : ""}<div class="inspector-actions"><button id="isolate-part" ${items.length ? "" : "disabled"}>${isolated === id ? "Exit isolate" : "Isolate"}</button><button id="hide-part" ${items.length ? "" : "disabled"}>${items.some((m) => m.visible) ? "Hide" : "Show"}</button><button id="focus-part" ${items.length ? "" : "disabled"}>Focus</button></div><dl class="detail-grid">${detail}</dl>${row?.unresolved ? `<h3 class="detail-heading">UNRESOLVED DETAILS</h3><p class="open-note">${escape(row.unresolved)}</p>` : ""}<div class="detail-sources">${sources}${node.electronic ? `<a href="${node.electronic.source}" target="_blank" rel="noreferrer">Driver STEP source ↗</a>` : ""}</div>`;
   $("isolate-part").onclick = () => {
     isolated = isolated === id ? null : id;
     for (const key of [...hiddenIds])
@@ -423,7 +423,16 @@ async function init3D() {
   const gltf = await new GLTFLoader().loadAsync(
     base + "models/ak80-9-reference.glb",
   );
-  assembly = buildAssembly(bom, manifest, driverInventory, gltf.scene);
+  const housingSupports = await new GLTFLoader().loadAsync(
+    base + "design/housing-boss-extensions.glb",
+  );
+  assembly = buildAssembly(
+    bom,
+    manifest,
+    driverInventory,
+    gltf.scene,
+    housingSupports.scene,
+  );
   model = assembly.root;
   scene.add(model);
   meshes.push(...assembly.meshes);

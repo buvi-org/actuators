@@ -178,6 +178,14 @@ by_id['G05'].update(quantity=1,status='Illustration inference',sources=['S1','S3
 by_id['G05']['specifications']['Separate or integral construction']='Separate annular ring is shown in exploded illustration; exact mounting unverified'
 by_id['EM01']['specifications']['Individual-sheet model']='See Lamination lab: provisional profile, coating and thickness tolerance; live study BOM L01–L03'
 
+by_id['M01']['status']='Reference CAD + Primeform modification'
+by_id['M01']['specifications'].update({
+ 'Primeform housing R1':'Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.',
+ 'Known clearance conflict':'Extended supports intersect the provisional rotor yoke. Rotor diameter and housing clearance must be reconciled.',
+ 'Side holes measured from STEP':'One pair has diameter 2.1 mm on +Y side; opposite pair has diameter 3.2 mm. Pair centres x = ±6 mm, z = 3.25 mm in viewer coordinates. Functions and thread specifications unconfirmed.',
+ 'Radial spaces':'Clearance and unfilled material between screw bosses; no OEM functional designation established. Do not treat as validated spare volume.'})
+by_id['M01']['unresolved'] += ' R1 needs rotor-clearance redesign and cutter-access/fillet validation. Side-hole purpose needs OEM confirmation; retain existing holes.'
+
 # External mating cables are interface documentation, not internal actuator BOM items.
 for connector_id, accessory_id in [('E05', 'A01'), ('E06', 'A02')]:
     connector, accessory = by_id[connector_id], by_id[accessory_id]

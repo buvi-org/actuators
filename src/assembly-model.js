@@ -2,7 +2,13 @@ import * as THREE from "three";
 import { defaults, calculateStack, profilePoints } from "./lamination-math.js";
 
 // Added geometry is an engineering illustration, never an OEM measurement.
-export function buildAssembly(bom, manifest, driverInventory, sourceModel) {
+export function buildAssembly(
+  bom,
+  manifest,
+  driverInventory,
+  sourceModel,
+  housingSupports,
+) {
   const nodes = new Map(),
     meshes = [],
     root = new THREE.Group();
@@ -86,6 +92,30 @@ export function buildAssembly(bom, manifest, driverInventory, sourceModel) {
     mesh.material.side = THREE.DoubleSide;
     link(mesh, id, part.explode, "reference");
   });
+  if (housingSupports) {
+    addNode(
+      "M01/boss-extensions",
+      "Primeform R1 � bosses extended to floor",
+      "M01",
+      {
+        kind: "instance",
+        status: "Primeform modification � clearance conflict",
+        description:
+          "Sixteen 5 mm diameter screw supports extended from rear seating plane to the housing pocket floors; 16 existing screw bores retained. Added supports intersect the current provisional rotor yoke. Resolve rotor/housing envelopes before manufacture. Toggle this item off to inspect the original CubeMars housing.",
+      },
+    );
+    root.add(housingSupports);
+    housingSupports.traverse((mesh) => {
+      if (!mesh.isMesh) return;
+      mesh.material = new THREE.MeshStandardMaterial({
+        color: "#b68b52",
+        metalness: 0.4,
+        roughness: 0.45,
+        side: THREE.DoubleSide,
+      });
+      link(mesh, "M01/boss-extensions", 0, "provisional");
+    });
+  }
   const material = (color, opacity = 1) =>
     new THREE.MeshStandardMaterial({
       color,
