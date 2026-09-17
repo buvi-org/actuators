@@ -1,5 +1,5 @@
 {
-  "design": "Primeform integral ring gear / stator carrier; OEM joint inferred, new support geometry proposed",
+  "design": "Choice C: compact ring OD locates stator radially; main housing shoulder locates it axially",
   "bolt_circle_mm": 54,
   "screws": [
     {
@@ -67,23 +67,27 @@
       "nominal_engagement_mm": 3.3000000000000007
     }
   ],
-  "thread_callout": "8 x M2.5 x 0.45 through flange; model shows 2.05 mm tap-drill cylinders, not thread helices; engagement/torque release pending",
-  "flange_od_mm": 60,
-  "flange_inner_diameter_mm": 49.8,
-  "flange_z_mm": [
-    8.75,
+  "thread_callout": "8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending",
+  "ring_od_mm": 59.96,
+  "ring_z_mm": [
+    5.75,
     13.25
   ],
-  "stator_seat_z_mm": 6.936,
-  "stator_sleeve_od_mm": 51.96,
-  "stator_sleeve_z_mm": [
-    -6.0,
-    6.936
+  "stator_bore_mm": 60,
+  "slot_root_diameter_mm": 68,
+  "stator_back_iron_mm": 4,
+  "stator_z_mm": [
+    -2.436,
+    11.436
   ],
-  "rear_housing_axial_clearance_mm": 0.25,
-  "stator_bore_mm": 52,
+  "stator_seat_z_mm": 11.436,
   "radial_bond_gap_mm": 0.02,
-  "stator_retention": "Proposed retaining adhesive on sleeve plus axial seating shoulder. Adhesive grade, bond strength and thermal-cycle validation unresolved. Not a press-fit specification.",
+  "locating_overlap_z_mm": [
+    5.75,
+    11.436
+  ],
+  "locating_length_mm": 5.686,
+  "thread_outer_edge_material_mm": 1.73,
   "source_and_envelope_overlap_mm3": {
     "NAUO45": 0.0,
     "NAUO37": 0.0,
@@ -94,5 +98,5 @@
     "stator_envelope": 0.0,
     "winding_envelope": 0.0
   },
-  "scope": "Rigid nominal geometry only. Thread engagement, adhesive strength, tolerances, heat flow and existing rotor/housing conflict remain release blockers."
+  "scope": "Nominal ring fit only. Housing seat checked separately. Rotor axial alignment and existing housing clashes unresolved."
 }

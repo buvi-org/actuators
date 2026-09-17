@@ -8,8 +8,8 @@ The purpose is to inspect every steel sheet, see how two-sided coating consumes 
 |---|---:|---|
 | Slots / teeth | 36 | CubeMars product specification |
 | Outside diameter | 80 mm | Provisional study dimension |
-| Bore | 52 mm | Provisional study dimension |
-| Slot-root diameter | 62 mm | Provisional study dimension |
+| Bore | 60 mm | Choice C provisional packaging |
+| Slot-root diameter | 68 mm | Choice C: 4 mm radial back iron |
 | Tooth body / tip width | 2.8 / 4.8 mm | Provisional study dimensions |
 | Tooth-tip radial depth | 1.2 mm | Provisional study dimension |
 | Bare steel thickness | 0.20 mm | Study assumption |
@@ -75,3 +75,5 @@ Do not double-count coating if a steel supplier's quoted gauge already includes 
 ## Measurements needed for a production stack
 
 Get the actual OD, bore, full tooth/slot profile, active steel length, lamination gauge and coating specification. Also determine stack pressure, measured stacking factor, burr height/direction, insulation resistance, grade-specific iron loss at operating electrical frequencies, stack joining and end insulation. Then validate electromagnetic performance, winding insertion, thermal paths and mechanical retention.
+
+Current selection and alternatives: [Packaging choices](PACKAGING-CHOICES.md). Radial winding capacity and magnetic performance remain unverified.

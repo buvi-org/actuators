@@ -12,8 +12,8 @@ export const defaults = Object.freeze({
   mode: "budget",
   count: 68,
   od: 80,
-  bore: 52,
-  rootDiameter: 62,
+  bore: 60,
+  rootDiameter: 68,
   slots: 36,
   toothWidth: 2.8,
   tipWidth: 4.8,
@@ -54,14 +54,12 @@ export function validate(p) {
     throw new Error("Layer count must be an integer from 1 to 500.");
   if (!Number.isInteger(p.slots) || p.slots < 6 || p.slots > 96)
     throw new Error("Slot count must be an integer from 6 to 96.");
-  if (
-    !(
-      p.bore > 0 &&
-      p.bore < p.rootDiameter &&
-      p.rootDiameter < p.od &&
-      p.od <= 200
-    )
-  )
+  if (!(
+    p.bore > 0 &&
+    p.bore < p.rootDiameter &&
+    p.rootDiameter < p.od &&
+    p.od <= 200
+  ))
     throw new Error(
       "Profile needs 0 < bore < slot-root diameter < outside diameter ≤ 200 mm.",
     );
@@ -69,14 +67,12 @@ export function validate(p) {
     throw new Error("Tip depth must be smaller than tooth radial height.");
   const r = p.rootDiameter / 2,
     neck = p.od / 2 - p.tipDepth;
-  if (
-    !(
-      p.toothWidth > 0 &&
-      p.tipWidth >= p.toothWidth &&
-      p.toothWidth < 2 * r * Math.sin(Math.PI / p.slots) &&
-      p.tipWidth < 2 * neck * Math.sin(Math.PI / p.slots)
-    )
-  )
+  if (!(
+    p.toothWidth > 0 &&
+    p.tipWidth >= p.toothWidth &&
+    p.toothWidth < 2 * r * Math.sin(Math.PI / p.slots) &&
+    p.tipWidth < 2 * neck * Math.sin(Math.PI / p.slots)
+  ))
     throw new Error(
       "Tooth widths must leave an open slot and tip width must be at least body width.",
     );

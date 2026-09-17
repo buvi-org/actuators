@@ -91,7 +91,7 @@ test("profile has 36 outward teeth and correct exterior diameter", () => {
   const points = profilePoints(defaults);
   assert.equal(points.length, 36 * 12);
   near(Math.max(...points.map(([x, y]) => Math.hypot(x, y))), 40);
-  near(Math.min(...points.map(([x, y]) => Math.hypot(x, y))), 31);
+  near(Math.min(...points.map(([x, y]) => Math.hypot(x, y))), 34);
   assert.ok(profileDXF(defaults).includes("$INSUNITS\n70\n4"));
   assert.ok(profileDXF(defaults).includes("PROVISIONAL_STEEL"));
 });

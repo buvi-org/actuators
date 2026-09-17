@@ -45,4 +45,4 @@ Rebuild: `python cad/build_reference.py` if source cache is absent, then `python
 
 Sources: [Drivetrain Hub — spur gear geometry](https://drivetrainhub.com/notebooks/gears/geometry/Chapter%202%20-%20Spur%20Gears.html), [planetary assembly conditions](https://drivetrainhub.com/notebooks/gears/geometry/Chapter%204%20-%20Planetary%20Gears.html), [KHK — internal gear interference](https://khkgears.net/pdf/internal-tech.pdf). Equations were checked against these references; the candidate values are Primeform assumptions.
 
-The ring now includes an integral housing flange and stator carrier; see [stator mounting revision](STATOR-MOUNT.md). The tooth geometry and ratio are unchanged.
+The ring now uses a compact Ø59.96 locating rim without the long stator sleeve; see [stator mounting revision](STATOR-MOUNT.md). The tooth geometry and ratio are unchanged.

@@ -62,7 +62,7 @@ try {
   await page.click("#assembly-next");
   assert.match(
     await page.locator("#assembly-detail").innerText(),
-    /68 individual/,
+    /68-sheet/,
   );
   assert.ok(
     (await visible()).filter((id) => id.startsWith("EM01/")).length >= 68,

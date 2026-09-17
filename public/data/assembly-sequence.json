@@ -27,7 +27,7 @@
     },
     {
       "id": "A02",
-      "title": "Seat ring / stator support in main housing",
+      "title": "Seat ring / radial locator in main housing",
       "phase": "Actuator installation",
       "parts": [
         "G05"
@@ -58,7 +58,7 @@
     },
     {
       "id": "A03",
-      "title": "Fasten ring support to main housing \u2014 eight front screws",
+      "title": "Fasten ring to main housing \u2014 eight front screws",
       "phase": "Actuator installation",
       "parts": [
         "F01/NAUO7",
@@ -94,7 +94,7 @@
     },
     {
       "id": "A04",
-      "title": "Mount the prepared stator onto the ring support",
+      "title": "Seat prepared stator on housing shoulder, located by ring OD",
       "phase": "Actuator installation",
       "parts": [
         "EM01",
@@ -105,7 +105,8 @@
         "C03"
       ],
       "target": [
-        "G05"
+        "G05",
+        "M01"
       ],
       "context": [
         "M01",
@@ -121,30 +122,20 @@
       ],
       "method": "Adhesive / thermal bond; Coated sheet stacking + bonded bore; Formed insulation insertion; Wind / insert coils; Thermal attachment / lead connection; Impregnation / cure",
       "surfaces": [
-        "Carrier sleeve OD 51.96 mm",
-        "Stator bore ID 52 mm",
-        "Each coated lamination face \u2194 next coated face",
-        "Stack bore \u2194 carrier sleeve; stack front face \u2194 shoulder at z = 6.936 mm",
-        "Slot liners \u2194 steel slot walls",
-        "End insulation \u2194 lamination end faces",
-        "Copper conductor insulation \u2194 slot insulation",
-        "End turns \u2194 reserved end-winding space (clearance, not a locating joint)",
-        "Sensor sensing surface \u2194 winding thermal contact area",
-        "Sensor leads \u2194 driver temperature input",
-        "Resin \u2194 conductor bundle and slot insulation",
-        "Resin \u2194 accessible stack surfaces"
+        "Stator bore 60 mm \u2194 ring OD 59.96 mm (radial location, provisional bond gap)",
+        "Stator front steel face z 11.436 mm \u2194 main housing annular shoulder (axial stop)"
       ],
-      "process": "The prepared stator includes 68 individual laminations, slot insulation, winding, sensor and impregnation. Its stack bore mates to the G05 sleeve and its front face seats against the G05 shoulder. The C03 bondline retains the stack. G05 is already fastened to M01. Stator preparation happens separately before this installation.",
-      "check": "Verify adhesive compatibility, coverage, shear capacity and thermal path. Gross stack 13.872 mm. Check cumulative thickness, burr orientation, insulation and axial retention. Specify dielectric rating, thickness, creepage and slot fill. Turns, wire gauge, connection pattern, tooling and end-turn envelope are not released. Confirm sensor type, isolation, retention and calibration. Specify resin, masking, cure cycle and post-cure insulation tests.",
+      "process": "Install the prepared 68-sheet stator over the compact ring OD until its steel end face seats against the housing shoulder. Windings occupy z -3.3 to 12.3 mm. No long ring sleeve remains. Validate complete insertion access before animating motion.",
+      "check": "Choice C packaging only: 4 mm back iron, shortened radial winding region, 5.686 mm locating/bond overlap. Validate flux, winding area, bond capacity, shoulder flatness and motor alignment.",
       "status": "Proposed / requires validation",
       "marker": [
-        26,
-        30,
-        6.936
+        30.1,
+        33.5,
+        11.436
       ],
       "pathReview": {
         "status": "not validated",
-        "reason": "Validate passage of the complete wound stator through the housing opening and onto the support sleeve. The installation direction and shoulder access are not verified; do not move individual coils through steel teeth. If passage is obstructed, change the mounting order or geometry."
+        "reason": "Full wound-stator insertion path and tolerance stack remain unvalidated. Rotor magnets have not been realigned to the stator shifted 4.5 mm forward."
       }
     },
     {
@@ -246,7 +237,7 @@
         "Hub bore \u2194 sun/input shaft interface"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
-      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Define torque path, axial retention, fit, runout and balance before choosing an assembly operation.",
+      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Define torque path, axial retention, fit, runout and balance before choosing an assembly operation. Choice C stator shifted 4.5 mm but magnets remain at -7 to 7 mm; only 9.436 mm axial overlap. Resolve rotor layout.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {

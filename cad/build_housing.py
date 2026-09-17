@@ -29,7 +29,9 @@ for x,y in bores:
  support=support.cut(cq.Solid.makeCylinder(1.05,7.51,cq.Vector(x,y,-4.76)))
  supports.append(support)
 prism=supports[0].fuse(*supports[1:])
-modified=s.fuse(prism,tol=1e-5)
+# Choice C housing-owned axial seat contacts stator back iron, not winding ends.
+seat=cq.Solid.makeCylinder(33.5,15.25-11.436,cq.Vector(0,0,11.436)).cut(cq.Solid.makeCylinder(30.1,15.25-11.436,cq.Vector(0,0,11.436)))
+modified=s.fuse(prism,seat,tol=1e-5)
 added=modified.cut(s,tol=1e-5)
 assert modified.isValid() and len(modified.Solids())==1
 assert added.isValid() and added.Volume()>0
@@ -44,6 +46,14 @@ cq.exporters.export(modified,str(out/'main-housing-supported.step'))
 verts,faces=added.tessellate(.025,.06)
 mesh=trimesh.Trimesh(vertices=np.array([v.toTuple() for v in verts])/1000,faces=np.array(faces),process=False)
 scene=trimesh.Scene();scene.add_geometry(mesh,node_name='M01/boss-extensions');scene.export(out/'housing-boss-extensions.glb')
-report={'revision':'Primeform housing study R1','source_sha256':manifest['source_sha256'],'source_occurrence':'NAUO3','rear_seat_z_mm':-4.75,'floor_target_z_mm':15.25,'screw_bores_preserved':16,'support_diameter_mm':5,'added_volume_mm3':round(added.Volume(),3),'modified_valid':modified.isValid(),'modified_solid_count':len(modified.Solids()),'original_material_removed_mm3':round(removed,6),'added_support_overlap_with_provisional_rotor_yoke_mm3':round(clash,3),'release':'Study only: rotor envelope interference must be resolved; cutter access, fillets and tolerances not released.'}
+# Seat-only checks: full annular steel/winding envelopes are conservative.
+def annulus(ri,ro,z0,z1):
+ return cq.Solid.makeCylinder(ro,z1-z0,cq.Vector(0,0,z0)).cut(cq.Solid.makeCylinder(ri,z1-z0,cq.Vector(0,0,z0)))
+seat_checks={}
+for name,body in [('stator',annulus(30,40,-2.436,11.436)),('windings',annulus(34.5,39,-3.3,12.3)),('ring_envelope',annulus(24.9,29.98,5.75,13.25))]:
+ overlap=abs(seat.intersect(body).Volume());seat_checks[name]=overlap
+ assert overlap<.01,(name,overlap)
+assert abs(modified.BoundingBox().zmax-s.BoundingBox().zmax)<1e-5
+report={'stator_seat_z_mm':11.436,'seat_radii_mm':[30.1,33.5],'seat_overlap_mm3':seat_checks,'revision':'Primeform housing study R2 / Choice C stator seat','source_sha256':manifest['source_sha256'],'source_occurrence':'NAUO3','rear_seat_z_mm':-4.75,'floor_target_z_mm':15.25,'screw_bores_preserved':16,'support_diameter_mm':5,'added_volume_mm3':round(added.Volume(),3),'modified_valid':modified.isValid(),'modified_solid_count':len(modified.Solids()),'original_material_removed_mm3':round(removed,6),'added_support_overlap_with_provisional_rotor_yoke_mm3':round(clash,3),'release':'Study only: rotor envelope interference must be resolved; cutter access, fillets and tolerances not released.'}
 (out/'housing-study.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

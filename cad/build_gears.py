@@ -30,7 +30,7 @@ vertices,faces=sun.tessellate(.015,.04)
 mesh=trimesh.Trimesh(vertices=np.array([v.toTuple() for v in vertices])/1000,faces=np.array(faces),process=False)
 scene=trimesh.Scene();scene.add_geometry(mesh,node_name='G02');scene.export(OUT/'provisional-sun-gear.glb')
 planet=external(geometry['planet'][0],3)
-face=cq.Face.makeFromWires(cq.Workplane('XY').circle(25.98).wire().val(),[geometry['ring'][0]])
+face=cq.Face.makeFromWires(cq.Workplane('XY').circle(29.98).wire().val(),[geometry['ring'][0]])
 ring=cq.Solid.extrudeLinear(face,cq.Vector(0,0,5)).translate((0,0,-2.5))
 # Integral fixed-ring flange and stator carrier, in assembly coordinates.
 # The gear local origin is z=8.25; rotate hole locations back by tooth phase.
@@ -40,10 +40,9 @@ stack_half=6.936
 def annulus(ri,ro,z0,z1):
  return cq.Solid.makeCylinder(ro,z1-z0,cq.Vector(0,0,z0)).cut(cq.Solid.makeCylinder(ri,z1-z0,cq.Vector(0,0,z0)))
 ring_world=ring.translate((0,0,8.25))
-flange=annulus(24.9,30,8.75,13.25)
-shoulder=annulus(24.9,30,stack_half,8.75)
-sleeve=annulus(24.9,25.98,-6.0,stack_half)
-ring_world=ring_world.fuse(flange,shoulder,sleeve).clean()
+# Compact ring rim: no long sleeve and no stator axial shoulder.
+flange=annulus(24.9,29.98,8.75,13.25)
+ring_world=ring_world.fuse(flange).clean()
 mount_ids=['NAUO7']+[f'NAUO{i}' for i in range(22,29)]
 bolt_centres=[]
 for part in manifest['parts']:
@@ -68,8 +67,8 @@ for shape,name,loc,color in reference:
  if abs(overlap)>=.01:
   bb=mounted.intersect(body,tol=1e-6).BoundingBox(); print('CLASH',id,overlap,[bb.xmin,bb.ymin,bb.zmin,bb.xmax,bb.ymax,bb.zmax],flush=True)
  assert abs(overlap)<.01,(id,overlap)
-stator=annulus(26,40,-stack_half,stack_half)
-coil=annulus(32.5,39,-7.8,7.8)
+stator=annulus(30,40,-stack_half+4.5,stack_half+4.5)
+coil=annulus(34.5,39,-3.3,12.3)
 for name,body in [('stator_envelope',stator),('winding_envelope',coil)]:
  overlap=mounted.intersect(body,tol=1e-6).Volume();clashes[name]=round(abs(overlap),6)
  assert abs(overlap)<.01,(name,overlap)
@@ -77,7 +76,7 @@ for name,body in [('stator_envelope',stator),('winding_envelope',coil)]:
 for b in bolt_centres:
  probe=cq.Solid.makeCylinder(1,4.48,cq.Vector(b['x_mm'],b['y_mm'],8.76))
  assert mounted.intersect(probe).Volume()<.001
-mounting={'design':'Primeform integral ring gear / stator carrier; OEM joint inferred, new support geometry proposed','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45 through flange; model shows 2.05 mm tap-drill cylinders, not thread helices; engagement/torque release pending','flange_od_mm':60,'flange_inner_diameter_mm':49.8,'flange_z_mm':[8.75,13.25],'stator_seat_z_mm':stack_half,'stator_sleeve_od_mm':51.96,'stator_sleeve_z_mm':[-6.0,6.936],'rear_housing_axial_clearance_mm':0.25,'stator_bore_mm':52,'radial_bond_gap_mm':.02,'stator_retention':'Proposed retaining adhesive on sleeve plus axial seating shoulder. Adhesive grade, bond strength and thermal-cycle validation unresolved. Not a press-fit specification.','source_and_envelope_overlap_mm3':clashes,'scope':'Rigid nominal geometry only. Thread engagement, adhesive strength, tolerances, heat flow and existing rotor/housing conflict remain release blockers.'}
+mounting={'design':'Choice C: compact ring OD locates stator radially; main housing shoulder locates it axially','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending','ring_od_mm':59.96,'ring_z_mm':[5.75,13.25],'stator_bore_mm':60,'slot_root_diameter_mm':68,'stator_back_iron_mm':4,'stator_z_mm':[-2.436,11.436],'stator_seat_z_mm':11.436,'radial_bond_gap_mm':.02,'locating_overlap_z_mm':[5.75,11.436],'locating_length_mm':5.686,'thread_outer_edge_material_mm':1.73,'source_and_envelope_overlap_mm3':clashes,'scope':'Nominal ring fit only. Housing seat checked separately. Rotor axial alignment and existing housing clashes unresolved.'}
 (OUT/'stator-mount-validation.json').write_text(json.dumps(mounting,indent=2)+'\n')
 report={}
 for name,solid in [('sun',sun),('planet',planet),('ring',ring)]:

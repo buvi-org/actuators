@@ -1,5 +1,7 @@
 # Main housing R1: supported screw bosses
 
+Current R2 adds the Choice C stator axial seat at z 11.436 mm, radii 30.1–33.5 mm. See [packaging decision](PACKAGING-CHOICES.md). Original R1 boss discussion follows; its rotor interference remains unresolved.
+
 The CubeMars NAUO3 housing remains the reference. Primeform R1 extends sixteen 5 mm diameter screw supports toward the housing floor, centred on the source screw axes. Gold support bodies in the tree show the added material; hiding them restores the reference view. They are integral housing material, not additional purchased parts.
 
 `cad/build_housing.py` generates the modified solid STEP, the added-material GLB, and `public/design/housing-study.json`. Run `python cad/build_reference.py` first if the cached source STEP is absent, then `python cad/build_housing.py`. Coordinates are centred assembly millimetres. The rear seating face is z = -4.75 mm and the extrusion terminates at z = 15.25 mm, reaching the existing pocket floors. Existing source screw bores are retained; this does not specify or extend thread engagement. Original material is not removed. Reference GLB and STEP attribution remain unchanged.

@@ -7,6 +7,7 @@ Quantity: 1 ea. Evidence: Reference CAD + Primeform modification.
 - **CAD envelope:** Ø98 x 24.2 mm
 - **Assembly envelope:** Ø98 x 38.5 mm
 - **Mounting:** 8 x M3 on Ø85 PCD (drawing)
+- **Choice C stator stop:** Integral annular seat radii 30.1 to 33.5 mm; z 11.436 mm; external reference envelope retained.
 - **Primeform housing R1:** Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.
 - **Known clearance conflict:** Extended supports intersect the provisional rotor yoke. Rotor diameter and housing clearance must be reconciled.
 - **Side holes measured from STEP:** One pair has diameter 2.1 mm on +Y side; opposite pair has diameter 3.2 mm. Pair centres x = ±6 mm, z = 3.25 mm in viewer coordinates. Functions and thread specifications unconfirmed.
@@ -130,7 +131,7 @@ Quantity: 24 ea. Evidence: Reference CAD.
 - **Thread / nominal length:** M2.5 x 6 mm
 - **Head:** Countersunk internal hex
 - **CAD OEM code:** C0203000297
-- **Front joint, 8 screws:** NAUO7 and NAUO22–28: M01 main housing to G05 integral ring gear / stator carrier, 54 mm PCD
+- **Front joint, 8 screws:** NAUO7 and NAUO22-28: M01 main housing to compact G05 ring rim, 54 mm PCD
 - **Rear joint, 16 screws:** Remaining F01 instances: M02 rear housing to M01 main housing
 - **Material:** Strength class / coating unspecified
 - **Make/buy:** Buy after fastener specification release
@@ -191,9 +192,10 @@ Quantity: 1 ea. Evidence: Not in reference CAD.
 - **OD / ID / active length:** Unpublished
 - **Lamination thickness:** 0.20 mm proposed starting point
 - **Individual-sheet model:** See Lamination lab: provisional profile, coating and thickness tolerance; live study BOM L01–L03
-- **Mounting in current study:** Bore 52 mm seats on G05 shoulder at z 6.936 mm; sleeve OD 51.96 mm gives 0.020 mm radial bond gap
-- **Axial location:** Stack -6.936 to +6.936 mm; sleeve -6.0 to +6.936 mm leaves 0.936 mm stack overhang at rear
-- **Retention:** Proposed retaining adhesive on carrier sleeve, with front axial seating shoulder; no assumed press fit
+- **Choice C profile:** OD 80 / bore 60 / slot-root diameter 68 mm; radial back iron 4 mm; 6 mm radial tooth region including tip
+- **Mounting in current study:** Ring OD 59.96 mm provides radial location; main housing shoulder provides axial stop
+- **Axial location:** 68 sheets; gross 13.872 mm; shifted forward 4.5 mm to z -2.436 through 11.436 mm
+- **Retention:** Proposed retaining bond to ring over 5.686 mm axial overlap; bond capacity and stack retention unresolved
 - **Material:** Proposed: low-loss non-oriented electrical steel; grade unselected
 - **Make/buy:** Prototype profile cutting + insulated stack; production stamping after validation
 - **Unresolved:** Requires magnetic geometry, B-H/loss curves, stack factor, burr limit, stack retention and FEA. Quantity is one proposed stack; individual lamination count unknown.
@@ -207,6 +209,7 @@ Quantity: 1 set. Evidence: Not in reference CAD.
 - **KV target:** 100 rpm/V
 - **Terminal-to-terminal resistance:** 160 mΩ published
 - **Terminal-to-terminal inductance:** 116 µH published
+- **Choice C envelope:** Radial 34.5 to 39 mm; axial -3.3 to 12.3 mm; shorter radial bundles are illustrative, not a verified winding fit
 - **Material:** Enamelled copper; wire grade unselected
 - **Make/buy:** Wind, terminate, impregnate and test
 - **Unresolved:** Turns, wire diameter, parallel strands, coil pitch, winding diagram, fill factor and test temperature/frequency unknown. Do not treat terminal resistance as phase-branch resistance in delta.
@@ -218,6 +221,7 @@ Quantity: 1 ea. Evidence: Not in reference CAD.
 
 - **Architecture:** Outer rotor study
 - **Envelope / wall thickness:** To be designed
+- **Choice C alignment blocker:** Rotor/magnets not shifted with stator. Current magnet span -7 to 7 mm overlaps shifted stack by only 9.436 mm; motor performance not validated.
 - **Known end-bell interference:** EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.
 - **Material:** Proposed: magnetic steel yoke with separate structural carrier as required
 - **Make/buy:** Machine and dynamically balance
@@ -273,9 +277,9 @@ Quantity: 3 ea. Evidence: Illustration inference.
 - **Unresolved:** Three planets are inferred from the exploded illustration; their teeth and dimensions are omitted from STEP. Need tooth count, module, profile shift, face width, material, hardness and fatigue analysis.
 - **Source references:** S1, S3, S7
 
-## G05 — Internal ring gear with integral stator carrier
+## G05 — Internal ring gear / stator radial locator
 
-Quantity: 1 ea. Evidence: Primeform mounting proposal.
+Quantity: 1 ea. Evidence: Choice C provisional packaging.
 
 - **Reduction target:** 9:1
 - **Separate or integral construction:** Separate annular ring is shown in exploded illustration; exact mounting unverified
@@ -284,15 +288,14 @@ Quantity: 1 ea. Evidence: Primeform mounting proposal.
 - **Root transition:** 0.060 mm circular fillets; not a hob/shaper-generated trochoid
 - **Ratio and assembly:** 20 / 70 / 160 teeth; ring fixed, sun input, carrier output: exactly 9:1; three planets at 120 degrees; centres 13.5 mm
 - **Release blockers:** Cutting process, steel grade, heat treatment, gear quality, tooth-thickness tolerances, strength, fatigue, lubrication and loaded contact checks
-- **Housing joint:** Eight M2.5 x 6 countersunk screws, NAUO7 and NAUO22–28, through M01 into this flange; 54 mm PCD
-- **Mounting flange:** OD 60 / ID 49.8 mm; z 8.75 to 13.25 mm; 8 x M2.5 x 0.45 through. STEP uses 2.05 mm pilot bores, no thread helices.
-- **Nominal screw penetration:** 3.3 mm from housing contact face to screw tip; thread engagement strength and torque not released
-- **Stator carrier:** Integral sleeve OD 51.96 / ID 49.8 mm, z -6.0 to 6.936 mm; axial shoulder at z 6.936 mm, OD 60 mm
-- **Rear clearance:** 0.25 mm nominal sleeve-to-rear-housing axial clearance
-- **Support rationale:** Primeform proposed integral stationary ring/carrier; OEM flange inferred from illustration, support integration not established by OEM sources
+- **Housing joint:** Eight M2.5 x 6 source screws on 54 mm PCD; ring mounting face z 13.25 mm
+- **Ring body:** OD 59.96 mm; toothed band z 5.75 to 10.75 mm, front mounting rim to z 13.25 mm. Long sleeve and stator shoulder removed.
+- **Nominal screw penetration:** 3.3 mm; approximately 1.73 mm outer edge material beyond M2.5 major diameter, strength unverified
+- **Radial stator location:** Ring OD to 60 mm stator bore; 0.020 mm radial bond gap; overlap z 5.75 to 11.436 mm
+- **Separate axial stop:** Main housing annular shoulder at z 11.436 mm; radii 30.1 to 33.5 mm
 - **Material:** Material and hardness to be selected
 - **Make/buy:** Internal gear machining or validated alternative
-- **Unresolved:** Ring tooth profile absent; carrier architecture and ring retention unresolved. Integral carrier needs material/heat-treatment, adhesive, thermal path, shaft alignment and thread-strength review. New nominal interfaces are not manufacture-released.
+- **Unresolved:** Ring tooth profile absent; carrier architecture and ring retention unresolved.
 - **Source references:** S1, S3, S7
 
 ## G06 — Planet pins and retention
@@ -434,11 +437,11 @@ Quantity: TBD set. Evidence: Unresolved.
 Quantity: TBD set. Evidence: Unresolved.
 
 - **Selection basis:** Stator-to-housing and PCBA thermal paths
-- **Proposed bondline:** 0.020 mm radial, sleeve radius 25.98 to stator bore radius 26.00 mm; length 12.936 mm
-- **Function:** Stator torque retention and heat transfer to integral G05 carrier and housing
-- **Material:** Retaining adhesive grade unselected; validate electrical insulation, temperature and thermal performance
+- **Proposed bondline:** Radii 29.98 to 30.00 mm; z 5.75 to 11.436 mm; length 5.686 mm
+- **Function:** Stator retention to ring OD. Axial stop is main housing, not ring.
+- **Material:** Retaining adhesive grade unselected
 - **Make/buy:** Controlled application
-- **Unresolved:** Bond shear/fatigue, thermal cycles, cure, surface preparation, disassembly, tolerances and compatibility with gear heat treatment remain unresolved.
+- **Unresolved:** Bond capacity, cure, tolerances, stack retention and ring distortion unresolved.
 - **Source references:** Engineering requirement; not an OEM specification
 
 ## C04 — Shims, seals, spacers and thread locking

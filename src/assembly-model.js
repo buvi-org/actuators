@@ -96,7 +96,7 @@ export function buildAssembly(
               "NAUO7",
               ...Array.from({ length: 7 }, (_, i) => "NAUO" + (22 + i)),
             ].includes(part.id)
-            ? "Front joint: main housing M01 to fixed ring gear / integral stator carrier G05, eight screws on 54 mm PCD. Candidate thread M2.5 x 0.45; nominal screw penetration 3.3 mm. Thread strength and tightening torque pending."
+            ? "Front joint: main housing M01 to fixed ring gear / stator radial locator G05, eight screws on 54 mm PCD. Candidate thread M2.5 x 0.45; nominal screw penetration 3.3 mm. Thread strength and tightening torque pending."
             : "Rear joint: rear housing M02 to main housing M01, sixteen source screws. Thread engagement and tightening torque require validation."
           : undefined,
     });
@@ -116,13 +116,13 @@ export function buildAssembly(
   if (housingSupports) {
     addNode(
       "M01/boss-extensions",
-      "Primeform R1 - bosses extended to floor",
+      "Primeform R2 - housing stator stop and screw bosses",
       "M01",
       {
         kind: "instance",
         status: "Primeform modification - clearance conflict",
         description:
-          "Sixteen 5 mm diameter screw supports extended from rear seating plane to the housing pocket floors; 16 existing screw bores retained. Added supports intersect the current provisional rotor yoke. Resolve rotor/housing envelopes before manufacture. Toggle this item off to inspect the original CubeMars housing.",
+          "Choice C: housing stator seat at z 11.436 mm, radii 30.1 to 33.5 mm, plus sixteen 5 mm screw supports extended to the housing floors; 16 existing screw bores retained. Added supports intersect the current provisional rotor yoke. Resolve rotor/housing envelopes before manufacture. Toggle this item off to inspect the original CubeMars housing.",
       },
     );
     root.add(housingSupports);
@@ -237,7 +237,7 @@ export function buildAssembly(
   });
   for (let i = 0; i < stack.count; i++) {
     const tag = String(i + 1).padStart(3, "0"),
-      z = -stack.gross / 2 + i * stack.pitch;
+      z = 4.5 - stack.gross / 2 + i * stack.pitch;
     add(
       `EM01/L${tag}`,
       `Lamination ${i + 1} · 0.200 mm`,
@@ -246,7 +246,7 @@ export function buildAssembly(
       "#81929f",
       [0, 0, z + p.coating / 1000],
       -0.05,
-      `Sheet ${i + 1}/${stack.count}; 36-slot provisional profile; OD 80 / bore 52 mm; steel 0.200 mm. Not recovered from manufacturer CAD.`,
+      `Sheet ${i + 1}/${stack.count}; 36-slot provisional profile; OD 80 / bore 60 mm; slot root 68 mm; back iron 4 mm; steel 0.200 mm. Not recovered from manufacturer CAD.`,
     );
     for (const [face, dz] of [
       ["lower", 0],
@@ -325,7 +325,7 @@ export function buildAssembly(
   coilHole.closePath();
   coilShape.holes.push(coilHole);
   const coilGeo = new THREE.ExtrudeGeometry(coilShape, {
-    depth: 0.0065,
+    depth: 0.0045,
     bevelEnabled: false,
   });
   for (let i = 0; i < 36; i++) {
@@ -338,7 +338,7 @@ export function buildAssembly(
       "EM02",
       coilGeo,
       ["#c27b40", "#e0a354", "#a65a34"][i % 3],
-      [32.5 * Math.cos(a), 32.5 * Math.sin(a), 0],
+      [34.5 * Math.cos(a), 34.5 * Math.sin(a), 4.5],
       -0.05,
       "Winding bundle placeholder, not a turn-by-turn winding. Actual turns, conductor size, coil pitch and phase sequence remain unknown; colour is only visual grouping.",
     );
@@ -353,9 +353,9 @@ export function buildAssembly(
       `EM05/liner-${i + 1}`,
       `Tooth insulation ${i + 1}`,
       "EM05",
-      box(6.5, 3.15, 14.1),
+      box(4.5, 3.15, 14.1),
       "#ded5ad",
-      [35.7 * Math.cos(a), 35.7 * Math.sin(a), 0],
+      [36.75 * Math.cos(a), 36.75 * Math.sin(a), 4.5],
       -0.05,
       "Solid envelope proxy for slot insulation, not a validated liner thickness or cut pattern.",
       0.25,
@@ -366,10 +366,10 @@ export function buildAssembly(
     "EM06/varnish",
     "EM06",
     "Impregnation extent (schematic)",
-    31.5,
+    34.5,
     39.5,
     0.15,
-    7.9,
+    12.4,
     "#dac57d",
     -0.05,
     "Illustrative end-winding impregnation extent; not a material fill volume or quantity.",
@@ -437,7 +437,7 @@ export function buildAssembly(
   root.add(ringMesh);
   link(ringMesh, "G05", 0.045);
   nodes.get("G05").description =
-    "160-tooth internal involute candidate, module 0.3, 20 degrees pressure angle, 5 mm face width. One STEP-derived solid. With ring fixed, sun input and carrier output, ratio is exactly 1 + 160/20 = 9. Manufacturing release pending. Integral 60 mm OD mounting flange has eight M2.5 tapped positions on 54 mm PCD; shoulder seats stator at z=6.936 mm and sleeve supports its bore. This stationary carrier is a Primeform proposal, not recovered OEM geometry.";
+    "160-tooth internal involute candidate, module 0.3, 20 degrees pressure angle, 5 mm face width. One STEP-derived solid. With ring fixed, sun input and carrier output, ratio is exactly 1 + 160/20 = 9. Manufacturing release pending. Compact OD 59.96 mm rim has eight M2.5 tapped positions on 54 mm PCD; ring OD locates the 60 mm stator bore radially. Main housing seats stator at z=11.436 mm. Long sleeve removed. This stationary carrier is a Primeform proposal, not recovered OEM geometry.";
   add(
     "E03/sensor",
     "Magnetic encoder package",
@@ -454,7 +454,7 @@ export function buildAssembly(
     "E04",
     new THREE.SphereGeometry(0.0011, 16, 12),
     "#d89b6b",
-    [36, 0, 6],
+    [36, 0, 10.5],
     -0.05,
     "MF51B 103F3950 is published. Bead shape and placement are illustrative.",
   );
@@ -538,13 +538,13 @@ export function buildAssembly(
     "C03/interface",
     "C03",
     "Stator retaining bondline (study)",
-    25.98,
-    26,
-    12.936,
-    0.468,
+    29.98,
+    30,
+    5.686,
+    8.593,
     "#78c6ba",
     -0.05,
-    "Proposed 0.020 mm radial retaining-adhesive bondline between stator bore and integral ring-gear carrier. Adhesive grade, bond strength and thermal performance must be validated.",
+    "Proposed 0.020 mm radial retaining-adhesive bondline between stator bore and compact ring OD; housing shoulder is axial stop. Adhesive grade, bond strength and thermal performance must be validated.",
   );
   const seal = new THREE.TorusGeometry(0.046, 0.00045, 10, 100);
   add(

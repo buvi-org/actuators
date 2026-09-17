@@ -2,8 +2,8 @@
   "sheetCount": 68,
   "coatingFaceCount": 136,
   "sheetValid": true,
-  "sheetVolume_mm3": 377.70041433593605,
-  "profileArea_mm2": 1888.5020716796807,
+  "sheetVolume_mm3": 298.93069531989147,
+  "profileArea_mm2": 1494.653476599457,
   "grossStack_mm": 13.872000000000002,
   "solidCount": 204,
   "source": "lamination-study.json"
