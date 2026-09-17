@@ -1,14 +1,16 @@
 {
-  "version": 1,
-  "scope": "Joint review covering the BOM, not a validated assembly sequence. All installation trajectories are withheld until subassembly order, final fit and swept clearances are established.",
+  "version": 2,
+  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
   "steps": [
     {
-      "id": "J01",
-      "title": "Fixture the main housing",
+      "id": "A01",
+      "title": "Start with the main housing",
+      "phase": "Actuator installation",
       "parts": [
         "M01"
       ],
       "target": [],
+      "context": [],
       "method": "Fixture / datum establishment",
       "surfaces": [
         "Housing front mounting face",
@@ -24,12 +26,16 @@
       }
     },
     {
-      "id": "J02",
-      "title": "Locate the fixed ring and stator carrier",
+      "id": "A02",
+      "title": "Seat ring / stator support in main housing",
+      "phase": "Actuator installation",
       "parts": [
         "G05"
       ],
       "target": [
+        "M01"
+      ],
+      "context": [
         "M01"
       ],
       "method": "Locate + screw clamp",
@@ -37,7 +43,7 @@
         "Ring flange front face, z = 13.25 mm",
         "Housing internal front seat, z = 13.25 mm"
       ],
-      "process": "Align the eight threaded positions on the 54 mm pitch circle. Axial motion is illustrative; insertion access needs checking.",
+      "process": "Align the eight threaded positions on the 54 mm pitch circle. Insertion direction and access need checking.",
       "check": "Validate locating diameter, face flatness and assembly access.",
       "status": "Proposed / requires validation",
       "marker": [
@@ -51,8 +57,9 @@
       }
     },
     {
-      "id": "J03",
-      "title": "Fasten the ring to the housing",
+      "id": "A03",
+      "title": "Fasten ring support to main housing \u2014 eight front screws",
+      "phase": "Actuator installation",
       "parts": [
         "F01/NAUO7",
         "F01/NAUO22",
@@ -64,6 +71,10 @@
         "F01/NAUO28"
       ],
       "target": [
+        "M01",
+        "G05"
+      ],
+      "context": [
         "M01",
         "G05"
       ],
@@ -82,49 +93,49 @@
       }
     },
     {
-      "id": "J04",
-      "title": "Apply the stator retaining bond",
+      "id": "A04",
+      "title": "Mount the prepared stator onto the ring support",
+      "phase": "Actuator installation",
       "parts": [
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
         "C03"
       ],
       "target": [
         "G05"
       ],
-      "method": "Adhesive / thermal bond",
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28"
+      ],
+      "method": "Adhesive / thermal bond; Coated sheet stacking + bonded bore; Formed insulation insertion; Wind / insert coils; Thermal attachment / lead connection; Impregnation / cure",
       "surfaces": [
         "Carrier sleeve OD 51.96 mm",
-        "Stator bore ID 52 mm"
-      ],
-      "process": "Apply the proposed retaining compound uniformly; the nominal radial bond gap is 0.02 mm. Grade and cure are unspecified.",
-      "check": "Verify adhesive compatibility, coverage, shear capacity and thermal path.",
-      "status": "Proposed / requires validation",
-      "marker": [
-        25.98,
-        26,
-        -6
-      ],
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Adhesive is dispensed onto a prepared sleeve; it is not a rigid ring that can be translated through the housing."
-      }
-    },
-    {
-      "id": "J05",
-      "title": "Build and seat the lamination stack",
-      "parts": [
-        "EM01"
-      ],
-      "target": [
-        "G05",
-        "C03"
-      ],
-      "method": "Coated sheet stacking + bonded bore",
-      "surfaces": [
+        "Stator bore ID 52 mm",
         "Each coated lamination face \u2194 next coated face",
-        "Stack bore \u2194 carrier sleeve; stack front face \u2194 shoulder at z = 6.936 mm"
+        "Stack bore \u2194 carrier sleeve; stack front face \u2194 shoulder at z = 6.936 mm",
+        "Slot liners \u2194 steel slot walls",
+        "End insulation \u2194 lamination end faces",
+        "Copper conductor insulation \u2194 slot insulation",
+        "End turns \u2194 reserved end-winding space (clearance, not a locating joint)",
+        "Sensor sensing surface \u2194 winding thermal contact area",
+        "Sensor leads \u2194 driver temperature input",
+        "Resin \u2194 conductor bundle and slot insulation",
+        "Resin \u2194 accessible stack surfaces"
       ],
-      "process": "Illustrate 68 individual 0.20 mm sheets with 2 \u00b5m coating per face. Align slots using tooling; define whether the stack is preassembled before bonding.",
-      "check": "Gross stack 13.872 mm. Check cumulative thickness, burr orientation, insulation and axial retention.",
+      "process": "The prepared stator includes 68 individual laminations, slot insulation, winding, sensor and impregnation. Its stack bore mates to the G05 sleeve and its front face seats against the G05 shoulder. The C03 bondline retains the stack. G05 is already fastened to M01. Stator preparation happens separately before this installation.",
+      "check": "Verify adhesive compatibility, coverage, shear capacity and thermal path. Gross stack 13.872 mm. Check cumulative thickness, burr orientation, insulation and axial retention. Specify dielectric rating, thickness, creepage and slot fill. Turns, wire gauge, connection pattern, tooling and end-turn envelope are not released. Confirm sensor type, isolation, retention and calibration. Specify resin, masking, cure cycle and post-cure insulation tests.",
       "status": "Proposed / requires validation",
       "marker": [
         26,
@@ -133,165 +144,49 @@
       ],
       "pathReview": {
         "status": "not validated",
-        "reason": "Build the coated stack in a separate fixture, then evaluate installation of the completed stator subassembly. Individual sheets cannot be sent through an installed housing and shoulder."
+        "reason": "Validate passage of the complete wound stator through the housing opening and onto the support sleeve. The installation direction and shoulder access are not verified; do not move individual coils through steel teeth. If passage is obstructed, change the mounting order or geometry."
       }
     },
     {
-      "id": "J06",
-      "title": "Insulate the winding slots",
+      "id": "A05",
+      "title": "Prepare rotor: bond magnets inside the yoke",
+      "phase": "Rotor preparation",
       "parts": [
-        "EM05"
+        "EM04",
+        "C02"
       ],
       "target": [
-        "EM01"
-      ],
-      "method": "Formed insulation insertion",
-      "surfaces": [
-        "Slot liners \u2194 steel slot walls",
-        "End insulation \u2194 lamination end faces"
-      ],
-      "process": "Insert liners without damage; end insulation and folds require detailed design.",
-      "check": "Specify dielectric rating, thickness, creepage and slot fill.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Install and form insulation on the accessible stator subassembly before housing installation. Liner insertion and end folds are not modeled."
-      }
-    },
-    {
-      "id": "J07",
-      "title": "Install the three-phase winding",
-      "parts": [
-        "EM02"
-      ],
-      "target": [
-        "EM05"
-      ],
-      "method": "Wind / insert coils",
-      "surfaces": [
-        "Copper conductor insulation \u2194 slot insulation",
-        "End turns \u2194 reserved end-winding space (clearance, not a locating joint)"
-      ],
-      "process": "Wind or insert coils using a validated winding schedule, then route phase ends. Coil forming and insertion require a separate process model.",
-      "check": "Turns, wire gauge, connection pattern, tooling and end-turn envelope are not released.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Wind the insulated stator outside the closed housing. Rigid translation of finished coils through teeth does not represent a winding process."
-      }
-    },
-    {
-      "id": "J08",
-      "title": "Attach the winding sensor",
-      "parts": [
-        "E04"
-      ],
-      "target": [
-        "EM02"
-      ],
-      "method": "Thermal attachment / lead connection",
-      "surfaces": [
-        "Sensor sensing surface \u2194 winding thermal contact area",
-        "Sensor leads \u2194 driver temperature input"
-      ],
-      "process": "Locate the sensor against a representative winding hot spot; attachment and lead route are unspecified.",
-      "check": "Confirm sensor type, isolation, retention and calibration.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Attach the sensor while the winding and lead route are accessible, before impregnation or final closure as the selected process requires."
-      }
-    },
-    {
-      "id": "J09",
-      "title": "Impregnate and cure the winding",
-      "parts": [
-        "EM06"
-      ],
-      "target": [
-        "EM02",
-        "EM05"
-      ],
-      "method": "Impregnation / cure",
-      "surfaces": [
-        "Resin \u2194 conductor bundle and slot insulation",
-        "Resin \u2194 accessible stack surfaces"
-      ],
-      "process": "Impregnate after electrical checks and cure to the selected resin process. The displayed resin ring is only a placeholder.",
-      "check": "Specify resin, masking, cure cycle and post-cure insulation tests.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Impregnation and curing are material processes on the wound stator, not translation of a solid resin ring."
-      }
-    },
-    {
-      "id": "J10",
-      "title": "Prepare the rotor yoke and end bell",
-      "parts": [
         "EM03"
       ],
-      "target": [
-        "M01"
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03"
       ],
-      "method": "Rotor subassembly / clearance review",
+      "method": "Rotor subassembly / clearance review; Adhesive bond; Bond / pole placement",
       "surfaces": [
         "Yoke/end-bell junction (joining design unresolved)",
-        "Rotor outer swept envelope \u2194 housing and boss clearance"
-      ],
-      "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated.",
-      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly.",
-      "status": "Blocked by known geometry",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Build the rotor as a separate subassembly. The current yoke intersects housing bosses at the final position, so no valid installation path can end there."
-      }
-    },
-    {
-      "id": "J11",
-      "title": "Apply magnet adhesive",
-      "parts": [
-        "C02"
-      ],
-      "target": [
-        "EM03"
-      ],
-      "method": "Adhesive bond",
-      "surfaces": [
+        "Rotor outer swept envelope \u2194 housing and boss clearance",
         "Adhesive \u2194 yoke inner cylindrical wall",
-        "Adhesive \u2194 magnet outer cylindrical backs"
-      ],
-      "process": "Prepare surfaces and dispense a controlled bondline; adhesive and mechanical retention are unspecified.",
-      "check": "Qualify bond thickness, temperature capability, cure and centrifugal retention.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Dispense adhesive on the accessible rotor yoke before magnet placement; do not animate adhesive as a preformed inserted ring."
-      }
-    },
-    {
-      "id": "J12",
-      "title": "Locate the rotor magnets",
-      "parts": [
-        "EM04"
-      ],
-      "target": [
-        "EM03",
-        "C02"
-      ],
-      "method": "Bond / pole placement",
-      "surfaces": [
+        "Adhesive \u2194 magnet outer cylindrical backs",
         "Magnet backs \u2194 bonded yoke inner wall",
         "Magnet side faces \u2194 pole-spacing fixture"
       ],
-      "process": "Place alternating poles using tooling and cure. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
-      "check": "Verify polarity, spacing, concentricity, retention and air gap; do not infer piece count from pole count.",
+      "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Prepare surfaces and dispense a controlled bondline; adhesive and mechanical retention are unspecified. Place alternating poles using tooling and cure. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
+      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Qualify bond thickness, temperature capability, cure and centrifugal retention. Verify polarity, spacing, concentricity, retention and air gap; do not infer piece count from pole count.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
@@ -300,13 +195,32 @@
       }
     },
     {
-      "id": "J13",
-      "title": "Couple the input hub",
+      "id": "A06",
+      "title": "Attach input hub to rotor end bell",
+      "phase": "Rotor preparation",
       "parts": [
         "G03"
       ],
       "target": [
         "EM03"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03"
       ],
       "method": "Torque-transmitting joint unresolved",
       "surfaces": [
@@ -323,61 +237,136 @@
       }
     },
     {
-      "id": "J14",
-      "title": "Install the input support bearings",
+      "id": "A07",
+      "title": "Install rotor subassembly around stator",
+      "phase": "Actuator installation",
       "parts": [
-        "B03"
+        "EM03",
+        "EM04",
+        "C02",
+        "G03"
+      ],
+      "target": [
+        "M01",
+        "EM01"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03"
+      ],
+      "method": "Rotor subassembly / clearance review; Torque-transmitting joint unresolved",
+      "surfaces": [
+        "Yoke/end-bell junction (joining design unresolved)",
+        "Rotor outer swept envelope \u2194 housing and boss clearance",
+        "Hub rotor attachment surface \u2194 rotor end bell",
+        "Hub bore \u2194 sun/input shaft interface"
+      ],
+      "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
+      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Define torque path, axial retention, fit, runout and balance before choosing an assembly operation.",
+      "status": "Blocked by known geometry",
+      "marker": null,
+      "pathReview": {
+        "status": "not validated",
+        "reason": "Build the rotor as a separate subassembly. The current yoke intersects housing bosses at the final position, so no valid installation path can end there. The hub-to-end-bell joint has no defined fastening or fit. Define the torque connection before deciding sequence, direction or required tools."
+      }
+    },
+    {
+      "id": "A08",
+      "title": "Locate input bearings and couple sun shaft",
+      "phase": "Actuator installation",
+      "parts": [
+        "B03",
+        "G02"
       ],
       "target": [
         "G03",
         "M02"
       ],
-      "method": "Bearing fits unresolved",
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03"
+      ],
+      "method": "Bearing fits unresolved; Shaft coupling unresolved",
       "surfaces": [
         "6701 bearing inner races \u2194 input hub journals",
-        "Bearing outer races \u2194 stationary support bores (seat ownership to confirm)"
-      ],
-      "process": "Position the two reference bearings; identify actual seats and shoulders before specifying a pressing operation.",
-      "check": "If an interference fit is chosen, apply force to the fitted race. Fits, preload, retention and seat geometry remain open.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "The two bearings require individually identified seats, shoulders, fit and press-tool access. A shared axial translation cannot establish installation order."
-      }
-    },
-    {
-      "id": "J15",
-      "title": "Couple the sun gear and shaft",
-      "parts": [
-        "G02"
-      ],
-      "target": [
-        "G03",
-        "B03"
-      ],
-      "method": "Shaft coupling unresolved",
-      "surfaces": [
+        "Bearing outer races \u2194 stationary support bores (seat ownership to confirm)",
         "Sun/input shaft coupling land \u2194 input hub bore",
         "Shaft support interfaces \u2194 bearing arrangement to confirm"
       ],
-      "process": "Locate the 20-tooth sun at the 8.25 mm gear plane. Coupling geometry is not a verified torque connection.",
-      "check": "Resolve shaft/hub connection and retention. Tooth profile study does not validate the entire transmission.",
+      "process": "Seat ownership is not established. The rear housing is shown as a receiving-part reference only, not as already installed. Decide which bearings fit to hub or housing first, and define the sun-to-hub torque connection before approving this operation.",
+      "check": "If an interference fit is chosen, apply force to the fitted race. Fits, preload, retention and seat geometry remain open. Resolve shaft/hub connection and retention. Tooth profile study does not validate the entire transmission.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "The sun shaft coupling and axial retention are undefined. Its enlarged gear and journal sections require a seat-by-seat insertion check."
+        "reason": "The two bearings require individually identified seats, shoulders, fit and press-tool access. A shared axial translation cannot establish installation order. The sun shaft coupling and axial retention are undefined. Its enlarged gear and journal sections require a seat-by-seat insertion check."
       }
     },
     {
-      "id": "J16",
-      "title": "Prepare the planet supports",
+      "id": "A09",
+      "title": "Prepare carrier: locate and retain planet pins",
+      "phase": "Carrier preparation",
       "parts": [
         "G06"
       ],
       "target": [
         "G01"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02"
       ],
       "method": "Pin retention unresolved",
       "surfaces": [
@@ -394,56 +383,61 @@
       }
     },
     {
-      "id": "J17",
-      "title": "Install planet bearings or bushings",
+      "id": "A10",
+      "title": "Fit planet supports and gears to carrier pins",
+      "phase": "Carrier preparation",
       "parts": [
-        "G07"
-      ],
-      "target": [
-        "G06"
-      ],
-      "method": "Sliding / interference fit to specify",
-      "surfaces": [
-        "Bearing or bushing inner surface \u2194 planet pin OD",
-        "Outer surface \u2194 planet gear bore"
-      ],
-      "process": "Locate the three provisional supports on pins. Bearing versus bushing selection is still open.",
-      "check": "Define diametral clearance or interference, lubrication and axial restraint.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Determine whether each support is assembled into the planet bore first or onto its pin first from the selected fits and access; no common path is established."
-      }
-    },
-    {
-      "id": "J18",
-      "title": "Install and phase the planets",
-      "parts": [
+        "G07",
         "G04"
       ],
       "target": [
-        "G07",
-        "G02",
-        "G05"
+        "G06",
+        "G01"
       ],
-      "method": "Bearing seating + gear meshing",
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02"
+      ],
+      "method": "Sliding / interference fit to specify; Bearing seating + gear meshing",
       "surfaces": [
+        "Bearing or bushing inner surface \u2194 planet pin OD",
+        "Outer surface \u2194 planet gear bore",
         "Planet bore \u2194 bearing or bushing OD",
         "70-tooth planet flanks \u2194 20-tooth sun and 160-tooth ring flanks"
       ],
-      "process": "Align the three planets to the modeled phase before engagement. Tooth-by-tooth insertion access is unverified.",
-      "check": "Fixed ring, sun input, carrier output gives 9:1. Backlash, root manufacture, strength and tolerance validation remain open.",
+      "process": "Locate the three provisional supports on pins. Bearing versus bushing selection is still open. Align the three planets to the modeled phase before engagement. Tooth-by-tooth insertion access is unverified.",
+      "check": "Define diametral clearance or interference, lubrication and axial restraint. Fixed ring, sun input, carrier output gives 9:1. Backlash, root manufacture, strength and tolerance validation remain open.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "Prepare planet/support/pin/carrier relationships and phase all three planets before engagement with sun and ring. Gear phase alone does not validate insertion."
+        "reason": "Determine whether each support is assembled into the planet bore first or onto its pin first from the selected fits and access; no common path is established. Prepare planet/support/pin/carrier relationships and phase all three planets before engagement with sun and ring. Gear phase alone does not validate insertion."
       }
     },
     {
-      "id": "J19",
-      "title": "Install output support bearings",
+      "id": "A11",
+      "title": "Seat output support bearings",
+      "phase": "Actuator installation",
       "parts": [
         "B01",
         "B02"
@@ -451,6 +445,30 @@
       "target": [
         "M01",
         "G01"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02"
       ],
       "method": "Bearing seating / fits unspecified",
       "surfaces": [
@@ -467,97 +485,173 @@
       }
     },
     {
-      "id": "J20",
-      "title": "Seat the output carrier",
+      "id": "A12",
+      "title": "Install carrier and retained planets together",
+      "phase": "Actuator installation",
       "parts": [
-        "G01"
+        "G01",
+        "G06",
+        "G07",
+        "G04"
       ],
       "target": [
-        "G06",
+        "B01",
+        "B02",
+        "G02",
+        "G05"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
         "B01",
         "B02"
       ],
-      "method": "Carrier engagement / retention unresolved",
+      "method": "Bearing seating + gear meshing; Carrier engagement / retention unresolved",
       "surfaces": [
+        "Planet bore \u2194 bearing or bushing OD",
+        "70-tooth planet flanks \u2194 20-tooth sun and 160-tooth ring flanks",
         "Carrier planet supports \u2194 pins",
         "Carrier bearing lands \u2194 output support races"
       ],
-      "process": "Bring the carrier subassembly into final reference position. Pin preparation is shown separately for clarity.",
-      "check": "Carrier/pin and bearing retention require detailed design; sequence and access are not proven.",
+      "process": "Align the three planets to the modeled phase before engagement. Tooth-by-tooth insertion access is unverified. Bring the carrier subassembly into final reference position. Pin preparation is shown separately for clarity.",
+      "check": "Fixed ring, sun input, carrier output gives 9:1. Backlash, root manufacture, strength and tolerance validation remain open. Carrier/pin and bearing retention require detailed design; sequence and access are not proven.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "Carrier insertion must move its retained pins, planet supports and planets as the chosen subassembly, not the carrier alone through them. Retention is unresolved."
+        "reason": "Prepare planet/support/pin/carrier relationships and phase all three planets before engagement with sun and ring. Gear phase alone does not validate insertion. Carrier insertion must move its retained pins, planet supports and planets as the chosen subassembly, not the carrier alone through them. Retention is unresolved."
       }
     },
     {
-      "id": "J21",
-      "title": "Apply gearbox lubricant",
+      "id": "A13",
+      "title": "Apply lubricant and resolve closure materials",
+      "phase": "Actuator installation",
       "parts": [
-        "C01"
+        "C01",
+        "C04"
       ],
       "target": [
         "G02",
         "G04",
         "G05",
-        "G07"
+        "M01"
       ],
-      "method": "Lubrication",
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04"
+      ],
+      "method": "Lubrication; Sealing / adjustment unresolved",
       "surfaces": [
         "Lubricant \u2194 sun, planet and ring working flanks",
-        "Lubricant \u2194 selected planet support contact surfaces"
-      ],
-      "process": "Apply the selected lubricant before closing the housing. Displayed volume is an illustrative extent.",
-      "check": "Specify lubricant grade, dose, compatibility, life and contamination control.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Apply lubricant to accessible working surfaces at the appropriate assembly stage; it is not a rigid inserted disk."
-      }
-    },
-    {
-      "id": "J22",
-      "title": "Define seals, shims and locking provisions",
-      "parts": [
-        "C04"
-      ],
-      "target": [
-        "M01",
-        "M02"
-      ],
-      "method": "Sealing / adjustment unresolved",
-      "surfaces": [
+        "Lubricant \u2194 selected planet support contact surfaces",
         "Seal \u2194 designed groove and counterface (not yet defined)",
         "Shims \u2194 bearing or shoulder stack as required"
       ],
-      "process": "Resolve these provisions before closure; the torus shown is a placeholder, not a specified seal.",
-      "check": "Define grooves, squeeze, shim stack and thread-lock locations; do not purchase from this geometry.",
+      "process": "Apply the selected lubricant before closing the housing. Displayed volume is an illustrative extent. Resolve these provisions before closure; the torus shown is a placeholder, not a specified seal.",
+      "check": "Specify lubricant grade, dose, compatibility, life and contamination control. Define grooves, squeeze, shim stack and thread-lock locations; do not purchase from this geometry.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "Select and model actual seals, grooves, shims and locking locations before defining their operations. A generic torus does not define assembly."
+        "reason": "Apply lubricant to accessible working surfaces at the appropriate assembly stage; it is not a rigid inserted disk. Select and model actual seals, grooves, shims and locking locations before defining their operations. A generic torus does not define assembly."
       }
     },
     {
-      "id": "J23",
-      "title": "Close the rear housing",
+      "id": "A14",
+      "title": "Seat rear housing on main housing",
+      "phase": "Actuator installation",
       "parts": [
         "M02"
       ],
       "target": [
         "M01",
+        "EM03",
+        "B03"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
         "B03",
-        "EM03"
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04"
       ],
       "method": "Housing location + clearance review",
       "surfaces": [
         "Rear housing flange \u2194 main housing rear joint face",
         "Rear housing interior \u2194 rotating end bell (required non-contact clearance)"
       ],
-      "process": "Show closure up to the reference position; the current rotor end bell intersects the rear housing.",
+      "process": "Inspect the proposed closed position; the current rotor end bell intersects the rear housing.",
       "check": "Measured intersection 2666.28 mm\u00b3. Redesign axial packaging and verify winding clearance before closure.",
       "status": "Blocked by known geometry",
       "marker": null,
@@ -567,8 +661,9 @@
       }
     },
     {
-      "id": "J24",
-      "title": "Fasten the rear housing",
+      "id": "A15",
+      "title": "Fasten rear housing \u2014 sixteen rear screws",
+      "phase": "Actuator installation",
       "parts": [
         "F01/NAUO5",
         "F01/NAUO6",
@@ -591,6 +686,39 @@
         "M02",
         "M01"
       ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04",
+        "M02"
+      ],
       "method": "16 \u00d7 M2.5 \u00d7 6 countersunk screws",
       "surfaces": [
         "Screw head cones \u2194 rear housing countersinks",
@@ -606,13 +734,63 @@
       }
     },
     {
-      "id": "J25",
-      "title": "Attach the encoder target",
+      "id": "A16",
+      "title": "Attach encoder target magnet to input hub",
+      "phase": "Actuator installation",
       "parts": [
         "E02"
       ],
       "target": [
         "G03"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04",
+        "M02",
+        "F01/NAUO5",
+        "F01/NAUO6",
+        "F01/NAUO8",
+        "F01/NAUO9",
+        "F01/NAUO10",
+        "F01/NAUO11",
+        "F01/NAUO12",
+        "F01/NAUO13",
+        "F01/NAUO14",
+        "F01/NAUO15",
+        "F01/NAUO16",
+        "F01/NAUO17",
+        "F01/NAUO18",
+        "F01/NAUO19",
+        "F01/NAUO20",
+        "F01/NAUO21"
       ],
       "method": "Magnet retention unresolved",
       "surfaces": [
@@ -629,39 +807,17 @@
       }
     },
     {
-      "id": "J26",
-      "title": "Populate and inspect the driver",
+      "id": "A17",
+      "title": "Mount populated driver assembly",
+      "phase": "Actuator installation",
       "parts": [
-        "E07",
-        "E08",
-        "E09",
+        "E01",
         "E03",
         "E05",
-        "E06"
-      ],
-      "target": [
-        "E01"
-      ],
-      "method": "PCB solder assembly / capacitor mounting unresolved",
-      "surfaces": [
-        "Component terminals \u2194 PCB pads",
-        "Connector leads \u2194 PCB pads; connector bodies \u2194 mechanical support",
-        "Encoder sensing face \u2194 target magnet (non-contact)"
-      ],
-      "process": "Populate and reflow per a qualified PCB assembly process; connect the bulk capacitor as specified. 205 inventory designators are data-only; displayed package locations are illustrative.",
-      "check": "Confirm footprints, solder process, pinout, capacitor mounting, power isolation and encoder alignment. No duplicate external harness is added.",
-      "status": "Proposed / requires validation",
-      "marker": null,
-      "pathReview": {
-        "status": "not validated",
-        "reason": "Populate the PCB as a separate subassembly. Components are soldered to pads, not moved through an installed board. Positions of most inventory items are unmapped."
-      }
-    },
-    {
-      "id": "J27",
-      "title": "Mount and connect the driver board",
-      "parts": [
-        "E01"
+        "E06",
+        "E07",
+        "E08",
+        "E09"
       ],
       "target": [
         "M02",
@@ -669,30 +825,141 @@
         "EM02",
         "E04"
       ],
-      "method": "PCB mounting and electrical termination unresolved",
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04",
+        "M02",
+        "F01/NAUO5",
+        "F01/NAUO6",
+        "F01/NAUO8",
+        "F01/NAUO9",
+        "F01/NAUO10",
+        "F01/NAUO11",
+        "F01/NAUO12",
+        "F01/NAUO13",
+        "F01/NAUO14",
+        "F01/NAUO15",
+        "F01/NAUO16",
+        "F01/NAUO17",
+        "F01/NAUO18",
+        "F01/NAUO19",
+        "F01/NAUO20",
+        "F01/NAUO21",
+        "E02"
+      ],
+      "method": "PCB solder assembly / capacitor mounting unresolved; PCB mounting and electrical termination unresolved",
       "surfaces": [
+        "Component terminals \u2194 PCB pads",
+        "Connector leads \u2194 PCB pads; connector bodies \u2194 mechanical support",
+        "Encoder sensing face \u2194 target magnet (non-contact)",
         "PCB mounting holes \u2194 rear support points",
         "Motor phase ends \u2194 driver phase terminals; sensor leads \u2194 temperature input",
         "Encoder \u2194 rotating magnet sensing gap"
       ],
-      "process": "Mount the tested board and terminate winding/sensor leads. Board fastening details, routing and strain relief must be designed.",
-      "check": "Check standoffs, fastener lengths, insulation, rotor clearance, connector access and encoder gap.",
+      "process": "Populate and reflow per a qualified PCB assembly process; connect the bulk capacitor as specified. 205 inventory designators are data-only; displayed package locations are illustrative. Mount the tested board and terminate winding/sensor leads. Board fastening details, routing and strain relief must be designed.",
+      "check": "Confirm footprints, solder process, pinout, capacitor mounting, power isolation and encoder alignment. No duplicate external harness is added. Check standoffs, fastener lengths, insulation, rotor clearance, connector access and encoder gap.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "Move a populated board together with its attached components. Define standoffs, phase/sensor lead termination, strain relief and connector access first."
+        "reason": "Populate the PCB as a separate subassembly. Components are soldered to pads, not moved through an installed board. Positions of most inventory items are unmapped. Move a populated board together with its attached components. Define standoffs, phase/sensor lead termination, strain relief and connector access first."
       }
     },
     {
-      "id": "J28",
-      "title": "Install the driver cover",
+      "id": "A18",
+      "title": "Fit driver cover to rear support",
+      "phase": "Actuator installation",
       "parts": [
         "M03"
       ],
       "target": [
         "M02",
         "E01"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04",
+        "M02",
+        "F01/NAUO5",
+        "F01/NAUO6",
+        "F01/NAUO8",
+        "F01/NAUO9",
+        "F01/NAUO10",
+        "F01/NAUO11",
+        "F01/NAUO12",
+        "F01/NAUO13",
+        "F01/NAUO14",
+        "F01/NAUO15",
+        "F01/NAUO16",
+        "F01/NAUO17",
+        "F01/NAUO18",
+        "F01/NAUO19",
+        "F01/NAUO20",
+        "F01/NAUO21",
+        "E02",
+        "E01",
+        "E03",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09"
       ],
       "method": "Cover location / screw clamp",
       "surfaces": [
@@ -709,14 +976,73 @@
       }
     },
     {
-      "id": "J29",
-      "title": "Fasten the driver cover",
+      "id": "A19",
+      "title": "Fasten driver cover \u2014 six screws",
+      "phase": "Actuator installation",
       "parts": [
         "F02"
       ],
       "target": [
         "M03",
         "M02"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04",
+        "M02",
+        "F01/NAUO5",
+        "F01/NAUO6",
+        "F01/NAUO8",
+        "F01/NAUO9",
+        "F01/NAUO10",
+        "F01/NAUO11",
+        "F01/NAUO12",
+        "F01/NAUO13",
+        "F01/NAUO14",
+        "F01/NAUO15",
+        "F01/NAUO16",
+        "F01/NAUO17",
+        "F01/NAUO18",
+        "F01/NAUO19",
+        "F01/NAUO20",
+        "F01/NAUO21",
+        "E02",
+        "E01",
+        "E03",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "M03"
       ],
       "method": "6 \u00d7 M2 \u00d7 12 screws",
       "surfaces": [
@@ -733,13 +1059,73 @@
       }
     },
     {
-      "id": "J30",
-      "title": "Install the closure cover and inspect",
+      "id": "A20",
+      "title": "Fit output closure cover",
+      "phase": "Actuator installation",
       "parts": [
         "M04"
       ],
       "target": [
         "G01"
+      ],
+      "context": [
+        "M01",
+        "G05",
+        "F01/NAUO7",
+        "F01/NAUO22",
+        "F01/NAUO23",
+        "F01/NAUO24",
+        "F01/NAUO25",
+        "F01/NAUO26",
+        "F01/NAUO27",
+        "F01/NAUO28",
+        "EM01",
+        "EM05",
+        "EM02",
+        "E04",
+        "EM06",
+        "C03",
+        "EM03",
+        "EM04",
+        "C02",
+        "G03",
+        "B03",
+        "G02",
+        "B01",
+        "B02",
+        "G01",
+        "G06",
+        "G07",
+        "G04",
+        "C01",
+        "C04",
+        "M02",
+        "F01/NAUO5",
+        "F01/NAUO6",
+        "F01/NAUO8",
+        "F01/NAUO9",
+        "F01/NAUO10",
+        "F01/NAUO11",
+        "F01/NAUO12",
+        "F01/NAUO13",
+        "F01/NAUO14",
+        "F01/NAUO15",
+        "F01/NAUO16",
+        "F01/NAUO17",
+        "F01/NAUO18",
+        "F01/NAUO19",
+        "F01/NAUO20",
+        "F01/NAUO21",
+        "E02",
+        "E01",
+        "E03",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "M03",
+        "F02"
       ],
       "method": "Closure retention unresolved",
       "surfaces": [

@@ -111,7 +111,7 @@
           <div class="viewport-wrap">
             <div class="viewport-top">
               <div class="view-modes">
-                <button id="assembly-guide">Joint review</button
+                <button id="assembly-guide">Assembly process</button
                 ><button id="assembled" class="active">Assembled</button
                 ><button id="exploded">Exploded</button
                 ><button id="section">Section</button
@@ -165,19 +165,46 @@
             <div id="component-detail"></div>
           </aside>
         </div>
-        <section id="assembly-panel" hidden aria-label="Joint review controls">
+        <section
+          id="assembly-panel"
+          hidden
+          aria-label="Assembly process controls"
+        >
           <div class="assembly-controls">
-            <strong>Assembly study</strong
-            ><button id="assembly-prev">Previous</button
+            <strong>Assembly process</strong
+            ><button id="assembly-prev">Previous step</button
             ><button id="assembly-next">Next</button
             ><select id="assembly-step" aria-label="Assembly operation"></select
-            ><button id="assembly-close">Exit guide</button>
+            ><button id="assembly-close">Exit process</button>
           </div>
+          <div class="assembly-controls">
+            <button id="assembly-before" aria-pressed="false">
+              Before fitting
+            </button>
+            <button id="assembly-after" aria-pressed="true">
+              Proposed seated state
+            </button>
+            <button id="assembly-play">Play stages</button>
+            <button id="assembly-fit">Fit step</button>
+            <label
+              ><input id="assembly-context" type="checkbox" checked /> Include
+              earlier installed parts</label
+            >
+            <label
+              ><input id="assembly-cut" type="checkbox" /> Section cut
+              (uncapped)</label
+            >
+            <label
+              ><input id="assembly-surfaces" type="checkbox" /> Nominal seat
+              annotation</label
+            >
+          </div>
+          <p id="assembly-state" aria-live="polite"></p>
           <p class="assembly-warning">
-            Animation withdrawn: no installation path has been validated. Review
-            numbers are not an assembly order. Amber: part under review; cyan:
-            mating counterpart; ghosted: full assembly context at current model
-            positions, including known clashes.
+            Opaque parts: amber is being fitted; cyan receives it. Playback
+            shows before/after states, not insertion motion. Known interference
+            steps pause playback. Later steps preview the proposal; they do not
+            establish that earlier unresolved joints can be assembled.
           </p>
           <details id="assembly-register"></details>
           <a href="data/assembly-sequence.json" download

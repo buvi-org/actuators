@@ -1,22 +1,19 @@
-# Joint review: invalid animation withdrawn
+# Assembly process
 
-Open **3D assembly → Joint review**. The previous animation was wrong: it applied one global axial offset to unrelated parts without validating insertion access, subassembly ownership or collisions. Its UI tests verified controls, not physical assembly. It has been removed.
+Open **3D assembly → Assembly process**. The process has 20 proposed stages starting with main housing M01, ring/support G05, eight front screws, and the complete prepared stator mounted to G05. Separate rotor and carrier preparation stages identify work performed outside the actuator. Each stage explicitly names the fitted parts, receiving parts, mating surfaces and joining method.
 
-All 30 records now provide a specific installation-path review. All geometry stays at its current model position. Amber marks the part under review, cyan marks its counterparts, and the entire remaining assembly is ghosted for context. Existing final-position interferences remain visible. Numbering is a review index, not an assembly order. No trajectory is currently validated or animated.
+Previous/Next navigate assembly stages. Before fitting hides the incoming group; Proposed seated state shows it at its modeled destination. Play stages alternates these states and proceeds through the proposal, pausing before known interference steps. This is state-based playback, not a validated insertion animation: no geometry is translated through another part. A user may inspect the proposed seated state of a blocked step without implying it is physically achievable.
 
-## What must change before assembly can be animated
+Parts are opaque, with normal depth writes. Incoming parts are amber, receiving parts cyan, and earlier installed parts retain their normal colors. The main assembly accumulates by stage with Include earlier installed parts enabled by default. Bench preparation shows only its local participants. Future parts stay hidden except explicit receiving-part references needed to explain unresolved connections; for example rear housing bearing-seat ownership in step 8.
 
-- Build, insulate, wind, instrument and impregnate the stator in accessible tooling before evaluating installation of the resulting subassembly. Do not translate finished coils through steel teeth or send individual sheets through a closed housing.
-- Prepare the rotor yoke, adhesive, magnets, hub and retention as a defined rotor subassembly. Resolve yoke/boss and end-bell/rear-housing interference before checking insertion.
-- Define carrier pin bores and retention, choose planet supports, establish fits and phase the gears. Check installation of the retained carrier/planet group together rather than sliding the carrier through stationary pins and planets.
-- Populate and test the PCB separately; move attached components with the board. Define mounting, lead termination, routing, strain relief and connector/cover access.
-- Treat bonding, impregnation, lubrication and soldering as material processes, not rigid-body insertions.
-- For each screw and bearing, define its own axis, receiving surface, shoulder, retention, insertion side and tool access. Do not infer a press fit or torque from visual overlap.
+Section cut opens the opaque housing for inspection; cuts are uncapped and labeled as such. It defaults on when housing context would conceal a joint. Nominal seat annotation is optional and available for two axial seats; it is not a persistent CAD face selection. Fit step frames the incoming and receiving parts. The inspector retains component links and complete mating/process details.
 
-The ring/stator carrier installation order remains open. Its flange and sleeve must clear housing entrances and shoulders, while the selected stator bonding/winding process must retain access. The candidate forward motor shift also requires carrier and screw-tip redesign.
+## Open mechanical work
 
-A future trajectory requires defined moving-subassembly membership, actual mating faces and assembly state, a collision-free final fit, swept-clearance verification and process/tool access checks. An analytic seat overlay or successful UI test is not that evidence.
+The interface does not resolve physical design problems. Yoke/boss and end-bell/rear-housing clashes remain. Stator insertion onto the integral support, shaft/hub torque transfer, bearing seats and fits, carrier pin retention, PCB mounting and sealing still require definition. The proposed forward motor shift is not implemented. A valid insertion animation requires a defined moving subassembly, assembly state, final fit, swept clearance and tool access for that operation.
 
-The downloadable `public/data/assembly-sequence.json` retains all BOM coverage and identifies these gaps per joint. Two axial-seat annuli remain nominal annotations, not persistent CAD face selections. No OEM assembly procedure or manufacturing release is claimed.
+The earlier generic axial translation was removed because it did not represent assembly. Adhesive, resin and lubricant are process representations, not independently translated solids. Step order remains proposed; advancing past a blocker does not establish successful physical completion.
 
-Validation: `npm run test:assembly` checks all 30 reviews retain base poses, misleading playback controls are absent, joint references cover the BOM and selection/exit restore the ordinary viewer. Existing application checks are `npm test`, `npm run test:browser`, and `npm run build`.
+The downloadable register is `public/data/assembly-sequence.json`. It covers all 35 BOM records, with eight front and sixteen rear F01 screws treated separately. No OEM assembly procedure or manufacturing release is claimed.
+
+Validation: `npm run test:assembly` checks the 20 stages, housing-first order, front screw count, before/after visibility, context control, opaque rendering, static transforms, blocking behavior, BOM references, exit restoration and mobile layout. `npm test`, `npm run test:browser`, and `npm run build` check the existing application. These checks do not certify mechanical feasibility.

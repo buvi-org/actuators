@@ -1628,3 +1628,16 @@ tbody tr:hover {
   text-align: left;
   text-decoration: underline;
 }
+
+.assembly-controls button.active {
+  background: #366e56;
+  border-color: #a6edcf;
+}
+.assembly-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+#assembly-state {
+  color: #a6edcf;
+  font-weight: 600;
+}

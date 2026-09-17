@@ -488,7 +488,11 @@ async function init3D() {
         meshes.filter((m) => m.visible),
         false,
       )
-      .find((h) => !section || clipPlane.distanceToPoint(h.point) >= 0);
+      .find((h) =>
+        (h.object.material.clippingPlanes || []).every(
+          (plane) => plane.distanceToPoint(h.point) >= 0,
+        ),
+      );
     if (hit) selectPart(hit.object.userData.nodeId);
   });
   assemblyGuide = initAssemblyGuide({
@@ -502,7 +506,10 @@ async function init3D() {
     updateScene,
     setDirty,
   });
-  renderer.setAnimationLoop(() => {
+  let processLastFrame = performance.now();
+  renderer.setAnimationLoop((now) => {
+    assemblyGuide.tick(now - processLastFrame);
+    processLastFrame = now;
     controls.update();
     if (needsRender && !$("model-panel").hidden) {
       const distance = camera.position.distanceTo(controls.target);
