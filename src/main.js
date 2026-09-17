@@ -56,7 +56,7 @@ const setDirty = () => {
 
 function defaultDetails() {
   $("component-detail").innerHTML =
-    `<h2 class="detail-title">Complete assembly study</h2><span class="pill amber">Reference CAD + provisional internals</span><p class="detail-desc">Every BOM component is in the tree. Expand components to inspect individual laminations, coatings, coils, magnets and fasteners. Checkboxes control visibility of a component and its children.</p><dl class="detail-grid"><div><dt>Manufacturer reference</dt><dd>43 CAD instances; Ø98 × 38.5 mm</dd></div><div><dt>Added motor study</dt><dd>68 steel laminations · 136 coatings · 36 winding bundles · 42 illustrative magnet segments</dd></div></dl><p class="open-note">Added internals are an illustrative layout, not a recovered OEM design or a validated fit. Select any item to see the evidence and assumptions.</p>`;
+    `<h2 class="detail-title">Complete assembly study</h2><span class="pill amber">Reference CAD + provisional internals</span><p class="detail-desc">Every BOM component is in the tree. Expand components to inspect individual laminations, coatings, coils, magnets and fasteners. Checkboxes control visibility of a component and its children.</p><dl class="detail-grid"><div><dt>Manufacturer reference</dt><dd>43 source CAD instances; sun blank replaced in study</dd></div><div><dt>Added motor study</dt><dd>68 steel laminations · 136 coatings · 36 winding bundles · 42 illustrative magnet segments</dd></div></dl><p class="open-note">Added internals are an illustrative layout, not a recovered OEM design or a validated fit. Select any item to see the evidence and assumptions.</p>`;
 }
 function affectedMeshes(id) {
   return assembly
@@ -428,12 +428,16 @@ async function init3D() {
   const housingSupports = await new GLTFLoader().loadAsync(
     base + "design/housing-boss-extensions.glb",
   );
+  const sunSolid = await new GLTFLoader().loadAsync(
+    base + "design/provisional-sun-gear.glb",
+  );
   assembly = buildAssembly(
     bom,
     manifest,
     driverInventory,
     gltf.scene,
     housingSupports.scene,
+    sunSolid.scene,
   );
   model = assembly.root;
   scene.add(model);
@@ -634,13 +638,12 @@ async function init() {
       "group:bearings",
       "G01",
       "M04",
-      "G02/NAUO41",
     ]);
     separation = 0;
     section = false;
     updateScene();
     renderParts();
-    selectPart("G02/toothed-study");
+    selectPart("G02");
     fitView();
   };
   let laminationStarted = false;

@@ -25,7 +25,7 @@ try {
           (m) => m.userData.geometryKind === "reference",
         ).length,
     ),
-    43,
+    42,
   );
   assert.ok(
     await page.evaluate(() =>
@@ -85,7 +85,10 @@ try {
     await page
       .locator("#component-detail")
       .innerText()
-      .then((t) => t.includes("12 teeth") && t.includes("non-involute")),
+      .then(
+        (t) =>
+          t.includes("12-tooth") && t.toLowerCase().includes("non-involute"),
+      ),
   );
   await page.screenshot({ path: "tmp/qa/gear-train.png", fullPage: true });
   await page.locator("#internal-view").click();
@@ -133,7 +136,7 @@ try {
     await page.evaluate(
       () => window.__actuator.meshes.filter((m) => m.visible).length,
     ),
-    2,
+    1,
   );
   await page.locator("#all-parts").click();
   assert.equal(
@@ -155,9 +158,7 @@ try {
     assemblyGltf.nodes.filter((n) => n.mesh !== undefined).length,
     meshCount,
   );
-  assert.ok(
-    assemblyGltf.nodes.some((n) => n.extras?.id === "G02/toothed-study"),
-  );
+  assert.ok(assemblyGltf.nodes.some((n) => n.extras?.id === "G02"));
   await page.locator("#section").click();
   assert.equal(
     await page.evaluate(() => window.__actuator.getState().section),

@@ -9,6 +9,7 @@ export function buildAssembly(
   driverInventory,
   sourceModel,
   housingSupports,
+  sunSolid,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -79,6 +80,10 @@ export function buildAssembly(
       node = node.parent;
     }
     if (!part) return;
+    if (part.bomId === "G02") {
+      mesh.visible = false;
+      return;
+    }
     const id = `${part.bomId}/${part.id}`;
     addNode(id, `${part.name} · ${part.id}`, part.bomId, {
       kind: "instance",
@@ -93,6 +98,11 @@ export function buildAssembly(
     mesh.material.side = THREE.DoubleSide;
     link(mesh, id, part.explode, "reference");
   });
+  const replacedMeshes = [];
+  sourceModel.traverse((m) => {
+    if (m.isMesh && !m.userData.nodeId) replacedMeshes.push(m);
+  });
+  replacedMeshes.forEach((m) => m.removeFromParent());
   if (housingSupports) {
     addNode(
       "M01/boss-extensions",
@@ -371,16 +381,16 @@ export function buildAssembly(
     g.translate(0, 0, -width / 2000);
     return g;
   };
-  add(
-    "G02/toothed-study",
-    "Sun gear · 12-tooth illustration",
-    "G02",
-    gear(12, 3, 5, 1.6),
-    "#d6a75e",
-    [0, 0, 9.5],
-    0.055,
-    "Visible schematic sun gear: 12 teeth, module 0.5, 5 mm face width. Together with the illustrative 42-tooth planets and 96-tooth ring this gives 9:1. Tooth shape is non-involute and not an OEM or manufacturing profile.",
-  );
+  root.add(sunSolid);
+  sunSolid.traverse((mesh) => {
+    if (!mesh.isMesh) return;
+    mesh.material = material("#d6a75e");
+    mesh.position.z = 0.00825;
+    link(mesh, "G02", 0.055);
+  });
+  nodes.get("G02").status = "Provisional gear-and-shaft solid";
+  nodes.get("G02").description =
+    "One connected gear-and-shaft solid: source end journals retained; central section z 3.75�11.25 mm replaced with the 12-tooth, module 0.5 study profile. Face width 7.5 mm. Non-involute provisional teeth, not a verified OEM gear or manufacture-ready design. Viewer mesh is tessellated directly from the STEP solid.";
   for (let i = 0; i < 3; i++) {
     const a = (i * 2 * Math.PI) / 3,
       x = 13.5 * Math.cos(a),
@@ -391,7 +401,7 @@ export function buildAssembly(
       "G04",
       gear(42, 10.5, 5, 3),
       "#b6bac4",
-      [x, y, 9.5],
+      [x, y, 8.25],
       0.055,
       "Schematic non-involute teeth. Study uses 42 teeth/module 0.5, not verified OEM dimensions or a machinable gear profile.",
     );
@@ -402,7 +412,7 @@ export function buildAssembly(
       "G06",
       ring(0, 2.5, 8),
       "#bdc7d4",
-      [x, y, 10],
+      [x, y, 8.75],
       0.065,
       "Illustrative pin diameter 5 mm. Count inferred from three-planet illustration; material, retention and fit unknown.",
     );
@@ -412,7 +422,7 @@ export function buildAssembly(
       "G07",
       ring(2.5, 3, 5),
       "#78939a",
-      [x, y, 9.5],
+      [x, y, 8.25],
       0.055,
       "Annular planet-bearing/bushing placeholder; actual bearing architecture and size unresolved.",
     );
@@ -432,12 +442,11 @@ export function buildAssembly(
   });
   ringGeometry.translate(0, 0, -0.0025);
   const ringMesh = new THREE.Mesh(ringGeometry, material("#aeb8c7"));
-  ringMesh.position.z = 0.0095;
+  ringMesh.position.z = 0.00825;
   root.add(ringMesh);
   link(ringMesh, "G05", 0.045);
   nodes.get("G05").description =
     "One complete ring gear with 96 illustrative internal teeth, 5 mm face width. Non-involute study geometry; tooth count and dimensions are not verified OEM specifications.";
-  nodes.get("G02").description = nodes.get("G02/toothed-study").description;
   add(
     "E03/sensor",
     "Magnetic encoder package",

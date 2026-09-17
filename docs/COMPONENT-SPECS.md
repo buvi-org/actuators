@@ -60,13 +60,15 @@ Quantity: 1 ea. Evidence: Reference CAD.
 
 ## G02 — Sun gear / input shaft
 
-Quantity: 1 ea. Evidence: Reference CAD.
+Quantity: 1 ea. Evidence: Source journals + provisional toothed section.
 
 - **CAD bounding box:** 6.717 x 6.717 x 21.5 mm
 - **Assembly ratio:** 9:1 (not a tooth-count specification)
+- **Current study solid:** One gear-and-shaft solid. Source journals retained; z 3.75 to 11.25 mm replaced by a 12-tooth non-involute profile, module 0.5, face width 7.5 mm. Current tip diameter 7 mm; original source envelope listed separately.
+- **Representation:** Viewer GLB tessellated from the same solid as provisional-sun-gear.step; source blank excluded from combined study.
 - **Material:** OEM steel and hardness unspecified
 - **Make/buy:** Proposed: gear cutting, heat treatment, finish grinding
-- **Unresolved:** Tooth count, module, pressure angle, profile shift, hardness, case depth and spline/shaft fits remain unresolved.
+- **Unresolved:** Tooth count, module, pressure angle, profile shift, hardness, case depth and spline/shaft fits remain unresolved. Study tooth profile is not a manufacturing design. Verify involute geometry, profile shift, root strength, mating gears and axial fits.
 - **Source references:** S1, S3
 
 ## G03 — Input shaft hub

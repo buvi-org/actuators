@@ -178,6 +178,10 @@ by_id['G05'].update(quantity=1,status='Illustration inference',sources=['S1','S3
 by_id['G05']['specifications']['Separate or integral construction']='Separate annular ring is shown in exploded illustration; exact mounting unverified'
 by_id['EM01']['specifications']['Individual-sheet model']='See Lamination lab: provisional profile, coating and thickness tolerance; live study BOM L01–L03'
 
+by_id['G02']['status']='Source journals + provisional toothed section'
+by_id['G02']['specifications'].update({'Current study solid':'One gear-and-shaft solid. Source journals retained; z 3.75 to 11.25 mm replaced by a 12-tooth non-involute profile, module 0.5, face width 7.5 mm. Current tip diameter 7 mm; original source envelope listed separately.', 'Representation':'Viewer GLB tessellated from the same solid as provisional-sun-gear.step; source blank excluded from combined study.'})
+by_id['G02']['unresolved'] += ' Study tooth profile is not a manufacturing design. Verify involute geometry, profile shift, root strength, mating gears and axial fits.'
+
 by_id['M01']['status']='Reference CAD + Primeform modification'
 by_id['M01']['specifications'].update({
  'Primeform housing R1':'Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.',
