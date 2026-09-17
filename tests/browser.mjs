@@ -17,7 +17,7 @@ try {
   await page.goto(url);
   await page.waitForFunction(() => window.__actuator);
   const meshCount = await page.evaluate(() => window.__actuator.meshes.length);
-  assert.ok(meshCount > 480);
+  assert.ok(meshCount > 380);
   assert.equal(
     await page.evaluate(
       () =>
@@ -62,10 +62,24 @@ try {
     1,
   );
   await page.locator("#all-parts").click();
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.assembly.nodes.get("G05").children.length,
+    ),
+    0,
+  );
+  assert.equal(
+    await page.evaluate(
+      () =>
+        window.__actuator.meshes.filter((m) => m.userData.nodeId === "G05")
+          .length,
+    ),
+    1,
+  );
   await page.locator("#gear-view").click();
   assert.equal(
     await page.evaluate(() => window.__actuator.getState().selected),
-    "G02/toothed-study",
+    "G02",
   );
   assert.ok(
     await page

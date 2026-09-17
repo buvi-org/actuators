@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { defaults, calculateStack, profilePoints } from "./lamination-math.js";
 
 // Added geometry is an engineering illustration, never an OEM measurement.
@@ -421,33 +422,27 @@ export function buildAssembly(
       "Annular planet-bearing/bushing placeholder; actual bearing architecture and size unresolved.",
     );
   }
-  annular(
-    "G05/ring",
-    "G05",
-    "Internal ring gear blank",
-    24.6,
-    26,
-    5,
-    9.5,
-    "#aeb8c7",
-    0.045,
-    "Illustrative ring blank (no production tooth form). Candidate 96-tooth / 12-tooth sun relation gives 9:1; it does not identify OEM gearing.",
-  );
-  // A lightweight tooth illustration inside the ring; identity stays with the ring component.
+  const ringPieces = [ring(24.6, 26, 5)];
   for (let i = 0; i < 96; i++) {
-    const a = ((i + 0.5) * 2 * Math.PI) / 96;
-    const tooth = add(
-      `G05/tooth-${i + 1}`,
-      `Ring tooth illustration ${i + 1}`,
-      "G05",
-      box(1.2, 0.6, 5),
-      "#aeb8c7",
-      [24 * Math.cos(a), 24 * Math.sin(a), 9.5],
-      0.045,
-      "Non-involute illustrative tooth; not a manufacturing profile.",
+    const angle = ((i + 0.5) * 2 * Math.PI) / 96;
+    const tooth = box(1.2, 0.6, 5).toNonIndexed();
+    tooth.rotateZ(angle);
+    tooth.translate(
+      (24 * Math.cos(angle)) / 1000,
+      (24 * Math.sin(angle)) / 1000,
+      0,
     );
-    tooth.rotation.z = a;
+    ringPieces.push(tooth);
   }
+  const ringGeometry = mergeGeometries(ringPieces);
+  ringPieces.forEach((g) => g.dispose());
+  const ringMesh = new THREE.Mesh(ringGeometry, material("#aeb8c7"));
+  ringMesh.position.z = 0.0095;
+  root.add(ringMesh);
+  link(ringMesh, "G05", 0.045);
+  nodes.get("G05").description =
+    "One complete ring gear with 96 illustrative internal teeth, 5 mm face width. Non-involute study geometry; tooth count and dimensions are not verified OEM specifications.";
+  nodes.get("G02").description = nodes.get("G02/toothed-study").description;
   add(
     "E03/sensor",
     "Magnetic encoder package",

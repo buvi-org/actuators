@@ -81,6 +81,7 @@ function toggleVisibility(id) {
   if (selected) selectPart(selected, false);
 }
 function selectPart(id, refreshTree = true) {
+  if (id?.startsWith("G02/")) id = "G02";
   if (!assembly) {
     defaultDetails();
     return;
@@ -215,6 +216,7 @@ function renderParts() {
   };
   const line = (id, depth) => {
     const n = assembly.nodes.get(id);
+    const treeChildren = id === "G02" ? [] : n.children;
     if (query && !matches(id)) return "";
     const items = affectedMeshes(id),
       visible = items.filter((m) => m.visible).length,
@@ -229,7 +231,7 @@ function renderParts() {
             : n.kind === "assembly"
               ? ""
               : "STUDY";
-    return `<div class="tree-node" style="--depth:${depth}"><button class="tree-expand" data-expand="${id}" aria-label="${open ? "Collapse" : "Expand"} ${escape(n.name)}" ${n.children.length ? "" : "disabled"}>${n.children.length ? (open ? "▾" : "▸") : "·"}</button><input type="checkbox" data-visible="${id}" aria-label="Visibility: ${escape(n.name)}" ${visible ? "checked" : ""} ${items.length ? "" : "disabled"} title="${items.length ? "Show/hide this item and its children" : "No individually located geometry in available sources"}"><button class="part-row ${selected === id ? "selected" : ""}" data-id="${id}" title="${escape(n.name)}"><span>${escape(n.name)}</span><small>${type}</small></button></div>${open ? n.children.map((child) => line(child, depth + 1)).join("") : ""}`;
+    return `<div class="tree-node" style="--depth:${depth}"><button class="tree-expand" data-expand="${id}" aria-label="${open ? "Collapse" : "Expand"} ${escape(n.name)}" ${treeChildren.length ? "" : "disabled"}>${treeChildren.length ? (open ? "▾" : "▸") : "·"}</button><input type="checkbox" data-visible="${id}" aria-label="Visibility: ${escape(n.name)}" ${visible ? "checked" : ""} ${items.length ? "" : "disabled"} title="${items.length ? "Show/hide this item and its children" : "No individually located geometry in available sources"}"><button class="part-row ${selected === id ? "selected" : ""}" data-id="${id}" title="${escape(n.name)}"><span>${escape(n.name)}</span><small>${type}</small></button></div>${open ? treeChildren.map((child) => line(child, depth + 1)).join("") : ""}`;
   };
   holder.innerHTML =
     assembly.nodes
