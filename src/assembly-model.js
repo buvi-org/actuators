@@ -25,7 +25,6 @@ export function buildAssembly(bom, manifest, driverInventory, sourceModel) {
     ["structure", "Housing & covers"],
     ["fasteners", "Fasteners"],
     ["electronics", "Electronics"],
-    ["harness", "Harnesses"],
     ["consumables", "Assembly materials"],
   ])
     addNode("group:" + id, name, "root", { kind: "assembly" });
@@ -36,7 +35,6 @@ export function buildAssembly(bom, manifest, driverInventory, sourceModel) {
     Structure: "structure",
     Fasteners: "fasteners",
     Electronics: "electronics",
-    Harness: "harness",
     Consumables: "consumables",
   };
   const override = {
@@ -490,57 +488,6 @@ export function buildAssembly(bom, manifest, driverInventory, sourceModel) {
     [-21, -13, -18],
     -0.09,
     "Placeholder only: capacitance, size, position and whether a separate capacitor is needed are unknown.",
-  );
-  const cable = (id, parent, name, points, color, offset) => {
-    const curve = new THREE.CatmullRomCurve3(
-      points.map((p) => new THREE.Vector3(...p.map((v) => v / 1000))),
-    );
-    return add(
-      id,
-      name,
-      parent,
-      new THREE.TubeGeometry(curve, 32, 0.0007, 8, false),
-      color,
-      [0, 0, 0],
-      offset,
-      "Harness routing is illustrative. Wire specification and connector evidence are in the parent component record.",
-    );
-  };
-  cable(
-    "A01/power",
-    "A01",
-    "Power harness (routing study)",
-    [
-      [30, -8, -16],
-      [45, -8, -20],
-      [56, -15, -24],
-    ],
-    "#c96756",
-    -0.075,
-  );
-  cable(
-    "A01/can",
-    "A01",
-    "CAN harness (routing study)",
-    [
-      [30, -6, -16],
-      [45, -5, -20],
-      [56, -12, -24],
-    ],
-    "#86adb7",
-    -0.075,
-  );
-  cable(
-    "A02/serial",
-    "A02",
-    "Serial harness (routing study)",
-    [
-      [29, 6, -16],
-      [44, 9, -22],
-      [52, 15, -25],
-    ],
-    "#d8c37d",
-    -0.075,
   );
   annular(
     "C01/grease",

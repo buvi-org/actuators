@@ -314,9 +314,15 @@ Quantity: 1 ea. Evidence: Published manual.
 - **Onboard connector:** AMASS XT30PW(2+2)-M
 - **Cable mate:** AMASS XT30(2+2)-F
 - **Pin functions, manual p.10:** 1: supply + (red); 2: supply − (black); 3: CAN_H (white); 4: CAN_L (blue)
+- **External cable scope:** Supplied mating accessory; excluded from the internal actuator assembly and BOM quantity
+- **External cable / Included pack:** One power/CAN cable (published)
+- **External cable / Power conductors:** 16 AWG silicone, red/black
+- **External cable / CAN conductors:** 30 AWG PTFE, white/blue, OD 0.64 mm
+- **External cable / Nominal length:** 100 ±10 mm (manual p.12; remarks also say ±2 mm)
+- **External cable / Termination:** XT30(2+2)-F; opposite end stripped/tinned 3 ±1 mm
 - **Material:** Connector assembly
 - **Make/buy:** Buy only after footprint/pinout verification
-- **Unresolved:** Manual resolves the combined connector naming for AK60-4820-1C-A2. Confirm board revision and physical pin orientation before wiring.
+- **Unresolved:** Manual resolves the combined connector naming for AK60-4820-1C-A2. Confirm board revision and physical pin orientation before wiring. External cable: Confirm drawing revision and length tolerance; the manual remarks conflict with its detailed length specification. Verify connector orientation and actual current duty.
 - **Source references:** S1, S6
 
 ## E06 — UART connector
@@ -327,9 +333,14 @@ Quantity: 1 ea. Evidence: Published function.
 - **Product description:** CJT 3-pin
 - **Cable mate:** CJT A1257H-3P
 - **Pin functions, manual p.10:** 1: GND (black); 2: RX (yellow); 3: TX (green)
+- **External cable scope:** Supplied mating accessory; excluded from the internal actuator assembly and BOM quantity
+- **External cable / Included pack:** One serial cable (published)
+- **External cable / Conductors:** 30 AWG PTFE; OD 0.64 mm
+- **External cable / Nominal length:** 200 ±10 mm (manual p.13; remarks also say ±2 mm)
+- **External cable / Termination:** GH1.25 3-pin to FC 2 x 4 crimp connector, as described in manual
 - **Material:** Connector assembly
 - **Make/buy:** Part of E01; verify mating harness
-- **Unresolved:** Confirm pitch, mating part, orientation and voltage levels with driver documentation.
+- **Unresolved:** Confirm pitch, mating part, orientation and voltage levels with driver documentation. External cable: Verify actual mating housing, terminal part numbers and conflicting cable length tolerance against supplied harness.
 - **Source references:** S1, S6
 
 ## E07 — Power stage, gate drive and sensing
@@ -363,33 +374,6 @@ Quantity: TBD set. Evidence: Unresolved.
 - **Make/buy:** Confirm driver configuration before selecting
 - **Unresolved:** The driver file still includes small C-designators; the bulk capacitor configuration cannot be established from the filename. Need circuit, mounting, transient and ripple-current requirements. Verify whether included in purchased E01.
 - **Source references:** S8
-
-## A01 — Power/CAN harness
-
-Quantity: 1 ea. Evidence: Published accessory.
-
-- **Included pack:** One power/CAN cable (published)
-- **Power conductors:** 16 AWG silicone, red/black
-- **CAN conductors:** 30 AWG PTFE, white/blue, OD 0.64 mm
-- **Nominal length:** 100 ±10 mm (manual p.12; remarks also say ±2 mm)
-- **Termination:** XT30(2+2)-F; opposite end stripped/tinned 3 ±1 mm
-- **Material:** Copper wire and matching connectors
-- **Make/buy:** Buy or crimp after current/pinout validation
-- **Unresolved:** Confirm drawing revision and length tolerance; the manual remarks conflict with its detailed length specification. Verify connector orientation and actual current duty.
-- **Source references:** S1, S6
-
-## A02 — Serial harness
-
-Quantity: 1 ea. Evidence: Published accessory.
-
-- **Included pack:** One serial cable (published)
-- **Conductors:** 30 AWG PTFE; OD 0.64 mm
-- **Nominal length:** 200 ±10 mm (manual p.13; remarks also say ±2 mm)
-- **Termination:** GH1.25 3-pin to FC 2 x 4 crimp connector, as described in manual
-- **Material:** Signal wire and matching connector
-- **Make/buy:** Buy or crimp after pinout validation
-- **Unresolved:** Verify actual mating housing, terminal part numbers and conflicting cable length tolerance against supplied harness.
-- **Source references:** S1, S6
 
 ## C01 — Gear lubricant
 

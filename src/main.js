@@ -619,7 +619,6 @@ async function init() {
       "group:structure",
       "group:fasteners",
       "group:electronics",
-      "group:harness",
       "group:consumables",
       "group:bearings",
       "G01",

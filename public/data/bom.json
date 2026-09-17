@@ -691,11 +691,17 @@
       "Specification table": "XT30PW-M; CAN connector field is blank",
       "Onboard connector": "AMASS XT30PW(2+2)-M",
       "Cable mate": "AMASS XT30(2+2)-F",
-      "Pin functions, manual p.10": "1: supply + (red); 2: supply − (black); 3: CAN_H (white); 4: CAN_L (blue)"
+      "Pin functions, manual p.10": "1: supply + (red); 2: supply − (black); 3: CAN_H (white); 4: CAN_L (blue)",
+      "External cable scope": "Supplied mating accessory; excluded from the internal actuator assembly and BOM quantity",
+      "External cable / Included pack": "One power/CAN cable (published)",
+      "External cable / Power conductors": "16 AWG silicone, red/black",
+      "External cable / CAN conductors": "30 AWG PTFE, white/blue, OD 0.64 mm",
+      "External cable / Nominal length": "100 ±10 mm (manual p.12; remarks also say ±2 mm)",
+      "External cable / Termination": "XT30(2+2)-F; opposite end stripped/tinned 3 ±1 mm"
     },
     "material": "Connector assembly",
     "process": "Buy only after footprint/pinout verification",
-    "unresolved": "Manual resolves the combined connector naming for AK60-4820-1C-A2. Confirm board revision and physical pin orientation before wiring.",
+    "unresolved": "Manual resolves the combined connector naming for AK60-4820-1C-A2. Confirm board revision and physical pin orientation before wiring. External cable: Confirm drawing revision and length tolerance; the manual remarks conflict with its detailed length specification. Verify connector orientation and actual current duty.",
     "sources": [
       "S1",
       "S6"
@@ -717,11 +723,16 @@
       "Published part": "A1257WR-S-3P",
       "Product description": "CJT 3-pin",
       "Cable mate": "CJT A1257H-3P",
-      "Pin functions, manual p.10": "1: GND (black); 2: RX (yellow); 3: TX (green)"
+      "Pin functions, manual p.10": "1: GND (black); 2: RX (yellow); 3: TX (green)",
+      "External cable scope": "Supplied mating accessory; excluded from the internal actuator assembly and BOM quantity",
+      "External cable / Included pack": "One serial cable (published)",
+      "External cable / Conductors": "30 AWG PTFE; OD 0.64 mm",
+      "External cable / Nominal length": "200 ±10 mm (manual p.13; remarks also say ±2 mm)",
+      "External cable / Termination": "GH1.25 3-pin to FC 2 x 4 crimp connector, as described in manual"
     },
     "material": "Connector assembly",
     "process": "Part of E01; verify mating harness",
-    "unresolved": "Confirm pitch, mating part, orientation and voltage levels with driver documentation.",
+    "unresolved": "Confirm pitch, mating part, orientation and voltage levels with driver documentation. External cable: Verify actual mating housing, terminal part numbers and conflicting cable length tolerance against supplied harness.",
     "sources": [
       "S1",
       "S6"
@@ -789,59 +800,6 @@
     "unresolved": "The driver file still includes small C-designators; the bulk capacitor configuration cannot be established from the filename. Need circuit, mounting, transient and ripple-current requirements. Verify whether included in purchased E01.",
     "sources": [
       "S8"
-    ],
-    "instances": [],
-    "parent": null,
-    "unitCost": null,
-    "currency": "USD",
-    "procurementReady": false
-  },
-  {
-    "id": "A01",
-    "name": "Power/CAN harness",
-    "group": "Harness",
-    "quantity": 1,
-    "unit": "ea",
-    "status": "Published accessory",
-    "specifications": {
-      "Included pack": "One power/CAN cable (published)",
-      "Power conductors": "16 AWG silicone, red/black",
-      "CAN conductors": "30 AWG PTFE, white/blue, OD 0.64 mm",
-      "Nominal length": "100 ±10 mm (manual p.12; remarks also say ±2 mm)",
-      "Termination": "XT30(2+2)-F; opposite end stripped/tinned 3 ±1 mm"
-    },
-    "material": "Copper wire and matching connectors",
-    "process": "Buy or crimp after current/pinout validation",
-    "unresolved": "Confirm drawing revision and length tolerance; the manual remarks conflict with its detailed length specification. Verify connector orientation and actual current duty.",
-    "sources": [
-      "S1",
-      "S6"
-    ],
-    "instances": [],
-    "parent": null,
-    "unitCost": null,
-    "currency": "USD",
-    "procurementReady": false
-  },
-  {
-    "id": "A02",
-    "name": "Serial harness",
-    "group": "Harness",
-    "quantity": 1,
-    "unit": "ea",
-    "status": "Published accessory",
-    "specifications": {
-      "Included pack": "One serial cable (published)",
-      "Conductors": "30 AWG PTFE; OD 0.64 mm",
-      "Nominal length": "200 ±10 mm (manual p.13; remarks also say ±2 mm)",
-      "Termination": "GH1.25 3-pin to FC 2 x 4 crimp connector, as described in manual"
-    },
-    "material": "Signal wire and matching connector",
-    "process": "Buy or crimp after pinout validation",
-    "unresolved": "Verify actual mating housing, terminal part numbers and conflicting cable length tolerance against supplied harness.",
-    "sources": [
-      "S1",
-      "S6"
     ],
     "instances": [],
     "parent": null,

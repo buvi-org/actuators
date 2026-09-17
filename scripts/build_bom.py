@@ -178,6 +178,16 @@ by_id['G05'].update(quantity=1,status='Illustration inference',sources=['S1','S3
 by_id['G05']['specifications']['Separate or integral construction']='Separate annular ring is shown in exploded illustration; exact mounting unverified'
 by_id['EM01']['specifications']['Individual-sheet model']='See Lamination lab: provisional profile, coating and thickness tolerance; live study BOM L01–L03'
 
+# External mating cables are interface documentation, not internal actuator BOM items.
+for connector_id, accessory_id in [('E05', 'A01'), ('E06', 'A02')]:
+    connector, accessory = by_id[connector_id], by_id[accessory_id]
+    connector['specifications']['External cable scope'] = 'Supplied mating accessory; excluded from the internal actuator assembly and BOM quantity'
+    for key, value in accessory['specifications'].items():
+        connector['specifications']['External cable / ' + key] = value
+    connector['unresolved'] += ' External cable: ' + accessory['unresolved']
+    connector['sources'] = list(dict.fromkeys(connector['sources'] + accessory['sources']))
+rows = [r for r in rows if r['id'] not in ('A01', 'A02')]
+
 specs={
  'identity':'AK80-9 V3.0 KV100','referenceManufacturer':'CubeMars','projectOwner':'Primeform Robotics',
  'revision':'Reference study R0','release':'Not released for manufacture','sourceDate':'2026-09-17',
