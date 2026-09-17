@@ -285,7 +285,7 @@ export function buildAssembly(
     -8.1,
     "#46596a",
     -0.018,
-    "Illustrative rotor support disc. Retention and clearance are not mechanically validated.",
+    "Known interference: this provisional disc overlaps rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. A forward translation also conflicts with the present stator/winding envelope. Axial layout must be redesigned.",
   );
   const sectors = 42;
   for (let i = 0; i < sectors; i++) {

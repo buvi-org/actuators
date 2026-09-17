@@ -21,6 +21,7 @@ Quantity: 1 ea. Evidence: Reference CAD + Primeform modification.
 Quantity: 1 ea. Evidence: Reference CAD.
 
 - **CAD envelope:** Ø98 x 9 mm
+- **Known interference:** Source rear housing intersects the provisional rotor end bell; see rotor-clearance-validation.json. This is not an exploded-view artifact.
 - **Material:** OEM grade unspecified
 - **Make/buy:** Proposed: CNC turning + milling
 - **Unresolved:** Verify locating pilot, concentricity, thermal contact, fastener engagement and finish.
@@ -217,9 +218,10 @@ Quantity: 1 ea. Evidence: Not in reference CAD.
 
 - **Architecture:** Outer rotor study
 - **Envelope / wall thickness:** To be designed
+- **Known end-bell interference:** EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.
 - **Material:** Proposed: magnetic steel yoke with separate structural carrier as required
 - **Make/buy:** Machine and dynamically balance
-- **Unresolved:** OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent.
+- **Unresolved:** OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.
 - **Source references:** Engineering requirement; not an OEM specification
 
 ## EM04 — Rotor permanent magnet set

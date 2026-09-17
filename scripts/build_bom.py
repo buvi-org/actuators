@@ -196,6 +196,10 @@ by_id['C03']['specifications'].update({'Proposed bondline':'0.020 mm radial, sle
 by_id['C03']['material']='Retaining adhesive grade unselected; validate electrical insulation, temperature and thermal performance'
 by_id['C03']['unresolved']='Bond shear/fatigue, thermal cycles, cure, surface preparation, disassembly, tolerances and compatibility with gear heat treatment remain unresolved.'
 
+by_id['EM03']['specifications']['Known end-bell interference']='EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.'
+by_id['EM03']['unresolved'] += ' Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.'
+by_id['M02']['specifications']['Known interference']='Source rear housing intersects the provisional rotor end bell; see rotor-clearance-validation.json. This is not an exploded-view artifact.'
+
 by_id['M01']['status']='Reference CAD + Primeform modification'
 by_id['M01']['specifications'].update({
  'Primeform housing R1':'Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.',

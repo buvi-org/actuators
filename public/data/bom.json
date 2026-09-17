@@ -38,7 +38,8 @@
     "unit": "ea",
     "status": "Reference CAD",
     "specifications": {
-      "CAD envelope": "Ø98 x 9 mm"
+      "CAD envelope": "Ø98 x 9 mm",
+      "Known interference": "Source rear housing intersects the provisional rotor end bell; see rotor-clearance-validation.json. This is not an exploded-view artifact."
     },
     "material": "OEM grade unspecified",
     "process": "Proposed: CNC turning + milling",
@@ -477,11 +478,12 @@
     "status": "Not in reference CAD",
     "specifications": {
       "Architecture": "Outer rotor study",
-      "Envelope / wall thickness": "To be designed"
+      "Envelope / wall thickness": "To be designed",
+      "Known end-bell interference": "EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending."
     },
     "material": "Proposed: magnetic steel yoke with separate structural carrier as required",
     "process": "Machine and dynamically balance",
-    "unresolved": "OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent.",
+    "unresolved": "OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.",
     "sources": [],
     "instances": [],
     "parent": null,

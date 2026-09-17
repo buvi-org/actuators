@@ -1,0 +1,27 @@
+{
+  "source_sha256": "f569faf5c38c6cc2af5a510b36160a316161feb9cad37f5d136abe22b7f1beaa",
+  "rear_housing": "NAUO4",
+  "end_bell": "EM03/endbell",
+  "assembled_end_bell_z_mm": [
+    -8.6,
+    -7.6
+  ],
+  "end_bell_radii_mm": [
+    23,
+    45.5
+  ],
+  "overlap_mm3": 2666.283256,
+  "rear_obstruction_forward_limit_mm": -4.749999,
+  "candidate_running_clearance_mm": 0.25,
+  "forward_moved_bell_required_z_mm": [
+    -4.499999,
+    -3.499999
+  ],
+  "current_stator_rear_z_mm": -6.936,
+  "current_winding_rear_z_mm": -7.8,
+  "rearward_housing_translation_candidate_mm": 4.1,
+  "translated_housing_endbell_overlap_mm3": 0.0,
+  "translated_housing_endbell_min_distance_mm": 0.25,
+  "candidate_translation_scope": "Clearance study only. Not an implemented assembly: housing joint, bearings, hub and electronics alignment need coordinated redesign.",
+  "status": "Unresolved axial layout. Preserve motor stack or external envelope before choosing correction."
+}
