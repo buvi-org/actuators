@@ -16,7 +16,68 @@ await fs.mkdir("tmp/qa", { recursive: true });
 try {
   await page.goto(url);
   await page.waitForFunction(() => window.__actuator);
-  assert.equal(await page.evaluate(() => window.__actuator.meshes.length), 43);
+  const meshCount = await page.evaluate(() => window.__actuator.meshes.length);
+  assert.ok(meshCount > 480);
+  assert.equal(
+    await page.evaluate(
+      () =>
+        window.__actuator.meshes.filter(
+          (m) => m.userData.geometryKind === "reference",
+        ).length,
+    ),
+    43,
+  );
+  assert.ok(
+    await page.evaluate(() =>
+      window.__actuator.bom.every((row) =>
+        window.__actuator.assembly.nodes.has(row.id),
+      ),
+    ),
+  );
+  await page.locator("#gear-view").click();
+  assert.equal(
+    await page.evaluate(() => window.__actuator.getState().selected),
+    "G02/toothed-study",
+  );
+  assert.ok(
+    await page
+      .locator("#component-detail")
+      .innerText()
+      .then((t) => t.includes("12 teeth") && t.includes("non-involute")),
+  );
+  await page.screenshot({ path: "tmp/qa/gear-train.png", fullPage: true });
+  await page.locator("#internal-view").click();
+  await page.evaluate(() => window.__actuator.selectPart("EM04"));
+  await page.locator("#isolate-part").click();
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.meshes.filter((m) => m.visible).length,
+    ),
+    42,
+  );
+  await page.locator("#all-parts").click();
+  await page.evaluate(() => window.__actuator.selectPart("EM01/L001"));
+  await page.locator("#hide-part").click();
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.meshes.filter((m) => m.visible).length,
+    ),
+    meshCount - 1,
+  );
+  assert.equal(
+    await page
+      .locator('[data-visible="EM01"]')
+      .evaluate((e) => e.indeterminate),
+    true,
+  );
+  await page.locator("#all-parts").click();
+  await page.evaluate(() => window.__actuator.selectPart("pcb:R6"));
+  assert.match(
+    await page.locator("#component-detail").innerText(),
+    /Package model labels/,
+  );
+  assert.equal(await page.locator("#isolate-part").isDisabled(), true);
+  await page.locator("#internal-view").click();
   await page.screenshot({ path: "tmp/qa/assembly.png", fullPage: true });
   await page.locator("#exploded").click();
   assert.equal(
@@ -30,14 +91,30 @@ try {
     await page.evaluate(
       () => window.__actuator.meshes.filter((m) => m.visible).length,
     ),
-    1,
+    2,
   );
   await page.locator("#all-parts").click();
   assert.equal(
     await page.evaluate(
       () => window.__actuator.meshes.filter((m) => m.visible).length,
     ),
-    43,
+    meshCount,
+  );
+  const [assemblyDownload] = await Promise.all([
+    page.waitForEvent("download"),
+    page.locator("#export-assembly").click(),
+  ]);
+  await assemblyDownload.saveAs("tmp/qa/complete-assembly.glb");
+  const assemblyBytes = await fs.readFile("tmp/qa/complete-assembly.glb");
+  const assemblyGltf = JSON.parse(
+    assemblyBytes.toString("utf8", 20, 20 + assemblyBytes.readUInt32LE(12)),
+  );
+  assert.equal(
+    assemblyGltf.nodes.filter((n) => n.mesh !== undefined).length,
+    meshCount,
+  );
+  assert.ok(
+    assemblyGltf.nodes.some((n) => n.extras?.id === "G02/toothed-study"),
   );
   await page.locator("#section").click();
   assert.equal(

@@ -1115,6 +1115,143 @@ tbody tr:hover {
   color: #8da5b5;
   max-width: 1100px;
 }
+.tree-node {
+  display: flex;
+  align-items: center;
+  padding-left: calc(var(--depth) * 12px);
+  min-width: 0;
+  gap: 3px;
+  min-height: 32px;
+}
+.tree-node .tree-expand {
+  width: 18px;
+  flex-shrink: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #8ca4b5;
+}
+.tree-node .tree-expand:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.tree-node input[type="checkbox"] {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  accent-color: #8bd8b9;
+  flex-shrink: 0;
+}
+.tree-node input:disabled {
+  opacity: 0.22;
+}
+.tree-node .part-row {
+  border: 0;
+  padding: 7px 5px;
+  min-width: 0;
+  flex: 1;
+  font-size: 10px;
+  gap: 5px;
+}
+.tree-node .part-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.tree-node .part-row small {
+  font-size: 7px;
+  flex-shrink: 0;
+}
+#parts-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 8px 3px;
+}
+.parts-panel {
+  overflow: hidden;
+}
+.parts-panel .panel-heading,
+.parts-panel .search,
+.parts-panel .all-parts,
+.parts-panel .tree-foot {
+  flex-shrink: 0;
+}
+.detail-sources {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.inspector-actions button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+#export-assembly {
+  color: var(--mint);
+  font-size: 10px;
+  padding: 0;
+}
+.workspace {
+  grid-template-columns: 290px minmax(300px, 1fr) 310px;
+}
+.viewport-top {
+  gap: 6px;
+}
+.view-modes {
+  flex-wrap: wrap;
+}
+.view-modes button {
+  padding: 7px 8px;
+}
+@media (min-width: 1500px) {
+  .workspace {
+    grid-template-columns: 310px minmax(350px, 1fr) 330px;
+  }
+}
+@media (max-width: 1150px) {
+  .workspace {
+    grid-template-columns: 245px minmax(280px, 1fr) 260px;
+  }
+}
+@media (max-width: 950px) {
+  .workspace {
+    grid-template-columns: 240px minmax(0, 1fr);
+    height: auto;
+  }
+  .inspector {
+    grid-column: 1/-1;
+  }
+  .parts-panel,
+  .viewport-wrap {
+    height: 570px;
+  }
+  .model-footer {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 560px) {
+  .workspace {
+    display: flex;
+  }
+  .parts-panel {
+    height: 370px;
+  }
+  .viewport-wrap {
+    height: 450px;
+  }
+  .viewport-label {
+    top: 98px;
+  }
+  .model-footer > div {
+    flex-wrap: wrap;
+  }
+  .tree-node .part-row {
+    font-size: 11px;
+  }
+}
 .exceeds {
   border-color: #866442;
   color: #f0ce91;

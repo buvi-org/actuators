@@ -95,12 +95,12 @@
             <button id="all-parts" class="all-parts">
               ◈
               <span
-                >AK80-9 V3.0<small>Manufacturer reference assembly</small></span
+                >AK80-9 V3.0<small>Full BOM · show all components</small></span
               >
             </button>
             <div id="parts-list"></div>
             <div class="tree-foot">
-              <span class="status-dot"></span> Named parts from source STEP<br /><button
+              <span class="status-dot"></span> CAD + provisional internals<br /><button
                 id="open-lamination"
                 style="color: #a6edcf; padding: 12px 0 0; font-size: 10px"
               >
@@ -113,7 +113,10 @@
               <div class="view-modes">
                 <button id="assembled" class="active">Assembled</button
                 ><button id="exploded">Exploded</button
-                ><button id="section">Section</button>
+                ><button id="section">Section</button
+                ><button id="internal-view">Internals</button
+                ><button id="gear-view">Gear train</button
+                ><button id="show-all">Show all</button>
               </div>
               <button
                 id="reset-view"
@@ -161,12 +164,14 @@
         </div>
         <div class="model-footer">
           <p>
-            <span class="amber-dot"></span> The reference CAD omits windings,
-            laminations, rotor magnets and planetary internals. See the BOM for
-            missing items.
+            <span class="amber-dot"></span> Added stator, laminations, windings,
+            magnets and gearbox internals are provisional illustrations. The
+            tree and details distinguish these from manufacturer CAD. Clearances
+            are not validated.
           </p>
           <div>
-            <a href="models/ak80-9-reference.glb" download>Download GLB ↓</a
+            <button id="export-assembly">Full assembly GLB ↓</button
+            ><a href="models/ak80-9-reference.glb" download>Reference GLB ↓</a
             ><a
               href="https://www.cubemars.com/data/cms/202602/ak80-9-v3-0-robotic-actuator-3d-drawing.zip"
               >Source STEP ↗</a

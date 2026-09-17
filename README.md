@@ -17,9 +17,12 @@ Our first actuator study uses the CubeMars AK80-9 V3.0 KV100 as a reference. It 
 
 The Three.js workbench includes:
 
-- A named manufacturer-reference assembly with 43 CAD instances, assembled/exploded views, clipping, part selection, isolation and component specifications.
+- A full BOM tree with selection, hierarchical visibility, isolation, focus, and a details inspector showing specifications, sources, and unresolved information.
+- The 43 manufacturer CAD instances plus provisional stator laminations, coating faces, winding bundles, rotor yoke, magnets, gears, pins, electronics and harnesses. Manufacturer bearings and fasteners remain selectable.
+- An **Internals** preset and a **Gear train** preset that exposes a toothed sun, three planets and the internal ring. The illustrative 12/42/96 tooth counts produce a 9:1 ratio; their non-involute profiles are not manufacturing geometry.
+- Full assembly GLB export, including reference geometry and annotated provisional bodies. The separate Lamination lab remains independently configurable; its settings do not currently change the assembly study.
 - A 37-line engineering BOM distinguishing source CAD, published data, illustration inferences and unresolved items.
-- An inventory of 205 driver-board reference designators and package-model labels. Component values and exact IC part numbers remain unknown.
+- An inventory of 205 driver-board reference designators and package-model labels. Component values and exact IC part numbers remain unknown. These inventory entries are selectable data records; individual PCB positions are not mapped to the actuator assembly, so their visibility controls are disabled.
 - An original, provisional lamination study with individually selectable steel sheets and two coating layers per sheet, editable profile dimensions, coating/gap/tolerance calculations, and live study quantities.
 - GLB, DXF, JSON and default solid STEP deliverables.
 
