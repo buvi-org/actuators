@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+import gearProfiles from "./gear-profiles.json";
 import { defaults, calculateStack, profilePoints } from "./lamination-math.js";
 
 // Added geometry is an engineering illustration, never an OEM measurement.
@@ -356,15 +356,10 @@ export function buildAssembly(
     0.25,
   );
   const gear = (teeth, pitchRadius, width, bore) => {
-    const s = new THREE.Shape();
-    const m = (2 * pitchRadius) / teeth;
-    for (let i = 0; i < teeth * 4; i++) {
-      const a = (i / (teeth * 4)) * Math.PI * 2,
-        r = pitchRadius + (i % 4 === 1 || i % 4 === 2 ? m : -1.15 * m);
-      const x = (r / 1000) * Math.cos(a),
-        y = (r / 1000) * Math.sin(a);
-      i ? s.lineTo(x, y) : s.moveTo(x, y);
-    }
+    const profile = teeth === 12 ? gearProfiles.sun : gearProfiles.planet;
+    const s = new THREE.Shape(
+      profile.map(([x, y]) => new THREE.Vector2(x / 1000, y / 1000)),
+    );
     s.closePath();
     const h = new THREE.Path();
     h.absarc(0, 0, bore / 1000, 0, 2 * Math.PI, true);
@@ -422,20 +417,20 @@ export function buildAssembly(
       "Annular planet-bearing/bushing placeholder; actual bearing architecture and size unresolved.",
     );
   }
-  const ringPieces = [ring(24.6, 26, 5)];
-  for (let i = 0; i < 96; i++) {
-    const angle = ((i + 0.5) * 2 * Math.PI) / 96;
-    const tooth = box(1.2, 0.6, 5).toNonIndexed();
-    tooth.rotateZ(angle);
-    tooth.translate(
-      (24 * Math.cos(angle)) / 1000,
-      (24 * Math.sin(angle)) / 1000,
-      0,
-    );
-    ringPieces.push(tooth);
-  }
-  const ringGeometry = mergeGeometries(ringPieces);
-  ringPieces.forEach((g) => g.dispose());
+  // Teeth and rim share one continuous boundary, matching the single-solid STEP.
+  const ringShape = new THREE.Shape();
+  ringShape.absarc(0, 0, 0.026, 0, Math.PI * 2, false);
+  const toothBoundary = new THREE.Path(
+    gearProfiles.ring.map(([x, y]) => new THREE.Vector2(x / 1000, y / 1000)),
+  );
+  toothBoundary.closePath();
+  ringShape.holes.push(toothBoundary);
+  const ringGeometry = new THREE.ExtrudeGeometry(ringShape, {
+    depth: 0.005,
+    bevelEnabled: false,
+    curveSegments: 96,
+  });
+  ringGeometry.translate(0, 0, -0.0025);
   const ringMesh = new THREE.Mesh(ringGeometry, material("#aeb8c7"));
   ringMesh.position.z = 0.0095;
   root.add(ringMesh);

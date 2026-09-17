@@ -1,0 +1,23 @@
+{
+  "sun": {
+    "solid_count": 1,
+    "step_roundtrip_valid": true,
+    "volume_mm3": 97.2537
+  },
+  "planet": {
+    "solid_count": 1,
+    "step_roundtrip_valid": true,
+    "volume_mm3": 1577.6825
+  },
+  "ring": {
+    "solid_count": 1,
+    "step_roundtrip_valid": true,
+    "volume_mm3": 1571.2
+  },
+  "assembly": {
+    "components": 5,
+    "solids": 5,
+    "tooth_components": 0,
+    "status": "Illustrative non-involute geometry; not production-ready"
+  }
+}
