@@ -185,6 +185,17 @@ by_id['G02']['unresolved'] += ' Study tooth profile is not a manufacturing desig
 for gear_id, teeth in [('G02',20),('G04',70),('G05',160)]:
     by_id[gear_id]['specifications'].update({'Primeform matched gear candidate':f'{teeth} teeth; module 0.3; pressure angle 20 degrees; zero profile shift', 'Candidate backlash':'0.020 mm circular per mesh at nominal centres, from 0.010 mm tooth thinning per gear; not a manufacturing tolerance', 'Root transition':'0.060 mm circular fillets; not a hob/shaper-generated trochoid', 'Ratio and assembly':'20 / 70 / 160 teeth; ring fixed, sun input, carrier output: exactly 9:1; three planets at 120 degrees; centres 13.5 mm', 'Release blockers':'Cutting process, steel grade, heat treatment, gear quality, tooth-thickness tolerances, strength, fatigue, lubrication and loaded contact checks'})
 
+by_id['G05']['name']='Internal ring gear with integral stator carrier'
+by_id['G05']['status']='Primeform mounting proposal'
+by_id['G05']['specifications'].update({'Housing joint':'Eight M2.5 x 6 countersunk screws, NAUO7 and NAUO22–28, through M01 into this flange; 54 mm PCD', 'Mounting flange':'OD 60 / ID 49.8 mm; z 8.75 to 13.25 mm; 8 x M2.5 x 0.45 through. STEP uses 2.05 mm pilot bores, no thread helices.', 'Nominal screw penetration':'3.3 mm from housing contact face to screw tip; thread engagement strength and torque not released', 'Stator carrier':'Integral sleeve OD 51.96 / ID 49.8 mm, z -6.0 to 6.936 mm; axial shoulder at z 6.936 mm, OD 60 mm', 'Rear clearance':'0.25 mm nominal sleeve-to-rear-housing axial clearance', 'Support rationale':'Primeform proposed integral stationary ring/carrier; OEM flange inferred from illustration, support integration not established by OEM sources'})
+by_id['G05']['unresolved'] += ' Integral carrier needs material/heat-treatment, adhesive, thermal path, shaft alignment and thread-strength review. New nominal interfaces are not manufacture-released.'
+by_id['EM01']['specifications'].update({'Mounting in current study':'Bore 52 mm seats on G05 shoulder at z 6.936 mm; sleeve OD 51.96 mm gives 0.020 mm radial bond gap', 'Axial location':'Stack -6.936 to +6.936 mm; sleeve -6.0 to +6.936 mm leaves 0.936 mm stack overhang at rear', 'Retention':'Proposed retaining adhesive on carrier sleeve, with front axial seating shoulder; no assumed press fit'})
+by_id['F01']['specifications'].update({'Front joint, 8 screws':'NAUO7 and NAUO22–28: M01 main housing to G05 integral ring gear / stator carrier, 54 mm PCD', 'Rear joint, 16 screws':'Remaining F01 instances: M02 rear housing to M01 main housing'})
+by_id['C03']['name']='Stator retaining and thermal bondline'
+by_id['C03']['specifications'].update({'Proposed bondline':'0.020 mm radial, sleeve radius 25.98 to stator bore radius 26.00 mm; length 12.936 mm', 'Function':'Stator torque retention and heat transfer to integral G05 carrier and housing'})
+by_id['C03']['material']='Retaining adhesive grade unselected; validate electrical insulation, temperature and thermal performance'
+by_id['C03']['unresolved']='Bond shear/fatigue, thermal cycles, cure, surface preparation, disassembly, tolerances and compatibility with gear heat treatment remain unresolved.'
+
 by_id['M01']['status']='Reference CAD + Primeform modification'
 by_id['M01']['specifications'].update({
  'Primeform housing R1':'Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.',

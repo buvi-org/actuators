@@ -76,6 +76,26 @@ try {
     ),
     1,
   );
+  await page.locator("#mounting-view").click();
+  assert.equal(
+    await page.evaluate(
+      () =>
+        window.__actuator.meshes.filter(
+          (m) => m.visible && m.userData.nodeId.startsWith("F01/"),
+        ).length,
+    ),
+    8,
+  );
+  assert.equal(
+    await page.evaluate(() => window.__actuator.getState().selected),
+    "G05",
+  );
+  await page.screenshot({ path: "tmp/qa/stator-mount.png", fullPage: true });
+  await page.evaluate(() => window.__actuator.selectPart("F01/NAUO24"));
+  assert.match(
+    await page.locator("#component-detail").innerText(),
+    /Front joint: main housing/,
+  );
   await page.locator("#gear-view").click();
   assert.equal(
     await page.evaluate(() => window.__actuator.getState().selected),

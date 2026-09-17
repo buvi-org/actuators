@@ -30,8 +30,55 @@ vertices,faces=sun.tessellate(.015,.04)
 mesh=trimesh.Trimesh(vertices=np.array([v.toTuple() for v in vertices])/1000,faces=np.array(faces),process=False)
 scene=trimesh.Scene();scene.add_geometry(mesh,node_name='G02');scene.export(OUT/'provisional-sun-gear.glb')
 planet=external(geometry['planet'][0],3)
-face=cq.Face.makeFromWires(cq.Workplane('XY').circle(26).wire().val(),[geometry['ring'][0]])
+face=cq.Face.makeFromWires(cq.Workplane('XY').circle(25.98).wire().val(),[geometry['ring'][0]])
 ring=cq.Solid.extrudeLinear(face,cq.Vector(0,0,5)).translate((0,0,-2.5))
+# Integral fixed-ring flange and stator carrier, in assembly coordinates.
+# The gear local origin is z=8.25; rotate hole locations back by tooth phase.
+phase=math.pi/160
+stack_half=6.936
+
+def annulus(ri,ro,z0,z1):
+ return cq.Solid.makeCylinder(ro,z1-z0,cq.Vector(0,0,z0)).cut(cq.Solid.makeCylinder(ri,z1-z0,cq.Vector(0,0,z0)))
+ring_world=ring.translate((0,0,8.25))
+flange=annulus(24.9,30,8.75,13.25)
+shoulder=annulus(24.9,30,stack_half,8.75)
+sleeve=annulus(24.9,25.98,-6.0,stack_half)
+ring_world=ring_world.fuse(flange,shoulder,sleeve).clean()
+mount_ids=['NAUO7']+[f'NAUO{i}' for i in range(22,29)]
+bolt_centres=[]
+for part in manifest['parts']:
+ if part['id'] not in mount_ids:continue
+ bounds=part['bounds_mm'];x=(bounds[0]+bounds[3])/2;y=(bounds[1]+bounds[4])/2
+ # Source bolt coordinates are already in the assembled world frame.
+ lx=x*math.cos(phase)+y*math.sin(phase);ly=-x*math.sin(phase)+y*math.cos(phase)
+ ring_world=ring_world.cut(cq.Solid.makeCylinder(1.025,4.52,cq.Vector(lx,ly,8.74)))
+ bolt_centres.append({'instance':part['id'],'x_mm':x,'y_mm':y,'pcd_mm':2*math.hypot(x,y),'screw_tip_z_mm':bounds[2],'nominal_engagement_mm':13.25-bounds[2]})
+assert len(bolt_centres)==8
+ring=ring_world.clean().translate((0,0,-8.25))
+mounted=ring_world.rotate((0,0,0),(0,0,1),math.degrees(phase))
+# Compare against source stationary and rotating bodies plus stator/coil envelopes.
+clashes={}
+for shape,name,loc,color in reference:
+ id=name.split('/')[-1]
+ if id not in ['NAUO3','NAUO4','NAUO37','NAUO38','NAUO39','NAUO45']:continue
+ body=shape.moved(loc).translate(-cq.Vector(*manifest['center_original_mm']))
+ overlap=mounted.intersect(body,tol=1e-6).Volume()
+ clashes[id]=round(abs(overlap),6)
+
+ if abs(overlap)>=.01:
+  bb=mounted.intersect(body,tol=1e-6).BoundingBox(); print('CLASH',id,overlap,[bb.xmin,bb.ymin,bb.zmin,bb.xmax,bb.ymax,bb.zmax],flush=True)
+ assert abs(overlap)<.01,(id,overlap)
+stator=annulus(26,40,-stack_half,stack_half)
+coil=annulus(32.5,39,-7.8,7.8)
+for name,body in [('stator_envelope',stator),('winding_envelope',coil)]:
+ overlap=mounted.intersect(body,tol=1e-6).Volume();clashes[name]=round(abs(overlap),6)
+ assert abs(overlap)<.01,(name,overlap)
+# Every mounting bore must be clear through the flange on the actual screw axis.
+for b in bolt_centres:
+ probe=cq.Solid.makeCylinder(1,4.48,cq.Vector(b['x_mm'],b['y_mm'],8.76))
+ assert mounted.intersect(probe).Volume()<.001
+mounting={'design':'Primeform integral ring gear / stator carrier; OEM joint inferred, new support geometry proposed','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45 through flange; model shows 2.05 mm tap-drill cylinders, not thread helices; engagement/torque release pending','flange_od_mm':60,'flange_inner_diameter_mm':49.8,'flange_z_mm':[8.75,13.25],'stator_seat_z_mm':stack_half,'stator_sleeve_od_mm':51.96,'stator_sleeve_z_mm':[-6.0,6.936],'rear_housing_axial_clearance_mm':0.25,'stator_bore_mm':52,'radial_bond_gap_mm':.02,'stator_retention':'Proposed retaining adhesive on sleeve plus axial seating shoulder. Adhesive grade, bond strength and thermal-cycle validation unresolved. Not a press-fit specification.','source_and_envelope_overlap_mm3':clashes,'scope':'Rigid nominal geometry only. Thread engagement, adhesive strength, tolerances, heat flow and existing rotor/housing conflict remain release blockers.'}
+(OUT/'stator-mount-validation.json').write_text(json.dumps(mounting,indent=2)+'\n')
 report={}
 for name,solid in [('sun',sun),('planet',planet),('ring',ring)]:
  assert solid.isValid() and len(solid.Solids())==1

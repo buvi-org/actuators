@@ -1,0 +1,98 @@
+{
+  "design": "Primeform integral ring gear / stator carrier; OEM joint inferred, new support geometry proposed",
+  "bolt_circle_mm": 54,
+  "screws": [
+    {
+      "instance": "NAUO7",
+      "x_mm": 24.944699999999997,
+      "y_mm": -10.3325,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO22",
+      "x_mm": 24.944699999999997,
+      "y_mm": 10.3325,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO23",
+      "x_mm": 10.3325,
+      "y_mm": 24.944699999999997,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO24",
+      "x_mm": -10.3325,
+      "y_mm": 24.944699999999997,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO25",
+      "x_mm": -24.944699999999997,
+      "y_mm": 10.3325,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO26",
+      "x_mm": -24.944699999999997,
+      "y_mm": -10.3325,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO27",
+      "x_mm": -10.3325,
+      "y_mm": -24.944699999999997,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    },
+    {
+      "instance": "NAUO28",
+      "x_mm": 10.3325,
+      "y_mm": -24.944699999999997,
+      "pcd_mm": 53.99994867923487,
+      "screw_tip_z_mm": 9.95,
+      "nominal_engagement_mm": 3.3000000000000007
+    }
+  ],
+  "thread_callout": "8 x M2.5 x 0.45 through flange; model shows 2.05 mm tap-drill cylinders, not thread helices; engagement/torque release pending",
+  "flange_od_mm": 60,
+  "flange_inner_diameter_mm": 49.8,
+  "flange_z_mm": [
+    8.75,
+    13.25
+  ],
+  "stator_seat_z_mm": 6.936,
+  "stator_sleeve_od_mm": 51.96,
+  "stator_sleeve_z_mm": [
+    -6.0,
+    6.936
+  ],
+  "rear_housing_axial_clearance_mm": 0.25,
+  "stator_bore_mm": 52,
+  "radial_bond_gap_mm": 0.02,
+  "stator_retention": "Proposed retaining adhesive on sleeve plus axial seating shoulder. Adhesive grade, bond strength and thermal-cycle validation unresolved. Not a press-fit specification.",
+  "source_and_envelope_overlap_mm3": {
+    "NAUO45": 0.0,
+    "NAUO37": 0.0,
+    "NAUO38": 0.0,
+    "NAUO39": 0.0,
+    "NAUO3": 0.0,
+    "NAUO4": 0.0,
+    "stator_envelope": 0.0,
+    "winding_envelope": 0.0
+  },
+  "scope": "Rigid nominal geometry only. Thread engagement, adhesive strength, tolerances, heat flow and existing rotor/housing conflict remain release blockers."
+}

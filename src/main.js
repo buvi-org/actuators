@@ -632,6 +632,34 @@ async function init() {
       button.textContent = "Full assembly GLB ↓";
     }
   };
+  $("mounting-view").onclick = () => {
+    isolated = null;
+    const keep = new Set(["M01", "G05", "EM01", "C03", "F01"]);
+    hiddenIds = new Set(
+      bom.filter((row) => !keep.has(row.id)).map((row) => row.id),
+    );
+    const mountScrews = new Set([
+      "NAUO7",
+      ...Array.from({ length: 7 }, (_, i) => "NAUO" + (22 + i)),
+    ]);
+    manifest.parts
+      .filter((p) => p.bomId === "F01" && !mountScrews.has(p.id))
+      .forEach((p) => hiddenIds.add("F01/" + p.id));
+    separation = 0;
+    section = true;
+    updateScene();
+    renderParts();
+    selectPart("G05");
+    fitView();
+    const distance = camera.position.distanceTo(controls.target);
+    camera.position
+      .copy(controls.target)
+      .add(
+        new THREE.Vector3(1.3, 0.35, -0.8).normalize().multiplyScalar(distance),
+      );
+    controls.update();
+    setDirty();
+  };
   $("gear-view").onclick = () => {
     isolated = null;
     hiddenIds = new Set([

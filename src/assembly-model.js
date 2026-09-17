@@ -90,6 +90,15 @@ export function buildAssembly(
       kind: "instance",
       part,
       status: "Reference CAD",
+      description:
+        part.bomId === "F01"
+          ? [
+              "NAUO7",
+              ...Array.from({ length: 7 }, (_, i) => "NAUO" + (22 + i)),
+            ].includes(part.id)
+            ? "Front joint: main housing M01 to fixed ring gear / integral stator carrier G05, eight screws on 54 mm PCD. Candidate thread M2.5 x 0.45; nominal screw penetration 3.3 mm. Thread strength and tightening torque pending."
+            : "Rear joint: rear housing M02 to main housing M01, sixteen source screws. Thread engagement and tightening torque require validation."
+          : undefined,
     });
     mesh.material = mesh.material.clone();
     mesh.material.color.set(part.color);
@@ -107,11 +116,11 @@ export function buildAssembly(
   if (housingSupports) {
     addNode(
       "M01/boss-extensions",
-      "Primeform R1 � bosses extended to floor",
+      "Primeform R1 - bosses extended to floor",
       "M01",
       {
         kind: "instance",
-        status: "Primeform modification � clearance conflict",
+        status: "Primeform modification - clearance conflict",
         description:
           "Sixteen 5 mm diameter screw supports extended from rear seating plane to the housing pocket floors; 16 existing screw bores retained. Added supports intersect the current provisional rotor yoke. Resolve rotor/housing envelopes before manufacture. Toggle this item off to inspect the original CubeMars housing.",
       },
@@ -382,7 +391,7 @@ export function buildAssembly(
   });
   nodes.get("G02").status = "Provisional gear-and-shaft solid";
   nodes.get("G02").description =
-    "One connected gear-and-shaft solid: source end journals retained; central section z 3.75�11.25 mm replaced with the 20-tooth, module 0.3, 20� involute candidate. Face width 7.5 mm. Circular root fillets 0.06 mm; nominal circular backlash 0.020 mm per mesh. Manufacturing release pending process, tolerances and strength verification. Viewer mesh is tessellated directly from the STEP solid.";
+    "One connected gear-and-shaft solid: source end journals retained; central section z 3.75-11.25 mm replaced with the 20-tooth, module 0.3, 20 degrees involute candidate. Face width 7.5 mm. Circular root fillets 0.06 mm; nominal circular backlash 0.020 mm per mesh. Manufacturing release pending process, tolerances and strength verification. Viewer mesh is tessellated directly from the STEP solid.";
   for (let i = 0; i < 3; i++) {
     const a = (i * 2 * Math.PI) / 3,
       x = 13.5 * Math.cos(a),
@@ -395,7 +404,7 @@ export function buildAssembly(
       "#b6bac4",
       [x, y, 8.25],
       0.055,
-      "70-tooth involute candidate, module 0.3, 20� pressure angle, 5 mm face width. STEP-derived mesh. Circular root fillets and backlash are candidate values; process and strength release pending.",
+      "70-tooth involute candidate, module 0.3, 20 degrees pressure angle, 5 mm face width. STEP-derived mesh. Circular root fillets and backlash are candidate values; process and strength release pending.",
     );
     planet.rotation.z = a + Math.PI + Math.PI / 70 + (20 / 70) * a;
     add(
@@ -428,7 +437,7 @@ export function buildAssembly(
   root.add(ringMesh);
   link(ringMesh, "G05", 0.045);
   nodes.get("G05").description =
-    "160-tooth internal involute candidate, module 0.3, 20� pressure angle, 5 mm face width. One STEP-derived solid. With ring fixed, sun input and carrier output, ratio is exactly 1 + 160/20 = 9. Manufacturing release pending.";
+    "160-tooth internal involute candidate, module 0.3, 20 degrees pressure angle, 5 mm face width. One STEP-derived solid. With ring fixed, sun input and carrier output, ratio is exactly 1 + 160/20 = 9. Manufacturing release pending. Integral 60 mm OD mounting flange has eight M2.5 tapped positions on 54 mm PCD; shoulder seats stator at z=6.936 mm and sleeve supports its bore. This stationary carrier is a Primeform proposal, not recovered OEM geometry.";
   add(
     "E03/sensor",
     "Magnetic encoder package",
@@ -528,14 +537,14 @@ export function buildAssembly(
   annular(
     "C03/interface",
     "C03",
-    "Stator thermal interface (study)",
-    25.85,
+    "Stator retaining bondline (study)",
+    25.98,
     26,
-    14,
-    0,
+    12.936,
+    0.468,
     "#78c6ba",
     -0.05,
-    "Illustrative bore interface; actual heat path and compound specification unresolved.",
+    "Proposed 0.020 mm radial retaining-adhesive bondline between stator bore and integral ring-gear carrier. Adhesive grade, bond strength and thermal performance must be validated.",
   );
   const seal = new THREE.TorusGeometry(0.046, 0.00045, 10, 100);
   add(
