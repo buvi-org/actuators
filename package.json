@@ -11,7 +11,8 @@
     "cad": "python cad/build_reference.py",
     "bom": "python scripts/build_bom.py",
     "lamination": "node scripts/export-lamination.mjs && python cad/build_lamination.py",
-    "test:browser": "node tests/browser.mjs"
+    "test:browser": "node tests/browser.mjs",
+    "test:assembly": "node tests/assembly-browser.mjs"
   },
   "dependencies": {
     "three": "0.186.0"

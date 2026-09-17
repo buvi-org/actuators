@@ -1534,3 +1534,97 @@ tbody tr:hover {
     max-width: 65%;
   }
 }
+
+#assembly-panel {
+  padding: 20px;
+  border: 1px solid #40534d;
+  background: #17231f;
+}
+#assembly-panel[hidden],
+#assembly-detail[hidden],
+.viewport-bottom[hidden] {
+  display: none;
+}
+.assembly-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.assembly-controls button,
+.assembly-controls select {
+  background: #293c34;
+  color: #e7efe9;
+  padding: 8px;
+  border: 1px solid #597566;
+  border-radius: 4px;
+}
+.assembly-controls select {
+  max-width: 100%;
+}
+.assembly-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#assembly-panel p,
+#assembly-panel a {
+  font-size: 12px;
+  line-height: 1.6;
+}
+#assembly-detail {
+  padding: 18px;
+  border-bottom: 2px solid #649783;
+  font-size: 12px;
+  line-height: 1.65;
+}
+#assembly-detail h3 {
+  font-size: 19px;
+  margin: 10px 0;
+}
+#assembly-detail h4 {
+  margin: 18px 0 6px;
+}
+#assembly-detail ul {
+  padding-left: 17px;
+}
+.assembly-warning {
+  color: #ffd18c;
+}
+.assembly-note {
+  color: #9fb1a8;
+}
+.mate-part {
+  display: block;
+  color: #9ee2d0;
+  text-align: left;
+  padding: 5px 0;
+  text-decoration: underline;
+}
+#assembly-register summary {
+  cursor: pointer;
+  padding: 12px 0;
+}
+.joint-table {
+  overflow: auto;
+  max-height: 480px;
+}
+.joint-table table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.joint-table td,
+.joint-table th {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #3c5045;
+  vertical-align: top;
+}
+.joint-table button {
+  color: #a6edcf;
+  text-align: left;
+  text-decoration: underline;
+}

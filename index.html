@@ -111,7 +111,8 @@
           <div class="viewport-wrap">
             <div class="viewport-top">
               <div class="view-modes">
-                <button id="assembled" class="active">Assembled</button
+                <button id="assembly-guide">Assembly guide</button
+                ><button id="assembled" class="active">Assembled</button
                 ><button id="exploded">Exploded</button
                 ><button id="section">Section</button
                 ><button id="internal-view">Internals</button
@@ -160,9 +161,57 @@
               <h2>Component details</h2>
               <span>↗</span>
             </div>
+            <div id="assembly-detail" hidden></div>
             <div id="component-detail"></div>
           </aside>
         </div>
+        <section
+          id="assembly-panel"
+          hidden
+          aria-label="Assembly animation controls"
+        >
+          <div class="assembly-controls">
+            <strong>Assembly study</strong
+            ><button id="assembly-prev">Previous</button
+            ><button id="assembly-play">Play</button
+            ><button id="assembly-next">Next</button
+            ><select id="assembly-step" aria-label="Assembly operation"></select
+            ><button id="assembly-close">Exit guide</button>
+          </div>
+          <div class="assembly-controls">
+            <label
+              >Operation progress
+              <input
+                id="assembly-progress"
+                aria-label="Assembly operation progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0" /></label
+            ><output id="assembly-position">0%</output
+            ><label
+              >Speed
+              <select id="assembly-speed">
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+                <option value="2">2×</option>
+              </select></label
+            ><label
+              ><input id="assembly-auto" type="checkbox" checked /> Continue
+              through sequence</label
+            >
+          </div>
+          <p>
+            Amber: installing · Cyan: mating parts · Ghosted: earlier
+            operations. Playback pauses before known blocked joints. Every
+            operation is a proposed study, not a released manufacturing
+            instruction.
+          </p>
+          <details id="assembly-register"></details>
+          <a href="data/assembly-sequence.json" download
+            >Download assembly and mating register (JSON)</a
+          >
+        </section>
         <div class="model-footer">
           <p>
             <span class="amber-dot"></span> Added stator, laminations, windings,
@@ -404,7 +453,7 @@
           assumptions, not measured AK80-9 dimensions.
         </div>
         <div class="lam-workspace">
-          <form class="lam-controls" onsubmit="return false">
+          <form class="lam-controls" onsubmit="return false;">
             <h3>Stack definition</h3>
             <label
               >Sizing mode<select id="lam-mode">

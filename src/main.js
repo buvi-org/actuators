@@ -1,4 +1,5 @@
 import "./style.css";
+import { initAssemblyGuide } from "./assembly-guide.js";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -39,6 +40,7 @@ let selected = null,
   section = false,
   needsRender = true;
 let assembly;
+let assemblyGuide;
 const expanded = new Set([
   "root",
   "group:stator",
@@ -281,6 +283,7 @@ function updateScene() {
   $("view-caption").textContent = section
     ? "CLIPPED SECTION / UNCAPPED"
     : "REFERENCE CAD + PROVISIONAL INTERNALS";
+  assemblyGuide?.refresh();
   setDirty();
 }
 
@@ -488,7 +491,19 @@ async function init3D() {
       .find((h) => !section || clipPlane.distanceToPoint(h.point) >= 0);
     if (hit) selectPart(hit.object.userData.nodeId);
   });
-  renderer.setAnimationLoop(() => {
+  assemblyGuide = initAssemblyGuide({
+    data: await getJSON("data/assembly-sequence.json"),
+    assembly,
+    meshes,
+    scene,
+    camera,
+    controls,
+    selectPart,
+    updateScene,
+    setDirty,
+  });
+  renderer.setAnimationLoop((now) => {
+    assemblyGuide.tick(now);
     controls.update();
     if (needsRender && !$("model-panel").hidden) {
       const distance = camera.position.distanceTo(controls.target);
@@ -511,6 +526,7 @@ async function init3D() {
     toggleVisibility,
     fitView,
     selectPart,
+    assemblyGuide,
     getState: () => ({
       selected,
       isolated,
