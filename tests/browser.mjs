@@ -37,12 +37,17 @@ try {
   await page.evaluate(() => window.__actuator.selectPart("M01"));
   assert.match(
     await page.locator("#component-detail").innerText(),
-    /stator seat moved 4\.5 mm rearward/,
+    /stator seat stays at its Choice C position/,
   );
   // The housing inspector must still disclose the unresolved rotor clearance.
   assert.match(
     await page.locator("#component-detail").innerText(),
     /rotor-clearance redesign/,
+  );
+  // Every selected part carries a dimensioned section diagram, measured from the mesh.
+  assert.equal(
+    await page.locator("#component-detail .section-fig svg").count(),
+    1,
   );
   assert.equal(
     await page

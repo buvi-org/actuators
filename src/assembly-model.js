@@ -12,6 +12,7 @@ export function buildAssembly(
   planetSolid,
   ringSolid,
   rotorHubSolid,
+  rotorShellSolid,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -286,40 +287,24 @@ export function buildAssembly(
         "Manufacturer rotor hub re-exported from the source STEP (occurrence NAUO45). One valid solid, 3114.2 mm3, O44.5 x 14.5 mm, z -9.25 to +5.25 mm. Body of revolution about the motor axis: six-spoke flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm, O35.5 annular pocket, O42.05 rim, rear O6 bore, O4 middle bore and a O5.95 front counterbore. It carries both 6701-ZZ bearings and the encoder target magnet coaxially with the sun, and it pilots the sun's front journal: contact volume 0.324 mm3 confined to z 3.75 to 5.25 mm, with a keyed/flat feature (0.202 mm azimuthal radius spread) on the sun's journal. Fit class, retention and torque capacity are not yet qualified; see public/design/hub-joint-validation.json.";
     }
   }
-  // EM03: rotor magnet carrier, Primeform proposal.
-  // Corrected layout: the ring, stator, winding and seat stay at their manufacturer
-  // positions so the ring remains clamped by the eight front screws. The study's own
-  // rotor shell is what moves: the magnets and this carrier sit 4.5 mm forward of the
-  // earlier position, which measures 0.000 mm3 clash against both housings while still
-  // giving the full 13.872 mm stator/magnet axial overlap.
-  //
-  // Two solids, both measured clash-free:
-  //   web  r 22.25..40.5, z -2.5..+5.25  (inside the main housing's conical bore)
-  //   rim  r 40.5..42.4,  z +5.25..+11.5 (behind the magnets, closing the band)
-  annular(
-    "EM03/web",
-    "EM03",
-    "Rotor magnet carrier — hub web",
-    22.25,
-    40.5,
-    7.75,
-    1.375,
-    "#596576",
-    -0.018,
-    "Primeform proposal, not OEM geometry. Web r 22.25 to 40.5 mm, z -2.5 to +5.25 mm, anchored on the measured hub flange. Measured clash 0.000 mm3 against the main housing, the rear housing and the hub. Retention on the hub is still undefined: the faces are coincident at r 22.25 mm with no fit, key, screw or bond.",
-  );
-  annular(
-    "EM03/rim",
-    "EM03",
-    "Rotor magnet carrier — retaining rim",
-    40.5,
-    42.4,
-    6.25,
-    8.375,
-    "#4d5967",
-    -0.018,
-    "Primeform proposal. Rim r 40.5 to 42.4 mm, z 5.25 to 11.5 mm, closing the magnet band on one side. Measured clash 0.000 mm3 against both housings and the hub.",
-  );
+  // EM03: rotor end bell. One connected solid, following the manufacturer arrangement:
+  // a single spoked shell whose outer rim carries the magnets, with the sun/hub module
+  // fitted into it. The earlier study split this into a disc plus a separate rim, which
+  // invented a joint that does not exist in the real part.
+  if (rotorShellSolid) {
+    let shellGeometry;
+    rotorShellSolid.traverse((mesh) => {
+      if (mesh.isMesh) shellGeometry = mesh.geometry;
+    });
+    if (shellGeometry) {
+      const shellMesh = new THREE.Mesh(shellGeometry, material("#596576"));
+      root.add(shellMesh);
+      link(shellMesh, "EM03", -0.018);
+      nodes.get("EM03").status = "Primeform proposal - one solid";
+      nodes.get("EM03").description =
+        "Rotor end bell as one connected solid: a six-spoke web on the measured hub's O44.5 front face, an outer rim carrying the magnets on its O81 bore, and a closing flange at the rear. Bounding O84.8 x 13.75 mm, volume 7482.0 mm3, one valid solid. This mirrors the manufacturer arrangement, where the magnet ring and the spokes are the same part and the sun is force-fitted into it. Measured clash 0.000 mm3 against the main housing, the rear housing and the hub. The joint to the hub is NOT defined: no fit, key, screw or bond, so the torque path from this shell to the hub is unresolved.";
+    }
+  }
   const sectors = 42;
   for (let i = 0; i < sectors; i++) {
     const a = (i * 2 * Math.PI) / sectors,

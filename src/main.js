@@ -1,5 +1,6 @@
 import "./style.css";
 import { initAssemblyGuide } from "./assembly-guide.js";
+import { sectionDiagram } from "./part-diagram.js";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -185,7 +186,7 @@ function selectPart(id, refreshTree = true) {
     })
     .join("");
   $("component-detail").innerHTML =
-    `<h2 class="detail-title">${escape(node.name)}</h2><span class="pill ${study || !items.length ? "amber" : ""}">${escape(node.status || "Assembly group")}</span>${["EM03", "EM04"].includes(row?.id) ? `<p class="open-note">Primeform proposal: the source CAD contains no feature joining the measured hub (flange outer r 22.25 mm) to the magnets, so this carrier is an invention sized against the housing bore. Its retention on the hub is undefined and it clashes with the rear housing by 194.333 mm3. The magnets' radial band does not match the arcuate slots in the source housings, so rotor radial placement is unproven.</p>` : ""}${row?.id === "M02" ? `<p class="open-note">Known collision: the rotor carrier web intersects this housing by 194.333 mm3 over z -5.25 to -4.75 mm. An axial or radial envelope correction is pending; hiding parts does not resolve it.</p>` : ""}${row?.id === "M01" ? `<p class="open-note">Primeform R3: the stator seat moved 4.5 mm rearward with the stator, winding and ring so the stack aligns with the magnet span. Gold bodies are added support and seat material; hide them to compare the original housing.</p><a href="${base}design/main-housing-supported.step" download>Modified housing STEP ↓</a>` : ""}${["G02", "G04", "G05"].includes(row?.id) ? `<p><a href="${base}design/provisional-${{ G02: "sun", G04: "planet", G05: "ring" }[row.id]}-gear.step" download>Single-solid gear STEP ↓</a><br><a href="${base}design/provisional-gear-train.step" download>Gear assembly STEP ↓</a></p>` : ""}<div class="inspector-actions"><button id="isolate-part" ${items.length ? "" : "disabled"}>${isolated === id ? "Exit isolate" : "Isolate"}</button><button id="hide-part" ${items.length ? "" : "disabled"}>${items.some((m) => m.visible) ? "Hide" : "Show"}</button><button id="focus-part" ${items.length ? "" : "disabled"}>Focus</button></div><dl class="detail-grid">${detail}</dl>${row?.unresolved ? `<h3 class="detail-heading">UNRESOLVED DETAILS</h3><p class="open-note">${escape(row.unresolved)}</p>` : ""}<div class="detail-sources">${sources}${node.electronic ? `<a href="${node.electronic.source}" target="_blank" rel="noreferrer">Driver STEP source ↗</a>` : ""}</div>`;
+    `<h2 class="detail-title">${escape(node.name)}</h2><span class="pill ${study || !items.length ? "amber" : ""}">${escape(node.status || "Assembly group")}</span>${["EM03", "EM04"].includes(row?.id) ? `<p class="open-note">Primeform proposal: nothing in the source CAD joins the measured hub (O44.5 flange face) to the magnets, so this end bell is an invention whose form follows the hub's own six-spoke pattern. Its joint to the hub is undefined: no fit, key, screw or bond. The magnets' radial band also does not match the arcuate slots in the source housings, so rotor radial placement is unproven.</p>` : ""}${row?.id === "M02" ? `<p class="open-note">No axial clash: the rotor end bell moved 4.5 mm forward of its earlier position, which removed the previous 194.333 mm3 overlap with this housing.</p>` : ""}${row?.id === "M01" ? `<p class="open-note">Primeform R4: the stator seat stays at its Choice C position (z 11.436 mm) so the ring remains clamped by the eight front screws. Gold bodies are added support and seat material; hide them to compare the original housing.</p><a href="${base}design/main-housing-supported.step" download>Modified housing STEP ↓</a>` : ""}${["G02", "G04", "G05"].includes(row?.id) ? `<p><a href="${base}design/provisional-${{ G02: "sun", G04: "planet", G05: "ring" }[row.id]}-gear.step" download>Single-solid gear STEP ↓</a><br><a href="${base}design/provisional-gear-train.step" download>Gear assembly STEP ↓</a></p>` : ""}<div class="inspector-actions"><button id="isolate-part" ${items.length ? "" : "disabled"}>${isolated === id ? "Exit isolate" : "Isolate"}</button><button id="hide-part" ${items.length ? "" : "disabled"}>${items.some((m) => m.visible) ? "Hide" : "Show"}</button><button id="focus-part" ${items.length ? "" : "disabled"}>Focus</button></div>${items.length ? sectionDiagram(items, `${escape(node.name)} — axial section, dimensions in mm`) : ""}<dl class="detail-grid">${detail}</dl>${row?.unresolved ? `<h3 class="detail-heading">UNRESOLVED DETAILS</h3><p class="open-note">${escape(row.unresolved)}</p>` : ""}<div class="detail-sources">${sources}${node.electronic ? `<a href="${node.electronic.source}" target="_blank" rel="noreferrer">Driver STEP source ↗</a>` : ""}</div>`;
   $("isolate-part").onclick = () => {
     isolated = isolated === id ? null : id;
     for (const key of [...hiddenIds])
@@ -434,10 +435,11 @@ async function init3D() {
   const sunSolid = await new GLTFLoader().loadAsync(
     base + "design/provisional-sun-gear.glb",
   );
-  const [planetSolid, ringSolid, rotorHubSolid] = await Promise.all([
+  const [planetSolid, ringSolid, rotorHubSolid, rotorShellSolid] = await Promise.all([
     new GLTFLoader().loadAsync(base + "design/provisional-planet-gear.glb"),
     new GLTFLoader().loadAsync(base + "design/provisional-ring-gear.glb"),
     new GLTFLoader().loadAsync(base + "design/oem-rotor-hub.glb"),
+    new GLTFLoader().loadAsync(base + "design/rotor-shell.glb"),
   ]);
   assembly = buildAssembly(
     bom,
@@ -449,6 +451,7 @@ async function init3D() {
     planetSolid.scene,
     ringSolid.scene,
     rotorHubSolid.scene,
+    rotorShellSolid.scene,
   );
   model = assembly.root;
   scene.add(model);

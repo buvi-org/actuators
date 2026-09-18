@@ -67,7 +67,7 @@
     },
     {
       "step": "A06",
-      "a": "carrier web",
+      "a": "rotor end bell",
       "b": "hub",
       "interference_mm3": 0.0,
       "min_distance_mm": 0.0,
@@ -89,8 +89,8 @@
     {
       "step": "A06",
       "severity": "major",
-      "issue": "Carrier is retained on the hub by nothing",
-      "measured": "carrier web vs hub interference 0.000000 mm3, min distance 0.0000 mm",
+      "issue": "Rotor end bell is retained on the hub by nothing",
+      "measured": "end bell vs hub interference 0.000000 mm3, min distance 0.0000 mm",
       "consequence": "Coincident radii at r 22.25 mm with no fit class, key, screw or bond. The rotor torque path from carrier to hub is undefined."
     }
   ],

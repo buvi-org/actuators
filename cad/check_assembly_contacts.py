@@ -137,14 +137,15 @@ def main():
     joint("A16", "hub", "encoder magnet", hub, centred("NAUO44"), "touch")
 
     # A05/A06: the carrier must contact the hub it is said to be anchored on.
-    web = annulus(22.25, 40.5, -2.5, 5.25)
-    rim = annulus(40.5, 42.4, 5.25, 11.5)
+    web = annulus(22.25, 40.5, 0.25, 2.25)
+    rim = annulus(40.5, 42.4, -2.5, 11.25)
+    close = annulus(40.5, 42.4, -2.5, -1.0)
     ic = hub.intersect(web).Volume()
     dc = hub.distance(web)
     joints.append(
         {
             "step": "A06",
-            "a": "carrier web",
+            "a": "rotor end bell",
             "b": "hub",
             "interference_mm3": round(ic, 6),
             "min_distance_mm": round(dc, 6),
@@ -158,8 +159,8 @@ def main():
             {
                 "step": "A06",
                 "severity": "major",
-                "issue": "Carrier is retained on the hub by nothing",
-                "measured": f"carrier web vs hub interference {ic:.6f} mm3, min distance {dc:.4f} mm",
+                "issue": "Rotor end bell is retained on the hub by nothing",
+                "measured": f"end bell vs hub interference {ic:.6f} mm3, min distance {dc:.4f} mm",
                 "consequence": "Coincident radii at r 22.25 mm with no fit class, key, screw or "
                                "bond. The rotor torque path from carrier to hub is undefined.",
             }
@@ -167,14 +168,14 @@ def main():
 
     # A05/A14: carrier clash with the rear housing.
     main_h = cq.importers.importStep(str(ROOT / "public/design/main-housing-supported.step")).val()
-    clash_main = (web.fuse(rim)).intersect(main_h).Volume()
-    clash_rear = (web.fuse(rim)).intersect(centred("NAUO4")).Volume()
+    clash_main = (web.fuse(rim).fuse(close)).intersect(main_h).Volume()
+    clash_rear = (web.fuse(rim).fuse(close)).intersect(centred("NAUO4")).Volume()
     if clash_rear > 1e-6:
         findings.append(
             {
                 "step": "A05, A14",
                 "severity": "major",
-                "issue": "Carrier web intersects the rear housing",
+                "issue": "Rotor end bell intersects the rear housing",
                 "measured": f"{clash_rear:.3f} mm3 against NAUO4 (inward wall only r 29 mm over "
                             f"z -5.25..-4.75); {clash_main:.3f} mm3 against the modified main housing",
                 "consequence": "The rear housing cannot be seated while the carrier spans z -5..+5.",

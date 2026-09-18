@@ -18,9 +18,11 @@ Step numbers below are the ones shown in the app (`step 1` … `step 20`). The
 
 ## The correction that removed the defects
 
-An earlier revision moved the stator, winding, ring mounting flange and housing
-seat 4.5 mm rearward to align the stator with the magnet band. That broke two
-things, because it moved manufacturer hardware:
+Two corrections were needed.
+
+**First, the direction of the axial move.** An earlier revision moved the stator,
+winding, ring mounting flange and housing seat 4.5 mm rearward. That moved
+manufacturer hardware and broke two things:
 
 - the eight front screws stayed at their fixed positions, so the ring clamp was
   destroyed (engagement measured **0.0000 mm³**)
@@ -28,13 +30,20 @@ things, because it moved manufacturer hardware:
   GLB at the gear plane, so the flange and its teeth separated by **2.000 mm**
 
 Moving the ring instead is not an option: it would leave only **0.500 mm** of axial
-overlap with the planets where a full 5.000 mm face is needed, which would stop the
-reduction stage working.
+overlap with the planets where a full 5.000 mm face is needed.
 
 **The fix reverses the direction.** The ring, stator, winding, housing seat and
-gear train all stay exactly where the manufacturer put them, and the study's own
-invented rotor shell moves forward 4.5 mm to meet the stator. Only invented
-geometry moves; no OEM part does.
+gear train stay where the manufacturer put them, and the study's own invented rotor
+shell moves forward 4.5 mm to meet the stator. Only invented geometry moves.
+
+**Second, the rotor shell was split into two parts when the manufacturer makes it as
+one.** The real part is a single spoked shell whose outer rim carries the magnets,
+with the sun force-fitted into it. The study had modelled a separate disc plus a
+separate rim, which invented a joint that does not exist and produced a 7.75 mm
+thick solid ring of 43,791 mm³ — a solid-of-revolution shortcut, not a design.
+The shell is now **one connected solid** of **7,482 mm³**: a six-spoke web on the
+hub's Ø44.5 front face, an outer rim carrying the magnets on its Ø81 bore, and a
+closing flange at the rear.
 
 | Check | Before | After |
 |---|---|---|
@@ -42,10 +51,26 @@ geometry moves; no OEM part does.
 | Ring flange vs its teeth (step 2) | 2.000 mm short | overlaps the toothed band |
 | Stator front face vs seat (step 4) | — | **contact at z 11.436 = 11.436** |
 | Stator/magnet axial overlap | 13.872 mm | **13.872 mm of 13.872 (full)** |
-| Carrier vs rear housing (steps 5, 14) | 194.333 mm³ clash | **0.000 mm³** |
-| Carrier vs main housing | 0.000 mm³ | **0.000 mm³** |
-| Magnets vs either housing | 169.446 mm³ | **0.000 mm³** |
+| Rotor shell parts | 2 solids (invented joint) | **1 connected, valid solid** |
+| Rotor shell material | 43,791 mm³ (solid ring) | **7,482 mm³ (spoked)** |
+| Rotor shell vs rear housing | 194.333 mm³ clash | **0.000 mm³** |
+| Rotor shell vs main housing / hub | 0.000 mm³ | **0.000 mm³** |
 | Gear face overlap | 5.000 mm | **5.000 mm (full)** |
+
+## Dimensioned diagrams
+
+Selecting any part in the tree now shows a dimensioned axial section in the
+inspector, generated from the mesh actually on screen (`src/part-diagram.js`). Every
+number is measured from the displayed geometry, so a diagram cannot disagree with
+the model it describes. Example measured values:
+
+| Part | Axial | Max Ø | Bores |
+|---|---|---|---|
+| Rotor end bell (EM03) | 13.75 mm | Ø84.8 | Ø81 |
+| Input shaft hub (G03) | 14.5 mm | Ø44.5 | Ø34.3, Ø14, Ø12 |
+| Ring (G05) | 7.5 mm | Ø59.96 | Ø49.8, Ø47.45, Ø47.4 |
+| Main housing (M01) | 24.2 mm | Ø98 | Ø95, Ø94.56, Ø93.78 |
+
 
 ## Where it stands
 
@@ -68,7 +93,7 @@ Steps 1, 2, 3, 4, 5, 8, 12, 14, 16 and 18 are internally consistent and measured
 
 ## The one blocking item
 
-Everything now hinges on a single question: **how does the magnet carrier attach
+Everything now hinges on a single question: **how does the rotor end bell attach
 to the hub?**
 
 Measured: interference **0.000000 mm³**, minimum distance **0.000000 mm**. So the

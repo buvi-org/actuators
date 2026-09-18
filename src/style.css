@@ -265,7 +265,7 @@ h1 span {
 }
 .workspace {
   display: grid;
-  grid-template-columns: 230px minmax(320px, 1fr) 272px;
+  grid-template-columns: 230px minmax(320px, 1fr) 360px;
   border: 1px solid var(--line);
   border-radius: 7px;
   overflow: hidden;
@@ -606,6 +606,51 @@ h1 span {
   border: 1px solid #454237;
   border-radius: 4px;
   padding: 10px;
+}
+/* Dimensioned section diagram in the inspector. */
+.section-fig {
+  margin: 14px 0 4px;
+  background: #10161b;
+  border: 1px solid #2b3a45;
+  border-radius: 4px;
+  padding: 6px 6px 2px;
+}
+.section-fig figcaption {
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #8095a5;
+  padding: 2px 4px 6px;
+}
+.section-fig svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.section-fig .solid {
+  fill: #7f8f9e;
+  stroke: #b9c7d3;
+  stroke-width: 0.4;
+}
+.section-fig .axis {
+  stroke: #3d5a6b;
+  stroke-width: 0.7;
+  stroke-dasharray: 6 3 1 3;
+}
+.section-fig .dim {
+  stroke: #d9a86a;
+  stroke-width: 0.7;
+}
+.section-fig .dimtext {
+  fill: #d9c9a8;
+  font-size: 11px;
+  font-family: inherit;
+  text-anchor: middle;
+}
+.section-fig .leader {
+  stroke: #5c6b78;
+  stroke-width: 0.6;
+  stroke-dasharray: 2 2;
 }
 .inspector-actions {
   display: flex;
