@@ -1,30 +1,60 @@
 {
-  "scope": "Rotor end bell as one connected solid: a six-spoke web seated on the measured hub flange, and an outer rim carrying the magnets on its bore above the web.",
-  "status": "Primeform proposal, not OEM or CubeMars geometry.",
+  "scope": "Rotor shell as a spoked part: magnet rim, six spokes, central boss on the hub's collar, and a bolted web on the hub's own hole circle.",
+  "status": "Primeform proposal. Joint data measured from the manufacturer hub.",
   "solids": 1,
   "valid": true,
-  "volume_mm3": 2274.193,
+  "volume_mm3": 4078.795,
   "bbox_mm": [
-    -42.403,
-    -42.403,
-    -1.753,
-    42.403,
-    42.403,
-    11.253
+    -43.405,
+    -43.405,
+    0.245,
+    43.405,
+    43.405,
+    11.405
   ],
-  "features": {
-    "spoked_web": "r 22.25 to 40.5 mm, z -1.75 to 0.25 mm, 6 ribs of 4.0 mm",
-    "magnet_rim": "r 40.5 to 42.4 mm, z -1.75 to 11.25 mm",
-    "magnet_band": "r 40.5 to 42.4 mm, z 0.25 to 11.5 mm (11.25 mm long), seated in the rim bore with no interference"
+  "layout_mm": {
+    "shell_bore_r": 22.35,
+    "slides_over_hub_flange_r": 22.25,
+    "web_face_z": 0.25,
+    "boss_bore_d": 14.1,
+    "locates_on_hub_collar_d": 14.0,
+    "spokes": 6,
+    "rim_bore_r": 43.1,
+    "rim_od_r": 43.4,
+    "magnet_band_r": [
+      42.0,
+      43.0
+    ],
+    "magnet_z": [
+      2.25,
+      11.2
+    ]
+  },
+  "joint": {
+    "screw_circle_pcd_mm": 40.0,
+    "hub_hole_d_mm": 2.05,
+    "hub_holes_found": 8,
+    "engaged_material_mm3": {
+      "screw1": 3.6309,
+      "screw2": 3.6309,
+      "screw3": 3.6309,
+      "screw4": 3.6309,
+      "screw5": 3.6309,
+      "screw6": 3.6309,
+      "screw7": 3.6309,
+      "screw8": 3.6309
+    },
+    "note": "the bolts pass through the web into the hub's flange face"
   },
   "interference_mm3": {
     "shell_vs_main_housing_mm3": 0.0,
     "shell_vs_rear_housing_mm3": 0.0,
-    "shell_vs_hub_mm3": 0.0
+    "shell_vs_hub_mm3": 0.0,
+    "magnets_total_vs_shell_mm3": 0.0
   },
-  "worst_interference_mm3": 0.0,
+  "worst_unintended_interference_mm3": 0.0,
   "open": [
-    "The joint to the hub is undefined: no fit, key, screw or bond is specified.",
-    "The magnet radial band (r 40.5 to 42.4 mm) does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven."
+    "Screw size and tightening torque are unspecified.",
+    "Magnet band r 42.0 to 43.0 does not match the housings' arcuate slots (r 41.766 to 43.236)."
   ]
 }
