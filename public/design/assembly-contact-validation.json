@@ -1,0 +1,125 @@
+{
+  "scope": "Contact audit of every claimed joint. Measures interference and minimum distance, because zero overlap alone cannot tell a seated joint from a floating part.",
+  "frame": "assembled centred mm",
+  "declared_axial_layout": {
+    "stator_stack_z_mm": [
+      -6.936,
+      6.936
+    ],
+    "housing_seat_z_mm": 6.936,
+    "ring_flange_z_mm": [
+      1.25,
+      8.75
+    ],
+    "gear_mesh_plane_z_mm": 8.25,
+    "magnet_band_z_mm": [
+      -7.0,
+      7.0
+    ],
+    "stator_magnet_overlap_mm": 13.872
+  },
+  "joints": [
+    {
+      "step": "A04/A05",
+      "a": "stator stack",
+      "b": "magnet band",
+      "interference_mm3": null,
+      "min_distance_mm": null,
+      "expected": "axial overlap",
+      "result": "pass",
+      "note": "axial overlap 13.872 mm"
+    },
+    {
+      "step": "A06",
+      "a": "hub",
+      "b": "sun",
+      "interference_mm3": 0.324088,
+      "min_distance_mm": 0.0,
+      "expected": "overlap",
+      "result": "pass"
+    },
+    {
+      "step": "A08",
+      "a": "hub",
+      "b": "6701 rear",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "expected": "touch",
+      "result": "pass"
+    },
+    {
+      "step": "A08",
+      "a": "hub",
+      "b": "6701 front",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "expected": "touch",
+      "result": "pass"
+    },
+    {
+      "step": "A16",
+      "a": "hub",
+      "b": "encoder magnet",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "expected": "touch",
+      "result": "pass"
+    },
+    {
+      "step": "A06",
+      "a": "carrier web",
+      "b": "hub",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "expected": "contact",
+      "result": "pass",
+      "note": "coincident faces only: no fit, key, screw or bond is defined"
+    },
+    {
+      "step": "A14",
+      "a": "rear housing",
+      "b": "main housing",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "expected": "contact",
+      "result": "pass"
+    }
+  ],
+  "findings": [
+    {
+      "step": "A03",
+      "severity": "critical",
+      "issue": "Ring is not clamped by any front screw",
+      "measured": "eight screws engage 0.0000 mm3 of ring material; ring flange top z 8.750, screw tips z 9.950, gap 1.200 mm",
+      "consequence": "The ring and the stator it carries have no load path to the housing; the eight screws hold nothing."
+    },
+    {
+      "step": "A02, A04",
+      "severity": "major",
+      "issue": "Ring mounting flange no longer overlaps the ring's toothed band",
+      "measured": "toothed band top z 10.750, flange top z 8.750, shortfall 2.000 mm",
+      "consequence": "The flange is intended to be the ring's mounting rim; it now sits below the teeth it is meant to carry."
+    },
+    {
+      "step": "A06",
+      "severity": "major",
+      "issue": "Carrier is retained on the hub by nothing",
+      "measured": "carrier web vs hub interference 0.000000 mm3, min distance 0.0000 mm",
+      "consequence": "Coincident radii at r 22.25 mm with no fit class, key, screw or bond. The rotor torque path from carrier to hub is undefined."
+    },
+    {
+      "step": "A05, A14",
+      "severity": "major",
+      "issue": "Carrier web intersects the rear housing",
+      "measured": "194.333 mm3 against NAUO4 (inward wall only r 29 mm over z -5.25..-4.75); 0.000 mm3 against the modified main housing",
+      "consequence": "The rear housing cannot be seated while the carrier spans z -5..+5."
+    }
+  ],
+  "summary": {
+    "joints_checked": 7,
+    "joints_failed": 0,
+    "findings": 4,
+    "critical": 1,
+    "major": 3
+  }
+}

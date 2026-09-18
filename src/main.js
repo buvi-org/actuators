@@ -497,8 +497,9 @@ async function init3D() {
       );
     if (hit) selectPart(hit.object.userData.nodeId);
   });
+  const assemblySequence = await getJSON("data/assembly-sequence.json");
   assemblyGuide = initAssemblyGuide({
-    data: await getJSON("data/assembly-sequence.json"),
+    data: assemblySequence,
     assembly,
     meshes,
     scene,
@@ -531,6 +532,7 @@ async function init3D() {
     manifest,
     bom,
     assembly,
+    assemblySequence,
     toggleVisibility,
     fitView,
     selectPart,

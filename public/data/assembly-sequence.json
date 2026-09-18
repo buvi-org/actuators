@@ -578,16 +578,17 @@
       ],
       "method": "Housing location + clearance review",
       "surfaces": [
-        "Rear housing flange ↔ main housing rear joint face",
-        "Rear housing interior ↔ rotating end bell (required non-contact clearance)"
+        "Rear housing joint face ↔ main housing joint face",
+        "Rear housing inward wall r 29 mm over z -5.25..-4.75 mm ↔ rotor carrier web r 22.25..40.5 mm, z -5..+5 mm",
+        "Rear housing central bore ↔ rear 6701-ZZ bearing and sun rear journal"
       ],
       "process": "Inspect the proposed closed position; the current rotor end bell intersects the rear housing.",
-      "check": "Measured intersection 2666.28 mm³. Redesign axial packaging and verify winding clearance before closure.",
+      "check": "Measured cause of the blocker: the rotor carrier web intersects the rear housing by 194.333 mm3 over z -5.25 to -4.75 mm, because the rear housing's inward wall is only r 29 mm there while the carrier spans r 22.25 to 40.5 mm. The earlier 'rotor end bell vs NAUO4 2666.283 mm3' figure referred to the deleted procedural EM03/endbell and no longer applies. The rear housing does not intersect the main housing (0.000 mm3) and does not intersect the sun. Shorten the carrier web or resolve the rear envelope before this step can seat.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "The end bell intersects the rear housing in the final position. Closure cannot be validated until this overlap and the bearing/lead access are resolved."
+        "reason": "The rear housing cannot reach its seated position while the carrier web occupies z -5 to -4.75 mm at radii up to 40.5 mm, where the housing wall is only r 29 mm. No axial translation resolves it: the carrier is bounded by the main housing's conical bore forward and the rear housing's shoulder aft."
       }
     },
     {
@@ -655,7 +656,7 @@
         "Screw threads ↔ main housing boss bores"
       ],
       "process": "Align the rear housing and tighten in a cross pattern only after clearance redesign. Torque remains unspecified.",
-      "check": "Validate boss threads, engagement, bottoming, preload, cutter access and rotor clearance.",
+      "check": "Blocked because A14 cannot seat: the carrier web intersects the rear housing by 194.333 mm3. The sixteen screws also require a defined thread engagement and tightening torque, neither of which is specified.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {
