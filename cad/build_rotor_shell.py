@@ -36,12 +36,17 @@ HUB_FLANGE_R = 22.250
 HUB_FACE_Z = 0.250
 HUB_COLLAR_D = 14.00
 HUB_COLLAR_Z = (0.250, 1.250)
+# The 6701 front bearing occupies r 6.00..9.00 over z 1.25..5.25, so anything the shell
+# puts in that band at that height runs through the bearing.
+FRONT_BEARING_OD = 18.00
+FRONT_BEARING_Z = (1.25, 5.25)
 HOLE_PCD_R = 20.000
 HUB_HOLE_D = 2.05
 
 # Shell layout
 SHELL_BORE_R = HUB_FLANGE_R + 0.10   # D 44.70: slides over the hub flange
-BOSS_BORE_D = HUB_COLLAR_D + 0.10    # D 14.10: locates on the hub collar
+BOSS_BORE_D = FRONT_BEARING_OD + 0.20   # D 18.20: clears the front bearing (D 18.00), so
+                                        # the collar is not used for location
 BOSS_OD_D = 2 * SHELL_BORE_R         # D 44.70: the boss must reach the web's inner bore,
                                      # otherwise the six spokes float clear of it
 RIM_BORE_R = 43.10                   # magnets sit INSIDE this bore
@@ -60,7 +65,7 @@ SEGMENTS = 42
 COVERAGE = 0.85
 
 assert SHELL_BORE_R > HUB_FLANGE_R, "shell bore must clear the hub flange"
-assert BOSS_BORE_D > HUB_COLLAR_D, "boss bore must clear the hub collar"
+assert BOSS_BORE_D > FRONT_BEARING_OD, "web bore must clear the 6701 front bearing"
 assert RIM_OD_R <= 43.4 + 1e-9, "shell must stay inside the housing features"
 assert MAG_OD < RIM_BORE_R, "magnets must not share a band with the rim wall"
 assert MAG_Z0 >= WEB_Z1 - 1e-9, "magnets must start above the web"
@@ -251,6 +256,32 @@ def main():
     }
     (OUT / "rotor-shell.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2))
+
+    # Single source of truth for the viewer's rotor-derived geometry. This file used to be
+    # written by cad/build_rotor.py, which built a different shell, so the viewer's magnets
+    # drifted out of the shell whenever this builder ran.
+    params = {
+        "source": "public/design/rotor-shell.json",
+        "shell_step": "public/design/rotor-shell.step",
+        "shell_glb": "public/design/rotor-shell.glb",
+        "magnet_band_mm": [MAG_BORE, MAG_OD],
+        "magnet_z_mm": [MAG_Z0, MAG_Z1],
+        "segments": SEGMENTS,
+        "coverage": COVERAGE,
+        "boss_bore_d_mm": BOSS_BORE_D,
+        "shell_bore_r_mm": SHELL_BORE_R,
+        "rim_bore_r_mm": RIM_BORE_R,
+        "rim_od_r_mm": RIM_OD_R,
+        "web_z_mm": [WEB_Z0, WEB_Z1],
+        "spokes": SPOKES,
+        "screw_circle_pcd_mm": round(2 * HOLE_PCD_R, 3),
+        "note": "Written by cad/build_rotor_shell.py. src/assembly-model.js and "
+                "cad/check_intersections.py both read this, so neither can test magnets "
+                "that are not the ones on screen.",
+    }
+    (OUT / "viewer-rotor-params.json").write_text(
+        json.dumps(params, indent=2) + "\n", encoding="utf-8"
+    )
     print("\nwrote rotor-shell.step / .glb / .json")
 
 

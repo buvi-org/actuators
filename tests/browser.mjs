@@ -143,12 +143,12 @@ try {
   await page.locator("#internal-view").click();
   await page.evaluate(() => window.__actuator.selectPart("EM04"));
   await page.locator("#isolate-part").click();
-  // 42 magnet segments plus the retaining ring that captures them.
+  // 42 magnet segments. The retaining lip is part of the shell solid, not a separate mesh.
   assert.equal(
     await page.evaluate(
       () => window.__actuator.meshes.filter((m) => m.visible).length,
     ),
-    43,
+    42,
   );
   await page.locator("#all-parts").click();
   await page.evaluate(() => window.__actuator.selectPart("EM01/L001"));

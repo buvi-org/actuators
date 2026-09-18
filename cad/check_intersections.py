@@ -105,7 +105,9 @@ def main():
     main_h = cq.importers.importStep(str(ROOT / "public/design/main-housing-supported.step")).val()
     rear_h = centred("NAUO4")
 
-    rotor = cq.importers.importStep(str(ROOT / "public/design/rotor.step")).val()
+    rotor = cq.importers.importStep(
+        str(ROOT / "public/design/rotor-shell.step")
+    ).val()
 
     # NOTE: the hub is machined as part of the rotor body, so it is not listed
     # separately - that would compare a body against a subset of itself.
@@ -116,7 +118,7 @@ def main():
         "B03 6701 rear": rear_bearing,
         "B03 6701 front": front_bearing,
         "E02 encoder magnet": encoder,
-        "G03/EM03 rotor (one piece)": rotor,
+        "EM03 rotor shell": rotor,
     }
     magnets = magnet_set()
     for i, mag in enumerate(magnets):
@@ -124,22 +126,23 @@ def main():
 
     # Intended joints: a fit is real only if the test agrees.
     INTENDED = {
-        # The hub, its bearing seats and the encoder seat are internal to the rotor body
-        # now, so the joints that remain are the sun pilot fit and the housing joint face.
-        ("G03/EM03 rotor (one piece)", "G02 sun"): "sun pilot fit into the rotor",
+        # The rotor shell slides over the hub's flange and lands on the flange face, so the
+        # shell and the hub must touch there. It must NOT touch the bearings, the sun or the
+        # encoder magnet, which is what MUST_CLEAR enforces.
+        ("EM03 rotor shell", "G03 hub"): "shell seats on the hub flange face",
         ("M01 main housing", "M02 rear housing"): "housing joint face",
     }
     # Pairs that must never interpenetrate.
     MUST_CLEAR = {
         ("M01 main housing", "M02 rear housing"),
-        ("M01 main housing", "G03/EM03 rotor (one piece)"),
-        ("M02 rear housing", "G03/EM03 rotor (one piece)"),
+        ("M01 main housing", "EM03 rotor shell"),
+        ("M02 rear housing", "EM03 rotor shell"),
         ("M01 main housing", "G03 hub"),
         ("M02 rear housing", "G03 hub"),
         ("M02 rear housing", "G02 sun"),
-        ("G03/EM03 rotor (one piece)", "B03 6701 rear"),
-        ("G03/EM03 rotor (one piece)", "B03 6701 front"),
-        ("G03/EM03 rotor (one piece)", "E02 encoder magnet"),
+        ("EM03 rotor shell", "B03 6701 rear"),
+        ("EM03 rotor shell", "B03 6701 front"),
+        ("EM03 rotor shell", "E02 encoder magnet"),
     }
 
     keys = list(bodies)

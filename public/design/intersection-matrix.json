@@ -8,7 +8,7 @@
     "B03 6701 rear",
     "B03 6701 front",
     "E02 encoder magnet",
-    "G03/EM03 rotor (one piece)",
+    "EM03 rotor shell",
     "EM04 magnet 1",
     "EM04 magnet 2",
     "EM04 magnet 3",
@@ -59,23 +59,9 @@
       "b": "M02 rear housing",
       "interference_mm3": 2.4e-05,
       "intended": "housing joint face"
-    },
-    {
-      "a": "G02 sun",
-      "b": "G03/EM03 rotor (one piece)",
-      "interference_mm3": 0.324088,
-      "intended": "sun pilot fit into the rotor"
     }
   ],
   "intended_contacts": [
-    {
-      "a": "G03/EM03 rotor (one piece)",
-      "b": "G02 sun",
-      "intent": "sun pilot fit into the rotor",
-      "interference_mm3": 0.324088,
-      "min_distance_mm": 0.0,
-      "result": "contact"
-    },
     {
       "a": "M01 main housing",
       "b": "M02 rear housing",
@@ -97,7 +83,7 @@
   "summary": {
     "bodies": 49,
     "pairs_tested": 1176,
-    "clashing_pairs": 2,
+    "clashing_pairs": 1,
     "must_clear_violations": 1,
     "magnet_clashing_pairs": 0,
     "contacts_missing": 0
