@@ -1,29 +1,30 @@
 {
-  "scope": "Rotor shell as one connected solid, following the manufacturer arrangement (spoked shell carrying the magnets on its rim, sun force-fitted into the hub).",
-  "status": "Primeform proposal: not OEM or CubeMars geometry. Sizing is measured from the source housing bore, the hub flange and the stator position.",
+  "scope": "Rotor end bell as one connected solid: a six-spoke web seated on the measured hub flange, and an outer rim carrying the magnets on its bore above the web.",
+  "status": "Primeform proposal, not OEM or CubeMars geometry.",
   "solids": 1,
   "valid": true,
-  "volume_mm3": 7482.022,
+  "volume_mm3": 2274.193,
   "bbox_mm": [
     -42.403,
     -42.403,
-    -2.503,
+    -1.753,
     42.403,
     42.403,
     11.253
   ],
   "features": {
-    "spoked_web": "r 22.25 to 40.5 mm, z 0.25 to 2.25 mm, 6 ribs of 4.0 mm",
-    "magnet_rim": "r 40.5 to 42.4 mm, z -2.5 to 11.25 mm, magnets bonded on the 81.0 mm bore",
-    "closing_flange": "r 40.5 to 42.4 mm, z -2.5 to -1.0 mm, closing the rear of the magnet band"
+    "spoked_web": "r 22.25 to 40.5 mm, z -1.75 to 0.25 mm, 6 ribs of 4.0 mm",
+    "magnet_rim": "r 40.5 to 42.4 mm, z -1.75 to 11.25 mm",
+    "magnet_band": "r 40.5 to 42.4 mm, z 0.25 to 11.5 mm (11.25 mm long), seated in the rim bore with no interference"
   },
-  "clash_mm3": {
-    "main_housing_mm3": 0.0,
-    "rear_housing_mm3": 0.0,
-    "hub_mm3": 0.0
+  "interference_mm3": {
+    "shell_vs_main_housing_mm3": 0.0,
+    "shell_vs_rear_housing_mm3": 0.0,
+    "shell_vs_hub_mm3": 0.0
   },
+  "worst_interference_mm3": 0.0,
   "open": [
     "The joint to the hub is undefined: no fit, key, screw or bond is specified.",
-    "The magnet radial band (r 40.5 to 42.5 mm) does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven."
+    "The magnet radial band (r 40.5 to 42.4 mm) does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven."
   ]
 }

@@ -34,6 +34,9 @@ try {
       ),
     ),
   );
+  // Interpenetration is checked exactly, on the solids, by cad/check_intersections.py,
+  // which npm test runs first. A viewer-side bounding-box test would be too coarse to
+  // mean anything: adjacent curved bodies always overlap as boxes.
   await page.evaluate(() => window.__actuator.selectPart("M01"));
   assert.match(
     await page.locator("#component-detail").innerText(),

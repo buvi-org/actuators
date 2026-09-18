@@ -1,20 +1,72 @@
 # Assembly process audit — all 20 steps
 
-Prepared 2026-09-17. Current status after the layout correction. Reproduce with:
+Prepared 2026-09-17. Current status after the layout and rotor-shell corrections. Reproduce with:
 
 ```powershell
-python cad/check_assembly_contacts.py   # joint contact / clash, all claimed joints
+npm test                       # runs the geometry checks first, then the unit tests
+npm run test:geometry          # intersections, contacts, hub joint, ring clamp
+python cad/check_intersections.py   # pairwise matrix for every modelled body
+python cad/check_assembly_contacts.py   # joint contact / gap, all claimed joints
 python cad/check_ring_clamp.py          # the eight front screws vs the ring
-python tmp/audit/geom_audit2.py         # full geometry cross-check
-python tmp/audit/step_audit.py          # sequence data integrity
 node tmp/qa/audit-all-steps.mjs         # rendered state of every step
 ```
 
 Rendered screenshots: `tmp/qa/steps/step-NN.png`.
-Machine-readable findings: `public/design/assembly-contact-validation.json`.
+Machine-readable findings: `public/design/intersection-matrix.json`,
+`public/design/assembly-contact-validation.json`.
 
 Step numbers below are the ones shown in the app (`step 1` … `step 20`). The
 `A01`-style ids are the internal names for the same rows.
+
+## Interpenetration is now a test, not an inspection
+
+The project had no intersection test. Every geometry regression so far — a hub with no
+attachment, a solid ring of 43,791 mm³, magnets cutting 137.7 mm³ into the shell — was
+a body passing through another body, and no test caught any of it.
+
+`cad/check_intersections.py` now tests **every pair of modelled bodies** (1,225 pairs
+across 50 bodies) in the assembled state and reports two things separately:
+
+- **interpenetration**: the volume of the boolean intersection
+- **intended contact**: whether a claimed joint actually touches
+
+It runs as the first step of `npm test`, so `npm test` fails if a body passes through
+another. Current result:
+
+| Check | Result |
+|---|---|
+| Bodies tested | 50 |
+| Pairs tested | 1,225 |
+| Interpenetrating pairs | **2, both intended fits** |
+| Unintended interpenetration | **0** |
+| Magnet clashes | **0** (was 42 pairs at 137.7 mm³ each) |
+| Intended contacts present | **6 of 6** |
+
+The two remaining overlaps are the fits that are supposed to interfere: hub ∩ sun =
+0.324 mm³ (the measured pilot fit) and the housing joint faces at 0.000 mm³.
+
+## The magnet defect that test found
+
+The magnets were cutting **137.7 mm³ into the shell, 42 times over** — visible in the
+render as segments buried in the rim. Two causes:
+
+1. the magnets' outer radius (42.5 mm) exceeded the shell's bore band outer face
+   (42.4 mm)
+2. the spoked web and the magnet band shared the same axial band (web z 0.25…2.25,
+   magnets z −2.5…11.5), so every spoke passed through every magnet
+
+The web could not simply move: the hub is only r 22.25 over z −1.75…0.25 and r 6…7
+elsewhere, so the web has to sit on the hub's Ø44.5 flange. The shell is now built the
+way a real rotor shell is: **the rim is pocketed** — 42 pockets machined to the same
+angular width as the segments — and the segments seat in them with zero interference.
+
+| | Before | After |
+|---|---|---|
+| Shell material | 43,791 mm³ (solid ring) | **2,274 mm³ (pocketed, spoked)** |
+| Shell bodies | 2 (invented joint) | **1 connected, valid solid** |
+| Magnet interference | 42 pairs × 137.7 mm³ | **0** |
+| Shell vs both housings and the hub | clashing | **0.000 mm³** |
+
 
 ## The correction that removed the defects
 

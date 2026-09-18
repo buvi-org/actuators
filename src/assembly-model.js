@@ -310,11 +310,13 @@ export function buildAssembly(
     const a = (i * 2 * Math.PI) / sectors,
       width = ((2 * Math.PI) / sectors) * 0.85,
       s = new THREE.Shape();
-    s.absarc(0, 0, 0.0425, a - width / 2, a + width / 2, false);
+    // Outer radius equals the shell's bore band outer face (r 42.4 mm) so the segments
+    // seat in the pocket and no body interpenetrates another.
+    s.absarc(0, 0, 0.0424, a - width / 2, a + width / 2, false);
     s.absarc(0, 0, 0.0405, a + width / 2, a - width / 2, true);
     s.closePath();
     const geo = new THREE.ExtrudeGeometry(s, {
-      depth: 0.014,
+      depth: 0.01125,
       bevelEnabled: false,
       curveSegments: 12,
     });
@@ -324,9 +326,9 @@ export function buildAssembly(
       "EM04",
       geo,
       i % 2 ? "#a9646b" : "#7195ad",
-      [0, 0, -2.5],
+      [0, 0, 0.25],
       -0.018,
-      "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative. This band is r 40.5-42.5 mm for z -2.5 to +11.5 mm, placed to match the stator at its manufacturer position: 13.872 mm full axial overlap, measured 0.000 mm3 clash against both housings. STILL UNRESOLVED: the source housings carry their own arcuate slots at r 41.766-43.236 mm (front, z 13.001-16.25; rear, z -8.25 to -6.0) which match neither this band nor its 42-piece count, so rotor radial placement remains unproven.",
+      "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative. The segments seat in 42 pockets machined into the rotor end bell, r 40.5-42.4 mm over z 0.25 to +11.5 mm, so no body interpenetrates another (measured 0.000 mm3). The stator at its manufacturer position is overlapped over the full 13.872 mm stack. STILL UNRESOLVED: the source housings carry their own arcuate slots at r 41.766-43.236 mm (front, z 13.001-16.25; rear, z -8.25 to -6.0) which match neither this band nor its 42-piece count, so rotor radial placement remains unproven.",
     );
   }
   const coilShape = new THREE.Shape();

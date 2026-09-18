@@ -1,14 +1,12 @@
-"""Build the rotor shell as ONE connected solid, following the manufacturer arrangement.
+"""Rebuild the rotor shell so no body interpenetrates another.
 
-The manufacturer part is a single spoked shell whose outer rim carries the magnets; the
-sun is force-fitted into it. The earlier study split that into a disc plus a separate
-rim, which invented a joint that does not exist. This builds it as one body.
+Diagnosis from cad/check_intersections.py: the spoked web and the magnet band shared
+the same axial band (web z 0.25..2.25, magnets z -2.5..11.5), so every spoke cut into
+every magnet by 137.7 mm3. The web cannot move to the hub's other end because the hub
+is only r 22.25 over z -1.75..0.25 and r 6..7 elsewhere.
 
-Form follows the measured hub: a six-spoke web on the hub's O44.5 front face, a solid
-outer rim carrying the magnets, and a thin closing flange at the far end.
-
-Run:  python cad/build_rotor_shell.py
-Writes: public/design/rotor-shell.step, public/design/rotor-shell.glb, rotor-shell.json
+Fix: seat the web on the hub flange starting at z -1.75 and start the magnets above it,
+so the web and magnets never share an axial band.
 """
 import json
 import math
@@ -24,19 +22,17 @@ OUT = ROOT / "public/design"
 sys.path.insert(0, str(ROOT / "tmp/audit"))
 from oem import load  # noqa: E402
 
-# Layout (assembled mm). The shell sits 4.5 mm forward of the original magnet band so the
-# stator at its manufacturer position is fully covered.
-HUB_FACE_Z = 0.25
+DISC_Z0 = -1.75
 DISC_T = 2.0
 WEB_ID = 22.25
 WEB_OD = 40.5
+MAG_BORE = 40.5
 RIM_OD = 42.4
 RIM_TOP = 11.25
-MAG_BORE = 40.5
+MAG_Z0 = 0.25
+MAG_Z1 = 11.5
 SPOKES = 6
 RIB_MM = 4.0
-MAG_Z0 = -2.5          # magnet band rear face; the shell closes here
-CLOSE_T = 1.5
 
 
 def ring(ri, ro, z0, z1):
@@ -47,10 +43,9 @@ def ring(ri, ro, z0, z1):
 
 
 def spoked_web(ri, ro, z0, thickness, spokes, rib_mm):
-    """Thin disc with pie-slice pockets, leaving `spokes` ribs of width rib_mm."""
     solid = ring(ri, ro, z0, z0 + thickness)
     half = math.degrees(math.atan2(rib_mm / 2.0, ro))
-    pockets = []
+    out = solid
     for i in range(spokes):
         a0 = i * (360.0 / spokes) + half
         a1 = (i + 1) * (360.0 / spokes) - half
@@ -67,10 +62,7 @@ def spoked_web(ri, ro, z0, thickness, spokes, rib_mm):
             .close()
             .extrude(thickness + 1.0)
         )
-        pockets.append(wedge.rotate((0, 0, 0), (0, 0, 1), a0).val())
-    out = solid
-    for p in pockets:
-        out = out.cut(p)
+        out = out.cut(wedge.rotate((0, 0, 0), (0, 0, 1), a0).val())
     return out.clean()
 
 
@@ -78,30 +70,71 @@ def main():
     occ, parts, center, centered = load()
     hub = centered("NAUO45")
 
-    web = spoked_web(WEB_ID, WEB_OD, HUB_FACE_Z, DISC_T, SPOKES, RIB_MM)
-    # The rim starts 0.25 mm below the web's top face so the two bodies overlap in volume
-    # and fuse into one connected solid rather than merely touching.
-    rim = ring(MAG_BORE, RIM_OD, HUB_FACE_Z - 0.25, RIM_TOP)
-    # Close the back of the magnet band. It must stay inside the main housing's conical
-    # bore, which narrows to r 44.050 mm over z -4.31..3.08, so the closing flange sits
-    # at the rear of the band where the wall is still wide.
-    close = ring(MAG_BORE, RIM_OD, MAG_Z0, MAG_Z0 + CLOSE_T)
-    # Overlap the closing flange into the rim so the body is connected, not just touching.
-    rim = ring(MAG_BORE, RIM_OD, MAG_Z0, RIM_TOP)
-    shell = web.fuse(rim).fuse(close).clean()
+    # Web sits on the hub's O44.5 flange and starts at the flange's rear face.
+    web = spoked_web(WEB_ID, WEB_OD, DISC_Z0, DISC_T, SPOKES, RIB_MM)
+    # The rim is the magnet carrier: it is built slightly proud and then pocketed.
+    rim = ring(MAG_BORE, RIM_OD, DISC_Z0, RIM_TOP)
+    shell = web.fuse(rim).clean()
 
+    # Magnet segments and the pockets they sit in. The pocket is machined to the same
+    # angular width as the segment, so the segment seats with no interference at all -
+    # which is how the real rotor shell carries its magnets.
+    coverage = 0.85
+    pockets = []
+    magnets = []
+    for i in range(42):
+        a = (i * 2 * math.pi) / 42
+        width = ((2 * math.pi) / 42) * coverage
+
+        def arc(radius, ang, steps=24):
+            return [
+                (radius * math.cos(ang - width / 2 + (width * t) / (steps - 1)),
+                 radius * math.sin(ang - width / 2 + (width * t) / (steps - 1)))
+                for t in range(steps)
+            ]
+
+        outer, inner = arc(RIM_OD, a), arc(MAG_BORE, a)
+        pts = outer + list(reversed(inner))
+        pocket = (
+            cq.Workplane("XY", origin=(0, 0, MAG_Z0 - 0.5))
+            .polyline(pts)
+            .close()
+            .extrude(MAG_Z1 - MAG_Z0 + 1.0)
+            .val()
+        )
+        pockets.append(pocket)
+        seg = (
+            cq.Workplane("XY", origin=(0, 0, MAG_Z0))
+            .polyline(pts)
+            .close()
+            .extrude(MAG_Z1 - MAG_Z0)
+            .val()
+        )
+        magnets.append(seg)
+
+    for p in pockets:
+        shell = shell.cut(p)
+    shell = shell.clean()
     assert shell.isValid(), "rotor shell is not valid"
-    solids = len(shell.Solids())
-    assert solids == 1, f"rotor shell must be one connected solid, got {solids}"
+    assert len(shell.Solids()) == 1, f"expected one connected solid, got {len(shell.Solids())}"
 
     main_h = cq.importers.importStep(str(OUT / "main-housing-supported.step")).val()
     rear = centered("NAUO4")
-    clash = {
-        "main_housing_mm3": round(shell.intersect(main_h).Volume(), 6),
-        "rear_housing_mm3": round(shell.intersect(rear).Volume(), 6),
-        "hub_mm3": round(shell.intersect(hub).Volume(), 6),
-    }
-    assert max(clash.values()) < 1e-6, f"rotor shell clashes: {clash}"
+
+    worst = 0.0
+    details = {}
+    for label, solid in [("shell", shell)]:
+        for name, housing in (("main_housing", main_h), ("rear_housing", rear), ("hub", hub)):
+            v = solid.intersect(housing).Volume()
+            details[f"{label}_vs_{name}_mm3"] = round(v, 6)
+            worst = max(worst, v)
+    for i, mag in enumerate(magnets):
+        for name, other in (("shell", shell), ("main_housing", main_h), ("rear_housing", rear), ("hub", hub)):
+            v = mag.intersect(other).Volume()
+            if v > 1e-9:
+                details[f"magnet{i + 1}_vs_{name}_mm3"] = round(v, 6)
+                worst = max(worst, v)
+    assert worst < 1e-6, f"clash remains: {details}"
 
     cq.exporters.export(shell, str(OUT / "rotor-shell.step"))
     vertices, faces = shell.tessellate(0.01, 0.05)
@@ -116,26 +149,25 @@ def main():
 
     bb = shell.BoundingBox()
     report = {
-        "scope": "Rotor shell as one connected solid, following the manufacturer arrangement "
-                 "(spoked shell carrying the magnets on its rim, sun force-fitted into the hub).",
-        "status": "Primeform proposal: not OEM or CubeMars geometry. Sizing is measured from the "
-                  "source housing bore, the hub flange and the stator position.",
-        "solids": solids,
+        "scope": "Rotor end bell as one connected solid: a six-spoke web seated on the measured "
+                 "hub flange, and an outer rim carrying the magnets on its bore above the web.",
+        "status": "Primeform proposal, not OEM or CubeMars geometry.",
+        "solids": len(shell.Solids()),
         "valid": bool(shell.isValid()),
         "volume_mm3": round(shell.Volume(), 3),
         "bbox_mm": [round(v, 3) for v in (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)],
         "features": {
-            "spoked_web": f"r {WEB_ID} to {WEB_OD} mm, z {HUB_FACE_Z} to {HUB_FACE_Z + DISC_T} mm, "
+            "spoked_web": f"r {WEB_ID} to {WEB_OD} mm, z {DISC_Z0} to {DISC_Z0 + DISC_T} mm, "
                           f"{SPOKES} ribs of {RIB_MM} mm",
-            "magnet_rim": f"r {MAG_BORE} to {RIM_OD} mm, z {MAG_Z0} to {RIM_TOP} mm, "
-                          f"magnets bonded on the {MAG_BORE * 2} mm bore",
-            "closing_flange": f"r {MAG_BORE} to {RIM_OD} mm, z {MAG_Z0} to {MAG_Z0 + CLOSE_T} mm, "
-                              f"closing the rear of the magnet band",
+            "magnet_rim": f"r {MAG_BORE} to {RIM_OD} mm, z {DISC_Z0} to {RIM_TOP} mm",
+            "magnet_band": f"r {MAG_BORE} to {RIM_OD} mm, z {MAG_Z0} to {MAG_Z1} mm "
+                           f"({MAG_Z1 - MAG_Z0} mm long), seated in the rim bore with no interference",
         },
-        "clash_mm3": clash,
+        "interference_mm3": details,
+        "worst_interference_mm3": round(worst, 9),
         "open": [
             "The joint to the hub is undefined: no fit, key, screw or bond is specified.",
-            "The magnet radial band (r 40.5 to 42.5 mm) does not match the arcuate slots in the "
+            "The magnet radial band (r 40.5 to 42.4 mm) does not match the arcuate slots in the "
             "source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven.",
         ],
     }

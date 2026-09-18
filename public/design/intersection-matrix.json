@@ -1,0 +1,138 @@
+{
+  "scope": "Pairwise intersection matrix for every modelled body, plus intended-contact checks. Re-run after every geometry change.",
+  "frame": "assembled centred mm",
+  "bodies": [
+    "M01 main housing",
+    "M02 rear housing",
+    "G03 hub",
+    "G02 sun",
+    "B03 6701 rear",
+    "B03 6701 front",
+    "E02 encoder magnet",
+    "EM03 rotor end bell",
+    "EM04 magnet 1",
+    "EM04 magnet 2",
+    "EM04 magnet 3",
+    "EM04 magnet 4",
+    "EM04 magnet 5",
+    "EM04 magnet 6",
+    "EM04 magnet 7",
+    "EM04 magnet 8",
+    "EM04 magnet 9",
+    "EM04 magnet 10",
+    "EM04 magnet 11",
+    "EM04 magnet 12",
+    "EM04 magnet 13",
+    "EM04 magnet 14",
+    "EM04 magnet 15",
+    "EM04 magnet 16",
+    "EM04 magnet 17",
+    "EM04 magnet 18",
+    "EM04 magnet 19",
+    "EM04 magnet 20",
+    "EM04 magnet 21",
+    "EM04 magnet 22",
+    "EM04 magnet 23",
+    "EM04 magnet 24",
+    "EM04 magnet 25",
+    "EM04 magnet 26",
+    "EM04 magnet 27",
+    "EM04 magnet 28",
+    "EM04 magnet 29",
+    "EM04 magnet 30",
+    "EM04 magnet 31",
+    "EM04 magnet 32",
+    "EM04 magnet 33",
+    "EM04 magnet 34",
+    "EM04 magnet 35",
+    "EM04 magnet 36",
+    "EM04 magnet 37",
+    "EM04 magnet 38",
+    "EM04 magnet 39",
+    "EM04 magnet 40",
+    "EM04 magnet 41",
+    "EM04 magnet 42"
+  ],
+  "pair_count": 1225,
+  "clashes": [
+    {
+      "a": "M01 main housing",
+      "b": "M02 rear housing",
+      "interference_mm3": 2.4e-05,
+      "intended": "housing joint face"
+    },
+    {
+      "a": "G03 hub",
+      "b": "G02 sun",
+      "interference_mm3": 0.324088,
+      "intended": "pilot fit"
+    }
+  ],
+  "intended_contacts": [
+    {
+      "a": "G03 hub",
+      "b": "G02 sun",
+      "intent": "pilot fit",
+      "interference_mm3": 0.324088,
+      "min_distance_mm": 0.0,
+      "result": "contact"
+    },
+    {
+      "a": "G03 hub",
+      "b": "B03 6701 rear",
+      "intent": "bearing seat",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "result": "contact"
+    },
+    {
+      "a": "G03 hub",
+      "b": "B03 6701 front",
+      "intent": "bearing seat",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "result": "contact"
+    },
+    {
+      "a": "G03 hub",
+      "b": "E02 encoder magnet",
+      "intent": "magnet seat",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "result": "contact"
+    },
+    {
+      "a": "EM03 rotor end bell",
+      "b": "G03 hub",
+      "intent": "shell to hub (UNDEFINED joint)",
+      "interference_mm3": 0.0,
+      "min_distance_mm": 0.0,
+      "result": "contact"
+    },
+    {
+      "a": "M01 main housing",
+      "b": "M02 rear housing",
+      "intent": "housing joint face",
+      "interference_mm3": 2.4e-05,
+      "min_distance_mm": 0.0,
+      "result": "contact"
+    }
+  ],
+  "must_clear_violations": [
+    {
+      "a": "M01 main housing",
+      "b": "M02 rear housing",
+      "interference_mm3": 2.4e-05,
+      "intended": "housing joint face"
+    }
+  ],
+  "magnet_clashes": [],
+  "summary": {
+    "bodies": 50,
+    "pairs_tested": 1225,
+    "clashing_pairs": 2,
+    "must_clear_violations": 1,
+    "magnet_clashing_pairs": 0,
+    "contacts_missing": 0
+  }
+}
