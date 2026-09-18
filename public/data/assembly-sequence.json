@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
+  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor hub is now real manufacturer geometry with a measured hub-to-sun pilot joint; the hub has no modelled connection to the rotor shell. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
   "steps": [
     {
       "id": "A01",
@@ -40,20 +40,20 @@
       ],
       "method": "Locate + screw clamp",
       "surfaces": [
-        "Ring flange front face, z = 13.25 mm",
-        "Housing internal front seat, z = 13.25 mm"
+        "Ring mounting flange front face, z = 8.75 mm",
+        "Housing internal front seat, z = 8.75 mm"
       ],
-      "process": "Align the eight threaded positions on the 54 mm pitch circle. Insertion direction and access need checking.",
+      "process": "Align the eight threaded positions on the 54 mm pitch circle. The ring, stator, winding and housing seat were all moved 4.5 mm rearward so the steel stack aligns with the rotor magnet span; the gear mesh itself is unchanged. Insertion direction and access need checking.",
       "check": "Validate locating diameter, face flatness and assembly access.",
       "status": "Proposed / requires validation",
       "marker": [
         24.9,
-        30,
-        13.25
+        29.98,
+        8.75
       ],
       "pathReview": {
         "status": "not validated",
-        "reason": "The ring flange and integral stator sleeve must pass the housing entry and internal shoulders. No swept-volume check or insertion-side decision exists."
+        "reason": "The ring flange and its seat must pass the housing entry and internal shoulders after the 4.5 mm rearward realignment. No swept-volume check or insertion-side decision exists."
       }
     },
     {
@@ -123,19 +123,19 @@
       "method": "Adhesive / thermal bond; Coated sheet stacking + bonded bore; Formed insulation insertion; Wind / insert coils; Thermal attachment / lead connection; Impregnation / cure",
       "surfaces": [
         "Stator bore 60 mm ↔ ring OD 59.96 mm (radial location, provisional bond gap)",
-        "Stator front steel face z 11.436 mm ↔ main housing annular shoulder (axial stop)"
+        "Stator front steel face z 6.936 mm ↔ main housing annular shoulder (axial stop)"
       ],
-      "process": "Install the prepared 68-sheet stator over the compact ring OD until its steel end face seats against the housing shoulder. Windings occupy z -3.3 to 12.3 mm. No long ring sleeve remains. Validate complete insertion access before animating motion.",
-      "check": "Choice C packaging only: 4 mm back iron, shortened radial winding region, 5.686 mm locating/bond overlap. Validate flux, winding area, bond capacity, shoulder flatness and motor alignment.",
+      "process": "Install the prepared 68-sheet stator over the compact ring OD until its steel end face seats against the housing shoulder at z 6.936 mm. Windings occupy z -7.8 to 7.8 mm. The stator, winding, ring flange and housing seat were all moved 4.5 mm rearward from the earlier Choice C position so the 13.872 mm stack overlaps the full magnet span (-7 to +7 mm). No long ring sleeve remains. Validate complete insertion access before animating motion.",
+      "check": "Choice C packaging only: 4 mm back iron, shortened radial winding region, 5.686 mm locating/bond overlap. The 9.436 mm axial misalignment is resolved in the layout, but flux, winding area, bond capacity, shoulder flatness and motor alignment remain unvalidated.",
       "status": "Proposed / requires validation",
       "marker": [
         30.1,
         33.5,
-        11.436
+        6.936
       ],
       "pathReview": {
         "status": "not validated",
-        "reason": "Full wound-stator insertion path and tolerance stack remain unvalidated. Rotor magnets have not been realigned to the stator shifted 4.5 mm forward."
+        "reason": "Full wound-stator insertion path and tolerance stack remain unvalidated. The stack is now axially aligned with the magnet span; electromagnetic and thermal performance are still unqualified."
       }
     },
     {
@@ -160,7 +160,7 @@
         "Magnet side faces ↔ pole-spacing fixture"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Prepare surfaces and dispense a controlled bondline; adhesive and mechanical retention are unspecified. Place alternating poles using tooling and cure. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
-      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Qualify bond thickness, temperature capability, cure and centrifugal retention. Verify polarity, spacing, concentricity, retention and air gap; do not infer piece count from pole count.",
+      "check": "Extended housing bosses intersect the current yoke (1134.581 mm3). Resolve before assembly. The yoke and magnet band radii (42.5-45.5 and 40.5-42.5 mm) do not coincide with the arcuate slots in the source housings (41.766-43.236 mm), and the source CAD contains no web joining the measured hub (outer r 22.25 mm) to this shell. Qualify bond thickness, temperature capability, cure and centrifugal retention. Verify polarity, spacing, concentricity and air gap; do not infer piece count from pole count.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
@@ -170,7 +170,7 @@
     },
     {
       "id": "A06",
-      "title": "Rotor bench: hub retention — NOT DEFINED (blocked)",
+      "title": "Rotor bench: hub joint — measured, but not yet released",
       "phase": "Rotor preparation",
       "parts": [
         "G03"
@@ -183,15 +183,16 @@
         "EM04",
         "C02"
       ],
-      "method": "No joint defined: no receiving surface, retention or torque path exists",
+      "method": "Measured interference/keyed pilot fit, O5.95 hub counterbore onto O6.0 sun journal",
       "surfaces": [
-        "Hub flange, measured r 17.145 to 22.25 mm at z -1.75 to +0.25 mm (OEM NAUO45)",
-        "Hub bearing bores: 12 mm front counterbore z 1.25 to 5.25 mm; 6 mm rear bore z -8.75 to -6.75 mm",
-        "Procedural EM03/endbell is a plain annulus, 46 mm opening, z -8.6 to -7.6 mm: it has no surface that receives the hub",
-        "Procedural EM03/yoke inner wall r 42.5 mm, z -7.5 to +7.5 mm: 0.1 mm clear of the end bell in z, so the shell is not joined either"
+        "Hub front counterbore O5.95 mm ↔ sun front journal O6.0 mm, contact z 3.75 to 5.25 mm, 0.324 mm3",
+        "Sun journal keyed/flat feature: 0.202 mm azimuthal radius spread across that band",
+        "Hub O12 front counterbore z 1.25 to 5.25 mm ↔ front 6701-ZZ outer race",
+        "Hub O6 rear bore z -8.75 to -6.75 mm ↔ rear 6701-ZZ and encoder target magnet",
+        "Hub flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm: nearest housing wall is r 47.4 mm, a 25.15 mm radial gap with no bridge anywhere in the source CAD"
       ],
-      "process": "Do not present this as an attachment. Measured on the manufacturer STEP: the OEM input-shaft hub (NAUO45) is a body of revolution about the motor axis carrying both 6701-ZZ bearings and the encoder target magnet coaxially with the sun shaft. The procedural rotor end bell and yoke are a different form: the end bell's 23 mm inner radius (46 mm opening) is larger than the hub's 44.5 mm envelope, and the end bell's axial band (-8.6 to -7.6 mm) does not intersect the hub flange band (-1.75 to +0.25 mm) at all. The parts are therefore not in contact, and no fit, key, spline, pin or fastener has been designed. Resolve the rotor form and axial layout before this step can describe an operation.",
-      "check": "Required before this step can be reclassified: (1) confirm from a physical sample or internal drawing which feature drives the sun, since the source CAD shows no key, spline, pin or press land between the hub and the sun; (2) establish the magnetic rotor carrier, noting the source main housing NAUO3 already has arcuate magnet pockets at r 41.766 to 43.236 mm, z 13.001 to 16.250 mm; (3) reconcile the Choice C stator shift of +4.5 mm with the hub, bearing and encoder positions that fix the rotor relative to the rear housing; (4) define fit class, retention, runout, balance and torque capacity for whichever joint is chosen.",
+      "process": "Fit the measured manufacturer hub (occurrence NAUO45, now exported as public/design/oem-rotor-hub.step and shown as assembly item G03) around the sun shaft. The hub is a body of revolution: six-spoke flange, O12 and O6 bearing bores, O4 middle bore and a O5.95 front counterbore. Its front counterbore pilots the sun's O6.0 journal over z 3.75 to 5.25 mm with a 0.324 mm3 interference and a keyed/flat feature on the sun. The hub is not attached to either housing by any modelled feature: its flange ends at r 22.25 mm and the nearest housing wall is at r 47.4 mm, a 25.15 mm radial gap with no bridge in the source CAD.",
+      "check": "Before release: (1) design and validate the hub-to-rotor-shell connection that closes the 25.15 mm radial gap, since the source CAD contains no such feature; (2) specify the fit class, retention, runout and balance for the O5.95/O6.0 keyed pilot joint and confirm its torque capacity against the 9:1 gearbox input; (3) confirm the sun drive feature from a physical sample, because a 0.202 mm azimuthal spread measured from CAD is not a released key or spline specification; (4) confirm the rotor radial placement, which the source housings do not confirm.",
       "status": "Blocked by known geometry",
       "marker": [
         17.145,
@@ -200,7 +201,7 @@
       ],
       "pathReview": {
         "status": "not validated",
-        "reason": "The hub and the procedural rotor shell do not touch: the end bell opening (46 mm) exceeds the hub envelope (44.5 mm) and the two axial bands are 6.85 mm apart. There is nothing to attach and no insertion path to review until the rotor form is redesigned against the measured OEM hub."
+        "reason": "The hub-to-sun joint is now measured and real, but the hub-to-rotor-shell joint does not exist: the flange outer radius is 22.25 mm and the nearest housing wall is at 47.4 mm, so the hub is unsupported radially and cannot transmit rotor torque. No receiving surface, no retention and no insertion path can be reviewed until that connection is designed."
       }
     },
     {
@@ -243,7 +244,7 @@
         "Hub bore ↔ sun/input shaft interface"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
-      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Define torque path, axial retention, fit, runout and balance before choosing an assembly operation. Choice C stator shifted 4.5 mm but magnets remain at -7 to 7 mm; only 9.436 mm axial overlap. Resolve rotor layout. A06 is a measured failure, so no rotor subassembly exists to install.",
+      "check": "Extended housing bosses intersect the current provisional yoke (measured 1134.581 mm3). Resolve the rotor radial envelope before assembly. The stator/magnet axial misalignment is resolved: the stator, winding, ring and housing seat moved 4.5 mm rearward and the 13.872 mm stack now overlaps the full magnet span. A06 remains a measured failure because the hub has no connection to the rotor shell, so no rotor subassembly exists to install.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {

@@ -1,0 +1,195 @@
+{
+  "source_sha256": "f569faf5c38c6cc2af5a510b36160a316161feb9cad37f5d136abe22b7f1beaa",
+  "occurrence": "NAUO45",
+  "product": "AK80-9\u8f93\u5165\u8f74-2",
+  "asset_step": "public/design/oem-rotor-hub.step",
+  "asset_glb": "public/design/oem-rotor-hub.glb",
+  "units": {
+    "step": "mm",
+    "glb": "m",
+    "frame": "assembled centred mm"
+  },
+  "bbox_mm": [
+    -22.2517,
+    -22.2517,
+    -9.2545,
+    22.2517,
+    22.2517,
+    5.2545
+  ],
+  "volume_mm3": 3114.215,
+  "solids": 1,
+  "valid": true,
+  "triangles": 27296,
+  "profile_bands": [
+    {
+      "z_mm": [
+        -9.25,
+        -8.75
+      ],
+      "material_r_mm": [
+        [
+          3.0,
+          3.0
+        ],
+        [
+          5.554,
+          5.95
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        -8.75,
+        -6.75
+      ],
+      "material_r_mm": [
+        [
+          3.0,
+          3.0
+        ],
+        [
+          6.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        -6.75,
+        -3.25
+      ],
+      "material_r_mm": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          6.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        -3.25,
+        -2.75
+      ],
+      "material_r_mm": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          7.0,
+          7.0
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        -2.75,
+        -1.75
+      ],
+      "material_r_mm": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          17.15,
+          17.15
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        -1.75,
+        0.25
+      ],
+      "material_r_mm": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          18.975,
+          18.975
+        ],
+        [
+          21.025,
+          21.025
+        ],
+        [
+          22.25,
+          22.25
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        0.25,
+        1.25
+      ],
+      "material_r_mm": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          7.0,
+          7.0
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        1.25,
+        3.25
+      ],
+      "material_r_mm": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          6.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        3.25,
+        4.75
+      ],
+      "material_r_mm": [
+        [
+          2.975,
+          2.975
+        ],
+        [
+          6.0,
+          6.0
+        ]
+      ]
+    },
+    {
+      "z_mm": [
+        4.75,
+        5.25
+      ],
+      "material_r_mm": [
+        [
+          2.975,
+          2.975
+        ],
+        [
+          5.55,
+          5.946
+        ]
+      ]
+    }
+  ],
+  "note": "Re-export of manufacturer geometry. Replaces the procedural EM03/endbell + EM03/yoke pair, which did not match the measured hub form, opening diameter or axial position. See hub-joint-validation.json."
+}

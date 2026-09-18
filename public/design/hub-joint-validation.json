@@ -249,6 +249,54 @@
     "hub_rear_housing_min_distance_mm": 0.499994,
     "interpretation": "Zero interference with both bearings and the magnet, and sub-cubic-millimetre interference with the sun, shows the OEM hub is coaxial with the sun and is the carrier for both 6701-ZZ bearings. It is not an outboard disc bolted to a bell."
   },
+  "oem_drive_interface": {
+    "contact_volume_mm3": 0.324088,
+    "contact_z_band_mm": [
+      3.75,
+      5.25
+    ],
+    "contact_max_radius_mm": 3.0,
+    "sun_sections_across_contact": {
+      "3.80": {
+        "loops": 1,
+        "r_min": 2.4185,
+        "r_max": 3.0,
+        "azimuthal_spread": 0.2022
+      },
+      "4.05": {
+        "loops": 1,
+        "r_min": 2.4185,
+        "r_max": 3.0,
+        "azimuthal_spread": 0.2022
+      },
+      "4.30": {
+        "loops": 1,
+        "r_min": 2.4185,
+        "r_max": 3.0,
+        "azimuthal_spread": 0.2022
+      },
+      "4.55": {
+        "loops": 1,
+        "r_min": 2.4185,
+        "r_max": 3.0,
+        "azimuthal_spread": 0.2022
+      },
+      "4.80": {
+        "loops": 1,
+        "r_min": 2.4185,
+        "r_max": 3.0,
+        "azimuthal_spread": 0.2022
+      },
+      "5.05": {
+        "loops": 1,
+        "r_min": 2.4185,
+        "r_max": 3.0,
+        "azimuthal_spread": 0.2022
+      }
+    },
+    "max_azimuthal_spread_mm": 0.2022,
+    "verdict": "azimuthal radius spread 0.202 mm: keyed or flat drive feature present"
+  },
   "procedural_rotor_comparison": {
     "procedural_end_bell": {
       "id": "EM03/endbell",

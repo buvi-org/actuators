@@ -91,48 +91,85 @@ status "Proposed / requires validation". No attachment geometry, retention or
 torque path existed. It is now marked `Blocked by known geometry`, and autoplay
 stops on it instead of overshooting to A07.
 
-## 4. New evidence that changes the rotor problem
+## 4. The drive interface the CAD does encode
 
-The magnetic rotor may not belong to `EM03` at all. The source **main housing**
-`NAUO3` carries arcuate pockets measured at **r 41.766 … 43.236 mm for
-z 13.001 … 16.250 mm**, which is a magnet-slot band, not a structural pocket. The
-rear housing `NAUO4` has a matching band at z -8.250 … -6.001 mm. The exploded
-illustration shows the same slotted plates in the rotating stack.
+Sectioning the sun across the contact band and classifying each section (plain
+loop vs azimuthal radius spread vs loop count) resolves the earlier open question:
 
-If the housings are the magnet carriers, then `EM03` (a separate yoke plus end
-bell) is an invention that duplicates an OEM feature, and the "yoke versus
-housing bosses" overlap of 1134.581 mm³ is a consequence of that invention rather
-than a real interference.
+| Measurement | Value |
+|---|---|
+| Contact volume | 0.324 mm³ |
+| Contact axial band | z 3.750 … 5.250 mm |
+| Fit at that band | sun front journal Ø6.000 into hub counterbore Ø5.950 |
+| Sun section across the band | one loop, r 2.4185 … 3.000 |
+| Azimuthal radius spread | **0.2022 mm** → a keyed or flat (D) drive feature |
 
-This is a strong lead, not a released conclusion: confirming it needs either a
-teardown or a dimensioned internal drawing. It is recorded as an open decision in
-the validation JSON.
+So the hub does not merely retain the sun on bearings: its front counterbore
+pilots the sun's keyed front journal over 1.5 mm of engagement. That is the
+measured torque path from the rotor side into the sun, and it is why the earlier
+"friction through two bearings" reading in this document was wrong.
 
-## 5. What is still unresolved
+**Caveat.** A 0.202 mm azimuthal spread measured from a CAD tessellation is
+evidence of a drive feature, not a released key or spline specification. Confirm
+it against hardware before designing to it.
 
-1. **Which feature drives the sun.** The hub carries both bearings coaxially with
-   the sun, but the source CAD shows no key, spline, pin, clamp or press land
-   between them beyond the 0.324 mm³ nominal contact. A friction-only path through
-   two bearings cannot be assumed to transmit 9:1 gearbox torque. A physical sample
-   or an internal drawing is required.
-2. **Rotor form and carrier.** Resolve whether the rotor is the `NAUO3`/`NAUO4`
-   housing pair (measurement suggests it is) or a separate shell, before drawing
-   any replacement geometry.
-3. **Axial layout.** The hub, both bearings and the encoder magnet fix the rotor
-   module relative to the rear housing. The Choice C stator shift of +4.5 mm
-   therefore has to be reconciled with the housing seat, not by translating the
-   rotor. Moving the rotor also moves a real OEM part against real OEM seats.
-4. **Fits and retention.** The two Ø6 locations, the Ø12 front counterbore, the
-   Ø44.5 rim and the Ø2.546 through-bore need fit classes, retention and runout
-   definition before any of them can be called a joint.
+No key, keyway, spline or cross-pin appears anywhere on the sun's rear Ø4.0
+section.
 
-## 6. Next correction, in order
+## 5. What was implemented
 
-1. Confirm finding 4 (rotor carried by the housing) from evidence.
-2. Replace the procedural rotor module with geometry derived from the measured
-   OEM hub profile, and delete `EM03/endbell` and `EM03/yoke` if finding 4 holds.
-3. Re-measure the rotor/housing/stator axial stack and produce a corrected axial
-   layout that keeps the Ø98 × 38.5 mm external envelope and the real bearing and
-   encoder positions.
-4. Only then define the hub joint: receiving surface, fit class, retention and
-   torque path, with a process step that names both parts and the surfaces.
+1. **The real hub is in the model.** `cad/build_hub.py` re-exports occurrence
+   `NAUO45` from the source STEP as `public/design/oem-rotor-hub.step` and
+   `public/design/oem-rotor-hub.glb` (one valid solid, 3114.2 mm³, Ø44.5 × 14.5).
+   The viewer shows it as assembly item `G03`, replacing the procedural
+   `EM03/endbell` and `EM03/yoke` annuli, which have been deleted.
+2. **The hub joint is described from measurement.** Assembly step A06 now names
+   the actual surfaces: the Ø5.95 counterbore onto the sun's Ø6.0 keyed journal
+   over z 3.75…5.25 mm, plus the Ø12 and Ø6 bearing bores and the encoder-magnet
+   seat.
+3. **The stator shift was reversed.** The rotor's axial position is fixed by real
+   OEM features (the hub, both 6701-ZZ bearings, the encoder magnet), so the
+   Choice C **+4.5 mm stator shift was the error**. The stator, winding, ring
+   mounting flange and housing seat all moved 4.5 mm rearward, so the 13.872 mm
+   steel stack now spans z −6.936…+6.936 mm and overlaps the full magnet span
+   (−7…+7 mm) instead of 9.436 mm. The gear mesh itself is deliberately unchanged:
+   the sun stays on the OEM shaft journals.
+4. **Reports and data were regenerated**, not hand-edited: `build_gears.py` and
+   `build_housing.py` now derive everything from a single `SHIFT` constant, and
+   `stator-mount-validation.json`, `housing-study.json` and
+   `packaging-choice.json` follow.
+
+## 6. What is still blocked, and why
+
+A06 remains `Blocked by known geometry`, for a different and better-understood
+reason than before.
+
+The hub's flange ends at **r 22.25 mm**. The nearest housing wall is at
+**r 47.4 mm**. That is a **25.15 mm radial gap**, and the source CAD contains no
+web, spider, bell or disc joining the hub to the rotor shell. So:
+
+- The hub **is** measured, correctly shaped and correctly placed.
+- The **hub-to-sun joint is real** and measured.
+- The **hub-to-rotor-shell joint does not exist in the evidence**. Until it is
+  designed, the hub has no rotor torque input and A07 has no rotor to install.
+
+Two further open items:
+
+1. **Rotor radial placement.** The study yoke (r 42.5…45.5) and magnet band
+   (r 40.5…42.5) do not coincide with the arcuate slots in the source housings
+   (r 41.766…43.236). The housings' slots do not match the study's 42-segment
+   band either, so the source model does not settle where the magnets belong.
+2. **The housing-boss clash.** The added supports still intersect the provisional
+   yoke by 1134.581 mm³. It is unchanged by the axial realignment, because the
+   yoke spans z −7.5…+7.5 and the supports run the housing floors.
+
+## 7. Next correction, in order
+
+1. Design and validate the hub-to-shell connection that closes the 25.15 mm gap,
+   or establish from hardware that the OEM achieves it with a feature absent from
+   the published STEP.
+2. Resolve the rotor radial envelope so the yoke clears the housing bosses and the
+   magnets sit on a justified radius.
+3. Release the Ø5.95/Ø6.0 keyed pilot fit: fit class, retention, runout, balance
+   and torque capacity against the 9:1 gearbox input.
+

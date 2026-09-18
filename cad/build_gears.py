@@ -34,14 +34,24 @@ face=cq.Face.makeFromWires(cq.Workplane('XY').circle(29.98).wire().val(),[geomet
 ring=cq.Solid.extrudeLinear(face,cq.Vector(0,0,5)).translate((0,0,-2.5))
 # Integral fixed-ring flange and stator carrier, in assembly coordinates.
 # The gear local origin is z=8.25; rotate hole locations back by tooth phase.
+#
+# The gear train itself is intentionally NOT shifted: the sun gear stays on the OEM
+# shaft journals and the planet/ring mesh is unchanged. Only the stator, winding, ring
+# mounting flange and housing seat move, so the stator realigns with the magnet span
+# without disturbing the gear mesh.
 phase=math.pi/160
 stack_half=6.936
+SHIFT=-4.5
+GEAR_Z=8.25
+seat_z=11.436+SHIFT
+ring_z=(5.75+SHIFT,13.25+SHIFT)
+stator_z=(-stack_half+SHIFT,stack_half+SHIFT)
 
 def annulus(ri,ro,z0,z1):
  return cq.Solid.makeCylinder(ro,z1-z0,cq.Vector(0,0,z0)).cut(cq.Solid.makeCylinder(ri,z1-z0,cq.Vector(0,0,z0)))
-ring_world=ring.translate((0,0,8.25))
+ring_world=ring.translate((0,0,GEAR_Z))
 # Compact ring rim: no long sleeve and no stator axial shoulder.
-flange=annulus(24.9,29.98,8.75,13.25)
+flange=annulus(24.9,29.98,ring_z[0]+3.0,ring_z[1])
 ring_world=ring_world.fuse(flange).clean()
 mount_ids=['NAUO7']+[f'NAUO{i}' for i in range(22,29)]
 bolt_centres=[]
@@ -50,10 +60,10 @@ for part in manifest['parts']:
  bounds=part['bounds_mm'];x=(bounds[0]+bounds[3])/2;y=(bounds[1]+bounds[4])/2
  # Source bolt coordinates are already in the assembled world frame.
  lx=x*math.cos(phase)+y*math.sin(phase);ly=-x*math.sin(phase)+y*math.cos(phase)
- ring_world=ring_world.cut(cq.Solid.makeCylinder(1.025,4.52,cq.Vector(lx,ly,8.74)))
- bolt_centres.append({'instance':part['id'],'x_mm':x,'y_mm':y,'pcd_mm':2*math.hypot(x,y),'screw_tip_z_mm':bounds[2],'nominal_engagement_mm':13.25-bounds[2]})
+ ring_world=ring_world.cut(cq.Solid.makeCylinder(1.025,4.52,cq.Vector(lx,ly,ring_z[0]+2.99)))
+ bolt_centres.append({'instance':part['id'],'x_mm':x,'y_mm':y,'pcd_mm':2*math.hypot(x,y),'screw_tip_z_mm':bounds[2],'nominal_engagement_mm':ring_z[1]-bounds[2]})
 assert len(bolt_centres)==8
-ring=ring_world.clean().translate((0,0,-8.25))
+ring=ring_world.clean().translate((0,0,-GEAR_Z))
 mounted=ring_world.rotate((0,0,0),(0,0,1),math.degrees(phase))
 # Compare against source stationary and rotating bodies plus stator/coil envelopes.
 clashes={}
@@ -67,16 +77,16 @@ for shape,name,loc,color in reference:
  if abs(overlap)>=.01:
   bb=mounted.intersect(body,tol=1e-6).BoundingBox(); print('CLASH',id,overlap,[bb.xmin,bb.ymin,bb.zmin,bb.xmax,bb.ymax,bb.zmax],flush=True)
  assert abs(overlap)<.01,(id,overlap)
-stator=annulus(30,40,-stack_half+4.5,stack_half+4.5)
-coil=annulus(34.5,39,-3.3,12.3)
+stator=annulus(30,40,stator_z[0],stator_z[1])
+coil=annulus(34.5,39,-3.3+SHIFT,12.3+SHIFT)
 for name,body in [('stator_envelope',stator),('winding_envelope',coil)]:
  overlap=mounted.intersect(body,tol=1e-6).Volume();clashes[name]=round(abs(overlap),6)
  assert abs(overlap)<.01,(name,overlap)
 # Every mounting bore must be clear through the flange on the actual screw axis.
 for b in bolt_centres:
- probe=cq.Solid.makeCylinder(1,4.48,cq.Vector(b['x_mm'],b['y_mm'],8.76))
+ probe=cq.Solid.makeCylinder(1,4.48,cq.Vector(b['x_mm'],b['y_mm'],ring_z[0]+3.01))
  assert mounted.intersect(probe).Volume()<.001
-mounting={'design':'Choice C: compact ring OD locates stator radially; main housing shoulder locates it axially','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending','ring_od_mm':59.96,'ring_z_mm':[5.75,13.25],'stator_bore_mm':60,'slot_root_diameter_mm':68,'stator_back_iron_mm':4,'stator_z_mm':[-2.436,11.436],'stator_seat_z_mm':11.436,'radial_bond_gap_mm':.02,'locating_overlap_z_mm':[5.75,11.436],'locating_length_mm':5.686,'thread_outer_edge_material_mm':1.73,'source_and_envelope_overlap_mm3':clashes,'scope':'Nominal ring fit only. Housing seat checked separately. Rotor axial alignment and existing housing clashes unresolved.'}
+mounting={'design':'Choice C: compact ring OD locates stator radially; main housing shoulder locates it axially','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending','ring_od_mm':59.96,'ring_z_mm':list(ring_z),'stator_bore_mm':60,'slot_root_diameter_mm':68,'stator_back_iron_mm':4,'stator_z_mm':list(stator_z),'stator_seat_z_mm':seat_z,'radial_bond_gap_mm':.02,'locating_overlap_z_mm':[ring_z[0],seat_z],'locating_length_mm':round(seat_z-ring_z[0],3),'thread_outer_edge_material_mm':1.73,'source_and_envelope_overlap_mm3':clashes,'axial_layout':'Rotor axial position is fixed by measured OEM features; stator, winding, ring and housing seat moved 4.5 mm rearward to align with the magnet span.','scope':'Nominal ring fit only. Housing seat checked separately. Rotor radial envelope and the hub-to-shell connection remain unresolved.'}
 (OUT/'stator-mount-validation.json').write_text(json.dumps(mounting,indent=2)+'\n')
 report={}
 for name,solid in [('sun',sun),('planet',planet),('ring',ring)]:
@@ -90,12 +100,12 @@ for name,solid in [('sun',sun),('planet',planet),('ring',ring)]:
  scene=trimesh.Scene();scene.add_geometry(mesh,node_name=name);scene.export(OUT/f'provisional-{name}-gear.glb')
  report[name]={**geometry[name][2],'solid_count':1,'step_roundtrip_valid':True,'volume_mm3':round(solid.Volume(),4)}
 a=cq.Assembly(name='Provisional_planetary_gears')
-a.add(sun,name='Sun_gear',loc=cq.Location(cq.Vector(0,0,8.25)))
-a.add(ring.rotate((0,0,0),(0,0,1),180/160),name='Ring_gear',loc=cq.Location(cq.Vector(0,0,8.25)))
+a.add(sun,name='Sun_gear',loc=cq.Location(cq.Vector(0,0,GEAR_Z)))
+a.add(ring.rotate((0,0,0),(0,0,1),180/160),name='Ring_gear',loc=cq.Location(cq.Vector(0,0,GEAR_Z)))
 for i in range(3):
  angle=i*2*math.pi/3
  part=planet.rotate((0,0,0),(0,0,1),math.degrees(angle+math.pi+math.pi/70+20/70*angle))
- a.add(part,name=f'Planet_gear_{i+1}',loc=cq.Location(cq.Vector(13.5*math.cos(angle),13.5*math.sin(angle),8.25)))
+ a.add(part,name=f'Planet_gear_{i+1}',loc=cq.Location(cq.Vector(13.5*math.cos(angle),13.5*math.sin(angle),GEAR_Z)))
 a.export(str(OUT/'provisional-gear-train.step'))
 restored=cq.Assembly.importStep(str(OUT/'provisional-gear-train.step'))
 leaves=list(restored)

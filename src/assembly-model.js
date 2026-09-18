@@ -11,6 +11,7 @@ export function buildAssembly(
   sunSolid,
   planetSolid,
   ringSolid,
+  rotorHubSolid,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -237,7 +238,7 @@ export function buildAssembly(
   });
   for (let i = 0; i < stack.count; i++) {
     const tag = String(i + 1).padStart(3, "0"),
-      z = 4.5 - stack.gross / 2 + i * stack.pitch;
+      z = 0 - stack.gross / 2 + i * stack.pitch;
     add(
       `EM01/L${tag}`,
       `Lamination ${i + 1} · 0.200 mm`,
@@ -263,30 +264,24 @@ export function buildAssembly(
         "Study coating: 2 µm per face; chemistry and OEM thickness unknown.",
       );
   }
-  annular(
-    "EM03/yoke",
-    "EM03",
-    "Rotor magnetic yoke",
-    42.5,
-    45.5,
-    15,
-    0,
-    "#596576",
-    -0.018,
-    "Illustrative steel yoke: ID 85, OD 91, length 15 mm. Material and OEM dimensions unknown.",
-  );
-  annular(
-    "EM03/endbell",
-    "EM03",
-    "Rotor end bell",
-    23,
-    45.5,
-    1,
-    -8.1,
-    "#46596a",
-    -0.018,
-    "Known interference: this provisional disc overlaps rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. A forward translation also conflicts with the present stator/winding envelope. Axial layout must be redesigned.",
-  );
+  // G03: the real manufacturer rotor hub, re-exported from the source STEP.
+  // It replaces the earlier procedural EM03/endbell + EM03/yoke pair, which was a
+  // flat annulus with a 46 mm opening at z -8.6..-7.6: it could not receive the
+  // measured O44.5 hub and did not touch it, so assembly step A06 attached nothing.
+  if (rotorHubSolid) {
+    let hubGeometry;
+    rotorHubSolid.traverse((mesh) => {
+      if (mesh.isMesh) hubGeometry = mesh.geometry;
+    });
+    if (hubGeometry) {
+      const hubMesh = new THREE.Mesh(hubGeometry, material("#b7c2ce"));
+      root.add(hubMesh);
+      link(hubMesh, "G03", 0.03);
+      nodes.get("G03").status = "Reference CAD - measured joint";
+      nodes.get("G03").description =
+        "Manufacturer rotor hub re-exported from the source STEP (occurrence NAUO45). One valid solid, 3114.2 mm3, O44.5 x 14.5 mm, z -9.25 to +5.25 mm. Body of revolution about the motor axis: six-spoke flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm, O35.5 annular pocket, O42.05 rim, rear O6 bore, O4 middle bore and a O5.95 front counterbore. It carries both 6701-ZZ bearings and the encoder target magnet coaxially with the sun, and it pilots the sun's front journal: contact volume 0.324 mm3 confined to z 3.75 to 5.25 mm, with a keyed/flat feature (0.202 mm azimuthal radius spread) on the sun's journal. Fit class, retention and torque capacity are not yet qualified; see public/design/hub-joint-validation.json.";
+    }
+  }
   const sectors = 42;
   for (let i = 0; i < sectors; i++) {
     const a = (i * 2 * Math.PI) / sectors,
@@ -308,7 +303,7 @@ export function buildAssembly(
       i % 2 ? "#a9646b" : "#7195ad",
       [0, 0, -7],
       -0.018,
-      "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative.",
+      "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative. UNRESOLVED: this band is r 40.5-42.5 mm for z -7 to +7 mm, but the source housings carry their own arcuate magnet slots at r 41.766-43.236 mm (front, z 13.001-16.25) and r 41.766-43.236 mm (rear, z -8.25 to -6.0). The two bands do not coincide, so this shell placement has no support in the source CAD.",
     );
   }
   const coilShape = new THREE.Shape();
@@ -338,7 +333,7 @@ export function buildAssembly(
       "EM02",
       coilGeo,
       ["#c27b40", "#e0a354", "#a65a34"][i % 3],
-      [34.5 * Math.cos(a), 34.5 * Math.sin(a), 4.5],
+      [34.5 * Math.cos(a), 34.5 * Math.sin(a), 0],
       -0.05,
       "Winding bundle placeholder, not a turn-by-turn winding. Actual turns, conductor size, coil pitch and phase sequence remain unknown; colour is only visual grouping.",
     );
@@ -355,7 +350,7 @@ export function buildAssembly(
       "EM05",
       box(4.5, 3.15, 14.1),
       "#ded5ad",
-      [36.75 * Math.cos(a), 36.75 * Math.sin(a), 4.5],
+      [36.75 * Math.cos(a), 36.75 * Math.sin(a), 0],
       -0.05,
       "Solid envelope proxy for slot insulation, not a validated liner thickness or cut pattern.",
       0.25,
@@ -369,7 +364,7 @@ export function buildAssembly(
     34.5,
     39.5,
     0.15,
-    12.4,
+    7.9,
     "#dac57d",
     -0.05,
     "Illustrative end-winding impregnation extent; not a material fill volume or quantity.",
@@ -516,7 +511,7 @@ export function buildAssembly(
     4,
     24,
     0.2,
-    12.2,
+    7.7,
     "#c4c19a",
     0.055,
     "Schematic lubrication region only; not a grease-volume estimate.",
@@ -541,7 +536,7 @@ export function buildAssembly(
     29.98,
     30,
     5.686,
-    8.593,
+    4.093,
     "#78c6ba",
     -0.05,
     "Proposed 0.020 mm radial retaining-adhesive bondline between stator bore and compact ring OD; housing shoulder is axial stop. Adhesive grade, bond strength and thermal performance must be validated.",

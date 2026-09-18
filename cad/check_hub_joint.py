@@ -118,6 +118,79 @@ def bbox_of(shape):
     return [round(v, 4) for v in (b.xmin, b.ymin, b.zmin, b.xmax, b.ymax, b.zmax)]
 
 
+def measure_drive_interface(hub, sun):
+    """Locate the hub/sun drive interface and look for positive drive features.
+
+    The interference solid gives the exact axial band and radial extent where the
+    hub and the sun actually touch. Sectioning the sun across that band and
+    classifying each section (single plain loop, azimuthal spread, loop count)
+    separates a plain pilot fit from a keyed, splined or cross-pinned joint.
+    """
+    import numpy as np
+
+    def plane(z, half=40.0):
+        return cq.Face.makePlane(half, half, cq.Vector(0, 0, float(z)), cq.Vector(0, 0, 1))
+
+    def classify(shape, z, bins=36):
+        res = shape.intersect(plane(z))
+        pts, loops = [], 0
+        for f in res.Faces():
+            for w in f.Wires():
+                loops += 1
+                for e in w.Edges():
+                    for t in np.linspace(0, 1, 300):
+                        p = e.positionAt(t)
+                        r = (p.x ** 2 + p.y ** 2) ** 0.5
+                        pts.append((r, np.arctan2(p.y, p.x)))
+        if not pts:
+            return None
+        pts = np.array(pts)
+        prof = []
+        for i in range(bins):
+            lo = -np.pi + 2 * np.pi * i / bins
+            hi = -np.pi + 2 * np.pi * (i + 1) / bins
+            m = (pts[:, 1] >= lo) & (pts[:, 1] < hi)
+            if m.any():
+                prof.append(float(pts[m, 0].max()))
+        spread = max(prof) - min(prof) if prof else 0.0
+        return {
+            "loops": loops,
+            "r_min": round(float(pts[:, 0].min()), 4),
+            "r_max": round(float(pts[:, 0].max()), 4),
+            "azimuthal_spread": round(spread, 4),
+        }
+
+    inter = hub.intersect(sun)
+    b = inter.BoundingBox()
+    band = [round(b.zmin, 4), round(b.zmax, 4)]
+    sections = {}
+    for z in np.arange(band[0] + 0.05, band[1] - 0.02, 0.25):
+        sun_sec = classify(sun, z)
+        if sun_sec:
+            sections[f"{z:.2f}"] = sun_sec
+    spreads = [s["azimuthal_spread"] for s in sections.values()] or [0.0]
+    max_spread = max(spreads)
+    any_multi = any(s["loops"] > 1 for s in sections.values())
+    if any_multi:
+        verdict = "multi-loop section: positive drive feature present"
+    elif max_spread > 0.05:
+        verdict = (
+            f"azimuthal radius spread {max_spread:.3f} mm: keyed or flat drive feature present"
+        )
+    else:
+        verdict = "plain cylindrical fit only: no positive drive feature in the source CAD"
+    return {
+        "contact_volume_mm3": round(inter.Volume(), 6),
+        "contact_z_band_mm": band,
+        "contact_max_radius_mm": round(
+            max(abs(b.xmin), abs(b.xmax), abs(b.ymin), abs(b.ymax)), 4
+        ),
+        "sun_sections_across_contact": sections,
+        "max_azimuthal_spread_mm": round(max_spread, 4),
+        "verdict": verdict,
+    }
+
+
 def main():
     m, names, centred = load_source()
     hub = centred("NAUO45")
@@ -167,6 +240,7 @@ def main():
                 "carrier for both 6701-ZZ bearings. It is not an outboard disc bolted to a bell."
             ),
         },
+        "oem_drive_interface": measure_drive_interface(hub, sun),
         "procedural_rotor_comparison": {
             "procedural_end_bell": {
                 "id": "EM03/endbell", "radii_mm": [23, 45.5], "z_mm": [-8.6, -7.6], "thickness_mm": 1,
