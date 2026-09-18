@@ -1,0 +1,57 @@
+{
+  "scope": "Rotor as a machined part that seats on the measured hub and bolts to the hub's own hole circle.",
+  "status": "Primeform proposal. All joint data measured from the manufacturer hub.",
+  "solids": 1,
+  "valid": true,
+  "volume_mm3": 10479.182,
+  "bbox_mm": [
+    -43.203,
+    -43.203,
+    0.247,
+    43.203,
+    43.203,
+    11.403
+  ],
+  "joint": {
+    "seat": "rotor bore D 35.50 on the hub spigot D 35.40",
+    "seat_face_z_mm": 0.25,
+    "seat_contact_volume_mm3": 14.7954,
+    "hole_circle_pcd_mm": 40.0,
+    "hole_azimuths_deg": [
+      0,
+      45,
+      90,
+      135,
+      180,
+      225,
+      270,
+      315
+    ],
+    "hub_hole_d_mm": 2.05,
+    "rotor_clearance_d_mm": 2.2,
+    "countersink_d_mm": 4.0,
+    "engaged_material_mm3": {
+      "screw1": 2.676,
+      "screw2": 2.676,
+      "screw3": 2.676,
+      "screw4": 2.676,
+      "screw5": 2.676,
+      "screw6": 2.676,
+      "screw7": 2.676,
+      "screw8": 2.676
+    },
+    "fastener": "not specified yet; the hub hole is D 2.05, which suits a clearance fit for an M2 screw"
+  },
+  "interference_mm3": {
+    "rotor_vs_main_housing_mm3": 0.0,
+    "rotor_vs_rear_housing_mm3": 0.0,
+    "rotor_vs_hub_mm3": 0.0,
+    "magnets_total_vs_rotor_mm3": 0.0
+  },
+  "worst_unintended_interference_mm3": 0.0,
+  "open": [
+    "The hub's hole circle is measured, but the STEP file shows pairs of holes at each azimuth (the hub has 16 such faces). Confirm whether each station is one hole or two.",
+    "Fastener size, thread engagement and tightening torque are unspecified.",
+    "Magnet band r 41.2 to 42.2 does not match the housings' arcuate slots (r 41.766 to 43.236)."
+  ]
+}
