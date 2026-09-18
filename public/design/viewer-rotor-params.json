@@ -12,8 +12,8 @@
   ],
   "segments": 42,
   "coverage": 0.85,
-  "boss_bore_d_mm": 18.2,
-  "shell_bore_r_mm": 22.35,
+  "boss_bore_d_mm": 18.4,
+  "shell_bore_r_mm": 22.25,
   "rim_bore_r_mm": 43.1,
   "rim_od_r_mm": 43.4,
   "web_z_mm": [

@@ -44,10 +44,11 @@ HOLE_PCD_R = 20.000
 HUB_HOLE_D = 2.05
 
 # Shell layout
-SHELL_BORE_R = HUB_FLANGE_R + 0.10   # D 44.70: slides over the hub flange
-BOSS_BORE_D = FRONT_BEARING_OD + 0.20   # D 18.20: clears the front bearing (D 18.00), so
+SHELL_BORE_R = HUB_FLANGE_R          # D 44.50: matches the hub flange OD exactly, as a
+                                     # locating fit on the hub's outside
+BOSS_BORE_D = FRONT_BEARING_OD + 0.40   # D 18.40: clears the front bearing (D 18.00), so
                                         # the collar is not used for location
-BOSS_OD_D = 2 * SHELL_BORE_R         # D 44.70: the boss must reach the web's inner bore,
+BOSS_OD_D = 2 * SHELL_BORE_R         # D 44.50: the boss must reach the web's inner bore,
                                      # otherwise the six spokes float clear of it
 RIM_BORE_R = 43.10                   # magnets sit INSIDE this bore
 RIM_OD_R = 43.40                     # rim wall 0.30 mm outside the magnet band
@@ -61,10 +62,14 @@ MAG_Z1 = 11.20
 TOP_Z = 11.40
 SPOKES = 6
 RIB_MM = 6.0
+# Solid shell ring before the spokes begin. The reporter requires at least 2-3 mm of
+# shell between the bore and the first spoke.
+SPOKE_START_R = SHELL_BORE_R + 3.00   # r 25.25, a 3.00 mm solid ring
 SEGMENTS = 42
 COVERAGE = 0.85
 
-assert SHELL_BORE_R > HUB_FLANGE_R, "shell bore must clear the hub flange"
+assert SHELL_BORE_R >= HUB_FLANGE_R - 1e-9, "shell bore must match or exceed the hub flange"
+assert SPOKE_START_R - SHELL_BORE_R >= 2.0, "at least 2 mm of solid shell before the spokes"
 assert BOSS_BORE_D > FRONT_BEARING_OD, "web bore must clear the 6701 front bearing"
 assert RIM_OD_R <= 43.4 + 1e-9, "shell must stay inside the housing features"
 assert MAG_OD < RIM_BORE_R, "magnets must not share a band with the rim wall"
@@ -121,7 +126,7 @@ def main():
 
     # 1. Spoked web: a disc from the shell bore out to the rim, with six spokes left.
     web = ring(SHELL_BORE_R, RIM_OD_R, WEB_Z0, WEB_Z1)
-    for cut in spoke_pockets(SHELL_BORE_R, RIM_OD_R, WEB_Z0, WEB_T, SPOKES, RIB_MM):
+    for cut in spoke_pockets(SPOKE_START_R, RIM_OD_R, WEB_Z0, WEB_T, SPOKES, RIB_MM):
         web = web.cut(cut)
     web = web.clean()
 

@@ -3,7 +3,7 @@
   "status": "Primeform proposal. Joint data measured from the manufacturer hub.",
   "solids": 1,
   "valid": true,
-  "volume_mm3": 3922.78,
+  "volume_mm3": 3896.832,
   "bbox_mm": [
     -43.405,
     -43.405,
@@ -13,10 +13,10 @@
     11.405
   ],
   "layout_mm": {
-    "shell_bore_r": 22.35,
+    "shell_bore_r": 22.25,
     "slides_over_hub_flange_r": 22.25,
     "web_face_z": 0.25,
-    "boss_bore_d": 18.2,
+    "boss_bore_d": 18.4,
     "locates_on_hub_collar_d": 14.0,
     "spokes": 6,
     "rim_bore_r": 43.1,
