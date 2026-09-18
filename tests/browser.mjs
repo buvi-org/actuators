@@ -37,7 +37,12 @@ try {
   await page.evaluate(() => window.__actuator.selectPart("M01"));
   assert.match(
     await page.locator("#component-detail").innerText(),
-    /Clearance redesign required/,
+    /stator seat moved 4\.5 mm rearward/,
+  );
+  // The housing inspector must still disclose the unresolved rotor clearance.
+  assert.match(
+    await page.locator("#component-detail").innerText(),
+    /rotor-clearance redesign/,
   );
   assert.equal(
     await page

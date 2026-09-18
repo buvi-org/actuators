@@ -274,6 +274,10 @@ export function buildAssembly(
       if (mesh.isMesh) hubGeometry = mesh.geometry;
     });
     if (hubGeometry) {
+      // Note: the manufacturer GLB also carries occurrence NAUO45 under the same BOM id,
+      // so browsing G03 lists this re-export plus the source mesh. They are the same part
+      // at the same position, so the duplicate is not visible; the guide owns per-step
+      // visibility and re-enables BOM members on every draw.
       const hubMesh = new THREE.Mesh(hubGeometry, material("#b7c2ce"));
       root.add(hubMesh);
       link(hubMesh, "G03", 0.03);
@@ -282,6 +286,37 @@ export function buildAssembly(
         "Manufacturer rotor hub re-exported from the source STEP (occurrence NAUO45). One valid solid, 3114.2 mm3, O44.5 x 14.5 mm, z -9.25 to +5.25 mm. Body of revolution about the motor axis: six-spoke flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm, O35.5 annular pocket, O42.05 rim, rear O6 bore, O4 middle bore and a O5.95 front counterbore. It carries both 6701-ZZ bearings and the encoder target magnet coaxially with the sun, and it pilots the sun's front journal: contact volume 0.324 mm3 confined to z 3.75 to 5.25 mm, with a keyed/flat feature (0.202 mm azimuthal radius spread) on the sun's journal. Fit class, retention and torque capacity are not yet qualified; see public/design/hub-joint-validation.json.";
     }
   }
+  // EM03: rotor magnet carrier, Primeform proposal.
+  // The manufacturer hub's flange ends at r 22.25 mm and the nearest housing wall is at
+  // r 47.4 mm, so nothing in the source CAD joins the hub to the magnets. This carrier
+  // bridges that gap: a hub-anchored web out to the magnet bore, plus a retaining rim
+  // behind the magnets. Sized against the measured housing: the main housing's inward
+  // wall is conical (r 44.050 at z -4.31 rising to r 47.500 at z 3.08), so the web stays
+  // inside r 40.5 and the rim sits at z 5.25..6.75 where the bore is a full r 47.5.
+  annular(
+    "EM03/web",
+    "EM03",
+    "Rotor magnet carrier — hub web",
+    22.25,
+    40.5,
+    10,
+    0,
+    "#596576",
+    -0.018,
+    "Primeform proposal, not OEM geometry. Web r 22.25 to 40.5 mm, z -5 to +5 mm, anchored on the measured hub flange. Measured clash: 0 mm3 against the main housing and the hub; 194.333 mm3 against the rear housing (NAUO4), whose inward wall is only r 29 mm at z -5.25..-4.75. This carrier is why the magnets have something to bond into; the earlier procedural EM03/endbell and EM03/yoke were deleted because they were the wrong form, opening and position.",
+  );
+  annular(
+    "EM03/rim",
+    "EM03",
+    "Rotor magnet carrier — retaining rim",
+    40.5,
+    42.4,
+    1.5,
+    6.0,
+    "#4d5967",
+    -0.018,
+    "Primeform proposal. Rim r 40.5 to 42.4 mm, z 5.25 to 6.75 mm, closing the magnets on one side. Measured clash: 0 mm3 against both housings.",
+  );
   const sectors = 42;
   for (let i = 0; i < sectors; i++) {
     const a = (i * 2 * Math.PI) / sectors,

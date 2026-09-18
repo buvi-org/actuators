@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor hub is now real manufacturer geometry with a measured hub-to-sun pilot joint; the hub has no modelled connection to the rotor shell. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
+  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor hub is real manufacturer geometry with a measured hub-to-sun pilot joint. The magnet carrier is an unreleased Primeform proposal that closes the 25.15 mm gap between the hub flange and the magnets; its retention on the hub is undefined. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
   "steps": [
     {
       "id": "A01",
@@ -140,46 +140,49 @@
     },
     {
       "id": "A05",
-      "title": "Prepare rotor: bond magnets inside the yoke",
+      "title": "Rotor bench: hub and carrier, then bond magnets",
       "phase": "Rotor preparation",
       "parts": [
         "EM04",
         "C02"
       ],
       "target": [
-        "EM03"
+        "EM03/web",
+        "EM03/rim"
       ],
-      "context": [],
-      "method": "Rotor subassembly / clearance review; Adhesive bond; Bond / pole placement",
+      "context": [
+        "G03",
+        "EM03/rim"
+      ],
+      "method": "Adhesive bond; bond / pole placement",
       "surfaces": [
-        "Yoke/end-bell junction (joining design unresolved)",
-        "Rotor outer swept envelope ↔ housing and boss clearance",
-        "Adhesive ↔ yoke inner cylindrical wall",
-        "Adhesive ↔ magnet outer cylindrical backs",
-        "Magnet backs ↔ bonded yoke inner wall",
+        "Magnet outer faces ↔ carrier web bore r 40.5 mm",
+        "Magnet axial end ↔ carrier retaining rim face, z 5.25 mm",
+        "Carrier web inner bore r 22.25 mm ↔ measured hub flange r 17.145 to 22.25 mm, z -1.75 to +0.25 mm",
         "Magnet side faces ↔ pole-spacing fixture"
       ],
-      "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Prepare surfaces and dispense a controlled bondline; adhesive and mechanical retention are unspecified. Place alternating poles using tooling and cure. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
-      "check": "Extended housing bosses intersect the current yoke (1134.581 mm3). Resolve before assembly. The yoke and magnet band radii (42.5-45.5 and 40.5-42.5 mm) do not coincide with the arcuate slots in the source housings (41.766-43.236 mm), and the source CAD contains no web joining the measured hub (outer r 22.25 mm) to this shell. Qualify bond thickness, temperature capability, cure and centrifugal retention. Verify polarity, spacing, concentricity and air gap; do not infer piece count from pole count.",
+      "process": "Assemble the rotor bench part of the subassembly: the measured hub (G03), the Primeform proposed magnet carrier (web plus retaining rim) and the magnet segments. The carrier web runs r 22.25 to 40.5 mm over z -5 to +5 mm and is anchored on the hub flange; the retaining rim closes the magnets at z 5.25 to 6.75 mm. Prepare surfaces, dispense a controlled bondline and place alternating poles with tooling, then cure. Adhesive and mechanical retention are unspecified. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
+      "check": "The carrier is a Primeform proposal, not OEM geometry: it exists only because nothing in the source CAD joins the measured hub (flange outer r 22.25 mm) to the magnets. Measured clash 0 mm3 against the main housing and the hub, but 194.333 mm3 against the rear housing, whose inward wall is only r 29 mm over z -5.25 to -4.75 mm; shorten the web or resolve the rear envelope. The magnet radial band (r 40.5 to 42.5 mm) does not coincide with the arcuate slots in the source housings (r 41.766 to 43.236 mm), so the rotor radial placement is still unproven. Qualify bond thickness, temperature capability, cure and centrifugal retention, and verify polarity, spacing, concentricity and air gap.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "Place magnets individually in the open rotor using polarity and spacing fixtures. Their placement directions and capture clearances have not been designed."
+        "reason": "Place magnets individually in the open carrier using polarity and spacing fixtures. Their placement directions and capture clearances have not been designed, and the carrier itself is an unreleased Primeform proposal."
       }
     },
     {
       "id": "A06",
-      "title": "Rotor bench: hub joint — measured, but not yet released",
+      "title": "Rotor bench: hub joint - measured, but not released",
       "phase": "Rotor preparation",
       "parts": [
         "G03"
       ],
       "target": [
-        "EM03"
+        "EM03/web"
       ],
       "context": [
-        "EM03",
+        "EM03/web",
+        "EM03/rim",
         "EM04",
         "C02"
       ],
@@ -189,10 +192,11 @@
         "Sun journal keyed/flat feature: 0.202 mm azimuthal radius spread across that band",
         "Hub O12 front counterbore z 1.25 to 5.25 mm ↔ front 6701-ZZ outer race",
         "Hub O6 rear bore z -8.75 to -6.75 mm ↔ rear 6701-ZZ and encoder target magnet",
-        "Hub flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm: nearest housing wall is r 47.4 mm, a 25.15 mm radial gap with no bridge anywhere in the source CAD"
+        "Hub flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm: nearest housing wall is r 47.4 mm, a 25.15 mm radial gap with no bridge anywhere in the source CAD",
+        "Hub flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm ↔ carrier web bore r 22.25 mm: proposed, not designed"
       ],
       "process": "Fit the measured manufacturer hub (occurrence NAUO45, now exported as public/design/oem-rotor-hub.step and shown as assembly item G03) around the sun shaft. The hub is a body of revolution: six-spoke flange, O12 and O6 bearing bores, O4 middle bore and a O5.95 front counterbore. Its front counterbore pilots the sun's O6.0 journal over z 3.75 to 5.25 mm with a 0.324 mm3 interference and a keyed/flat feature on the sun. The hub is not attached to either housing by any modelled feature: its flange ends at r 22.25 mm and the nearest housing wall is at r 47.4 mm, a 25.15 mm radial gap with no bridge in the source CAD.",
-      "check": "Before release: (1) design and validate the hub-to-rotor-shell connection that closes the 25.15 mm radial gap, since the source CAD contains no such feature; (2) specify the fit class, retention, runout and balance for the O5.95/O6.0 keyed pilot joint and confirm its torque capacity against the 9:1 gearbox input; (3) confirm the sun drive feature from a physical sample, because a 0.202 mm azimuthal spread measured from CAD is not a released key or spline specification; (4) confirm the rotor radial placement, which the source housings do not confirm.",
+      "check": "Before release: (1) design and validate the hub-to-rotor-shell connection that closes the 25.15 mm radial gap, since the source CAD contains no such feature; (2) specify the fit class, retention, runout and balance for the O5.95/O6.0 keyed pilot joint and confirm its torque capacity against the 9:1 gearbox input; (3) confirm the sun drive feature from a physical sample, because a 0.202 mm azimuthal spread measured from CAD is not a released key or spline specification; (4) confirm the rotor radial placement, which the source housings do not confirm. (5) define how the carrier web is retained on the hub: no fit, key, screw or bond is specified between the hub flange and the carrier.",
       "status": "Blocked by known geometry",
       "marker": [
         17.145,
@@ -209,7 +213,8 @@
       "title": "Install rotor subassembly around stator",
       "phase": "Actuator installation",
       "parts": [
-        "EM03",
+        "EM03/web",
+        "EM03/rim",
         "EM04",
         "C02",
         "G03"
@@ -238,13 +243,13 @@
       ],
       "method": "Rotor subassembly / clearance review; Torque-transmitting joint unresolved",
       "surfaces": [
-        "Yoke/end-bell junction (joining design unresolved)",
+        "Carrier web outer wall r 40.5 mm ↔ main housing bore (conical: r 44.050 at z -4.31 rising to r 47.500 at z 3.08)",
         "Rotor outer swept envelope ↔ housing and boss clearance",
-        "Hub rotor attachment surface ↔ rotor end bell",
-        "Hub bore ↔ sun/input shaft interface"
+        "Hub front counterbore O5.95 mm ↔ sun front journal O6.0 mm",
+        "Hub bearing bores ↔ 6701-ZZ bearings and encoder target magnet"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
-      "check": "Extended housing bosses intersect the current provisional yoke (measured 1134.581 mm3). Resolve the rotor radial envelope before assembly. The stator/magnet axial misalignment is resolved: the stator, winding, ring and housing seat moved 4.5 mm rearward and the 13.872 mm stack now overlaps the full magnet span. A06 remains a measured failure because the hub has no connection to the rotor shell, so no rotor subassembly exists to install.",
+      "check": "Measured: the carrier web clears the main housing by 0 mm3 overlap because it stays inside r 40.5 mm, but it clashes with the rear housing by 194.333 mm3 and the hub has no defined retention to the carrier. The stator/magnet axial misalignment is resolved: stator, winding, ring and housing seat moved 4.5 mm rearward and the 13.872 mm stack now overlaps the full magnet span. A06 remains a measured failure because the hub-to-carrier joint is undefined, so the rotor subassembly is not buildable.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {
