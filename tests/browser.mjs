@@ -143,11 +143,12 @@ try {
   await page.locator("#internal-view").click();
   await page.evaluate(() => window.__actuator.selectPart("EM04"));
   await page.locator("#isolate-part").click();
+  // 42 magnet segments plus the retaining ring that captures them.
   assert.equal(
     await page.evaluate(
       () => window.__actuator.meshes.filter((m) => m.visible).length,
     ),
-    42,
+    43,
   );
   await page.locator("#all-parts").click();
   await page.evaluate(() => window.__actuator.selectPart("EM01/L001"));

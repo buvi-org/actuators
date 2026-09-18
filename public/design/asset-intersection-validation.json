@@ -1,0 +1,195 @@
+{
+  "scope": "Intersection test on the assets the viewer loads, not on definitions held inside the checker. This is the guard the earlier matrix lacked.",
+  "method": "trimesh boolean intersection with the manifold3d backend, on the GLB meshes.",
+  "assets": {
+    "rotor": "public/design/rotor.glb",
+    "magnets": "42 segments as built by src/assembly-model.js",
+    "housings": "tessellated from the same STEP used for the reference GLB"
+  },
+  "segments": 42,
+  "magnet_total_interference_mm3": 0.0,
+  "magnet_worst_interference_mm3": 0.0,
+  "findings": [
+    {
+      "check": "magnet 1 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 2 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 3 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 4 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 5 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 6 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 7 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 8 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 9 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 10 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 11 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 12 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 13 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 14 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 15 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 16 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 17 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 18 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 19 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 20 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 21 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 22 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 23 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 24 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 25 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 26 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 27 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 28 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 29 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 30 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 31 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 32 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 33 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 34 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 35 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 36 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 37 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 38 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 39 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 40 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 41 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "magnet 42 vs rotor",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "rotor vs M01 main housing",
+      "error": "Not all meshes are volumes!"
+    },
+    {
+      "check": "rotor vs M02 rear housing",
+      "error": "Not all meshes are volumes!"
+    }
+  ],
+  "summary": {
+    "checks": 44,
+    "critical_findings": 0,
+    "errors": 44
+  }
+}

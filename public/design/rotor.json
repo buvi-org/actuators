@@ -1,22 +1,62 @@
 {
-  "scope": "Rotor as ONE machined body: the measured OEM hub plus the shell (six-spoke web and pocketed magnet rim) fused into a single connected solid. The sun is pressed into it; there is no hub-to-shell joint to define.",
-  "status": "Primeform proposal for the shell portion. The hub portion is measured manufacturer geometry (occurrence NAUO45).",
+  "scope": "Rotor as ONE machined body: the measured OEM hub plus a shell (spoked web, magnet carrier and retaining ring) fused into a single connected solid.",
+  "status": "Primeform proposal for the shell. The hub portion is measured manufacturer geometry (occurrence NAUO45).",
   "solids": 1,
   "valid": true,
-  "volume_mm3": 5388.409,
+  "volume_mm3": 14425.04,
   "bbox_mm": [
-    -42.403,
-    -42.403,
+    -43.203,
+    -43.203,
     -9.253,
-    42.403,
-    42.403,
-    11.253
+    43.203,
+    43.203,
+    11.403
   ],
-  "features": {
-    "hub": "measured OEM profile: O44.5 x 14.5 mm, six-spoke flange r 17.145 to 22.25, rear O6 bore, front O12 counterbore, O5.95 pilot counterbore for the sun",
-    "web": "six-spoke web r 22.25 to 40.5 mm, z -1.75 to 0.25 mm, growing out of the hub flange",
-    "rim": "r 40.5 to 42.4 mm, z -1.75 to 11.25 mm, with 42 magnet pockets at 85% arc coverage",
-    "magnets": "42 segments r 40.5 to 42.4 mm, z 0.25 to 11.5 mm"
+  "radial_bands_mm": {
+    "hub_flange": [
+      17.145,
+      22.25
+    ],
+    "web": [
+      22.25,
+      41.2
+    ],
+    "magnet_band": [
+      41.2,
+      42.2
+    ],
+    "carrier_wall": [
+      42.3,
+      43.2
+    ],
+    "retaining_ring_bore": 42.300000000000004,
+    "assertion": "bands are strictly increasing and non-overlapping; asserted in the builder"
+  },
+  "axial_bands_mm": {
+    "web": [
+      -1.75,
+      0.25
+    ],
+    "base_plate": [
+      -1.75,
+      0.25
+    ],
+    "magnet_band": [
+      0.25,
+      10.4
+    ],
+    "retaining_ring": [
+      10.4,
+      11.4
+    ],
+    "top": 11.4,
+    "magnet_insertion": "the channel is open at the top before the retainer is fitted; the retainer bore clears the magnets radially by 0.1 mm"
+  },
+  "magnet_seating": {
+    "segments": 42,
+    "arc_coverage": 0.85,
+    "magnet_vs_rotor_interference_mm3": 0.0,
+    "magnet_vs_magnet_interference_mm3": 0.0
   },
   "interference_mm3": {
     "rotor_vs_main_housing_mm3": 0.0,
@@ -25,7 +65,8 @@
   },
   "worst_unintended_interference_mm3": 0.0,
   "open": [
-    "The sun-to-rotor fit class, retention and torque capacity are not qualified. The measured contact is 0.324 mm3 on the O5.95 counterbore over z 3.75 to 5.25 mm.",
-    "The magnet radial band (r 40.5 to 42.4 mm) does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven."
+    "The sun-to-rotor fit class, retention and torque capacity are not qualified. Measured contact 0.324088 mm3 over z 3.75 to 5.25 mm.",
+    "Rotor radial placement is still unproven: this band (r 42.0 to 43.0) does not match the arcuate slots in the source housings (r 41.766 to 43.236).",
+    "The measured OEM hub has a 1.225 mm rim wall and a 2.0 mm flange web, which are not structural. This body re-uses that hub as-is; the wall thicknesses are not resolved."
   ]
 }

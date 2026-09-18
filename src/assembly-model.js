@@ -12,6 +12,7 @@ export function buildAssembly(
   planetSolid,
   ringSolid,
   rotorSolid,
+  rotorParams,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -293,18 +294,23 @@ export function buildAssembly(
       }
     }
   }
-  const sectors = 42;
+  const magInner = ((rotorParams || {}).magnet_band_mm || [41.2, 42.2])[0] / 1000;
+  const magOuter = ((rotorParams || {}).magnet_band_mm || [41.2, 42.2])[1] / 1000;
+  const magZ = ((rotorParams || {}).magnet_z_mm || [0.25, 10.4])[0];
+  const magLength = (((rotorParams || {}).magnet_z_mm || [0.25, 10.4])[1] - magZ) / 1000;
+  const sectors = (rotorParams || {}).segments || 42;
+
   for (let i = 0; i < sectors; i++) {
     const a = (i * 2 * Math.PI) / sectors,
       width = ((2 * Math.PI) / sectors) * 0.85,
       s = new THREE.Shape();
-    // Outer radius equals the shell's bore band outer face (r 42.4 mm) so the segments
-    // seat in the pocket and no body interpenetrates another.
-    s.absarc(0, 0, 0.0424, a - width / 2, a + width / 2, false);
-    s.absarc(0, 0, 0.0405, a + width / 2, a - width / 2, true);
+    // Radii come from the built rotor (public/design/viewer-rotor-params.json), so the
+    // segments cannot drift out of the carrier's channel when the rotor is rebuilt.
+    s.absarc(0, 0, magOuter, a - width / 2, a + width / 2, false);
+    s.absarc(0, 0, magInner, a + width / 2, a - width / 2, true);
     s.closePath();
     const geo = new THREE.ExtrudeGeometry(s, {
-      depth: 0.01125,
+      depth: magLength,
       bevelEnabled: false,
       curveSegments: 12,
     });
@@ -314,7 +320,7 @@ export function buildAssembly(
       "EM04",
       geo,
       i % 2 ? "#a9646b" : "#7195ad",
-      [0, 0, 0.25],
+      [0, 0, magZ],
       -0.018,
       "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative. The segments seat in 42 pockets machined into the rotor end bell, r 40.5-42.4 mm over z 0.25 to +11.5 mm, so no body interpenetrates another (measured 0.000 mm3). The stator at its manufacturer position is overlapped over the full 13.872 mm stack. STILL UNRESOLVED: the source housings carry their own arcuate slots at r 41.766-43.236 mm (front, z 13.001-16.25; rear, z -8.25 to -6.0) which match neither this band nor its 42-piece count, so rotor radial placement remains unproven.",
     );
@@ -530,18 +536,38 @@ export function buildAssembly(
     "Schematic lubrication region only; not a grease-volume estimate.",
     0.18,
   );
+  // Magnet bondline and retaining ring positions come from the built rotor, so viewer
+  // geometry cannot drift from the asset. An earlier revision hardcoded the bondline at
+  // r 42.45-42.50, which ended up outside the rotor once the magnet band moved.
+  const rp = rotorParams || {};
+  const bond = rp.bondline_mm || [42.2, 42.3];
   annular(
     "C02/bond",
     "C02",
     "Magnet bondline (study)",
-    42.45,
-    42.5,
-    14,
-    0,
+    bond[0],
+    bond[1],
+    (rp.magnet_z_mm ? rp.magnet_z_mm[1] - rp.magnet_z_mm[0] : 10.15),
+    (rp.magnet_z_mm ? (rp.magnet_z_mm[0] + rp.magnet_z_mm[1]) / 2 : 5.325),
     "#d2ac69",
     -0.018,
-    "50 µm radial bondline assumed for display; chemistry and actual thickness unknown.",
+    "50 µm radial adhesive bondline between each magnet's outer face and the carrier wall bore, inside the rotor. Radial position comes from public/design/viewer-rotor-params.json so it tracks the built rotor. Adhesive grade and thickness unknown.",
   );
+  if (rp.retaining_ring_mm) {
+    const rr = rp.retaining_ring_mm;
+    annular(
+      "EM04/retainer",
+      "EM04",
+      "Magnet retaining ring (study)",
+      rr.bore,
+      rr.outer,
+      rr.z[1] - rr.z[0],
+      (rr.z[0] + rr.z[1]) / 2,
+      "#8d9aa8",
+      -0.018,
+      `Primeform proposal. Retaining ring r ${rr.bore} to ${rr.outer} mm over z ${rr.z[0]} to ${rr.z[1]} mm. Its bore is larger than the magnet outer face, so the magnets are inserted axially past it and it then captures them. Retention method is not qualified.`,
+    );
+  }
   annular(
     "C03/interface",
     "C03",

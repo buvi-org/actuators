@@ -1,0 +1,125 @@
+{
+  "scope": "Fixed constraints for the rotor/hub design. Agree these before building geometry.",
+  "constraints": [
+    {
+      "group": "External (fixed)",
+      "constraint": "Overall envelope",
+      "value": "\u00d898 x 38.5 mm",
+      "source": "manifest envelope_mm"
+    },
+    {
+      "group": "External (fixed)",
+      "constraint": "Mounting holes",
+      "value": "8 x M3 on \u00d885 PCD; 6 x M4 on \u00d828 PCD",
+      "source": "S2 drawing, docs/INTERNAL-STRUCTURE.md"
+    },
+    {
+      "group": "Housing envelope",
+      "constraint": "Minimum inward wall radius over the rotor band",
+      "value": "r 30.1 mm at z 11.9",
+      "source": "measured, public/design/main-housing-supported.step"
+    },
+    {
+      "group": "Housing envelope",
+      "constraint": "Rotor must therefore stay inside",
+      "value": "r 29.8 mm",
+      "source": "derived: 0.3 mm running clearance"
+    },
+    {
+      "group": "Motor",
+      "constraint": "Stator OD / bore / stack",
+      "value": "80 / 60 / 13.872 mm",
+      "source": "packaging-choice.json (Choice C)"
+    },
+    {
+      "group": "Motor",
+      "constraint": "Stator axial span",
+      "value": "z -2.436 .. 11.436 mm",
+      "source": "packaging-choice.json"
+    },
+    {
+      "group": "Motor",
+      "constraint": "Air gap (assumed, not measured)",
+      "value": "0.5 mm radial",
+      "source": "study assumption"
+    },
+    {
+      "group": "Motor",
+      "constraint": "Magnet inner radius therefore",
+      "value": "r 40.0 mm",
+      "source": "derived: stator r 40 + air gap"
+    },
+    {
+      "group": "Motor",
+      "constraint": "Housing's own arcuate slots (radial band)",
+      "value": "r 41.766 .. 43.236 mm",
+      "source": "measured, housings NAUO3 / NAUO4"
+    },
+    {
+      "group": "Shaft / bearings",
+      "constraint": "6701-ZZ bore x OD x width",
+      "value": "12 x 18 x 4 mm",
+      "source": "B03 BOM row"
+    },
+    {
+      "group": "Shaft / bearings",
+      "constraint": "Hub front counterbore for the bearing",
+      "value": "\u00d812 mm at z 1.25..5.25",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "Shaft / bearings",
+      "constraint": "Hub rear bore",
+      "value": "\u00d86 mm at z -8.75..-6.75",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "Shaft / bearings",
+      "constraint": "Hub pilot counterbore for the sun",
+      "value": "\u00d85.95 mm at z 3.75..5.25",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "Shaft / bearings",
+      "constraint": "Sun front journal",
+      "value": "\u00d86.000 mm, keyed/flat feature 0.202 mm spread",
+      "source": "measured on NAUO41"
+    },
+    {
+      "group": "Shaft / bearings",
+      "constraint": "Sun-to-hub contact volume",
+      "value": "0.324 mm3 over z 3.75..5.25",
+      "source": "measured, hub-joint-validation.json"
+    },
+    {
+      "group": "OEM hub walls (the concern)",
+      "constraint": "Outer rim radial wall",
+      "value": "1.225 mm (r 21.025 to 22.25)",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "OEM hub walls (the concern)",
+      "constraint": "Flange web axial thickness",
+      "value": "2.0 mm (z -1.75 to 0.25)",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "OEM hub walls (the concern)",
+      "constraint": "Main body radial wall",
+      "value": "4.0 mm (r 2.0 to 6.0)",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "OEM hub walls (the concern)",
+      "constraint": "Front land radial wall",
+      "value": "3.025 mm (r 2.975 to 6.0)",
+      "source": "measured on NAUO45"
+    },
+    {
+      "group": "OEM hub walls (the concern)",
+      "constraint": "Hub envelope / length",
+      "value": "\u00d844.5 x 14.5 mm",
+      "source": "manifest bounds_mm for NAUO45"
+    }
+  ]
+}

@@ -56,22 +56,42 @@ def spoked_web(ri, ro, z0, thickness, spokes, rib_mm):
     return out.clean()
 
 
-def magnet_set(count=42, ri=40.5, ro=42.4, z0=0.25, z1=11.5, coverage=0.85):
-    """The 42 magnet segments exactly as the viewer builds them."""
+def magnet_set():
+    """The 42 magnet segments, read from the built rotor's params file.
+
+    Reading the params rather than declaring radii here is deliberate. The previous version
+    hardcoded its own copy, which silently went stale: it reported zero magnet interference
+    while the real magnets interpenetrated the real rotor.
+    """
+    params = json.loads(
+        (ROOT / "public/design/viewer-rotor-params.json").read_text(encoding="utf-8")
+    )
+    ri, ro = params["magnet_band_mm"]
+    z0, z1 = params["magnet_z_mm"]
+    count = params["segments"]
+    coverage = params["coverage"]
     solids = []
     for i in range(count):
         a = (i * 2 * math.pi) / count
         width = ((2 * math.pi) / count) * coverage
-        shape = cq.Workplane("XY").moveTo(0, 0)
-        pts = []
-        for t in range(24):
-            ang = a - width / 2 + (width * t) / 23
-            pts.append((ro * math.cos(ang), ro * math.sin(ang)))
-        for t in range(24):
-            ang = a + width / 2 - (width * t) / 23
-            pts.append((ri * math.cos(ang), ri * math.sin(ang)))
-        shape = shape.polyline(pts).close().extrude(z1 - z0).translate((0, 0, z0))
-        solids.append(shape.val())
+
+        def arc(radius, steps=32):
+            return [
+                (
+                    radius * math.cos(a - width / 2 + (width * t) / (steps - 1)),
+                    radius * math.sin(a - width / 2 + (width * t) / (steps - 1)),
+                )
+                for t in range(steps)
+            ]
+
+        pts = arc(ro) + list(reversed(arc(ri)))
+        solids.append(
+            cq.Workplane("XY", origin=(0, 0, z0))
+            .polyline(pts)
+            .close()
+            .extrude(z1 - z0)
+            .val()
+        )
     return solids
 
 
