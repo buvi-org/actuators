@@ -13,6 +13,7 @@ export function buildAssembly(
   ringSolid,
   rotorSolid,
   rotorParams,
+  rotorHubSolid,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -83,8 +84,8 @@ export function buildAssembly(
       node = node.parent;
     }
     if (!part) return;
-    // G02 (sun blank) and G03 (rotor hub) are replaced by study solids, so their source
-    // meshes are not linked and the process guide never shows them.
+    // G02 (sun blank) and G03 (rotor hub) are both replaced by dedicated exports, so their
+    // source meshes are not linked and the process guide never shows them.
     if (part.bomId === "G02" || part.bomId === "G03") {
       mesh.visible = false;
       return;
@@ -267,11 +268,25 @@ export function buildAssembly(
         "Study coating: 2 µm per face; chemistry and OEM thickness unknown.",
       );
   }
-  // G03 + EM03: the rotor is ONE machined body. The manufacturer part has the shell's
-  // web flowing straight into the central hub boss, with the sun pressed into it, so
-  // there is no hub-to-shell joint to define. The earlier study modelled them as two
-  // parts and then argued about how to join them, which invented a joint that does not
-  // exist. The hub portion is measured OEM geometry; the shell portion is a proposal.
+  // G03 and EM03 are TWO parts, as the manufacturer arrangement in fact has:
+  //   G03      the measured spoked hub (NAUO45), which carries the bearings
+  //   EM03     the rotor, a separate machined part that seats on the hub's R 17.70 spigot
+  //            and bolts to the hub's own R 20.0 / 8-hole circle
+  // An earlier revision fused them into one body, which dissolved a joint that does exist.
+  if (rotorHubSolid) {
+    let hubGeometry;
+    rotorHubSolid.traverse((mesh) => {
+      if (mesh.isMesh) hubGeometry = mesh.geometry;
+    });
+    if (hubGeometry) {
+      const hubMesh = new THREE.Mesh(hubGeometry, material("#8c7bb0"));
+      root.add(hubMesh);
+      link(hubMesh, "G03", 0.024);
+      nodes.get("G03").status = "Reference CAD - measured";
+      nodes.get("G03").description =
+        "Input shaft hub, measured manufacturer geometry (occurrence NAUO45). Spoked plate, O44.5 x 14.5 mm, 3114.2 mm3, z -9.25 to +5.25 mm. Carries both 6701-ZZ bearings and the encoder target magnet, and pilots the sun in its O5.95 counterbore (measured contact 0.324 mm3 over z 3.75 to 5.25). Mounting features for the rotor, measured from this solid: seat spigot R 17.700 (D 35.40) at z -1.75 to +0.25, flange face R 22.250, and a hole circle at R 20.000 (D 40.00 PCD) of D 2.05 holes at 0/45/90...315 degrees.";
+    }
+  }
   if (rotorSolid) {
     let rotorGeometry;
     rotorSolid.traverse((mesh) => {
@@ -280,18 +295,10 @@ export function buildAssembly(
     if (rotorGeometry) {
       const rotorMesh = new THREE.Mesh(rotorGeometry, material("#7d8b9a"));
       root.add(rotorMesh);
-      link(rotorMesh, "G03", 0.024);
-      nodes.get("G03").status = "Reference CAD + proposal - one body";
-      nodes.get("G03").description =
-        "Rotor: ONE machined body, 5388.4 mm3, O84.8 x 20.5 mm, z -9.25 to +11.25 mm. The hub portion is measured manufacturer geometry (occurrence NAUO45): six-spoke flange r 17.145 to 22.25, rear O6 bore, front O12 counterbore, O5.95 pilot counterbore. The shell portion is a Primeform proposal: a six-spoke web growing out of the hub flange, an outer rim with 42 magnet pockets, no separate joint between them. The sun is pressed into the O5.95 counterbore (measured contact 0.324 mm3 over z 3.75 to 5.25). Unintended interference measured 0.000 mm3 against both housings.";
-      // EM03 is no longer a separate body; keep the tree entry pointing at this one so
-      // the process steps that name it stay resolvable.
-      const em03 = nodes.get("EM03");
-      if (em03) {
-        em03.status = "Part of the one-piece rotor (G03)";
-        em03.description =
-          "No longer a separate body. The magnet-carrying shell is machined as part of the rotor (G03), following the manufacturer arrangement. Selecting G03 shows the whole rotor.";
-      }
+      link(rotorMesh, "EM03", -0.018);
+      nodes.get("EM03").status = "Primeform proposal - separate part";
+      nodes.get("EM03").description =
+        "Rotor, a separate machined part. Bored D 35.50 to socket onto the measured hub's R 17.70 spigot and land on the hub face at z +0.25, with eight D 2.20 clearance holes and D 4.00 countersinks on the hub's own D 40.00 PCD in line with the hub's D 2.05 holes. Its cup carries the magnets on a rim bore of r 42.30 and rises to O86.4 mm, the largest diameter that clears the housing. One valid solid, 9077 mm3. Measured 0.000 mm3 interference against the main housing, the rear housing, the hub and the magnets, with 2.676 mm3 of flange material at each of the eight screw stations.";
     }
   }
   const magInner = ((rotorParams || {}).magnet_band_mm || [41.2, 42.2])[0] / 1000;

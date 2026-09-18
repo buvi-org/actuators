@@ -435,11 +435,13 @@ async function init3D() {
   const sunSolid = await new GLTFLoader().loadAsync(
     base + "design/provisional-sun-gear.glb",
   );
-  const [planetSolid, ringSolid, rotorSolid, rotorParams] = await Promise.all([
+  const [planetSolid, ringSolid, rotorSolid, rotorParams, rotorHubSolid] =
+    await Promise.all([
     new GLTFLoader().loadAsync(base + "design/provisional-planet-gear.glb"),
     new GLTFLoader().loadAsync(base + "design/provisional-ring-gear.glb"),
-    new GLTFLoader().loadAsync(base + "design/rotor.glb"),
+    new GLTFLoader().loadAsync(base + "design/rotor-flange.glb"),
     getJSON("design/viewer-rotor-params.json"),
+    new GLTFLoader().loadAsync(base + "design/oem-rotor-hub.glb"),
   ]);
   assembly = buildAssembly(
     bom,
@@ -452,6 +454,7 @@ async function init3D() {
     ringSolid.scene,
     rotorSolid.scene,
     rotorParams,
+    rotorHubSolid.scene,
   );
   model = assembly.root;
   scene.add(model);
