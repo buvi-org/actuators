@@ -7,7 +7,6 @@ Quantity: 1 ea. Evidence: Reference CAD + Primeform modification.
 - **CAD envelope:** Ø98 x 24.2 mm
 - **Assembly envelope:** Ø98 x 38.5 mm
 - **Mounting:** 8 x M3 on Ø85 PCD (drawing)
-- **Choice C stator stop:** Integral annular seat radii 30.1 to 33.5 mm; z 11.436 mm; external reference envelope retained.
 - **Primeform housing R1:** Sixteen 5 mm diameter screw supports extended to housing floors; 16 source screw bores preserved. Gold supports can be hidden to compare source geometry.
 - **Known clearance conflict:** Extended supports intersect the provisional rotor yoke. Rotor diameter and housing clearance must be reconciled.
 - **Side holes measured from STEP:** One pair has diameter 2.1 mm on +Y side; opposite pair has diameter 3.2 mm. Pair centres x = ±6 mm, z = 3.25 mm in viewer coordinates. Functions and thread specifications unconfirmed.
@@ -22,7 +21,6 @@ Quantity: 1 ea. Evidence: Reference CAD + Primeform modification.
 Quantity: 1 ea. Evidence: Reference CAD.
 
 - **CAD envelope:** Ø98 x 9 mm
-- **Known interference:** Source rear housing intersects the provisional rotor end bell; see rotor-clearance-validation.json. This is not an exploded-view artifact.
 - **Material:** OEM grade unspecified
 - **Make/buy:** Proposed: CNC turning + milling
 - **Unresolved:** Verify locating pilot, concentricity, thermal contact, fastener engagement and finish.
@@ -216,19 +214,18 @@ Quantity: 1 set. Evidence: Not in reference CAD.
 - **Unresolved:** Turns, wire diameter, parallel strands, coil pitch, winding diagram, fill factor and test temperature/frequency unknown. Do not treat terminal resistance as phase-branch resistance in delta.
 - **Source references:** S1
 
-## EM03 — Rotor magnetic yoke
+## EM03 — Rotor shell (machined as part of the rotor)
 
 Quantity: 1 ea. Evidence: Not in reference CAD.
 
-- **Architecture:** Outer rotor study
-- **Envelope / wall thickness:** To be designed
-- **Choice C alignment blocker:** Rotor/magnets not shifted with stator. Current magnet span -7 to 7 mm overlaps shifted stack by only 9.436 mm; motor performance not validated.
-- **Known end-bell interference:** EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.
-- **Measured form error:** EM03/endbell is a plain annulus with a 46 mm opening, larger than the measured OEM hub envelope of 44.5 mm, and its axial band -8.6 to -7.6 mm does not intersect the hub flange band -1.75 to +0.25 mm. The provisional rotor shell is the wrong form and the wrong place, so assembly step A06 attaches nothing. See hub-joint-validation.json.
-- **OEM magnet carrier evidence:** Source main housing NAUO3 carries arcuate pockets at r 41.766 to 43.236 mm for z 13.001 to 16.250 mm. Confirm whether the magnetic rotor belongs to the housing rather than to a separate EM03 shell before releasing this geometry.
+- **Machining:** Integral with G03: one machined body, not a separate part
+- **Envelope / wall thickness:** Shell portion: r 22.25 to 42.4 mm, z -1.75 to 11.25 mm
+- **Integral with the rotor:** The magnet-carrying shell is machined as part of the rotor (G03): the manufacturer hub profile plus a six-spoke web and a pocketed magnet rim in ONE connected solid, 5388.4 mm3, O84.8 x 20.5 mm. There is no hub-to-shell joint. See intersection-matrix.json and rotor.json.
+- **Magnet pockets:** 42 pockets machined at 85% arc coverage, r 40.5 to 42.4 mm, z 0.25 to 11.5 mm. Magnets seat in them with 0.000 mm3 interference, verified by cad/check_intersections.py.
+- **Superseded geometry:** Earlier revisions used a procedural EM03/endbell plus EM03/yoke, then a separate rotor shell. Both are withdrawn: the end bell was a flat annulus with a 46 mm opening that could not receive the measured O44.5 hub, and splitting the shell from the hub invented a joint the manufacturer does not have.
 - **Material:** Proposed: magnetic steel yoke with separate structural carrier as required
 - **Make/buy:** Machine and dynamically balance
-- **Unresolved:** OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent. EM03/endbell and EM03/yoke do not represent the measured OEM hub: the form, the opening diameter and the axial position all differ. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.
+- **Unresolved:** Rotor radial placement is unproven: the magnet band r 40.5 to 42.4 mm does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm). Magnet grade, bonding, retention and balance are unspecified.
 - **Source references:** Engineering requirement; not an OEM specification
 
 ## EM04 — Rotor permanent magnet set

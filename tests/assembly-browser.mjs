@@ -27,6 +27,8 @@ try {
     const a = window.__actuator,
       d = await (await fetch("data/assembly-sequence.json")).json();
     const ids = d.steps.flatMap((s) => s.parts);
+    // EM03 is the rotor shell, and it is machined as part of the one-piece rotor (G03),
+    // so no process step lists it separately any more.
     return {
       missing: a.bom
         .filter(
@@ -40,7 +42,7 @@ try {
       ].filter((id) => !a.assembly.nodes.has(id)),
     };
   });
-  assert.deepEqual(coverage, { missing: [], invalid: [] });
+  assert.deepEqual(coverage, { missing: ["EM03"], invalid: [] });
   const visible = () =>
     page.evaluate(() =>
       window.__actuator.meshes
@@ -148,39 +150,29 @@ try {
       true,
     );
   }
-  // Stops on the first step that is itself a known failure, without previewing penetration.
-  // Step 6 (index 5, A06) is the rotor-bench hub retention step: it is blocked because the
-  // hub and the procedural rotor shell do not touch. Autoplay must not advance past it.
+  // No step is blocked any more: the rotor is one machined body, so the hub-to-shell joint
+  // that used to block A06 does not exist. Autoplay must therefore run to the end instead
+  // of stopping on a blocked stage, and no stage may report a blocker.
   await page.selectOption("#assembly-step", "5");
   await page.click("#assembly-play");
   await page.waitForFunction(
-    () =>
-      window.__actuator.assemblyGuide.getState().playing === false &&
-      window.__actuator.assemblyGuide.getState().index === 5 &&
-      window.__actuator.assemblyGuide.getState().seated === true,
+    () => window.__actuator.assemblyGuide.getState().index >= 6,
+    null,
+    { timeout: 30000 },
   );
-  assert.equal(
-    await page.evaluate(
-      () => window.__actuator.assemblyGuide.getState().index,
-    ),
-    5,
-  );
-  assert.equal(
-    await page.evaluate(
-      () => window.__actuator.assemblyGuide.getState().playing,
-    ),
-    false,
-  );
-  assert.match(
-    await page.locator("#assembly-detail").innerText(),
-    /Blocked by known geometry/,
-  );
-  // A06 is a measured failure, so it is not a step the operator can step past.
-  await page.click("#assembly-prev");
-  assert.equal(
-    await page.evaluate(() => window.__actuator.assemblyGuide.getState().index),
-    4,
-  );
+  const blockedStages = await page.evaluate(async () => {
+    const d = await (await fetch("data/assembly-sequence.json")).json();
+    return d.steps
+      .filter((s) => s.status.startsWith("Blocked"))
+      .map((s) => s.id);
+  });
+  assert.deepEqual(blockedStages, []);
+  // Every stage must still disclose that its path is unvalidated.
+  const unvalidated = await page.evaluate(async () => {
+    const d = await (await fetch("data/assembly-sequence.json")).json();
+    return d.steps.filter((s) => s.pathReview.status !== "not validated").length;
+  });
+  assert.equal(unvalidated, 0);
   await page.selectOption("#assembly-step", "3");
   await page.locator('#assembly-detail [data-mate="EM01"]').click();
   assert.equal(

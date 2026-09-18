@@ -11,8 +11,7 @@ export function buildAssembly(
   sunSolid,
   planetSolid,
   ringSolid,
-  rotorHubSolid,
-  rotorShellSolid,
+  rotorSolid,
 ) {
   const nodes = new Map(),
     meshes = [],
@@ -83,7 +82,9 @@ export function buildAssembly(
       node = node.parent;
     }
     if (!part) return;
-    if (part.bomId === "G02") {
+    // G02 (sun blank) and G03 (rotor hub) are replaced by study solids, so their source
+    // meshes are not linked and the process guide never shows them.
+    if (part.bomId === "G02" || part.bomId === "G03") {
       mesh.visible = false;
       return;
     }
@@ -265,44 +266,31 @@ export function buildAssembly(
         "Study coating: 2 µm per face; chemistry and OEM thickness unknown.",
       );
   }
-  // G03: the real manufacturer rotor hub, re-exported from the source STEP.
-  // It replaces the earlier procedural EM03/endbell + EM03/yoke pair, which was a
-  // flat annulus with a 46 mm opening at z -8.6..-7.6: it could not receive the
-  // measured O44.5 hub and did not touch it, so assembly step A06 attached nothing.
-  if (rotorHubSolid) {
-    let hubGeometry;
-    rotorHubSolid.traverse((mesh) => {
-      if (mesh.isMesh) hubGeometry = mesh.geometry;
+  // G03 + EM03: the rotor is ONE machined body. The manufacturer part has the shell's
+  // web flowing straight into the central hub boss, with the sun pressed into it, so
+  // there is no hub-to-shell joint to define. The earlier study modelled them as two
+  // parts and then argued about how to join them, which invented a joint that does not
+  // exist. The hub portion is measured OEM geometry; the shell portion is a proposal.
+  if (rotorSolid) {
+    let rotorGeometry;
+    rotorSolid.traverse((mesh) => {
+      if (mesh.isMesh) rotorGeometry = mesh.geometry;
     });
-    if (hubGeometry) {
-      // Note: the manufacturer GLB also carries occurrence NAUO45 under the same BOM id,
-      // so browsing G03 lists this re-export plus the source mesh. They are the same part
-      // at the same position, so the duplicate is not visible; the guide owns per-step
-      // visibility and re-enables BOM members on every draw.
-      const hubMesh = new THREE.Mesh(hubGeometry, material("#b7c2ce"));
-      root.add(hubMesh);
-      link(hubMesh, "G03", 0.03);
-      nodes.get("G03").status = "Reference CAD - measured joint";
+    if (rotorGeometry) {
+      const rotorMesh = new THREE.Mesh(rotorGeometry, material("#7d8b9a"));
+      root.add(rotorMesh);
+      link(rotorMesh, "G03", 0.024);
+      nodes.get("G03").status = "Reference CAD + proposal - one body";
       nodes.get("G03").description =
-        "Manufacturer rotor hub re-exported from the source STEP (occurrence NAUO45). One valid solid, 3114.2 mm3, O44.5 x 14.5 mm, z -9.25 to +5.25 mm. Body of revolution about the motor axis: six-spoke flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm, O35.5 annular pocket, O42.05 rim, rear O6 bore, O4 middle bore and a O5.95 front counterbore. It carries both 6701-ZZ bearings and the encoder target magnet coaxially with the sun, and it pilots the sun's front journal: contact volume 0.324 mm3 confined to z 3.75 to 5.25 mm, with a keyed/flat feature (0.202 mm azimuthal radius spread) on the sun's journal. Fit class, retention and torque capacity are not yet qualified; see public/design/hub-joint-validation.json.";
-    }
-  }
-  // EM03: rotor end bell. One connected solid, following the manufacturer arrangement:
-  // a single spoked shell whose outer rim carries the magnets, with the sun/hub module
-  // fitted into it. The earlier study split this into a disc plus a separate rim, which
-  // invented a joint that does not exist in the real part.
-  if (rotorShellSolid) {
-    let shellGeometry;
-    rotorShellSolid.traverse((mesh) => {
-      if (mesh.isMesh) shellGeometry = mesh.geometry;
-    });
-    if (shellGeometry) {
-      const shellMesh = new THREE.Mesh(shellGeometry, material("#596576"));
-      root.add(shellMesh);
-      link(shellMesh, "EM03", -0.018);
-      nodes.get("EM03").status = "Primeform proposal - one solid";
-      nodes.get("EM03").description =
-        "Rotor end bell as one connected solid: a six-spoke web on the measured hub's O44.5 front face, an outer rim carrying the magnets on its O81 bore, and a closing flange at the rear. Bounding O84.8 x 13.75 mm, volume 7482.0 mm3, one valid solid. This mirrors the manufacturer arrangement, where the magnet ring and the spokes are the same part and the sun is force-fitted into it. Measured clash 0.000 mm3 against the main housing, the rear housing and the hub. The joint to the hub is NOT defined: no fit, key, screw or bond, so the torque path from this shell to the hub is unresolved.";
+        "Rotor: ONE machined body, 5388.4 mm3, O84.8 x 20.5 mm, z -9.25 to +11.25 mm. The hub portion is measured manufacturer geometry (occurrence NAUO45): six-spoke flange r 17.145 to 22.25, rear O6 bore, front O12 counterbore, O5.95 pilot counterbore. The shell portion is a Primeform proposal: a six-spoke web growing out of the hub flange, an outer rim with 42 magnet pockets, no separate joint between them. The sun is pressed into the O5.95 counterbore (measured contact 0.324 mm3 over z 3.75 to 5.25). Unintended interference measured 0.000 mm3 against both housings.";
+      // EM03 is no longer a separate body; keep the tree entry pointing at this one so
+      // the process steps that name it stay resolvable.
+      const em03 = nodes.get("EM03");
+      if (em03) {
+        em03.status = "Part of the one-piece rotor (G03)";
+        em03.description =
+          "No longer a separate body. The magnet-carrying shell is machined as part of the rotor (G03), following the manufacturer arrangement. Selecting G03 shows the whole rotor.";
+      }
     }
   }
   const sectors = 42;

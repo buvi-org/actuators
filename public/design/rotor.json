@@ -1,0 +1,31 @@
+{
+  "scope": "Rotor as ONE machined body: the measured OEM hub plus the shell (six-spoke web and pocketed magnet rim) fused into a single connected solid. The sun is pressed into it; there is no hub-to-shell joint to define.",
+  "status": "Primeform proposal for the shell portion. The hub portion is measured manufacturer geometry (occurrence NAUO45).",
+  "solids": 1,
+  "valid": true,
+  "volume_mm3": 5388.409,
+  "bbox_mm": [
+    -42.403,
+    -42.403,
+    -9.253,
+    42.403,
+    42.403,
+    11.253
+  ],
+  "features": {
+    "hub": "measured OEM profile: O44.5 x 14.5 mm, six-spoke flange r 17.145 to 22.25, rear O6 bore, front O12 counterbore, O5.95 pilot counterbore for the sun",
+    "web": "six-spoke web r 22.25 to 40.5 mm, z -1.75 to 0.25 mm, growing out of the hub flange",
+    "rim": "r 40.5 to 42.4 mm, z -1.75 to 11.25 mm, with 42 magnet pockets at 85% arc coverage",
+    "magnets": "42 segments r 40.5 to 42.4 mm, z 0.25 to 11.5 mm"
+  },
+  "interference_mm3": {
+    "rotor_vs_main_housing_mm3": 0.0,
+    "rotor_vs_rear_housing_mm3": 0.0,
+    "rotor_vs_sun_mm3": 0.324088
+  },
+  "worst_unintended_interference_mm3": 0.0,
+  "open": [
+    "The sun-to-rotor fit class, retention and torque capacity are not qualified. The measured contact is 0.324 mm3 on the O5.95 counterbore over z 3.75 to 5.25 mm.",
+    "The magnet radial band (r 40.5 to 42.4 mm) does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven."
+  ]
+}

@@ -1,15 +1,14 @@
 {
-  "scope": "Pairwise intersection matrix for every modelled body, plus intended-contact checks. Re-run after every geometry change.",
+  "scope": "Pairwise intersection matrix for the one-piece rotor model for every modelled body, plus intended-contact checks. Re-run after every geometry change.",
   "frame": "assembled centred mm",
   "bodies": [
     "M01 main housing",
     "M02 rear housing",
-    "G03 hub",
     "G02 sun",
     "B03 6701 rear",
     "B03 6701 front",
     "E02 encoder magnet",
-    "EM03 rotor end bell",
+    "G03/EM03 rotor (one piece)",
     "EM04 magnet 1",
     "EM04 magnet 2",
     "EM04 magnet 3",
@@ -53,7 +52,7 @@
     "EM04 magnet 41",
     "EM04 magnet 42"
   ],
-  "pair_count": 1225,
+  "pair_count": 1176,
   "clashes": [
     {
       "a": "M01 main housing",
@@ -62,50 +61,18 @@
       "intended": "housing joint face"
     },
     {
-      "a": "G03 hub",
-      "b": "G02 sun",
+      "a": "G02 sun",
+      "b": "G03/EM03 rotor (one piece)",
       "interference_mm3": 0.324088,
-      "intended": "pilot fit"
+      "intended": "sun pilot fit into the rotor"
     }
   ],
   "intended_contacts": [
     {
-      "a": "G03 hub",
+      "a": "G03/EM03 rotor (one piece)",
       "b": "G02 sun",
-      "intent": "pilot fit",
+      "intent": "sun pilot fit into the rotor",
       "interference_mm3": 0.324088,
-      "min_distance_mm": 0.0,
-      "result": "contact"
-    },
-    {
-      "a": "G03 hub",
-      "b": "B03 6701 rear",
-      "intent": "bearing seat",
-      "interference_mm3": 0.0,
-      "min_distance_mm": 0.0,
-      "result": "contact"
-    },
-    {
-      "a": "G03 hub",
-      "b": "B03 6701 front",
-      "intent": "bearing seat",
-      "interference_mm3": 0.0,
-      "min_distance_mm": 0.0,
-      "result": "contact"
-    },
-    {
-      "a": "G03 hub",
-      "b": "E02 encoder magnet",
-      "intent": "magnet seat",
-      "interference_mm3": 0.0,
-      "min_distance_mm": 0.0,
-      "result": "contact"
-    },
-    {
-      "a": "EM03 rotor end bell",
-      "b": "G03 hub",
-      "intent": "shell to hub (UNDEFINED joint)",
-      "interference_mm3": 0.0,
       "min_distance_mm": 0.0,
       "result": "contact"
     },
@@ -128,8 +95,8 @@
   ],
   "magnet_clashes": [],
   "summary": {
-    "bodies": 50,
-    "pairs_tested": 1225,
+    "bodies": 49,
+    "pairs_tested": 1176,
     "clashing_pairs": 2,
     "must_clear_violations": 1,
     "magnet_clashing_pairs": 0,

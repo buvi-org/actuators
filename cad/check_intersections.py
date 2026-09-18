@@ -85,17 +85,18 @@ def main():
     main_h = cq.importers.importStep(str(ROOT / "public/design/main-housing-supported.step")).val()
     rear_h = centred("NAUO4")
 
-    shell = cq.importers.importStep(str(ROOT / "public/design/rotor-shell.step")).val()
+    rotor = cq.importers.importStep(str(ROOT / "public/design/rotor.step")).val()
 
+    # NOTE: the hub is machined as part of the rotor body, so it is not listed
+    # separately - that would compare a body against a subset of itself.
     bodies = {
         "M01 main housing": main_h,
         "M02 rear housing": rear_h,
-        "G03 hub": hub,
         "G02 sun": sun,
         "B03 6701 rear": rear_bearing,
         "B03 6701 front": front_bearing,
         "E02 encoder magnet": encoder,
-        "EM03 rotor end bell": shell,
+        "G03/EM03 rotor (one piece)": rotor,
     }
     magnets = magnet_set()
     for i, mag in enumerate(magnets):
@@ -103,25 +104,22 @@ def main():
 
     # Intended joints: a fit is real only if the test agrees.
     INTENDED = {
-        ("G03 hub", "G02 sun"): "pilot fit",
-        ("G03 hub", "B03 6701 rear"): "bearing seat",
-        ("G03 hub", "B03 6701 front"): "bearing seat",
-        ("G03 hub", "E02 encoder magnet"): "magnet seat",
-        ("EM03 rotor end bell", "G03 hub"): "shell to hub (UNDEFINED joint)",
+        # The hub, its bearing seats and the encoder seat are internal to the rotor body
+        # now, so the joints that remain are the sun pilot fit and the housing joint face.
+        ("G03/EM03 rotor (one piece)", "G02 sun"): "sun pilot fit into the rotor",
         ("M01 main housing", "M02 rear housing"): "housing joint face",
     }
     # Pairs that must never interpenetrate.
     MUST_CLEAR = {
         ("M01 main housing", "M02 rear housing"),
-        ("M01 main housing", "EM03 rotor end bell"),
-        ("M02 rear housing", "EM03 rotor end bell"),
+        ("M01 main housing", "G03/EM03 rotor (one piece)"),
+        ("M02 rear housing", "G03/EM03 rotor (one piece)"),
         ("M01 main housing", "G03 hub"),
         ("M02 rear housing", "G03 hub"),
         ("M02 rear housing", "G02 sun"),
-        ("EM03 rotor end bell", "G02 sun"),
-        ("EM03 rotor end bell", "B03 6701 rear"),
-        ("EM03 rotor end bell", "B03 6701 front"),
-        ("EM03 rotor end bell", "E02 encoder magnet"),
+        ("G03/EM03 rotor (one piece)", "B03 6701 rear"),
+        ("G03/EM03 rotor (one piece)", "B03 6701 front"),
+        ("G03/EM03 rotor (one piece)", "E02 encoder magnet"),
     }
 
     keys = list(bodies)
@@ -164,7 +162,7 @@ def main():
     mag_clash = [c for c in clashes if c["a"].startswith("EM04") or c["b"].startswith("EM04")]
 
     report = {
-        "scope": "Pairwise intersection matrix for every modelled body, plus intended-contact "
+        "scope": "Pairwise intersection matrix for the one-piece rotor model for every modelled body, plus intended-contact "
                  "checks. Re-run after every geometry change.",
         "frame": "assembled centred mm",
         "bodies": keys,

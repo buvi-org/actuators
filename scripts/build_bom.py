@@ -80,7 +80,7 @@ row('EM01','Stator lamination stack','Motor',1,{'Slot count':'36 (published)','O
 row('EM02','Three-phase winding','Motor',1,{'Connection':'Delta (published)','KV target':'100 rpm/V','Terminal-to-terminal resistance':'160 mΩ published','Terminal-to-terminal inductance':'116 µH published'},
  'Enamelled copper; wire grade unselected','Wind, terminate, impregnate and test',
  'Turns, wire diameter, parallel strands, coil pitch, winding diagram, fill factor and test temperature/frequency unknown. Do not treat terminal resistance as phase-branch resistance in delta.', ['S1'],status='Not in reference CAD',unit='set')
-row('EM03','Rotor magnetic yoke','Motor',1,{'Architecture':'Outer rotor study','Envelope / wall thickness':'To be designed'},
+row('EM03','Rotor shell (machined as part of the rotor)','Motor',1,{'Machining':'Integral with G03: one machined body, not a separate part','Envelope / wall thickness':'Shell portion: r 22.25 to 42.4 mm, z -1.75 to 11.25 mm'},
  'Proposed: magnetic steel yoke with separate structural carrier as required','Machine and dynamically balance',
  'OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent.', [],status='Not in reference CAD')
 row('EM04','Rotor permanent magnet set','Motor',1,{'Pole pairs':'21 (published)','Magnetic poles':'42 (derived)','Physical segment count':'Unknown; 42 poles does not establish 42 pieces'},
@@ -195,14 +195,10 @@ by_id['C03']['name']='Stator retaining and thermal bondline'
 by_id['C03']['specifications'].update({'Proposed bondline':'Radii 29.98 to 30.00 mm; z 5.75 to 11.436 mm; length 5.686 mm', 'Function':'Stator retention to ring OD. Axial stop is main housing, not ring.'})
 by_id['C03']['material']='Retaining adhesive grade unselected'
 by_id['C03']['unresolved']='Bond capacity, cure, tolerances, stack retention and ring distortion unresolved.'
-by_id['EM03']['specifications']['Choice C alignment blocker']='Rotor/magnets not shifted with stator. Current magnet span -7 to 7 mm overlaps shifted stack by only 9.436 mm; motor performance not validated.'
-by_id['M01']['specifications']['Choice C stator stop']='Integral annular seat radii 30.1 to 33.5 mm; z 11.436 mm; external reference envelope retained.'
-
-by_id['EM03']['specifications']['Known end-bell interference']='EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.'
-by_id['EM03']['specifications']['Measured form error']='EM03/endbell is a plain annulus with a 46 mm opening, larger than the measured OEM hub envelope of 44.5 mm, and its axial band -8.6 to -7.6 mm does not intersect the hub flange band -1.75 to +0.25 mm. The provisional rotor shell is the wrong form and the wrong place, so assembly step A06 attaches nothing. See hub-joint-validation.json.'
-by_id['EM03']['specifications']['OEM magnet carrier evidence']='Source main housing NAUO3 carries arcuate pockets at r 41.766 to 43.236 mm for z 13.001 to 16.250 mm. Confirm whether the magnetic rotor belongs to the housing rather than to a separate EM03 shell before releasing this geometry.'
-by_id['EM03']['unresolved'] += ' EM03/endbell and EM03/yoke do not represent the measured OEM hub: the form, the opening diameter and the axial position all differ. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.'
-by_id['M02']['specifications']['Known interference']='Source rear housing intersects the provisional rotor end bell; see rotor-clearance-validation.json. This is not an exploded-view artifact.'
+by_id['EM03']['specifications']['Integral with the rotor']='The magnet-carrying shell is machined as part of the rotor (G03): the manufacturer hub profile plus a six-spoke web and a pocketed magnet rim in ONE connected solid, 5388.4 mm3, O84.8 x 20.5 mm. There is no hub-to-shell joint. See intersection-matrix.json and rotor.json.'
+by_id['EM03']['specifications']['Magnet pockets']='42 pockets machined at 85% arc coverage, r 40.5 to 42.4 mm, z 0.25 to 11.5 mm. Magnets seat in them with 0.000 mm3 interference, verified by cad/check_intersections.py.'
+by_id['EM03']['specifications']['Superseded geometry']='Earlier revisions used a procedural EM03/endbell plus EM03/yoke, then a separate rotor shell. Both are withdrawn: the end bell was a flat annulus with a 46 mm opening that could not receive the measured O44.5 hub, and splitting the shell from the hub invented a joint the manufacturer does not have.'
+by_id['EM03']['unresolved']='Rotor radial placement is unproven: the magnet band r 40.5 to 42.4 mm does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm). Magnet grade, bonding, retention and balance are unspecified.'
 
 by_id['M01']['status']='Reference CAD + Primeform modification'
 by_id['M01']['specifications'].update({

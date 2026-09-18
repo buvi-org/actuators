@@ -4,3 +4,7 @@ tmp/
 __pycache__/
 *.pyc
 .venv/
+# Editor scratch directories. A leftover one under src/ crashes Vite's file watcher
+# with EBUSY on Windows, so they are ignored and should not appear in the tree.
+.*.tmpdir/
+*.tmpdir/

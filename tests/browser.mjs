@@ -18,6 +18,15 @@ try {
   await page.waitForFunction(() => window.__actuator);
   const meshCount = await page.evaluate(() => window.__actuator.meshes.length);
   assert.ok(meshCount > 380);
+  // The full-assembly export writes every mesh the viewer holds.
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.meshes.filter((m) => m.geometry).length,
+    ),
+    meshCount,
+  );
+  // 42 source occurrences minus G02 and G03: the sun blank and the rotor hub are both
+  // replaced by study solids, so their source meshes are not linked as reference geometry.
   assert.equal(
     await page.evaluate(
       () =>
@@ -25,7 +34,15 @@ try {
           (m) => m.userData.geometryKind === "reference",
         ).length,
     ),
-    42,
+    41,
+  );
+  assert.equal(
+    await page.evaluate(() =>
+      window.__actuator.meshes.filter((m) =>
+        ["G02/NAUO41", "G03/NAUO45"].includes(m.userData.nodeId),
+      ).length,
+    ),
+    0,
   );
   assert.ok(
     await page.evaluate(() =>

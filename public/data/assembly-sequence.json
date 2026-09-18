@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor hub is real manufacturer geometry with a measured hub-to-sun pilot joint. The rotor end bell is one connected Primeform proposal whose joint to the hub is undefined. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
+  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor is one machined body combining the measured manufacturer hub with a proposed shell, so there is no hub-to-shell joint. The sun is pressed into it. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
   "steps": [
     {
       "id": "A01",
@@ -146,9 +146,7 @@
         "EM04",
         "C02"
       ],
-      "target": [
-        "EM03"
-      ],
+      "target": [],
       "context": [
         "G03"
       ],
@@ -170,50 +168,44 @@
     },
     {
       "id": "A06",
-      "title": "Rotor bench: hub joint - measured, but not released",
+      "title": "Rotor bench: press the sun into the rotor",
       "phase": "Rotor preparation",
       "parts": [
-        "G03"
+        "G02"
       ],
       "target": [
-        "EM03"
+        "G03"
       ],
       "context": [
-        "EM03",
         "EM04",
         "C02"
       ],
-      "method": "Measured interference/keyed pilot fit, O5.95 hub counterbore onto O6.0 sun journal",
+      "method": "Press fit: sun journal into the rotor's Ø5.95 pilot counterbore",
       "surfaces": [
-        "Hub front counterbore O5.95 mm ↔ sun front journal O6.0 mm, contact z 3.75 to 5.25 mm, 0.324 mm3",
-        "Sun journal keyed/flat feature: 0.202 mm azimuthal radius spread across that band",
-        "Hub O12 front counterbore z 1.25 to 5.25 mm ↔ front 6701-ZZ outer race",
-        "Hub O6 rear bore z -8.75 to -6.75 mm ↔ rear 6701-ZZ and encoder target magnet",
-        "Hub flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm: nearest housing wall is r 47.4 mm, a 25.15 mm radial gap with no bridge anywhere in the source CAD",
-        "Hub flange r 17.145 to 22.25 mm at z -1.75 to +0.25 mm ↔ carrier web bore r 22.25 mm: proposed, not designed"
+        "Sun front journal Ø6.000 mm, keyed/flat section ↔ rotor Ø5.950 counterbore, z 3.75 to 5.25 mm",
+        "Measured contact volume 0.324 mm³ over that band (0.202 mm azimuthal radius spread on the sun)",
+        "Sun rear Ø6.0 journal ↔ rotor rear Ø6 bore, z -8.75 to -6.75 mm",
+        "Rotor Ø12 front counterbore ↔ front 6701-ZZ outer race",
+        "Rotor rear Ø6 bore ↔ encoder target magnet seat"
       ],
-      "process": "Fit the measured manufacturer hub (occurrence NAUO45, now exported as public/design/oem-rotor-hub.step and shown as assembly item G03) around the sun shaft. The hub is a body of revolution: six-spoke flange, O12 and O6 bearing bores, O4 middle bore and a O5.95 front counterbore. Its front counterbore pilots the sun's O6.0 journal over z 3.75 to 5.25 mm with a 0.324 mm3 interference and a keyed/flat feature on the sun. The hub is not attached to either housing by any modelled feature: its flange ends at r 22.25 mm and the nearest housing wall is at r 47.4 mm, a 25.15 mm radial gap with no bridge in the source CAD.",
-      "check": "Before release: (1) design and validate the hub-to-rotor-shell connection that closes the 25.15 mm radial gap, since the source CAD contains no such feature; (2) specify the fit class, retention, runout and balance for the O5.95/O6.0 keyed pilot joint and confirm its torque capacity against the 9:1 gearbox input; (3) confirm the sun drive feature from a physical sample, because a 0.202 mm azimuthal spread measured from CAD is not a released key or spline specification; (4) confirm the rotor radial placement, which the source housings do not confirm. (5) define how the rotor end bell is retained on the hub: no fit, key, screw or bond is specified between the hub flange and the carrier.",
-      "status": "Blocked by known geometry",
-      "marker": [
-        17.145,
-        22.25,
-        -0.75
-      ],
+      "process": "The rotor (G03) is ONE machined body: the manufacturer hub profile with the shell's six-spoke web and pocketed magnet rim machined as part of it, 5388.4 mm³, Ø84.8 x 20.5 mm. There is no hub-to-shell joint to make. Press the sun shaft's front journal into the rotor's Ø5.95 counterbore over z 3.75 to 5.25 mm and fit both 6701-ZZ bearings into the rotor bores. The measured contact is 0.324 mm³ with a keyed/flat feature on the sun journal.",
+      "check": "Before release: specify the fit class, retention, runout and torque capacity of the sun-to-rotor press, and confirm the sun drive feature against hardware, because a 0.202 mm azimuthal spread measured from CAD is evidence of a key or flat, not a released specification. The rotor shows no unintended interpenetration: 0.000 mm³ against both housings, verified by cad/check_intersections.py.",
+      "status": "Proposed / requires validation",
+      "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "The hub-to-sun joint is now measured and real, but the hub-to-rotor-shell joint does not exist: the flange outer radius is 22.25 mm and the nearest housing wall is at 47.4 mm, so the hub is unsupported radially and cannot transmit rotor torque. No receiving surface, no retention and no insertion path can be reviewed until that connection is designed."
+        "reason": "A press operation needs a specified interference, a press tool and a reaction fixture, and the joint must be proven to carry the 9:1 gearbox input torque. None of those are defined yet, and the fit sits inside the rotor so the press direction and access need stating."
       }
     },
     {
       "id": "A07",
-      "title": "Install rotor subassembly around stator",
+      "title": "Install the rotor over the stator",
       "phase": "Actuator installation",
       "parts": [
-        "EM03",
+        "G03",
+        "G02",
         "EM04",
-        "C02",
-        "G03"
+        "C02"
       ],
       "target": [
         "M01",
@@ -239,18 +231,17 @@
       ],
       "method": "Rotor subassembly / clearance review; Torque-transmitting joint unresolved",
       "surfaces": [
-        "Rotor shell outer wall r 42.4 mm ↔ main housing bore (r 47.400) and its conical band (r 44.050)",
-        "Rotor outer swept envelope ↔ housing and boss clearance",
-        "Hub front counterbore O5.95 mm ↔ sun front journal O6.0 mm (measured 0.324 mm3 contact)",
-        "Hub bearing bores ↔ 6701-ZZ bearings and encoder target magnet"
+        "Rotor outer wall r 42.4 mm ↔ main housing bore r 47.400 and its conical band r 44.050",
+        "Magnet inner faces r 40.5 mm ↔ stator OD r 40 mm: 0.5 mm nominal air gap",
+        "Rotor shell rear ↔ housing internal features, z -1.75 mm"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
-      "check": "Measured: the rotor shell clears the main housing, the rear housing and the hub by 0.000 mm3. The shell is one connected solid of 7482.0 mm3. The stator/magnet axial misalignment is resolved: the stator sits at its manufacturer position and the rotor shell is placed 4.5 mm forward of the earlier band, giving the full 13.872 mm overlap. A06 remains a measured failure because the shell-to-hub joint is undefined.",
-      "status": "Blocked by known geometry",
+      "check": "Measured: the rotor clears the main housing and the rear housing by 0.000 mm³, and the magnets clear the stator by a 0.5 mm nominal air gap. The stator sits at its manufacturer position and the rotor shell overlaps it over the full 13.872 mm stack. Remaining: confirm the rotor radial placement, since the magnet band r 40.5 to 42.4 mm does not match the arcuate slots in the source housings (r 41.766 to 43.236 mm), and define the insertion path and tool access.",
+      "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "Build the rotor as a separate subassembly. The current yoke intersects housing bosses at the final position, so no valid installation path can end there. The hub-to-end-bell joint has no defined fastening or fit. Define the torque connection before deciding sequence, direction or required tools."
+        "reason": "The rotor must pass over the wound stator without contacting it. The nominal air gap is 0.5 mm, so the insertion path, concentricity and any lead-in chamfer need to be stated and checked before motion is animated."
       }
     },
     {
@@ -282,7 +273,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03"
@@ -389,7 +379,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -443,7 +432,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -499,7 +487,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -537,7 +524,6 @@
       ],
       "target": [
         "M01",
-        "EM03",
         "B03"
       ],
       "context": [
@@ -557,7 +543,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -630,7 +615,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -687,7 +671,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -769,7 +752,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -848,7 +830,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -930,7 +911,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",
@@ -1012,7 +992,6 @@
         "E04",
         "EM06",
         "C03",
-        "EM03",
         "EM04",
         "C02",
         "G03",

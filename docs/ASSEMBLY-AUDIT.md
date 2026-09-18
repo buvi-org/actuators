@@ -109,55 +109,81 @@ closing flange at the rear.
 | Rotor shell vs main housing / hub | 0.000 mm³ | **0.000 mm³** |
 | Gear face overlap | 5.000 mm | **5.000 mm (full)** |
 
+## The rotor is ONE machined body
+
+The decisive evidence was the manufacturer photograph: the shell's web flows straight
+into the central hub boss, and the sun is pressed into it. The hub and the shell are
+**one machined part**, not two parts to be joined.
+
+Everything before this had modelled them separately and then argued about how to join
+them — which invented a joint the manufacturer does not have, and produced the whole
+A06 blocker. `cad/build_rotor.py` now takes the **measured OEM hub** as the starting
+point and machines the shell onto it as **one connected solid**:
+
+| | Value |
+|---|---|
+| Bodies | **1** connected, valid solid |
+| Volume | 5,388 mm³ |
+| Envelope | Ø84.8 × 20.5 mm, z −9.25 … +11.25 |
+| Hub portion | measured OEM NAUO45: six-spoke flange r 17.145…22.25, Ø6 / Ø12 / Ø5.95 bores |
+| Shell portion | six-spoke web out of the hub flange; rim r 40.5…42.4 with 42 magnet pockets |
+| Sun fit | measured 0.324 mm³ pilot contact, z 3.75…5.25 |
+| Unintended interference | **0.000 mm³** against both housings |
+
+**Blocked steps: none.** A06 was "hub retention — not defined"; it is now
+"press the sun into the rotor", a real operation. A07 is "install the rotor over the
+stator". Both remain `Proposed / requires validation` because fit classes, torque
+capacity, press tooling and the insertion path are not defined — but they are no
+longer structurally impossible.
+
+
+
 ## Dimensioned diagrams
 
-Selecting any part in the tree now shows a dimensioned axial section in the
-inspector, generated from the mesh actually on screen (`src/part-diagram.js`). Every
-number is measured from the displayed geometry, so a diagram cannot disagree with
-the model it describes. Example measured values:
+Selecting any part in the tree shows a dimensioned axial section in the inspector,
+generated from the mesh actually on screen (`src/part-diagram.js`). Every number is
+measured from the displayed geometry, so a diagram cannot disagree with the model it
+describes. Measured examples:
 
 | Part | Axial | Max Ø | Bores |
 |---|---|---|---|
-| Rotor end bell (EM03) | 13.75 mm | Ø84.8 | Ø81 |
-| Input shaft hub (G03) | 14.5 mm | Ø44.5 | Ø34.3, Ø14, Ø12 |
+| Rotor, one piece (G03) | 20.5 mm | Ø84.8 | Ø44.5, Ø34.3, Ø12 |
 | Ring (G05) | 7.5 mm | Ø59.96 | Ø49.8, Ø47.45, Ø47.4 |
 | Main housing (M01) | 24.2 mm | Ø98 | Ø95, Ø94.56, Ø93.78 |
 
-
 ## Where it stands
 
-**18 of 20 steps are now geometrically consistent. 2 remain blocked, both on the
-same single open item.**
+**No step is blocked. All 20 are geometrically consistent. Eight carry open
+engineering items that are not geometric.**
 
 | # | Step(s) | Status | Issue |
 |---|---|---|---|
-| 1 | step 6 | **blocked** | Carrier retained on the hub by nothing: coincident faces at r 22.25 mm, no fit, key, screw or bond |
-| 2 | step 7 | blocked | Follows step 6: the rotor subassembly cannot be built, so it cannot be installed |
+| 1 | step 6 | open | Sun-to-rotor press: fit class, retention, press tooling and torque capacity undefined |
+| 2 | step 7 | open | Rotor insertion over the stator: 0.5 mm nominal air gap, path and lead-in not defined |
 | 3 | step 11 | open | Both output bearings float: 6707-ZZ and 625-ZZ each 0.0000 mm³ against both claimed receivers |
 | 4 | steps 9, 10 | open | Planet pin retention, pin bores and bearing/bushing selection undefined |
 | 5 | step 13 | open | Lubricant and seal are placeholders: no groove, shim, preload or quantity |
 | 6 | step 15 | open | Sixteen screw thread engagement and tightening torque unspecified |
 | 7 | step 17 | open | 205 electronic designators are inventory records only; board positions unmapped |
-| 8 | step 19 | open | Six screw thread engagement unspecified |
-| 9 | step 20 | open | Output closure seal and preload undefined |
+| 8 | steps 19, 20 | open | Six screw thread engagement; output closure seal and preload undefined |
 
 Steps 1, 2, 3, 4, 5, 8, 12, 14, 16 and 18 are internally consistent and measured.
 
-## The one blocking item
+## The joint that used to block, and why it no longer exists
 
-Everything now hinges on a single question: **how does the rotor end bell attach
-to the hub?**
+A06 used to hinge on **how the magnet-carrying shell attaches to the hub**. The
+measured answer was 0.000000 mm³ interference at 0.000000 mm distance: coincident
+faces with no fit, key, screw or bond, so the rotor torque path was undefined.
 
-Measured: interference **0.000000 mm³**, minimum distance **0.000000 mm**. So the
-faces are coincident at r 22.25 mm and nothing else exists — no fit class, key,
-spline, screw, pin or bond. The carrier is correctly shaped and now clears both
-housings completely, but it is not attached, so the rotor torque path from carrier
-to hub is undefined. That is the same class of failure as the original A06.
+That question is now dissolved rather than answered. The manufacturer photograph
+shows the shell's web flowing straight into the central hub boss, with the sun
+pressed into it: **the hub and the shell are one machined part.** Modelling them as
+two bodies and then trying to join them invented a joint that does not exist.
 
-This cannot be resolved by measurement: it is a design decision. Options are a
-light press fit, a keyed or splined land, a bolted joint through the hub flange, or
-a bonded joint with mechanical backup. Until one is chosen and specified, steps 6
-and 7 stay blocked.
+`cad/build_rotor.py` takes the measured OEM hub and machines the shell onto it as one
+connected solid, so there is nothing to join. A06 becomes a real operation — press the
+sun into the rotor — and the fit it relies on is the measured 0.324 mm³ pilot contact
+on the Ø5.95 counterbore.
 
 ## Step-by-step table
 
