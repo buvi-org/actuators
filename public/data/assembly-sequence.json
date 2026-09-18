@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor hub is real manufacturer geometry with a measured hub-to-sun pilot joint. The magnet carrier is an unreleased Primeform proposal that closes the 25.15 mm gap between the hub flange and the magnets; its retention on the hub is undefined. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
+  "scope": "Proposed assembly process with separate rotor and carrier preparation. Steps show before/after model states, not validated insertion trajectories. The rotor hub is real manufacturer geometry with a measured hub-to-sun pilot joint. The magnet carrier is an unreleased Primeform proposal that spans the hub flange to the magnets; its retention on the hub is undefined. Later steps remain previewable despite unresolved earlier joints; they do not certify assembly completion.",
   "steps": [
     {
       "id": "A01",
@@ -40,20 +40,20 @@
       ],
       "method": "Locate + screw clamp",
       "surfaces": [
-        "Ring mounting flange front face, z = 8.75 mm",
-        "Housing internal front seat, z = 8.75 mm"
+        "Ring mounting flange front face, z = 13.25 mm",
+        "Housing internal front seat, z = 13.25 mm"
       ],
-      "process": "Align the eight threaded positions on the 54 mm pitch circle. The ring, stator, winding and housing seat were all moved 4.5 mm rearward so the steel stack aligns with the rotor magnet span; the gear mesh itself is unchanged. Insertion direction and access need checking.",
+      "process": "Align the eight threaded positions on the 54 mm pitch circle. The ring, stator, winding and housing seat stay at their manufacturer positions, so the ring remains clamped by the eight front screws. The study-invented rotor shell (magnets and carrier) is what moves: it sits 4.5 mm forward to meet the stator. Insertion direction and access need checking.",
       "check": "Validate locating diameter, face flatness and assembly access.",
       "status": "Proposed / requires validation",
       "marker": [
         24.9,
         29.98,
-        8.75
+        13.25
       ],
       "pathReview": {
         "status": "not validated",
-        "reason": "The ring flange and its seat must pass the housing entry and internal shoulders after the 4.5 mm rearward realignment. No swept-volume check or insertion-side decision exists."
+        "reason": "The ring flange and the stator it locates must pass the housing entry and internal shoulders. No swept-volume check or insertion-side decision exists."
       }
     },
     {
@@ -123,15 +123,15 @@
       "method": "Adhesive / thermal bond; Coated sheet stacking + bonded bore; Formed insulation insertion; Wind / insert coils; Thermal attachment / lead connection; Impregnation / cure",
       "surfaces": [
         "Stator bore 60 mm ↔ ring OD 59.96 mm (radial location, provisional bond gap)",
-        "Stator front steel face z 6.936 mm ↔ main housing annular shoulder (axial stop)"
+        "Stator front steel face z 11.436 mm ↔ main housing annular shoulder (axial stop)"
       ],
-      "process": "Install the prepared 68-sheet stator over the compact ring OD until its steel end face seats against the housing shoulder at z 6.936 mm. Windings occupy z -7.8 to 7.8 mm. The stator, winding, ring flange and housing seat were all moved 4.5 mm rearward from the earlier Choice C position so the 13.872 mm stack overlaps the full magnet span (-7 to +7 mm). No long ring sleeve remains. Validate complete insertion access before animating motion.",
-      "check": "Choice C packaging only: 4 mm back iron, shortened radial winding region, 5.686 mm locating/bond overlap. The 9.436 mm axial misalignment is resolved in the layout, but flux, winding area, bond capacity, shoulder flatness and motor alignment remain unvalidated.",
+      "process": "Install the prepared 68-sheet stator over the compact ring OD until its steel end face seats against the housing shoulder at z 11.436 mm. Windings occupy z -3.3 to 12.3 mm. No long ring sleeve remains. Validate complete insertion access before animating motion.",
+      "check": "Choice C packaging only: 4 mm back iron, shortened radial winding region, 5.686 mm locating/bond overlap. The stator/magnet axial overlap is now the full 13.872 mm because the rotor shell moved to the stator rather than the stator moving to the rotor. Flux, winding area, bond capacity, shoulder flatness and motor alignment remain unvalidated.",
       "status": "Proposed / requires validation",
       "marker": [
         30.1,
         33.5,
-        6.936
+        11.436
       ],
       "pathReview": {
         "status": "not validated",
@@ -157,12 +157,12 @@
       "method": "Adhesive bond; bond / pole placement",
       "surfaces": [
         "Magnet outer faces ↔ carrier web bore r 40.5 mm",
-        "Magnet axial end ↔ carrier retaining rim face, z 5.25 mm",
+        "Magnet axial end ↔ carrier retaining rim face, z 11.5 mm",
         "Carrier web inner bore r 22.25 mm ↔ measured hub flange r 17.145 to 22.25 mm, z -1.75 to +0.25 mm",
         "Magnet side faces ↔ pole-spacing fixture"
       ],
-      "process": "Assemble the rotor bench part of the subassembly: the measured hub (G03), the Primeform proposed magnet carrier (web plus retaining rim) and the magnet segments. The carrier web runs r 22.25 to 40.5 mm over z -5 to +5 mm and is anchored on the hub flange; the retaining rim closes the magnets at z 5.25 to 6.75 mm. Prepare surfaces, dispense a controlled bondline and place alternating poles with tooling, then cure. Adhesive and mechanical retention are unspecified. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
-      "check": "The carrier is a Primeform proposal, not OEM geometry: it exists only because nothing in the source CAD joins the measured hub (flange outer r 22.25 mm) to the magnets. Measured clash 0 mm3 against the main housing and the hub, but 194.333 mm3 against the rear housing, whose inward wall is only r 29 mm over z -5.25 to -4.75 mm; shorten the web or resolve the rear envelope. The magnet radial band (r 40.5 to 42.5 mm) does not coincide with the arcuate slots in the source housings (r 41.766 to 43.236 mm), so the rotor radial placement is still unproven. Qualify bond thickness, temperature capability, cure and centrifugal retention, and verify polarity, spacing, concentricity and air gap.",
+      "process": "Assemble the rotor bench part of the subassembly: the measured hub (G03), the Primeform proposed magnet carrier (web plus retaining rim) and the magnet segments. The carrier web runs r 22.25 to 40.5 mm over z -2.5 to +5.25 mm and is anchored on the hub flange; the retaining rim closes the magnets at r 40.5 to 42.4 mm over z 5.25 to 11.5 mm. The magnets sit at r 40.5 to 42.5 mm over z -2.5 to +11.5 mm, 4.5 mm forward of the earlier position, which gives the full 13.872 mm stator overlap and measures 0.000 mm3 clash against both housings. Prepare surfaces, dispense a controlled bondline and place alternating poles with tooling, then cure. Adhesive and mechanical retention are unspecified. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
+      "check": "The carrier is a Primeform proposal, not OEM geometry: nothing in the source CAD joins the measured hub (flange outer r 22.25 mm) to the magnets. Measured clash is now 0.000 mm3 against the main housing, the rear housing and the hub. STILL OPEN: the carrier is retained on the hub by nothing (coincident faces at r 22.25 mm, no fit, key, screw or bond), and the magnet band r 40.5 to 42.5 mm still does not coincide with the arcuate slots in the source housings (r 41.766 to 43.236 mm), so rotor radial placement is unproven. Qualify bond thickness, temperature capability, cure and centrifugal retention, and verify polarity, spacing, concentricity and air gap.",
       "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
@@ -583,12 +583,12 @@
         "Rear housing central bore ↔ rear 6701-ZZ bearing and sun rear journal"
       ],
       "process": "Inspect the proposed closed position; the current rotor end bell intersects the rear housing.",
-      "check": "Measured cause of the blocker: the rotor carrier web intersects the rear housing by 194.333 mm3 over z -5.25 to -4.75 mm, because the rear housing's inward wall is only r 29 mm there while the carrier spans r 22.25 to 40.5 mm. The earlier 'rotor end bell vs NAUO4 2666.283 mm3' figure referred to the deleted procedural EM03/endbell and no longer applies. The rear housing does not intersect the main housing (0.000 mm3) and does not intersect the sun. Shorten the carrier web or resolve the rear envelope before this step can seat.",
-      "status": "Blocked by known geometry",
+      "check": "The geometric blocker is resolved: the carrier moved 4.5 mm forward, removing the 194.333 mm3 clash with the rear housing, and the rear housing does not intersect the main housing (0.000 mm3). Remaining before release: bearing seat ownership and shoulders, shim/preload, and the electrical routing that passes this joint.",
+      "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",
-        "reason": "The rear housing cannot reach its seated position while the carrier web occupies z -5 to -4.75 mm at radii up to 40.5 mm, where the housing wall is only r 29 mm. No axial translation resolves it: the carrier is bounded by the main housing's conical bore forward and the rear housing's shoulder aft."
+        "reason": "No axial clash remains to block seating, but the insertion path, bearing preload and the electrical connections that pass this joint are still undefined."
       }
     },
     {
@@ -656,8 +656,8 @@
         "Screw threads ↔ main housing boss bores"
       ],
       "process": "Align the rear housing and tighten in a cross pattern only after clearance redesign. Torque remains unspecified.",
-      "check": "Blocked because A14 cannot seat: the carrier web intersects the rear housing by 194.333 mm3. The sixteen screws also require a defined thread engagement and tightening torque, neither of which is specified.",
-      "status": "Blocked by known geometry",
+      "check": "Thread engagement and tightening torque are unspecified for the sixteen M2.5 x 6 screws, and no locking method is defined.",
+      "status": "Proposed / requires validation",
       "marker": null,
       "pathReview": {
         "status": "not validated",

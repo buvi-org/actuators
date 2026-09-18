@@ -8,7 +8,7 @@
       "y_mm": -10.3325,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO22",
@@ -16,7 +16,7 @@
       "y_mm": 10.3325,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO23",
@@ -24,7 +24,7 @@
       "y_mm": 24.944699999999997,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO24",
@@ -32,7 +32,7 @@
       "y_mm": 24.944699999999997,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO25",
@@ -40,7 +40,7 @@
       "y_mm": 10.3325,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO26",
@@ -48,7 +48,7 @@
       "y_mm": -10.3325,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO27",
@@ -56,7 +56,7 @@
       "y_mm": -24.944699999999997,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     },
     {
       "instance": "NAUO28",
@@ -64,27 +64,27 @@
       "y_mm": -24.944699999999997,
       "pcd_mm": 53.99994867923487,
       "screw_tip_z_mm": 9.95,
-      "nominal_engagement_mm": -1.1999999999999993
+      "nominal_engagement_mm": 3.3000000000000007
     }
   ],
   "thread_callout": "8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending",
   "ring_od_mm": 59.96,
   "ring_z_mm": [
-    1.25,
-    8.75
+    5.75,
+    13.25
   ],
   "stator_bore_mm": 60,
   "slot_root_diameter_mm": 68,
   "stator_back_iron_mm": 4,
   "stator_z_mm": [
-    -11.436,
-    2.436
+    -2.436,
+    11.436
   ],
-  "stator_seat_z_mm": 6.936,
+  "stator_seat_z_mm": 11.436,
   "radial_bond_gap_mm": 0.02,
   "locating_overlap_z_mm": [
-    1.25,
-    6.936
+    5.75,
+    11.436
   ],
   "locating_length_mm": 5.686,
   "thread_outer_edge_material_mm": 1.73,
@@ -98,6 +98,6 @@
     "stator_envelope": 0.0,
     "winding_envelope": 0.0
   },
-  "axial_layout": "Rotor axial position is fixed by measured OEM features; stator, winding, ring and housing seat moved 4.5 mm rearward to align with the magnet span.",
+  "axial_layout": "Ring, stator, winding and seat stay at their manufacturer/Choice C positions so the ring stays clamped by the eight front screws. The study-invented rotor shell (magnets and carrier) moves forward 4.5 mm to meet the stator; that layout measures 0.000 mm3 clash against both housings.",
   "scope": "Nominal ring fit only. Housing seat checked separately. Rotor radial envelope and the hub-to-shell connection remain unresolved."
 }

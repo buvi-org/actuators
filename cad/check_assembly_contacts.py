@@ -100,8 +100,8 @@ def main():
             }
         )
 
-    # A04: stator must contact the housing seat.
-    stator_front = stack / 2
+    # A04: stator must contact the housing seat. The stack is centred at z 4.5.
+    stator_front = 4.5 + stack / 2
     if abs(stator_front - seat) > 1e-6:
         findings.append(
             {
@@ -114,7 +114,8 @@ def main():
         )
 
     # A04: stator/magnet axial overlap.
-    overlap = min(7.0, stack / 2) - max(-7.0, -stack / 2)
+    MAG_BAND = (-2.5, 11.5)
+    overlap = min(MAG_BAND[1], 4.5 + stack / 2) - max(MAG_BAND[0], 4.5 - stack / 2)
     joints.append(
         {
             "step": "A04/A05",
@@ -136,7 +137,8 @@ def main():
     joint("A16", "hub", "encoder magnet", hub, centred("NAUO44"), "touch")
 
     # A05/A06: the carrier must contact the hub it is said to be anchored on.
-    web = annulus(22.25, 40.5, -5.0, 5.0)
+    web = annulus(22.25, 40.5, -2.5, 5.25)
+    rim = annulus(40.5, 42.4, 5.25, 11.5)
     ic = hub.intersect(web).Volume()
     dc = hub.distance(web)
     joints.append(
@@ -165,8 +167,8 @@ def main():
 
     # A05/A14: carrier clash with the rear housing.
     main_h = cq.importers.importStep(str(ROOT / "public/design/main-housing-supported.step")).val()
-    clash_main = web.intersect(main_h).Volume()
-    clash_rear = web.intersect(centred("NAUO4")).Volume()
+    clash_main = (web.fuse(rim)).intersect(main_h).Volume()
+    clash_rear = (web.fuse(rim)).intersect(centred("NAUO4")).Volume()
     if clash_rear > 1e-6:
         findings.append(
             {
@@ -221,11 +223,11 @@ def main():
                  "distance, because zero overlap alone cannot tell a seated joint from a floating part.",
         "frame": "assembled centred mm",
         "declared_axial_layout": {
-            "stator_stack_z_mm": [-stack / 2, stack / 2],
+            "stator_stack_z_mm": [4.5 - stack / 2, 4.5 + stack / 2],
             "housing_seat_z_mm": seat,
             "ring_flange_z_mm": ring_z,
             "gear_mesh_plane_z_mm": GEAR_Z,
-            "magnet_band_z_mm": [-7.0, 7.0],
+            "magnet_band_z_mm": [-2.5, 11.5],
             "stator_magnet_overlap_mm": round(overlap, 3),
         },
         "joints": joints,

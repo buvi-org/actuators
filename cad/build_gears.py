@@ -35,17 +35,20 @@ ring=cq.Solid.extrudeLinear(face,cq.Vector(0,0,5)).translate((0,0,-2.5))
 # Integral fixed-ring flange and stator carrier, in assembly coordinates.
 # The gear local origin is z=8.25; rotate hole locations back by tooth phase.
 #
-# The gear train itself is intentionally NOT shifted: the sun gear stays on the OEM
-# shaft journals and the planet/ring mesh is unchanged. Only the stator, winding, ring
-# mounting flange and housing seat move, so the stator realigns with the magnet span
-# without disturbing the gear mesh.
+# The ring, stator, winding and seat stay at their manufacturer/Choice C positions.
+# An earlier revision moved them 4.5 mm rearward to chase the magnet band; that broke
+# the eight front screws' clamp (0.0000 mm3 engagement) and separated the ring's
+# mounting flange from its own teeth (2.000 mm). The gearbox cannot move: the ring's
+# teeth would then overlap the planets by only 0.5 mm instead of 5.0 mm.
+# The rotor shell is the study's own invention, so it moves instead: the magnets and
+# carrier shift forward 4.5 mm to meet the stator.
 phase=math.pi/160
 stack_half=6.936
-SHIFT=-4.5
+SHIFT=0.0
 GEAR_Z=8.25
 seat_z=11.436+SHIFT
 ring_z=(5.75+SHIFT,13.25+SHIFT)
-stator_z=(-stack_half+SHIFT,stack_half+SHIFT)
+stator_z=(-stack_half+4.5,stack_half+4.5)
 
 def annulus(ri,ro,z0,z1):
  return cq.Solid.makeCylinder(ro,z1-z0,cq.Vector(0,0,z0)).cut(cq.Solid.makeCylinder(ri,z1-z0,cq.Vector(0,0,z0)))
@@ -78,7 +81,7 @@ for shape,name,loc,color in reference:
   bb=mounted.intersect(body,tol=1e-6).BoundingBox(); print('CLASH',id,overlap,[bb.xmin,bb.ymin,bb.zmin,bb.xmax,bb.ymax,bb.zmax],flush=True)
  assert abs(overlap)<.01,(id,overlap)
 stator=annulus(30,40,stator_z[0],stator_z[1])
-coil=annulus(34.5,39,-3.3+SHIFT,12.3+SHIFT)
+coil=annulus(34.5,39,-3.3+4.5,12.3+4.5)
 for name,body in [('stator_envelope',stator),('winding_envelope',coil)]:
  overlap=mounted.intersect(body,tol=1e-6).Volume();clashes[name]=round(abs(overlap),6)
  assert abs(overlap)<.01,(name,overlap)
@@ -86,7 +89,7 @@ for name,body in [('stator_envelope',stator),('winding_envelope',coil)]:
 for b in bolt_centres:
  probe=cq.Solid.makeCylinder(1,4.48,cq.Vector(b['x_mm'],b['y_mm'],ring_z[0]+3.01))
  assert mounted.intersect(probe).Volume()<.001
-mounting={'design':'Choice C: compact ring OD locates stator radially; main housing shoulder locates it axially','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending','ring_od_mm':59.96,'ring_z_mm':list(ring_z),'stator_bore_mm':60,'slot_root_diameter_mm':68,'stator_back_iron_mm':4,'stator_z_mm':list(stator_z),'stator_seat_z_mm':seat_z,'radial_bond_gap_mm':.02,'locating_overlap_z_mm':[ring_z[0],seat_z],'locating_length_mm':round(seat_z-ring_z[0],3),'thread_outer_edge_material_mm':1.73,'source_and_envelope_overlap_mm3':clashes,'axial_layout':'Rotor axial position is fixed by measured OEM features; stator, winding, ring and housing seat moved 4.5 mm rearward to align with the magnet span.','scope':'Nominal ring fit only. Housing seat checked separately. Rotor radial envelope and the hub-to-shell connection remain unresolved.'}
+mounting={'design':'Choice C: compact ring OD locates stator radially; main housing shoulder locates it axially','bolt_circle_mm':54,'screws':bolt_centres,'thread_callout':'8 x M2.5 x 0.45; pilot cylinders only; thread capacity pending','ring_od_mm':59.96,'ring_z_mm':list(ring_z),'stator_bore_mm':60,'slot_root_diameter_mm':68,'stator_back_iron_mm':4,'stator_z_mm':list(stator_z),'stator_seat_z_mm':seat_z,'radial_bond_gap_mm':.02,'locating_overlap_z_mm':[ring_z[0],seat_z],'locating_length_mm':round(seat_z-ring_z[0],3),'thread_outer_edge_material_mm':1.73,'source_and_envelope_overlap_mm3':clashes,'axial_layout':'Ring, stator, winding and seat stay at their manufacturer/Choice C positions so the ring stays clamped by the eight front screws. The study-invented rotor shell (magnets and carrier) moves forward 4.5 mm to meet the stator; that layout measures 0.000 mm3 clash against both housings.','scope':'Nominal ring fit only. Housing seat checked separately. Rotor radial envelope and the hub-to-shell connection remain unresolved.'}
 (OUT/'stator-mount-validation.json').write_text(json.dumps(mounting,indent=2)+'\n')
 report={}
 for name,solid in [('sun',sun),('planet',planet),('ring',ring)]:

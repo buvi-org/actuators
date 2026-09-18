@@ -238,7 +238,7 @@ export function buildAssembly(
   });
   for (let i = 0; i < stack.count; i++) {
     const tag = String(i + 1).padStart(3, "0"),
-      z = 0 - stack.gross / 2 + i * stack.pitch;
+      z = 4.5 - stack.gross / 2 + i * stack.pitch;
     add(
       `EM01/L${tag}`,
       `Lamination ${i + 1} · 0.200 mm`,
@@ -287,23 +287,26 @@ export function buildAssembly(
     }
   }
   // EM03: rotor magnet carrier, Primeform proposal.
-  // The manufacturer hub's flange ends at r 22.25 mm and the nearest housing wall is at
-  // r 47.4 mm, so nothing in the source CAD joins the hub to the magnets. This carrier
-  // bridges that gap: a hub-anchored web out to the magnet bore, plus a retaining rim
-  // behind the magnets. Sized against the measured housing: the main housing's inward
-  // wall is conical (r 44.050 at z -4.31 rising to r 47.500 at z 3.08), so the web stays
-  // inside r 40.5 and the rim sits at z 5.25..6.75 where the bore is a full r 47.5.
+  // Corrected layout: the ring, stator, winding and seat stay at their manufacturer
+  // positions so the ring remains clamped by the eight front screws. The study's own
+  // rotor shell is what moves: the magnets and this carrier sit 4.5 mm forward of the
+  // earlier position, which measures 0.000 mm3 clash against both housings while still
+  // giving the full 13.872 mm stator/magnet axial overlap.
+  //
+  // Two solids, both measured clash-free:
+  //   web  r 22.25..40.5, z -2.5..+5.25  (inside the main housing's conical bore)
+  //   rim  r 40.5..42.4,  z +5.25..+11.5 (behind the magnets, closing the band)
   annular(
     "EM03/web",
     "EM03",
     "Rotor magnet carrier — hub web",
     22.25,
     40.5,
-    10,
-    0,
+    7.75,
+    1.375,
     "#596576",
     -0.018,
-    "Primeform proposal, not OEM geometry. Web r 22.25 to 40.5 mm, z -5 to +5 mm, anchored on the measured hub flange. Measured clash: 0 mm3 against the main housing and the hub; 194.333 mm3 against the rear housing (NAUO4), whose inward wall is only r 29 mm at z -5.25..-4.75. This carrier is why the magnets have something to bond into; the earlier procedural EM03/endbell and EM03/yoke were deleted because they were the wrong form, opening and position.",
+    "Primeform proposal, not OEM geometry. Web r 22.25 to 40.5 mm, z -2.5 to +5.25 mm, anchored on the measured hub flange. Measured clash 0.000 mm3 against the main housing, the rear housing and the hub. Retention on the hub is still undefined: the faces are coincident at r 22.25 mm with no fit, key, screw or bond.",
   );
   annular(
     "EM03/rim",
@@ -311,11 +314,11 @@ export function buildAssembly(
     "Rotor magnet carrier — retaining rim",
     40.5,
     42.4,
-    1.5,
-    6.0,
+    6.25,
+    8.375,
     "#4d5967",
     -0.018,
-    "Primeform proposal. Rim r 40.5 to 42.4 mm, z 5.25 to 6.75 mm, closing the magnets on one side. Measured clash: 0 mm3 against both housings.",
+    "Primeform proposal. Rim r 40.5 to 42.4 mm, z 5.25 to 11.5 mm, closing the magnet band on one side. Measured clash 0.000 mm3 against both housings and the hub.",
   );
   const sectors = 42;
   for (let i = 0; i < sectors; i++) {
@@ -336,9 +339,9 @@ export function buildAssembly(
       "EM04",
       geo,
       i % 2 ? "#a9646b" : "#7195ad",
-      [0, 0, -7],
+      [0, 0, -2.5],
       -0.018,
-      "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative. UNRESOLVED: this band is r 40.5-42.5 mm for z -7 to +7 mm, but the source housings carry their own arcuate magnet slots at r 41.766-43.236 mm (front, z 13.001-16.25) and r 41.766-43.236 mm (rear, z -8.25 to -6.0). The two bands do not coincide, so this shell placement has no support in the source CAD.",
+      "42 segments is a study assumption: the published 21 pole pairs establishes 42 poles, not the physical magnet-piece count. Arc coverage 85%, radial thickness 2 mm, length 14 mm are illustrative. This band is r 40.5-42.5 mm for z -2.5 to +11.5 mm, placed to match the stator at its manufacturer position: 13.872 mm full axial overlap, measured 0.000 mm3 clash against both housings. STILL UNRESOLVED: the source housings carry their own arcuate slots at r 41.766-43.236 mm (front, z 13.001-16.25; rear, z -8.25 to -6.0) which match neither this band nor its 42-piece count, so rotor radial placement remains unproven.",
     );
   }
   const coilShape = new THREE.Shape();
@@ -368,7 +371,7 @@ export function buildAssembly(
       "EM02",
       coilGeo,
       ["#c27b40", "#e0a354", "#a65a34"][i % 3],
-      [34.5 * Math.cos(a), 34.5 * Math.sin(a), 0],
+      [34.5 * Math.cos(a), 34.5 * Math.sin(a), 4.5],
       -0.05,
       "Winding bundle placeholder, not a turn-by-turn winding. Actual turns, conductor size, coil pitch and phase sequence remain unknown; colour is only visual grouping.",
     );
@@ -385,7 +388,7 @@ export function buildAssembly(
       "EM05",
       box(4.5, 3.15, 14.1),
       "#ded5ad",
-      [36.75 * Math.cos(a), 36.75 * Math.sin(a), 0],
+      [36.75 * Math.cos(a), 36.75 * Math.sin(a), 4.5],
       -0.05,
       "Solid envelope proxy for slot insulation, not a validated liner thickness or cut pattern.",
       0.25,
@@ -399,7 +402,7 @@ export function buildAssembly(
     34.5,
     39.5,
     0.15,
-    7.9,
+    12.4,
     "#dac57d",
     -0.05,
     "Illustrative end-winding impregnation extent; not a material fill volume or quantity.",
@@ -546,7 +549,7 @@ export function buildAssembly(
     4,
     24,
     0.2,
-    7.7,
+    12.2,
     "#c4c19a",
     0.055,
     "Schematic lubrication region only; not a grease-volume estimate.",
@@ -571,7 +574,7 @@ export function buildAssembly(
     29.98,
     30,
     5.686,
-    4.093,
+    8.593,
     "#78c6ba",
     -0.05,
     "Proposed 0.020 mm radial retaining-adhesive bondline between stator bore and compact ring OD; housing shoulder is axial stop. Adhesive grade, bond strength and thermal performance must be validated.",
