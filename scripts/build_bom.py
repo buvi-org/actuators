@@ -48,9 +48,9 @@ row('G01','Output carrier','Transmission',counts['G01'],{'CAD envelope':'Ø37 x 
 row('G02','Sun gear / input shaft','Transmission',counts['G02'],{'CAD bounding box':'6.717 x 6.717 x 21.5 mm','Assembly ratio':'9:1 (not a tooth-count specification)'},
  'OEM steel and hardness unspecified','Proposed: gear cutting, heat treatment, finish grinding',
  'Tooth count, module, pressure angle, profile shift, hardness, case depth and spline/shaft fits remain unresolved.', ['S1','S3'])
-row('G03','Input shaft hub','Transmission',counts['G03'],{'CAD envelope':'Ø44.5 x 14.5 mm'},
+row('G03','Input shaft hub','Transmission',counts['G03'],{'CAD envelope':'Ø44.5 x 14.5 mm','Measured form':'Body of revolution about the motor axis, z -9.25 to +5.25 mm; six-spoke flange, r 17.145 to 22.25 mm, z -1.75 to +0.25 mm; hub rim r 21.025 to 22.25 mm; annular pocket r 18.975 to 21.025 mm'},
  'OEM material unspecified','Proposed: precision machining',
- 'This is a hub within the rotor assembly, not a complete electromagnetic rotor. Magnet/yoke integration is absent.', ['S3'])
+ 'This is the rotor-side hub that carries both 6701-ZZ bearings and the encoder target magnet coaxially with the sun shaft; it is not a complete electromagnetic rotor and it is not an outboard disc that bolts to a bell. Magnet/yoke integration is absent and no drive feature between the hub and the sun is visible in the source CAD.', ['S3'])
 row('B01','625-ZZ bearing','Bearings',counts['B01'],{'Bore x OD x width':'5 x 16 x 5 mm','Shielding':'ZZ, two metal shields','CAD OEM code':'C0105000059 / EZO'},
  'Verify supplier steel, cage and lubricant','Buy: EZO 625ZZ or qualified equivalent',
  'Select clearance, fit, grease and life from actual radial/axial/moment loads. Do not assign actuator load ratings to this bearing.', ['S3','S4'])
@@ -199,7 +199,9 @@ by_id['EM03']['specifications']['Choice C alignment blocker']='Rotor/magnets not
 by_id['M01']['specifications']['Choice C stator stop']='Integral annular seat radii 30.1 to 33.5 mm; z 11.436 mm; external reference envelope retained.'
 
 by_id['EM03']['specifications']['Known end-bell interference']='EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.'
-by_id['EM03']['unresolved'] += ' Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.'
+by_id['EM03']['specifications']['Measured form error']='EM03/endbell is a plain annulus with a 46 mm opening, larger than the measured OEM hub envelope of 44.5 mm, and its axial band -8.6 to -7.6 mm does not intersect the hub flange band -1.75 to +0.25 mm. The provisional rotor shell is the wrong form and the wrong place, so assembly step A06 attaches nothing. See hub-joint-validation.json.'
+by_id['EM03']['specifications']['OEM magnet carrier evidence']='Source main housing NAUO3 carries arcuate pockets at r 41.766 to 43.236 mm for z 13.001 to 16.250 mm. Confirm whether the magnetic rotor belongs to the housing rather than to a separate EM03 shell before releasing this geometry.'
+by_id['EM03']['unresolved'] += ' EM03/endbell and EM03/yoke do not represent the measured OEM hub: the form, the opening diameter and the axial position all differ. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.'
 by_id['M02']['specifications']['Known interference']='Source rear housing intersects the provisional rotor end bell; see rotor-clearance-validation.json. This is not an exploded-view artifact.'
 
 by_id['M01']['status']='Reference CAD + Primeform modification'

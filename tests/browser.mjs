@@ -185,7 +185,16 @@ try {
   );
   await page.locator('[data-tab="bom"]').click();
   await page.locator("#bom-search").fill("6701");
-  assert.equal(await page.locator("#bom-body tr").count(), 1);
+  const bearingHits = await page
+    .locator("#bom-body tr")
+    .evaluateAll((rows) =>
+      rows.map((r) => [r.querySelector(".id").innerText, r.innerText.toLowerCase()]),
+    );
+  // The 6701-ZZ row must be found, and every hit must actually mention it. A broad
+  // query may also match a record that names the bearing as a mating part.
+  assert.ok(bearingHits.some(([id]) => id.startsWith("B03")));
+  assert.ok(bearingHits.length >= 1);
+  assert.ok(bearingHits.every(([, text]) => text.includes("6701")));
   await page.locator("#driver-search").fill("LQFP64");
   assert.ok((await page.locator("#driver-body tr").count()) > 0);
   await page.locator('[data-tab="lamination"]').click();

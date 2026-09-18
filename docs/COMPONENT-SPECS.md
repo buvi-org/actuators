@@ -83,9 +83,10 @@ Quantity: 1 ea. Evidence: Source journals + provisional toothed section.
 Quantity: 1 ea. Evidence: Reference CAD.
 
 - **CAD envelope:** Ø44.5 x 14.5 mm
+- **Measured form:** Body of revolution about the motor axis, z -9.25 to +5.25 mm; six-spoke flange, r 17.145 to 22.25 mm, z -1.75 to +0.25 mm; hub rim r 21.025 to 22.25 mm; annular pocket r 18.975 to 21.025 mm
 - **Material:** OEM material unspecified
 - **Make/buy:** Proposed: precision machining
-- **Unresolved:** This is a hub within the rotor assembly, not a complete electromagnetic rotor. Magnet/yoke integration is absent.
+- **Unresolved:** This is the rotor-side hub that carries both 6701-ZZ bearings and the encoder target magnet coaxially with the sun shaft; it is not a complete electromagnetic rotor and it is not an outboard disc that bolts to a bell. Magnet/yoke integration is absent and no drive feature between the hub and the sun is visible in the source CAD.
 - **Source references:** S3
 
 ## B01 — 625-ZZ bearing
@@ -223,9 +224,11 @@ Quantity: 1 ea. Evidence: Not in reference CAD.
 - **Envelope / wall thickness:** To be designed
 - **Choice C alignment blocker:** Rotor/magnets not shifted with stator. Current magnet span -7 to 7 mm overlaps shifted stack by only 9.436 mm; motor performance not validated.
 - **Known end-bell interference:** EM03/endbell at z -8.6 to -7.6 mm intersects rear housing NAUO4 by approximately 2666.283 mm3 in assembled coordinates. Axial layout correction pending.
+- **Measured form error:** EM03/endbell is a plain annulus with a 46 mm opening, larger than the measured OEM hub envelope of 44.5 mm, and its axial band -8.6 to -7.6 mm does not intersect the hub flange band -1.75 to +0.25 mm. The provisional rotor shell is the wrong form and the wrong place, so assembly step A06 attaches nothing. See hub-joint-validation.json.
+- **OEM magnet carrier evidence:** Source main housing NAUO3 carries arcuate pockets at r 41.766 to 43.236 mm for z 13.001 to 16.250 mm. Confirm whether the magnetic rotor belongs to the housing rather than to a separate EM03 shell before releasing this geometry.
 - **Material:** Proposed: magnetic steel yoke with separate structural carrier as required
 - **Make/buy:** Machine and dynamically balance
-- **Unresolved:** OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.
+- **Unresolved:** OEM yoke geometry, magnetic saturation margin, magnet retention and rotor balance specification absent. EM03/endbell and EM03/yoke do not represent the measured OEM hub: the form, the opening diameter and the axial position all differ. Rear end bell collides with M02. Moving it forward conflicts with the current stator/winding axial envelope. Housing depth versus motor stack must be resolved.
 - **Source references:** Engineering requirement; not an OEM specification
 
 ## EM04 — Rotor permanent magnet set

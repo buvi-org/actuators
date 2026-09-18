@@ -22,6 +22,13 @@ Automated Chromium/Edge checks exercise reference loading, selection/isolation, 
 
 `npm run build` creates a static bundle. The source uses relative asset paths for a subdirectory webview.
 
+## Rotor hub joint audit
+
+- `cad/check_hub_joint.py` asserts the manifest hash of the manufacturer STEP, then measures the input-shaft hub `NAUO45` and its neighbours. Results in `public/design/hub-joint-validation.json`, findings in [rotor hub joint audit](ROTOR-HUB-JOINT.md).
+- Measured: the OEM hub is a body of revolution, Ø44.5 x 14.5 mm, with a 2 mm thick six-spoke flange at z -1.75 to +0.25 mm; it is coaxial with the sun shaft and carries both 6701-ZZ bearings and the encoder target magnet with zero interpenetration.
+- Measured: the procedural `EM03/endbell` (46 mm opening, z -8.6 to -7.6 mm) does not touch the hub flange and has no surface that can receive it. Assembly step A06 was therefore an unsupported "attach" claim; it is now a blocked step with measured evidence.
+- This is a measurement check. No fit, retention, torque capacity, runout or assembly process is qualified by it.
+
 ## Not validated
 
 No physical dimensions were measured on hardware. No rotor/stator electromagnetic simulation, winding design, gear stress calculation, tolerance-stack release, bearing-life calculation, collision clearance of omitted internals, driver circuit verification, thermal test, load test or manufacturing release is implied. Visual clipping is uncapped; explosion offsets are inspection annotations, not a disassembly sequence.

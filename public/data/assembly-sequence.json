@@ -58,7 +58,7 @@
     },
     {
       "id": "A03",
-      "title": "Fasten ring to main housing \u2014 eight front screws",
+      "title": "Fasten ring to main housing — eight front screws",
       "phase": "Actuator installation",
       "parts": [
         "F01/NAUO7",
@@ -78,12 +78,12 @@
         "M01",
         "G05"
       ],
-      "method": "8 \u00d7 M2.5 \u00d7 6 countersunk screws",
+      "method": "8 × M2.5 × 6 countersunk screws",
       "surfaces": [
-        "Screw head cones \u2194 housing countersinks",
-        "Screw threads \u2194 eight ring flange tapped holes"
+        "Screw head cones ↔ housing countersinks",
+        "Screw threads ↔ eight ring flange tapped holes"
       ],
-      "process": "Seat heads and tighten in a cross pattern. Thread proposal is M2.5 \u00d7 0.45; nominal penetration 3.3 mm. Torque is unspecified.",
+      "process": "Seat heads and tighten in a cross pattern. Thread proposal is M2.5 × 0.45; nominal penetration 3.3 mm. Torque is unspecified.",
       "check": "Check thread engagement, bottoming, preload and tool clearance. Recheck screw tips if motor stack moves forward.",
       "status": "Proposed / requires validation",
       "marker": null,
@@ -122,8 +122,8 @@
       ],
       "method": "Adhesive / thermal bond; Coated sheet stacking + bonded bore; Formed insulation insertion; Wind / insert coils; Thermal attachment / lead connection; Impregnation / cure",
       "surfaces": [
-        "Stator bore 60 mm \u2194 ring OD 59.96 mm (radial location, provisional bond gap)",
-        "Stator front steel face z 11.436 mm \u2194 main housing annular shoulder (axial stop)"
+        "Stator bore 60 mm ↔ ring OD 59.96 mm (radial location, provisional bond gap)",
+        "Stator front steel face z 11.436 mm ↔ main housing annular shoulder (axial stop)"
       ],
       "process": "Install the prepared 68-sheet stator over the compact ring OD until its steel end face seats against the housing shoulder. Windings occupy z -3.3 to 12.3 mm. No long ring sleeve remains. Validate complete insertion access before animating motion.",
       "check": "Choice C packaging only: 4 mm back iron, shortened radial winding region, 5.686 mm locating/bond overlap. Validate flux, winding area, bond capacity, shoulder flatness and motor alignment.",
@@ -153,11 +153,11 @@
       "method": "Rotor subassembly / clearance review; Adhesive bond; Bond / pole placement",
       "surfaces": [
         "Yoke/end-bell junction (joining design unresolved)",
-        "Rotor outer swept envelope \u2194 housing and boss clearance",
-        "Adhesive \u2194 yoke inner cylindrical wall",
-        "Adhesive \u2194 magnet outer cylindrical backs",
-        "Magnet backs \u2194 bonded yoke inner wall",
-        "Magnet side faces \u2194 pole-spacing fixture"
+        "Rotor outer swept envelope ↔ housing and boss clearance",
+        "Adhesive ↔ yoke inner cylindrical wall",
+        "Adhesive ↔ magnet outer cylindrical backs",
+        "Magnet backs ↔ bonded yoke inner wall",
+        "Magnet side faces ↔ pole-spacing fixture"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Prepare surfaces and dispense a controlled bondline; adhesive and mechanical retention are unspecified. Place alternating poles using tooling and cure. 42 pieces are assumed; OEM magnet segmentation is unconfirmed.",
       "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Qualify bond thickness, temperature capability, cure and centrifugal retention. Verify polarity, spacing, concentricity, retention and air gap; do not infer piece count from pole count.",
@@ -170,7 +170,7 @@
     },
     {
       "id": "A06",
-      "title": "Attach input hub to rotor end bell",
+      "title": "Rotor bench: hub retention — NOT DEFINED (blocked)",
       "phase": "Rotor preparation",
       "parts": [
         "G03"
@@ -183,18 +183,24 @@
         "EM04",
         "C02"
       ],
-      "method": "Torque-transmitting joint unresolved",
+      "method": "No joint defined: no receiving surface, retention or torque path exists",
       "surfaces": [
-        "Hub rotor attachment surface \u2194 rotor end bell",
-        "Hub bore \u2194 sun/input shaft interface"
+        "Hub flange, measured r 17.145 to 22.25 mm at z -1.75 to +0.25 mm (OEM NAUO45)",
+        "Hub bearing bores: 12 mm front counterbore z 1.25 to 5.25 mm; 6 mm rear bore z -8.75 to -6.75 mm",
+        "Procedural EM03/endbell is a plain annulus, 46 mm opening, z -8.6 to -7.6 mm: it has no surface that receives the hub",
+        "Procedural EM03/yoke inner wall r 42.5 mm, z -7.5 to +7.5 mm: 0.1 mm clear of the end bell in z, so the shell is not joined either"
       ],
-      "process": "Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
-      "check": "Define torque path, axial retention, fit, runout and balance before choosing an assembly operation.",
-      "status": "Proposed / requires validation",
-      "marker": null,
+      "process": "Do not present this as an attachment. Measured on the manufacturer STEP: the OEM input-shaft hub (NAUO45) is a body of revolution about the motor axis carrying both 6701-ZZ bearings and the encoder target magnet coaxially with the sun shaft. The procedural rotor end bell and yoke are a different form: the end bell's 23 mm inner radius (46 mm opening) is larger than the hub's 44.5 mm envelope, and the end bell's axial band (-8.6 to -7.6 mm) does not intersect the hub flange band (-1.75 to +0.25 mm) at all. The parts are therefore not in contact, and no fit, key, spline, pin or fastener has been designed. Resolve the rotor form and axial layout before this step can describe an operation.",
+      "check": "Required before this step can be reclassified: (1) confirm from a physical sample or internal drawing which feature drives the sun, since the source CAD shows no key, spline, pin or press land between the hub and the sun; (2) establish the magnetic rotor carrier, noting the source main housing NAUO3 already has arcuate magnet pockets at r 41.766 to 43.236 mm, z 13.001 to 16.250 mm; (3) reconcile the Choice C stator shift of +4.5 mm with the hub, bearing and encoder positions that fix the rotor relative to the rear housing; (4) define fit class, retention, runout, balance and torque capacity for whichever joint is chosen.",
+      "status": "Blocked by known geometry",
+      "marker": [
+        17.145,
+        22.25,
+        -0.75
+      ],
       "pathReview": {
         "status": "not validated",
-        "reason": "The hub-to-end-bell joint has no defined fastening or fit. Define the torque connection before deciding sequence, direction or required tools."
+        "reason": "The hub and the procedural rotor shell do not touch: the end bell opening (46 mm) exceeds the hub envelope (44.5 mm) and the two axial bands are 6.85 mm apart. There is nothing to attach and no insertion path to review until the rotor form is redesigned against the measured OEM hub."
       }
     },
     {
@@ -232,12 +238,12 @@
       "method": "Rotor subassembly / clearance review; Torque-transmitting joint unresolved",
       "surfaces": [
         "Yoke/end-bell junction (joining design unresolved)",
-        "Rotor outer swept envelope \u2194 housing and boss clearance",
-        "Hub rotor attachment surface \u2194 rotor end bell",
-        "Hub bore \u2194 sun/input shaft interface"
+        "Rotor outer swept envelope ↔ housing and boss clearance",
+        "Hub rotor attachment surface ↔ rotor end bell",
+        "Hub bore ↔ sun/input shaft interface"
       ],
       "process": "Inspect rotor subassembly outside the housing. No rotor installation route has been validated. Show the hub in its reference position. A press fit, key, spline or fasteners have not been established.",
-      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Define torque path, axial retention, fit, runout and balance before choosing an assembly operation. Choice C stator shifted 4.5 mm but magnets remain at -7 to 7 mm; only 9.436 mm axial overlap. Resolve rotor layout.",
+      "check": "Extended housing bosses intersect the current yoke. Resolve before assembly. Define torque path, axial retention, fit, runout and balance before choosing an assembly operation. Choice C stator shifted 4.5 mm but magnets remain at -7 to 7 mm; only 9.436 mm axial overlap. Resolve rotor layout. A06 is a measured failure, so no rotor subassembly exists to install.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {
@@ -281,10 +287,10 @@
       ],
       "method": "Bearing fits unresolved; Shaft coupling unresolved",
       "surfaces": [
-        "6701 bearing inner races \u2194 input hub journals",
-        "Bearing outer races \u2194 stationary support bores (seat ownership to confirm)",
-        "Sun/input shaft coupling land \u2194 input hub bore",
-        "Shaft support interfaces \u2194 bearing arrangement to confirm"
+        "6701 bearing inner races ↔ input hub journals",
+        "Bearing outer races ↔ stationary support bores (seat ownership to confirm)",
+        "Sun/input shaft coupling land ↔ input hub bore",
+        "Shaft support interfaces ↔ bearing arrangement to confirm"
       ],
       "process": "Seat ownership is not established. The rear housing is shown as a receiving-part reference only, not as already installed. Decide which bearings fit to hub or housing first, and define the sun-to-hub torque connection before approving this operation.",
       "check": "If an interference fit is chosen, apply force to the fitted race. Fits, preload, retention and seat geometry remain open. Resolve shaft/hub connection and retention. Tooth profile study does not validate the entire transmission.",
@@ -308,8 +314,8 @@
       "context": [],
       "method": "Pin retention unresolved",
       "surfaces": [
-        "Planet pin locating ends \u2194 output carrier pin seats",
-        "Pin axial retention \u2194 carrier faces"
+        "Planet pin locating ends ↔ output carrier pin seats",
+        "Pin axial retention ↔ carrier faces"
       ],
       "process": "Prepare the carrier subassembly with three pins; the modeled carrier lacks a validated pin retention design.",
       "check": "Specify carrier bores, pin fits, shoulders and retention; verify load capacity.",
@@ -338,10 +344,10 @@
       ],
       "method": "Sliding / interference fit to specify; Bearing seating + gear meshing",
       "surfaces": [
-        "Bearing or bushing inner surface \u2194 planet pin OD",
-        "Outer surface \u2194 planet gear bore",
-        "Planet bore \u2194 bearing or bushing OD",
-        "70-tooth planet flanks \u2194 20-tooth sun and 160-tooth ring flanks"
+        "Bearing or bushing inner surface ↔ planet pin OD",
+        "Outer surface ↔ planet gear bore",
+        "Planet bore ↔ bearing or bushing OD",
+        "70-tooth planet flanks ↔ 20-tooth sun and 160-tooth ring flanks"
       ],
       "process": "Locate the three provisional supports on pins. Bearing versus bushing selection is still open. Align the three planets to the modeled phase before engagement. Tooth-by-tooth insertion access is unverified.",
       "check": "Define diametral clearance or interference, lubrication and axial restraint. Fixed ring, sun input, carrier output gives 9:1. Backlash, root manufacture, strength and tolerance validation remain open.",
@@ -390,8 +396,8 @@
       ],
       "method": "Bearing seating / fits unspecified",
       "surfaces": [
-        "Bearing inner races \u2194 rotating output support journals",
-        "Bearing outer races \u2194 stationary housing seats (confirm each seat)"
+        "Bearing inner races ↔ rotating output support journals",
+        "Bearing outer races ↔ stationary housing seats (confirm each seat)"
       ],
       "process": "Locate 625-ZZ and 6707-ZZ reference bearings. Identify race shoulders and retention from detailed sections.",
       "check": "Specify fits, load path, axial play or preload, retention and installation force path.",
@@ -446,10 +452,10 @@
       ],
       "method": "Bearing seating + gear meshing; Carrier engagement / retention unresolved",
       "surfaces": [
-        "Planet bore \u2194 bearing or bushing OD",
-        "70-tooth planet flanks \u2194 20-tooth sun and 160-tooth ring flanks",
-        "Carrier planet supports \u2194 pins",
-        "Carrier bearing lands \u2194 output support races"
+        "Planet bore ↔ bearing or bushing OD",
+        "70-tooth planet flanks ↔ 20-tooth sun and 160-tooth ring flanks",
+        "Carrier planet supports ↔ pins",
+        "Carrier bearing lands ↔ output support races"
       ],
       "process": "Align the three planets to the modeled phase before engagement. Tooth-by-tooth insertion access is unverified. Bring the carrier subassembly into final reference position. Pin preparation is shown separately for clarity.",
       "check": "Fixed ring, sun input, carrier output gives 9:1. Backlash, root manufacture, strength and tolerance validation remain open. Carrier/pin and bearing retention require detailed design; sequence and access are not proven.",
@@ -506,10 +512,10 @@
       ],
       "method": "Lubrication; Sealing / adjustment unresolved",
       "surfaces": [
-        "Lubricant \u2194 sun, planet and ring working flanks",
-        "Lubricant \u2194 selected planet support contact surfaces",
-        "Seal \u2194 designed groove and counterface (not yet defined)",
-        "Shims \u2194 bearing or shoulder stack as required"
+        "Lubricant ↔ sun, planet and ring working flanks",
+        "Lubricant ↔ selected planet support contact surfaces",
+        "Seal ↔ designed groove and counterface (not yet defined)",
+        "Shims ↔ bearing or shoulder stack as required"
       ],
       "process": "Apply the selected lubricant before closing the housing. Displayed volume is an illustrative extent. Resolve these provisions before closure; the torus shown is a placeholder, not a specified seal.",
       "check": "Specify lubricant grade, dose, compatibility, life and contamination control. Define grooves, squeeze, shim stack and thread-lock locations; do not purchase from this geometry.",
@@ -566,11 +572,11 @@
       ],
       "method": "Housing location + clearance review",
       "surfaces": [
-        "Rear housing flange \u2194 main housing rear joint face",
-        "Rear housing interior \u2194 rotating end bell (required non-contact clearance)"
+        "Rear housing flange ↔ main housing rear joint face",
+        "Rear housing interior ↔ rotating end bell (required non-contact clearance)"
       ],
       "process": "Inspect the proposed closed position; the current rotor end bell intersects the rear housing.",
-      "check": "Measured intersection 2666.28 mm\u00b3. Redesign axial packaging and verify winding clearance before closure.",
+      "check": "Measured intersection 2666.28 mm³. Redesign axial packaging and verify winding clearance before closure.",
       "status": "Blocked by known geometry",
       "marker": null,
       "pathReview": {
@@ -580,7 +586,7 @@
     },
     {
       "id": "A15",
-      "title": "Fasten rear housing \u2014 sixteen rear screws",
+      "title": "Fasten rear housing — sixteen rear screws",
       "phase": "Actuator installation",
       "parts": [
         "F01/NAUO5",
@@ -637,10 +643,10 @@
         "C04",
         "M02"
       ],
-      "method": "16 \u00d7 M2.5 \u00d7 6 countersunk screws",
+      "method": "16 × M2.5 × 6 countersunk screws",
       "surfaces": [
-        "Screw head cones \u2194 rear housing countersinks",
-        "Screw threads \u2194 main housing boss bores"
+        "Screw head cones ↔ rear housing countersinks",
+        "Screw threads ↔ main housing boss bores"
       ],
       "process": "Align the rear housing and tighten in a cross pattern only after clearance redesign. Torque remains unspecified.",
       "check": "Validate boss threads, engagement, bottoming, preload, cutter access and rotor clearance.",
@@ -712,8 +718,8 @@
       ],
       "method": "Magnet retention unresolved",
       "surfaces": [
-        "Encoder magnet mounting face \u2194 rotating hub target seat",
-        "Magnet sensing face \u2194 encoder sensing axis (non-contact)"
+        "Encoder magnet mounting face ↔ rotating hub target seat",
+        "Magnet sensing face ↔ encoder sensing axis (non-contact)"
       ],
       "process": "Center and retain the target magnet; adhesive or other retention must be specified.",
       "check": "Validate retention, magnetic orientation, runout and encoder air gap.",
@@ -795,12 +801,12 @@
       ],
       "method": "PCB solder assembly / capacitor mounting unresolved; PCB mounting and electrical termination unresolved",
       "surfaces": [
-        "Component terminals \u2194 PCB pads",
-        "Connector leads \u2194 PCB pads; connector bodies \u2194 mechanical support",
-        "Encoder sensing face \u2194 target magnet (non-contact)",
-        "PCB mounting holes \u2194 rear support points",
-        "Motor phase ends \u2194 driver phase terminals; sensor leads \u2194 temperature input",
-        "Encoder \u2194 rotating magnet sensing gap"
+        "Component terminals ↔ PCB pads",
+        "Connector leads ↔ PCB pads; connector bodies ↔ mechanical support",
+        "Encoder sensing face ↔ target magnet (non-contact)",
+        "PCB mounting holes ↔ rear support points",
+        "Motor phase ends ↔ driver phase terminals; sensor leads ↔ temperature input",
+        "Encoder ↔ rotating magnet sensing gap"
       ],
       "process": "Populate and reflow per a qualified PCB assembly process; connect the bulk capacitor as specified. 205 inventory designators are data-only; displayed package locations are illustrative. Mount the tested board and terminate winding/sensor leads. Board fastening details, routing and strain relief must be designed.",
       "check": "Confirm footprints, solder process, pinout, capacitor mounting, power isolation and encoder alignment. No duplicate external harness is added. Check standoffs, fastener lengths, insulation, rotor clearance, connector access and encoder gap.",
@@ -881,8 +887,8 @@
       ],
       "method": "Cover location / screw clamp",
       "surfaces": [
-        "Cover rim \u2194 rear housing or mounting support face",
-        "Cover interior \u2194 driver component clearance"
+        "Cover rim ↔ rear housing or mounting support face",
+        "Cover interior ↔ driver component clearance"
       ],
       "process": "Locate the cover without loading PCB components or capacitor. Exact support and sealing interfaces need confirmation.",
       "check": "Check electronics keep-out, connector openings and thermal provisions.",
@@ -895,7 +901,7 @@
     },
     {
       "id": "A19",
-      "title": "Fasten driver cover \u2014 six screws",
+      "title": "Fasten driver cover — six screws",
       "phase": "Actuator installation",
       "parts": [
         "F02"
@@ -962,10 +968,10 @@
         "E09",
         "M03"
       ],
-      "method": "6 \u00d7 M2 \u00d7 12 screws",
+      "method": "6 × M2 × 12 screws",
       "surfaces": [
-        "Screw head seats \u2194 driver cover",
-        "Screw threads \u2194 receiving support holes (ownership and thread depth to confirm)"
+        "Screw head seats ↔ driver cover",
+        "Screw threads ↔ receiving support holes (ownership and thread depth to confirm)"
       ],
       "process": "Insert the six reference screws; verify the receiving threaded part before release.",
       "check": "Torque, engagement, bottoming and PCB clearance are unspecified.",
@@ -1047,8 +1053,8 @@
       ],
       "method": "Closure retention unresolved",
       "surfaces": [
-        "Closure cover locating surface \u2194 output carrier opening",
-        "Closure face \u2194 carrier seat"
+        "Closure cover locating surface ↔ output carrier opening",
+        "Closure face ↔ carrier seat"
       ],
       "process": "Locate the source cover. Define its retention and sealing before final inspection.",
       "check": "Check free rotation, axial play, insulation, phase continuity, encoder function and loaded operation only after the geometry blockers are resolved.",

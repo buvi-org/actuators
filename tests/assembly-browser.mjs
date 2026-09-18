@@ -148,11 +148,22 @@ try {
       true,
     );
   }
-  // Pauses on entering the first known housing/rotor conflict, without previewing penetration.
+  // Stops on the first step that is itself a known failure, without previewing penetration.
+  // Step 6 (index 5, A06) is the rotor-bench hub retention step: it is blocked because the
+  // hub and the procedural rotor shell do not touch. Autoplay must not advance past it.
   await page.selectOption("#assembly-step", "5");
   await page.click("#assembly-play");
   await page.waitForFunction(
-    () => window.__actuator.assemblyGuide.getState().index === 6,
+    () =>
+      window.__actuator.assemblyGuide.getState().playing === false &&
+      window.__actuator.assemblyGuide.getState().index === 5 &&
+      window.__actuator.assemblyGuide.getState().seated === true,
+  );
+  assert.equal(
+    await page.evaluate(
+      () => window.__actuator.assemblyGuide.getState().index,
+    ),
+    5,
   );
   assert.equal(
     await page.evaluate(
@@ -160,20 +171,15 @@ try {
     ),
     false,
   );
-  assert.equal(
-    await page.evaluate(
-      () => window.__actuator.assemblyGuide.getState().seated,
-    ),
-    false,
-  );
   assert.match(
     await page.locator("#assembly-detail").innerText(),
     /Blocked by known geometry/,
   );
+  // A06 is a measured failure, so it is not a step the operator can step past.
   await page.click("#assembly-prev");
   assert.equal(
     await page.evaluate(() => window.__actuator.assemblyGuide.getState().index),
-    5,
+    4,
   );
   await page.selectOption("#assembly-step", "3");
   await page.locator('#assembly-detail [data-mate="EM01"]').click();
